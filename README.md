@@ -1,56 +1,87 @@
-# Wayweave
+# Wayweave — 根拠付き旅行プランナー
 
-A reference implementation for a large-scale travel knowledge product. It combines a decision-oriented UI, a general travel ontology, and a PostgreSQL/PostGIS schema that can ingest accommodation, mobility, place, itinerary and provenance data without collapsing everything into one JSON document.
+**公開サイト:** https://kafka2306.github.io/travel/
 
-The current interface uses a car-free, solo Arima Onsen trip as a realistic seed scenario: Osaka/Umeda → Arima Onsen Station → Hotel Harvest Arima Rokusa(i), with the hotel's gold and silver springs, dining choices, and shuttle conditions exposed as evidence rather than hidden in a score.
+Wayweaveは、宿泊、移動、観光地、旅程、価格・空室、情報源を一つの旅行知識モデルで扱うための旅行プランナーです。
 
-## Why this stack
+単に観光地カードを並べるのではなく、**その人に合うか、実際に到達できるか、日程と人数に合うか、判断を支える出典があるか**を同時に確認できる画面を目指しています。
 
-- **React + TypeScript + Vite** keeps the reference UI fast, typed and deployable to GitHub Pages.
-- **PostgreSQL** is the transactional source of truth for relationships, validity windows and integrity constraints.
-- **PostGIS** handles nearby, containment, corridor and geographic filtering with spatial indexes.
-- **Range partitions** isolate high-volume availability and price snapshots by capture time.
-- **Parquet exports** are the better boundary for analytical scans and data distribution; they do not replace the operational database.
-- **Schema.org + GTFS + PROV-O** keep external mappings explicit and avoid an isolated in-house vocabulary.
+## 現在のデモ
 
-## Product views
+現在の画面には、車を使わない一人旅の例として、次の有馬温泉ルートを収録しています。
 
-1. **Travel planner** — destination search, explainable filters, spatial context and a feasibility-aware itinerary.
-2. **Knowledge model** — five domain groups and the recommended storage pipeline.
-3. **Evidence drawer** — source, publisher and retrieval date for the claims currently shaping the plan.
+```text
+大阪・梅田
+  → 有馬温泉駅
+  → ホテルハーヴェスト有馬六彩
+```
 
-## Run locally
+金泉・銀泉、食事候補、送迎条件などを、単一スコアへ隠さず、判断材料として表示します。
+
+このデモは実在の旅行予約サービスではなく、UI、データ構造、証拠表示の参照実装です。料金、空室、運行、営業時間などの最新状態は各公式サイトで確認してください。
+
+## 主な画面
+
+1. **旅行プランナー** — 行き先検索、条件フィルター、移動可能性、旅程
+2. **知識モデル** — 旅行データを構成する領域と保存方法
+3. **証拠ドロワー** — 判断に使った情報源、発行者、取得日
+
+## 技術構成
+
+- React + TypeScript + Vite — GitHub Pagesへ公開するUI
+- PostgreSQL — 関係、制約、有効期間を持つ正本DB
+- PostGIS — 距離、包含、経路周辺などの空間検索
+- Range Partition — 空室・価格スナップショットの時系列分割
+- Parquet — 分析・配布用の列指向出力
+- Schema.org / GTFS / PROV-O — 外部語彙と出典関係の明示
+
+## データ設計の原則
+
+- 場所、宿泊施設、交通、旅程、価格、空室を一つの巨大JSONへ押し込まない
+- 元データと正規化後のエンティティを分離する
+- 情報の有効期間と取得時点を保存する
+- 出典のない主張を確定情報として扱わない
+- ブラウザへ正規化テーブルを直接公開せず、用途別のAPI・読取モデルを作る
+
+## ローカル実行
 
 ```bash
 npm install
 npm run dev
 ```
 
-Production checks:
+本番向け検証:
 
 ```bash
 npm run typecheck
 npm run build
 ```
 
-## Repository map
+## 主な構成
 
 ```text
-src/                 Interactive reference UI and typed seed data
-database/schema.sql  PostgreSQL/PostGIS operational schema
-docs/ontology.md     Concepts, mappings and identity rules
-.github/workflows/   GitHub Pages deployment
+src/                 React UIと型付きデモデータ
+database/schema.sql  PostgreSQL / PostGISスキーマ
+docs/ontology.md     概念、外部語彙、同一性ルール
+.github/workflows/   GitHub Pages公開
 ```
 
-## Database rollout
+## データベース導入手順
 
-1. Provision PostgreSQL with PostGIS.
-2. Apply `database/schema.sql` through a migration tool rather than manually in production.
-3. Create monthly partitions for `availability_snapshot` ahead of ingestion; the default partition is only a safety net.
-4. Ingest raw records into `source` and `source_record`, then resolve canonical entities.
-5. Materialize claims and typed domain rows in one transaction.
-6. Expose planner-specific read models through an API; do not send raw normalized tables directly to the browser.
+1. PostGISを有効にしたPostgreSQLを用意する
+2. `database/schema.sql`を本番ではマイグレーションツールから適用する
+3. `availability_snapshot`の月次パーティションを事前作成する
+4. 元レコードを`source`と`source_record`へ保存する
+5. 同一施設・地点を解決し、正規エンティティへ統合する
+6. 主張、宿泊、移動、場所、旅程を一つのトランザクションで保存する
+7. 旅行プランナー用APIまたは読取モデルを公開する
 
-## UX principle
+## 現在の位置づけ
 
-The primary unit is a **decision**, not a place card. A result should answer four questions together: does it match the traveler, can they reach it, is it available for the party and date, and what source supports that conclusion?
+- GitHub PagesでUIを公開済み
+- 有馬温泉のシード旅程を実装済み
+- PostgreSQL / PostGISの運用スキーマを定義済み
+- アクセシビリティとしてキーボードフォーカスと文字コントラストを改善済み
+- 予約、リアルタイム空室、リアルタイム運行、Google Maps連携は別途実装・認証が必要
+
+**README最終監査:** 2026-08-01
