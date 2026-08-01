@@ -24,7 +24,7 @@ import {
   ThermometerSun,
   X,
 } from 'lucide-react'
-import { itinerary, ontologyGroups, places, sources } from './data'
+import { arimaItinerary, itinerary, ontologyGroups, places, sources, tripCatalog } from './data'
 import type { ItineraryItem, Place } from './types'
 
 const filters = [
@@ -43,26 +43,34 @@ const modeIcons: Record<ItineraryItem['mode'], typeof BusFront> = {
   walk: Footprints,
 }
 
+const isPlaceInTrip = (place: Place, tripId: string) => place.tripId ? place.tripId === tripId : tripId === 'sado-summer-2026'
+
 function App() {
   const [tab, setTab] = useState<'explore' | 'model'>('explore')
-  const [query, setQuery] = useState('佐渡島')
+  const [selectedTripId, setSelectedTripId] = useState('sado-summer-2026')
   const [activeFilters, setActiveFilters] = useState(new Set(['car-free', 'verified']))
   const [selectedPlaceId, setSelectedPlaceId] = useState('futatsugame-hotel')
   const [sourcesOpen, setSourcesOpen] = useState(false)
   const [menuOpen, setMenuOpen] = useState(false)
 
-  const visiblePlaces = useMemo(() => {
-    const normalizedQuery = query.trim().toLowerCase()
-    return places.filter((place) => {
-      const matchesQuery = !normalizedQuery || [place.name, place.area, place.description, ...place.tags]
-        .join(' ')
-        .toLowerCase()
-        .includes(normalizedQuery.replace('佐渡島', ''))
-      return matchesQuery && [...activeFilters].every((id) => filters.find((filter) => filter.id === id)?.test(place))
-    })
-  }, [activeFilters, query])
+  const selectedTrip = tripCatalog.find((trip) => trip.id === selectedTripId) ?? tripCatalog[0]
+  const tripBrief = selectedTripId === 'arima-onsen-2026'
+    ? { transport: '高速バス・送迎', theme: '温泉・料理・静けさ', note: '有馬六彩の金泉・銀泉を候補として保存' }
+    : { transport: 'バス・送迎', theme: '海・星・温泉', note: '8月の相川は平年最高 29.3°C。海風と夜の開放感を重視' }
+  const activeItinerary = selectedTripId === 'arima-onsen-2026' ? arimaItinerary : itinerary
 
-  const selectedPlace = places.find((place) => place.id === selectedPlaceId) ?? places[0]
+  const visiblePlaces = useMemo(() => places.filter((place) => (
+    isPlaceInTrip(place, selectedTripId)
+    && [...activeFilters].every((id) => filters.find((filter) => filter.id === id)?.test(place))
+  )), [activeFilters, selectedTripId])
+
+  const selectedPlace = places.find((place) => place.id === selectedPlaceId && isPlaceInTrip(place, selectedTripId)) ?? visiblePlaces[0] ?? places[0]
+
+  const selectTrip = (tripId: string) => {
+    setSelectedTripId(tripId)
+    const firstPlace = places.find((place) => isPlaceInTrip(place, tripId))
+    if (firstPlace) setSelectedPlaceId(firstPlace.id)
+  }
 
   const toggleFilter = (id: string) => {
     setActiveFilters((current) => {
@@ -107,23 +115,25 @@ function App() {
             </div>
             <div className="trip-brief-card">
               <span className="card-kicker">今回の旅の条件</span>
-              <strong>佐渡島 · 8月お盆</strong>
+              <strong>{selectedTrip.label}</strong>
               <div className="brief-grid">
-                <span><CalendarDays size={16} />2泊3日</span>
-                <span><BusFront size={16} />バス・送迎</span>
-                <span><BedDouble size={16} />1名・1室</span>
-                <span><CloudSun size={16} />海・星・温泉</span>
+                <span><CalendarDays size={16} />{selectedTrip.dateLabel}</span>
+                <span><BusFront size={16} />{tripBrief.transport}</span>
+                <span><BedDouble size={16} />{selectedTrip.party}</span>
+                <span><CloudSun size={16} />{tripBrief.theme}</span>
               </div>
-              <div className="weather-note"><ThermometerSun size={17} /><span>8月の相川は平年最高 <b>29.3°C</b><small>涼しさより、海風と夜の開放感を重視</small></span></div>
+              <div className="weather-note"><ThermometerSun size={17} /><span>{tripBrief.note}<small>保存済みの旅程モデルから選択中</small></span></div>
             </div>
           </section>
 
-          <section className="search-ribbon page-width" aria-label="旅行検索">
+          <section className="search-ribbon page-width" aria-label="旅程モデル選択">
             <div className="search-field">
-              <Search size={19} />
+              <MapPinned size={19} />
               <label>
-                <span>どこへ？</span>
-                <input value={query} onChange={(event) => setQuery(event.target.value)} aria-label="目的地・施設を検索" />
+                <span>旅程モデルを選択</span>
+                <select value={selectedTripId} onChange={(event) => selectTrip(event.target.value)} aria-label="保存済みの旅程モデルを選択">
+                  {tripCatalog.map((trip) => <option key={trip.id} value={trip.id}>{trip.label}</option>)}
+                </select>
               </label>
             </div>
             <div className="search-divider" />
@@ -132,7 +142,7 @@ function App() {
               <span><small>いつ・誰と？</small><b>8月12日 — 14日 · 1名</b></span>
             </div>
             <button className="primary-search" onClick={() => document.getElementById('results')?.scrollIntoView({ behavior: 'smooth' })}>
-              探す <ArrowRight size={17} />
+              旅程を確認 <ArrowRight size={17} />
             </button>
           </section>
 
@@ -166,18 +176,18 @@ function App() {
                 <span>{visiblePlaces.length} 件 · 根拠あり</span>
               </div>
 
-              <div className="atlas-card" aria-label="佐渡島の旅程マップ">
+              <div className="atlas-card" aria-label={`${selectedTrip.destination}の旅程マップ`}>
                 <div className="atlas-header">
                   <span><MapPinned size={16} /> 移動関係を表示</span>
                   <div className="atlas-legend"><i className="legend-bus" />バス <i className="legend-ferry" />フェリー</div>
                 </div>
                 <div className="atlas-surface">
-                  <svg viewBox="0 0 100 72" role="img" aria-label="二ツ亀、両津、相川を結ぶ経路">
+                  <svg viewBox="0 0 100 72" role="img" aria-label={`${selectedTrip.destination}の移動経路`}>
                     <path className="island-shape" d="M77 2C90 7 91 20 82 31c-4 5-3 11-2 17 2 11-9 23-22 21-8-1-9-10-18-10-8 0-18 7-25 1-8-7-1-16 5-22 8-8 16-16 25-20C57 12 65-2 77 2Z" />
                     <path className="route-line" d="M75 12 C80 26 76 38 70 48 C58 49 44 50 27 53" />
                     <path className="ferry-line" d="M70 48 C82 52 91 55 103 57" />
                   </svg>
-                  {places.slice(0, 6).map((place) => (
+                  {places.filter((place) => isPlaceInTrip(place, selectedTripId)).slice(0, 6).map((place) => (
                     <button
                       key={place.id}
                       className={`map-node accent-${place.accent} ${selectedPlace.id === place.id ? 'selected' : ''}`}
@@ -187,10 +197,10 @@ function App() {
                       title={place.name}
                     >
                       <span />
-                      {(selectedPlace.id === place.id || ['futatsugame', 'ryotsu-port', 'aikawa'].includes(place.id)) && <b>{place.name.replace('SADO', '').replace('HOTEL ', '')}</b>}
+                      {(selectedPlace.id === place.id || ['futatsugame', 'ryotsu-port', 'aikawa', 'arima-station', 'arima-roku'].includes(place.id)) && <b>{place.name.replace('SADO', '').replace('HOTEL ', '')}</b>}
                     </button>
                   ))}
-                  <div className="map-fact"><Clock3 size={14} /><span>両津 → 二ツ亀<br /><b>65分 · 直通</b></span></div>
+                  <div className="map-fact"><Clock3 size={14} /><span>{selectedTripId === 'arima-onsen-2026' ? '大阪 → 有馬温泉<br /><b>高速バス · 送迎</b>' : '両津 → 二ツ亀<br /><b>65分 · 直通</b>'}</span></div>
                 </div>
               </div>
 
@@ -210,7 +220,7 @@ function App() {
                     </span>
                   </button>
                 )) : (
-                  <div className="empty-state"><Search size={24} /><b>条件に合う場所がありません</b><span>フィルターを1つ外してみてください。</span></div>
+                  <div className="empty-state"><Search size={24} /><b>条件に合う場所がありません</b><span>選択中の旅程モデルのフィルターを1つ外してみてください。</span></div>
                 )}
               </div>
             </div>
@@ -222,9 +232,9 @@ function App() {
               </div>
               <div className="day-tabs"><button className="active">すべて</button><button>DAY 1</button><button>DAY 2</button><button>DAY 3</button></div>
               <div className="timeline">
-                {itinerary.map((item, index) => {
+                {activeItinerary.map((item, index) => {
                   const Icon = modeIcons[item.mode]
-                  const dayChanged = index === 0 || itinerary[index - 1].day !== item.day
+                  const dayChanged = index === 0 || activeItinerary[index - 1].day !== item.day
                   return (
                     <div key={item.id}>
                       {dayChanged && <div className="day-marker"><span>DAY {item.day}</span><small>{item.day === 1 ? '8月12日（水）' : item.day === 2 ? '8月13日（木）' : '8月14日（金）'}</small></div>}
