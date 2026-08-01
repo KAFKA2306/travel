@@ -34,14 +34,30 @@
     <script type="application/ld+json">
       {
         "@context": "https://schema.org",
-        "@type": "WebApplication",
-        "name": "Wayweave",
-        "alternateName": "予算と公共交通から組み替える旅行プランナー",
-        "url": "https://kafka2306.github.io/travel/",
-        "applicationCategory": "TravelApplication",
-        "operatingSystem": "Web",
-        "inLanguage": "ja",
-        "description": "価格、公共交通、温泉、一次情報を結び、実行可能な旅行モデルを比較するWebアプリケーション。"
+        "@graph": [
+          {
+            "@type": "WebSite",
+            "@id": "https://kafka2306.github.io/travel/#website",
+            "url": "https://kafka2306.github.io/travel/",
+            "name": "Wayweave",
+            "alternateName": "予算と公共交通から組み替える旅行プランナー",
+            "inLanguage": "ja"
+          },
+          {
+            "@type": "WebApplication",
+            "@id": "https://kafka2306.github.io/travel/#application",
+            "name": "Wayweave",
+            "alternateName": "予算と公共交通から組み替える旅行プランナー",
+            "url": "https://kafka2306.github.io/travel/",
+            "isPartOf": {
+              "@id": "https://kafka2306.github.io/travel/#website"
+            },
+            "applicationCategory": "TravelApplication",
+            "operatingSystem": "Web",
+            "inLanguage": "ja",
+            "description": "価格、公共交通、温泉、一次情報を結び、実行可能な旅行モデルを比較するWebアプリケーション。"
+          }
+        ]
       }
     </script>
 
