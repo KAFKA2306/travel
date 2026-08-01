@@ -9,8 +9,18 @@ export type Source = {
   kind: 'official' | 'standard' | 'climate'
 }
 
+export type TripSeed = {
+  id: string
+  label: string
+  destination: string
+  party: string
+  dateLabel: string
+  sourceIds: string[]
+}
+
 export type Place = {
   id: string
+  tripId?: string
   name: string
   eyebrow: string
   kind: PlaceKind
@@ -27,6 +37,7 @@ export type Place = {
 
 export type ItineraryItem = {
   id: string
+  tripId?: string
   day: number
   time: string
   title: string
