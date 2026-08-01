@@ -72,7 +72,7 @@ export default function GoogleMapsDock({ tripId, selectedPlace }: GoogleMapsDock
   const tripContext = contextFromTripId(tripId)
   const searchQuery = defaultSearch(tripContext)
   const [viewMode, setViewMode] = useState<'place' | 'directions'>('place')
-  const [isOpen, setIsOpen] = useState(true)
+  const [isOpen, setIsOpen] = useState(false)
 
   useEffect(() => {
     setViewMode('place')
@@ -114,7 +114,7 @@ export default function GoogleMapsDock({ tripId, selectedPlace }: GoogleMapsDock
         aria-expanded={isOpen}
         aria-controls="google-maps-dock-body"
       >
-        <span><MapIcon size={17} /> Google Maps</span>
+        <span><MapIcon size={17} /> {isOpen ? 'Google Maps' : 'Google Mapsを開く'}</span>
         <ChevronDown size={17} />
       </button>
 
