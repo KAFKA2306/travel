@@ -28,7 +28,7 @@ import { arimaItinerary, itinerary, ontologyGroups, places, sources, tripCatalog
 import type { ItineraryItem, Place } from './types'
 
 const filters = [
-  { id: 'car-free', label: '車なし', test: (place: Place) => place.tags.some((tag) => ['バス', '徒歩', '送迎相談', '送迎'].includes(tag)) || place.kind === 'transport' },
+  { id: 'car-free', label: '車なし', test: (place: Place) => place.tags.some((tag) => ['バス', '徒歩', '送迎相談', '送迎', '鉄道', '車なし'].includes(tag)) || place.kind === 'transport' },
   { id: 'sea', label: '海が見える', test: (place: Place) => place.tags.includes('海') || place.tags.includes('夕陽') },
   { id: 'onsen', label: '温泉', test: (place: Place) => place.tags.includes('温泉') },
   { id: 'quiet', label: '静けさ', test: (place: Place) => place.tags.includes('静けさ') || place.tags.includes('星空') },
@@ -54,10 +54,17 @@ function App() {
   const [menuOpen, setMenuOpen] = useState(false)
 
   const selectedTrip = tripCatalog.find((trip) => trip.id === selectedTripId) ?? tripCatalog[0]
-  const tripBrief = selectedTripId === 'arima-onsen-2026'
-    ? { transport: '高速バス・送迎', theme: '温泉・料理・静けさ', note: '有馬六彩の金泉・銀泉を候補として保存' }
+  const isArimaBudgetTrip = selectedTripId === 'arima-onsen-2026'
+  const tripBrief = isArimaBudgetTrip
+    ? { transport: '鉄道・日帰り移動', theme: '予算・温泉・街歩き', note: '有馬六彩2連泊を外し、三宮2泊＋金の湯800円へ変更' }
     : { transport: 'バス・送迎', theme: '海・星・温泉', note: '8月の相川は平年最高 29.3°C。海風と夜の開放感を重視' }
-  const activeItinerary = selectedTripId === 'arima-onsen-2026' ? arimaItinerary : itinerary
+  const activeItinerary = isArimaBudgetTrip ? arimaItinerary : itinerary
+  const railInsight = isArimaBudgetTrip
+    ? '宿泊と温泉を分離し、三宮で2連泊。有馬六彩は高価格帯の比較候補として残します。'
+    : '二ツ亀から相川へは、両津での乗換が旅程を決めます。'
+  const decisionAlert = isArimaBudgetTrip
+    ? '三宮の2泊料金を先に比較。有馬は日帰りにし、金の湯はお盆を含む繁忙日800円で利用します。'
+    : '二ツ亀の8月12日は残室わずか。航空券より先に、1名利用と夕食を確認。'
 
   const visiblePlaces = useMemo(() => places.filter((place) => (
     isPlaceInTrip(place, selectedTripId)
@@ -166,7 +173,7 @@ function App() {
               </div>
               <div className="rail-insight">
                 <Sparkles size={17} />
-                <p><b>知識グラフの気づき</b>二ツ亀から相川へは、両津での乗換が旅程を決めます。</p>
+                <p><b>知識グラフの気づき</b>{railInsight}</p>
               </div>
             </aside>
 
@@ -179,7 +186,10 @@ function App() {
               <div className="atlas-card" aria-label={`${selectedTrip.destination}の旅程マップ`}>
                 <div className="atlas-header">
                   <span><MapPinned size={16} /> 移動関係を表示</span>
-                  <div className="atlas-legend"><i className="legend-bus" />バス <i className="legend-ferry" />フェリー</div>
+                  <div className="atlas-legend">
+                    <i className="legend-bus" />{isArimaBudgetTrip ? '公共交通' : 'バス'}
+                    <i className="legend-ferry" />{isArimaBudgetTrip ? '徒歩' : 'フェリー'}
+                  </div>
                 </div>
                 <div className="atlas-surface">
                   <svg viewBox="0 0 100 72" role="img" aria-label={`${selectedTrip.destination}の移動経路`}>
@@ -197,10 +207,10 @@ function App() {
                       title={place.name}
                     >
                       <span />
-                      {(selectedPlace.id === place.id || ['futatsugame', 'ryotsu-port', 'aikawa', 'arima-station', 'arima-roku'].includes(place.id)) && <b>{place.name.replace('SADO', '').replace('HOTEL ', '')}</b>}
+                      {(selectedPlace.id === place.id || ['futatsugame', 'ryotsu-port', 'aikawa', 'sannomiya-rei', 'arima-station', 'kin-no-yu'].includes(place.id)) && <b>{place.name.replace('SADO', '').replace('HOTEL ', '')}</b>}
                     </button>
                   ))}
-                  <div className="map-fact"><Clock3 size={14} /><span>{selectedTripId === 'arima-onsen-2026' ? '大阪 → 有馬温泉<br /><b>高速バス · 送迎</b>' : '両津 → 二ツ亀<br /><b>65分 · 直通</b>'}</span></div>
+                  <div className="map-fact"><Clock3 size={14} /><span>{isArimaBudgetTrip ? '三宮 ↔ 有馬温泉<br /><b>日帰り · 公共交通</b>' : '両津 → 二ツ亀<br /><b>65分 · 直通</b>'}</span></div>
                 </div>
               </div>
 
@@ -249,7 +259,7 @@ function App() {
               </div>
               <div className="decision-alert">
                 <span><CircleDot size={16} /></span>
-                <p><b>先に押さえるもの</b>二ツ亀の8月12日は残室わずか。航空券より先に、1名利用と夕食を確認。</p>
+                <p><b>先に押さえるもの</b>{decisionAlert}</p>
               </div>
               <button className="outline-button" onClick={() => setSourcesOpen(true)}>根拠と更新日を見る <ArrowRight size={16} /></button>
             </aside>
