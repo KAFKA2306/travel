@@ -21,15 +21,16 @@ import {
   ShieldCheck,
   Ship,
   Sparkles,
+  ThermometerSun,
   X,
 } from 'lucide-react'
 import { itinerary, ontologyGroups, places, sources } from './data'
 import type { ItineraryItem, Place } from './types'
 
 const filters = [
-  { id: 'car-free', label: '車なし', test: (place: Place) => place.tags.some((tag) => ['バス', '徒歩', '送迎', '乗換なし'].includes(tag)) || place.kind === 'transport' },
-  { id: 'sea', label: '温泉街を歩く', test: (place: Place) => place.tags.includes('町歩き') || place.tags.includes('徒歩') },
-  { id: 'onsen', label: '温泉', test: (place: Place) => place.tags.some((tag) => ['温泉', '金泉', '銀泉', '露天'].includes(tag)) },
+  { id: 'car-free', label: '車なし', test: (place: Place) => place.tags.some((tag) => ['バス', '徒歩', '送迎相談', '送迎'].includes(tag)) || place.kind === 'transport' },
+  { id: 'sea', label: '海が見える', test: (place: Place) => place.tags.includes('海') || place.tags.includes('夕陽') },
+  { id: 'onsen', label: '温泉', test: (place: Place) => place.tags.includes('温泉') },
   { id: 'quiet', label: '静けさ', test: (place: Place) => place.tags.includes('静けさ') || place.tags.includes('星空') },
   { id: 'verified', label: '一次情報あり', test: (place: Place) => place.sourceIds.length > 0 },
 ]
@@ -44,19 +45,19 @@ const modeIcons: Record<ItineraryItem['mode'], typeof BusFront> = {
 
 function App() {
   const [tab, setTab] = useState<'explore' | 'model'>('explore')
-  const [query, setQuery] = useState('有馬温泉')
-  const [activeFilters, setActiveFilters] = useState(new Set(['car-free', 'onsen', 'verified']))
-  const [selectedPlaceId, setSelectedPlaceId] = useState('arima-roku')
+  const [query, setQuery] = useState('佐渡島')
+  const [activeFilters, setActiveFilters] = useState(new Set(['car-free', 'verified']))
+  const [selectedPlaceId, setSelectedPlaceId] = useState('futatsugame-hotel')
   const [sourcesOpen, setSourcesOpen] = useState(false)
   const [menuOpen, setMenuOpen] = useState(false)
 
   const visiblePlaces = useMemo(() => {
     const normalizedQuery = query.trim().toLowerCase()
     return places.filter((place) => {
-      const matchesQuery = !normalizedQuery || normalizedQuery === '有馬温泉' || [place.name, place.area, place.description, ...place.tags]
+      const matchesQuery = !normalizedQuery || [place.name, place.area, place.description, ...place.tags]
         .join(' ')
         .toLowerCase()
-        .includes(normalizedQuery)
+        .includes(normalizedQuery.replace('佐渡島', ''))
       return matchesQuery && [...activeFilters].every((id) => filters.find((filter) => filter.id === id)?.test(place))
     })
   }, [activeFilters, query])
@@ -106,14 +107,14 @@ function App() {
             </div>
             <div className="trip-brief-card">
               <span className="card-kicker">今回の旅の条件</span>
-              <strong>有馬温泉 · 8月お盆</strong>
+              <strong>佐渡島 · 8月お盆</strong>
               <div className="brief-grid">
                 <span><CalendarDays size={16} />2泊3日</span>
                 <span><BusFront size={16} />バス・送迎</span>
                 <span><BedDouble size={16} />1名・1室</span>
-                <span><CloudSun size={16} />金泉・銀泉・料理</span>
+                <span><CloudSun size={16} />海・星・温泉</span>
               </div>
-              <div className="weather-note"><BusFront size={17} /><span>大阪・梅田から高速バス <b>約55分</b><small>有馬温泉駅から無料ウェルカムバスで約5分</small></span></div>
+              <div className="weather-note"><ThermometerSun size={17} /><span>8月の相川は平年最高 <b>29.3°C</b><small>涼しさより、海風と夜の開放感を重視</small></span></div>
             </div>
           </section>
 
@@ -155,7 +156,7 @@ function App() {
               </div>
               <div className="rail-insight">
                 <Sparkles size={17} />
-                <p><b>知識グラフの気づき</b>有馬温泉駅から有馬六彩へは、無料ウェルカムバスで移動負担を下げられます。</p>
+                <p><b>知識グラフの気づき</b>二ツ亀から相川へは、両津での乗換が旅程を決めます。</p>
               </div>
             </aside>
 
@@ -165,13 +166,13 @@ function App() {
                 <span>{visiblePlaces.length} 件 · 根拠あり</span>
               </div>
 
-              <div className="atlas-card" aria-label="有馬温泉の旅程マップ">
+              <div className="atlas-card" aria-label="佐渡島の旅程マップ">
                 <div className="atlas-header">
                   <span><MapPinned size={16} /> 移動関係を表示</span>
-                  <div className="atlas-legend"><i className="legend-bus" />バス <i className="legend-ferry" />徒歩</div>
+                  <div className="atlas-legend"><i className="legend-bus" />バス <i className="legend-ferry" />フェリー</div>
                 </div>
                 <div className="atlas-surface">
-                  <svg viewBox="0 0 100 72" role="img" aria-label="有馬温泉駅、有馬温泉街、有馬六彩を結ぶ経路">
+                  <svg viewBox="0 0 100 72" role="img" aria-label="二ツ亀、両津、相川を結ぶ経路">
                     <path className="island-shape" d="M77 2C90 7 91 20 82 31c-4 5-3 11-2 17 2 11-9 23-22 21-8-1-9-10-18-10-8 0-18 7-25 1-8-7-1-16 5-22 8-8 16-16 25-20C57 12 65-2 77 2Z" />
                     <path className="route-line" d="M75 12 C80 26 76 38 70 48 C58 49 44 50 27 53" />
                     <path className="ferry-line" d="M70 48 C82 52 91 55 103 57" />
@@ -186,10 +187,10 @@ function App() {
                       title={place.name}
                     >
                       <span />
-                      {(selectedPlace.id === place.id || ['arima-station', 'arima-roku', 'arima-town'].includes(place.id)) && <b>{place.name.replace('ホテルハーヴェスト', '').replace('トラットリア＆ブッフェ', 'ALTURA')}</b>}
+                      {(selectedPlace.id === place.id || ['futatsugame', 'ryotsu-port', 'aikawa'].includes(place.id)) && <b>{place.name.replace('SADO', '').replace('HOTEL ', '')}</b>}
                     </button>
                   ))}
-                  <div className="map-fact"><Clock3 size={14} /><span>有馬温泉駅 → 有馬六彩<br /><b>約5分 · 無料送迎</b></span></div>
+                  <div className="map-fact"><Clock3 size={14} /><span>両津 → 二ツ亀<br /><b>65分 · 直通</b></span></div>
                 </div>
               </div>
 
@@ -238,7 +239,7 @@ function App() {
               </div>
               <div className="decision-alert">
                 <span><CircleDot size={16} /></span>
-                <p><b>先に押さえるもの</b>お盆の1名利用と夕食枠。宿泊プラン、レストラン、送迎条件を先に確認。</p>
+                <p><b>先に押さえるもの</b>二ツ亀の8月12日は残室わずか。航空券より先に、1名利用と夕食を確認。</p>
               </div>
               <button className="outline-button" onClick={() => setSourcesOpen(true)}>根拠と更新日を見る <ArrowRight size={16} /></button>
             </aside>
