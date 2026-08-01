@@ -29,7 +29,7 @@ import type { ItineraryItem, Place } from './types'
 const filters = [
   { id: 'car-free', label: '車なし', test: (place: Place) => place.tags.some((tag) => ['バス', '徒歩', '送迎', '乗換なし'].includes(tag)) || place.kind === 'transport' },
   { id: 'sea', label: '温泉街を歩く', test: (place: Place) => place.tags.includes('町歩き') || place.tags.includes('徒歩') },
-  { id: 'onsen', label: '温泉', test: (place: Place) => place.tags.includes('温泉') },
+  { id: 'onsen', label: '温泉', test: (place: Place) => place.tags.some((tag) => ['温泉', '金泉', '銀泉', '露天'].includes(tag)) },
   { id: 'quiet', label: '静けさ', test: (place: Place) => place.tags.includes('静けさ') || place.tags.includes('星空') },
   { id: 'verified', label: '一次情報あり', test: (place: Place) => place.sourceIds.length > 0 },
 ]
