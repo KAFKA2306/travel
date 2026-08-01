@@ -1,0 +1,355 @@
+<!doctype html>
+<html lang="ja">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="theme-color" content="#fbfaf7" />
+  <meta name="description" content="大阪から深圳へ、直行便・香港空港から蛇口フェリー・越境バスを比較する2泊3日の旅行モデル" />
+  <title>大阪 → 深圳｜Wayweave Route Lab</title>
+  <style>
+    :root {
+      color-scheme: light;
+      --bg: #fbfaf7;
+      --ink: #243653;
+      --muted: #68758b;
+      --line: rgba(67, 87, 119, 0.14);
+      --blue: #8fb5ec;
+      --blue-soft: #e9f1fc;
+      --lavender: #b9a8e6;
+      --lavender-soft: #f0ecfa;
+      --rose: #efb4c1;
+      --rose-soft: #fcecf0;
+      --mint: #b7dbc8;
+      --mint-soft: #eaf7f0;
+      --apricot: #f3cfaa;
+      --apricot-soft: #fff2e3;
+      --white: rgba(255, 255, 255, 0.9);
+      --radius: 22px;
+      --shadow: 0 18px 50px rgba(76, 91, 125, 0.09);
+      font-family: Inter, "Noto Sans JP", "Hiragino Sans", "Yu Gothic", sans-serif;
+    }
+
+    * { box-sizing: border-box; }
+    html { scroll-behavior: smooth; }
+    body {
+      margin: 0;
+      min-width: 320px;
+      color: var(--ink);
+      background:
+        radial-gradient(circle at 10% 0%, rgba(143,181,236,.22), transparent 32rem),
+        radial-gradient(circle at 96% 18%, rgba(183,219,200,.25), transparent 30rem),
+        var(--bg);
+    }
+    a { color: inherit; }
+    button, select { font: inherit; }
+    button { color: inherit; }
+
+    .shell { width: min(1180px, calc(100% - 32px)); margin: 0 auto; }
+    .topbar {
+      position: sticky; top: 0; z-index: 30;
+      display: flex; align-items: center; justify-content: space-between;
+      min-height: 68px; padding: 12px max(16px, calc((100vw - 1180px) / 2));
+      background: rgba(251,250,247,.86); backdrop-filter: blur(18px);
+      border-bottom: 1px solid var(--line);
+    }
+    .brand { display: flex; align-items: center; gap: 10px; text-decoration: none; font-weight: 850; letter-spacing: -.02em; }
+    .brand-mark { display:grid; place-items:center; width:38px; height:38px; border-radius:14px; background:var(--blue); box-shadow:0 8px 22px rgba(98,137,194,.22); }
+    .brand-mark svg { width:22px; height:22px; }
+    .toplinks { display:flex; gap:10px; align-items:center; }
+    .toplinks a { text-decoration:none; padding:9px 13px; border-radius:13px; border:1px solid var(--line); background:rgba(255,255,255,.6); font-size:13px; font-weight:700; }
+
+    .hero { padding: 72px 0 34px; display:grid; grid-template-columns: 1.22fr .78fr; gap:28px; align-items:stretch; }
+    .eyebrow { margin:0 0 14px; color:#5c76a2; font-size:12px; font-weight:900; letter-spacing:.14em; text-transform:uppercase; }
+    h1 { margin:0; font-size:clamp(44px, 7vw, 86px); line-height:.98; letter-spacing:-.065em; }
+    h1 em { color:#648fc9; font-style:normal; }
+    .lead { max-width:680px; margin:24px 0 0; color:var(--muted); font-size:17px; line-height:1.9; }
+    .hero-card { padding:26px; border:1px solid var(--line); border-radius:var(--radius); background:var(--white); box-shadow:var(--shadow); display:flex; flex-direction:column; justify-content:space-between; }
+    .hero-card small { color:var(--muted); font-weight:700; }
+    .hero-card strong { display:block; margin:7px 0 20px; font-size:26px; line-height:1.28; }
+    .facts { display:grid; grid-template-columns:1fr 1fr; gap:10px; }
+    .fact { padding:13px; border-radius:16px; background:var(--blue-soft); }
+    .fact:nth-child(2) { background:var(--mint-soft); }
+    .fact:nth-child(3) { background:var(--lavender-soft); }
+    .fact:nth-child(4) { background:var(--apricot-soft); }
+    .fact b { display:block; margin-top:4px; font-size:14px; }
+
+    .selector { display:grid; grid-template-columns:repeat(3,1fr); gap:12px; margin:10px 0 28px; }
+    .route-button { text-align:left; padding:18px; border-radius:20px; border:1px solid var(--line); background:rgba(255,255,255,.7); cursor:pointer; transition:.2s ease; }
+    .route-button:hover { transform:translateY(-2px); box-shadow:var(--shadow); }
+    .route-button.active { border-color:rgba(74,112,168,.35); background:var(--blue-soft); box-shadow:0 12px 32px rgba(76,91,125,.10); }
+    .route-button:nth-child(2).active { background:var(--mint-soft); }
+    .route-button:nth-child(3).active { background:var(--lavender-soft); }
+    .route-number { display:inline-grid; place-items:center; width:30px; height:30px; border-radius:11px; background:var(--ink); color:white; font-size:12px; font-weight:900; }
+    .route-button b { display:block; margin:13px 0 6px; font-size:17px; }
+    .route-button small { color:var(--muted); line-height:1.55; }
+
+    .route-summary { display:grid; grid-template-columns:1fr 1fr; gap:18px; margin-bottom:28px; }
+    .panel { border:1px solid var(--line); border-radius:var(--radius); background:var(--white); box-shadow:var(--shadow); }
+    .route-map { padding:24px; overflow:hidden; }
+    .panel-title { display:flex; align-items:center; justify-content:space-between; gap:12px; margin-bottom:20px; }
+    .panel-title h2 { margin:0; font-size:21px; letter-spacing:-.025em; }
+    .badge { padding:7px 10px; border-radius:999px; background:var(--mint-soft); font-size:11px; font-weight:850; }
+    .route-flow { display:flex; align-items:center; gap:8px; overflow-x:auto; padding:8px 2px 14px; scrollbar-width:thin; }
+    .node { min-width:112px; padding:14px 12px; border-radius:17px; background:var(--blue-soft); text-align:center; }
+    .node:nth-of-type(2n) { background:var(--mint-soft); }
+    .node b { display:block; margin-top:7px; font-size:13px; }
+    .node small { color:var(--muted); font-size:10px; }
+    .arrow { flex:0 0 auto; color:#7790b5; font-size:20px; font-weight:900; }
+    .route-note { margin:10px 0 0; padding:14px 16px; border-radius:16px; background:var(--apricot-soft); color:#6f5944; font-size:13px; line-height:1.7; }
+
+    .constraint-panel { padding:24px; }
+    .constraint-list { display:grid; gap:11px; }
+    .constraint { display:grid; grid-template-columns:34px 1fr; gap:12px; align-items:start; padding:13px; border-radius:16px; background:#fff; border:1px solid var(--line); }
+    .constraint i { display:grid; place-items:center; width:34px; height:34px; border-radius:12px; background:var(--rose-soft); font-style:normal; font-weight:900; }
+    .constraint b { display:block; font-size:14px; }
+    .constraint small { display:block; margin-top:4px; color:var(--muted); line-height:1.55; }
+
+    .workspace { display:grid; grid-template-columns:minmax(0, 1.48fr) minmax(300px, .72fr); gap:20px; align-items:start; }
+    .itinerary { padding:26px; }
+    .day-grid { display:grid; grid-template-columns:repeat(3,1fr); gap:14px; }
+    .day { padding:18px; border-radius:19px; background:#fff; border:1px solid var(--line); }
+    .day-head { display:flex; justify-content:space-between; align-items:center; margin-bottom:15px; }
+    .day-head span { font-size:11px; font-weight:900; letter-spacing:.12em; color:#6f86a7; }
+    .day-head small { color:var(--muted); }
+    .step { position:relative; padding:0 0 18px 24px; }
+    .step:last-child { padding-bottom:0; }
+    .step::before { content:""; position:absolute; left:6px; top:6px; bottom:-2px; width:1px; background:var(--line); }
+    .step:last-child::before { display:none; }
+    .step::after { content:""; position:absolute; left:1px; top:5px; width:11px; height:11px; border-radius:50%; background:var(--blue); box-shadow:0 0 0 4px var(--blue-soft); }
+    .step time { color:#6681a9; font-size:11px; font-weight:900; }
+    .step b { display:block; margin:3px 0 4px; font-size:14px; line-height:1.45; }
+    .step small { color:var(--muted); font-size:12px; line-height:1.55; }
+
+    .places { padding:24px; }
+    .place-list { display:grid; gap:10px; }
+    .place { padding:14px; border-radius:17px; border:1px solid var(--line); background:#fff; }
+    .place-top { display:flex; align-items:flex-start; justify-content:space-between; gap:12px; }
+    .place b { font-size:14px; }
+    .place p { margin:6px 0 10px; color:var(--muted); font-size:12px; line-height:1.55; }
+    .place a { display:inline-flex; align-items:center; gap:5px; text-decoration:none; color:#5479ad; font-size:11px; font-weight:850; }
+    .kind { flex:0 0 auto; padding:5px 8px; border-radius:999px; background:var(--lavender-soft); font-size:10px; font-weight:850; }
+
+    .evidence { margin:28px 0 68px; padding:28px; }
+    .source-grid { display:grid; grid-template-columns:repeat(3,1fr); gap:12px; }
+    .source { display:block; padding:16px; border-radius:18px; border:1px solid var(--line); background:#fff; text-decoration:none; }
+    .source:hover { border-color:rgba(84,121,173,.35); }
+    .source span { display:inline-block; margin-bottom:8px; padding:5px 8px; border-radius:999px; background:var(--mint-soft); font-size:9px; font-weight:900; letter-spacing:.08em; }
+    .source b { display:block; font-size:13px; line-height:1.45; }
+    .source small { display:block; margin-top:7px; color:var(--muted); font-size:11px; }
+    .warning { margin-top:16px; padding:16px 18px; border-radius:17px; background:var(--rose-soft); color:#74505a; font-size:13px; line-height:1.75; }
+
+    footer { display:flex; justify-content:space-between; gap:16px; padding:24px 0 34px; border-top:1px solid var(--line); color:var(--muted); font-size:12px; }
+
+    @media (max-width: 920px) {
+      .hero, .route-summary, .workspace { grid-template-columns:1fr; }
+      .selector, .day-grid, .source-grid { grid-template-columns:1fr; }
+      .hero { padding-top:44px; }
+      .route-button { min-height:auto; }
+    }
+    @media (max-width: 620px) {
+      .shell { width:min(100% - 20px, 1180px); }
+      .topbar { padding-inline:12px; }
+      .toplinks a:first-child { display:none; }
+      h1 { font-size:46px; }
+      .facts { grid-template-columns:1fr; }
+      .route-map, .constraint-panel, .itinerary, .places, .evidence { padding:18px; }
+      footer { flex-direction:column; }
+    }
+  </style>
+</head>
+<body>
+  <header class="topbar">
+    <a class="brand" href="../">
+      <span class="brand-mark" aria-hidden="true">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 17 17 5"/><path d="M8 5h9v9"/><circle cx="6" cy="18" r="2"/></svg>
+      </span>
+      <span>wayweave</span>
+    </a>
+    <nav class="toplinks" aria-label="関連リンク">
+      <a href="../">旅程モデル一覧</a>
+      <a href="https://github.com/KAFKA2306/travel" target="_blank" rel="noreferrer">GitHub ↗</a>
+    </nav>
+  </header>
+
+  <main class="shell">
+    <section class="hero">
+      <div>
+        <p class="eyebrow">OSAKA → SHENZHEN · ROUTE LAB</p>
+        <h1>香港を使うか、<br><em>深圳へ直行するか。</em></h1>
+        <p class="lead">1名・2泊3日・公共交通を前提に、関西国際空港から深圳へ向かう3経路を比較します。航空便と船便を固定値にせず、運航確認が必要な区間を明示した実行用モデルです。</p>
+      </div>
+      <aside class="hero-card">
+        <div>
+          <small>保存条件</small>
+          <strong>大阪発 · 深圳<br>2泊3日モデル</strong>
+        </div>
+        <div class="facts">
+          <div class="fact"><small>人数</small><b>1名</b></div>
+          <div class="fact"><small>市内移動</small><b>地下鉄・徒歩</b></div>
+          <div class="fact"><small>入境</small><b>一般旅券・30日以内</b></div>
+          <div class="fact"><small>更新日</small><b>2026-08-02</b></div>
+        </div>
+      </aside>
+    </section>
+
+    <section aria-labelledby="route-heading">
+      <p class="eyebrow" id="route-heading">SELECT A ROUTE</p>
+      <div class="selector" id="route-selector"></div>
+    </section>
+
+    <section class="route-summary">
+      <article class="panel route-map">
+        <div class="panel-title"><h2 id="route-title">通信中</h2><span class="badge" id="route-badge">読み込み中</span></div>
+        <div class="route-flow" id="route-flow"></div>
+        <p class="route-note" id="route-note"></p>
+      </article>
+      <aside class="panel constraint-panel">
+        <div class="panel-title"><h2>成立条件</h2><span class="badge">要確認を分離</span></div>
+        <div class="constraint-list" id="constraint-list"></div>
+      </aside>
+    </section>
+
+    <section class="workspace">
+      <article class="panel itinerary">
+        <div class="panel-title"><h2>2泊3日の実行旅程</h2><span class="badge" id="itinerary-status">条件付きで成立</span></div>
+        <div class="day-grid" id="day-grid"></div>
+      </article>
+      <aside class="panel places">
+        <div class="panel-title"><h2>深圳で回る場所</h2><span class="badge">地下鉄中心</span></div>
+        <div class="place-list" id="place-list"></div>
+      </aside>
+    </section>
+
+    <section class="panel evidence">
+      <div class="panel-title"><h2>一次情報と運航根拠</h2><span class="badge">取得 2026-08-02</span></div>
+      <div class="source-grid" id="source-grid"></div>
+      <div class="warning"><b>重要：</b>深圳空港碼頭―香港空港海天碼頭の福永航路は、深圳空港の案内上、2026年3月16日から運休中です。このページの香港フェリー案は福永ではなく、香港空港の制限区域から深圳蛇口へ向かう航路を使用します。船便に接続できない場合は越境バスへ切り替えます。</div>
+    </section>
+  </main>
+
+  <footer class="shell">
+    <span><b>wayweave</b> · decision-oriented travel knowledge</span>
+    <span>航空・船・地下鉄・入境条件を出典付きで分離</span>
+  </footer>
+
+  <script>
+    const sources = [
+      { id:'kix-zh662', label:'ZH662 関西 → 深圳 実運航情報', publisher:'関西国際空港', url:'https://www.kansai-airport.or.jp/flight/detail/DEP/INT/1?date=yesterday&flight_number=ZH662&service_type=PAX', note:'2026-07-29の運航を確認' },
+      { id:'kix-flight', label:'フライトスケジュール', publisher:'関西国際空港', url:'https://www.kansai-airport.or.jp/flight/schedule', note:'搭乗日の便・時刻を再確認' },
+      { id:'hkia-ferry', label:'SkyPier Terminal Ferry Transfer', publisher:'Hong Kong International Airport', url:'https://www.hongkongairport.com/en/transport/mainland-connection/ferry-transfer.page', note:'E2・同日乗継・入境前利用の条件' },
+      { id:'shekou-hkia', label:'香港空港から深圳蛇口', publisher:'招商蛇口郵輪母港', url:'https://h5.cmskchp.com/weixin/pager/8507', note:'同日到着便、手荷物・締切条件' },
+      { id:'szx-ferry', label:'Passenger Ferry', publisher:'Shenzhen Bao’an International Airport', url:'https://www.szairport.com/szairporten/kechuan/zlm_tt.shtml', note:'福永―香港空港航路の運休告知' },
+      { id:'hk-sz-link', label:'Hong Kong–Shenzhen Airports Link', publisher:'Hong Kong International Airport', url:'https://www.hongkongairport.com/en/transport/mainland-connection/hk-sz-airports-link.page', note:'越境バスの窓口・運行時間' },
+      { id:'visa', label:'一方的なビザ免除政策の延長', publisher:'中華人民共和国駐日本国大使館', url:'https://jp.china-embassy.gov.cn/jpn/lszc/hzqzyw/202512/t20251216_11774313.htm', note:'日本の一般旅券・30日以内・2026年末まで' },
+      { id:'metro', label:'深圳地鉄 路線・運賃検索', publisher:'深圳市地鉄集団', url:'https://www.szmc.net/map/', note:'空港・後海・華強北・蛇口を検索' },
+      { id:'shekou', label:'Shekou Cruise Homeport', publisher:'Shenzhen Government Online', url:'https://www.sz.gov.cn/en_szgov/life/transport/shekou/content/post_7381218.html', note:'深圳の海上交通ゲートウェイ' },
+      { id:'bay-park', label:'Shenzhen Bay Park', publisher:'Shenzhen Government Online', url:'https://www.sz.gov.cn/en_szgov/travel/natural/content/post_1354229.html', note:'深圳湾沿岸の都市公園' },
+      { id:'talent-park', label:'Shenzhen Talent Park', publisher:'Shenzhen Government Online', url:'https://www.sz.gov.cn/en_szgov/travel/natural/content/post_1354315.html', note:'後海・深圳湾体育中心隣接' },
+      { id:'huaqiangbei', label:'Shenzhen Travel Guide', publisher:'Shenzhen Government Online', url:'https://www.sz.gov.cn/en_szgov/travel/guide/', note:'華強北の電子産業・商業エリア' },
+      { id:'sea-world', label:'Cultural Blocks', publisher:'Shenzhen Government Online', url:'https://www.sz.gov.cn/en_szgov/life/cultural/cultural/index.html', note:'蛇口・海上世界の文化商業地区' }
+    ];
+
+    const places = [
+      { name:'華強北', kind:'TECH', description:'電子部品・完成品・AI機器を観察する。購入より先に市場構造を見る。', query:'Huaqiangbei Shenzhen' },
+      { name:'深圳人才公園', kind:'PARK', description:'後海の都市景観と深圳湾を歩く。南山拠点から組み込みやすい。', query:'Shenzhen Talent Park' },
+      { name:'深圳湾公園', kind:'WATERFRONT', description:'海沿いの緑道。日没前後を行程の緩衝時間として使う。', query:'Shenzhen Bay Park' },
+      { name:'海上世界', kind:'NIGHT', description:'蛇口の文化・飲食エリア。フェリー到着日の夜にも接続しやすい。', query:'Sea World Shenzhen' },
+      { name:'蛇口郵輪母港', kind:'PORT', description:'香港空港からの海上入境地点。地下鉄2号線側へ接続する。', query:'Shekou Cruise Homeport' }
+    ];
+
+    const routes = {
+      direct: {
+        name:'直行便：KIX → SZX', badge:'移動が最短', short:'深圳航空の直行便を搭乗日ごとに確認',
+        flow:[['大阪','市内'],['KIX','関西空港'],['ZH662','直行便'],['SZX','深圳空港'],['南山','2連泊']],
+        note:'2026年7月29日にZH662の実運航を確認しています。ただし、2026年夏期は中国路線全体の供給が縮小しているため、便名が存在しても希望日の運航を固定せず、予約画面と空港情報の両方で確認します。',
+        constraints:[
+          ['1','運航日を確認','ZH662 / ZH661を搭乗日ごとに空港・航空会社で照合する。'],
+          ['2','往復を別々に成立確認','復路が合わなければ香港経由を混在させる。'],
+          ['3','空港からは地下鉄','深圳空港駅から11号線系統を公式検索し、後海・南山側へ移動する。']
+        ],
+        days:[
+          { label:'DAY 1', sub:'大阪 → 深圳', steps:[['午前','大阪市内から関西空港へ','国際線の手続時間を確保'],['便に合わせる','KIX → SZX','ZH662の運航日・出発時刻を再確認'],['到着後','入境・地下鉄で南山へ','後海または蛇口周辺を2連泊拠点にする'],['夜','海上世界','到着遅延時は省略可能']] },
+          { label:'DAY 2', sub:'技術と都市景観', steps:[['10:00','華強北','電子市場をエリア単位で観察'],['15:30','深圳人才公園','後海の都市景観と深圳湾'],['18:00','深圳湾公園','日没前後の徒歩行程'],['夜','南山へ戻る','同じホテルで2泊目']] },
+          { label:'DAY 3', sub:'深圳 → 大阪', steps:[['午前','蛇口・海上世界周辺','荷物と帰国便時刻に合わせて短縮'],['便の4時間前目安','南山 → SZX','地下鉄の所要時間を当日検索'],['便に合わせる','SZX → KIX','ZH661または香港経由を選択'],['到着後','関西空港 → 大阪','終電条件を確認']] }
+        ]
+      },
+      ferry: {
+        name:'香港空港 → 蛇口フェリー', badge:'香港入境なし', short:'HKG制限区域から蛇口へ直接移動',
+        flow:[['大阪','市内'],['KIX','関西空港'],['HKG','香港空港'],['E2','乗船手続'],['蛇口','深圳入境'],['南山','2連泊']],
+        note:'香港空港到着後は入境審査へ進まず、手荷物を受け取らず、Transfer Area E2で蛇口行きの手続きをします。香港へ一度入境するとSkyPierへ戻れません。',
+        constraints:[
+          ['1','同日到着便のみ','香港空港到着日と蛇口行き船便が同日であること。'],
+          ['2','E2の締切','受託手荷物ありは原則60分以上前。21:30便は運航者案内上70分以上前。'],
+          ['3','香港へ入境しない','入境審査・手荷物受取へ進むとフェリーを利用できない。'],
+          ['4','蛇口便を使用','福永―香港空港は2026年3月16日から運休中。']
+        ],
+        days:[
+          { label:'DAY 1', sub:'大阪 → 香港 → 蛇口', steps:[['早朝','大阪市内から関西空港へ','香港到着後の船便に接続できる便を選ぶ'],['午前便優先','KIX → HKG','到着時刻とE2締切から逆算'],['到着後','入境せずTransfer Area E2へ','受託手荷物のタグ控えを提示'],['船便に合わせる','香港空港 → 深圳蛇口','蛇口で中国の入境手続'],['夜','海上世界・南山泊','港から近い行程に限定']] },
+          { label:'DAY 2', sub:'技術と深圳湾', steps:[['10:00','華強北','地下鉄で移動'],['15:30','深圳人才公園','後海エリア'],['18:00','深圳湾公園','徒歩・夕景'],['夜','南山へ戻る','2泊目も同じ拠点']] },
+          { label:'DAY 3', sub:'帰路を選択', steps:[['午前','蛇口周辺','フェリー時刻に合わせて短縮'],['予約便に合わせる','蛇口 → 香港空港','航空会社の事前チェックイン対応と最小接続時間を確認'],['または','深圳空港 → 関西','直行便が成立する場合は片道だけ直行'],['到着後','関西空港 → 大阪','遅延余地を確保']] }
+        ]
+      },
+      coach: {
+        name:'香港空港 → 深圳 越境バス', badge:'船便の代替', short:'フェリー非接続時の退避経路',
+        flow:[['大阪','市内'],['KIX','関西空港'],['HKG','香港空港'],['越境バス','陸路'],['深圳','入境'],['南山','2連泊']],
+        note:'香港空港―深圳空港リンクの越境バスを使う退避案です。香港空港発の公式案内はサービス時間06:00–23:30、07:00–19:30は30分間隔とされています。利用当日の販売・入境条件を窓口で確認します。',
+        constraints:[
+          ['1','中国入境書類','中国本土へ入るための有効な旅券・査証条件を満たす。'],
+          ['2','運行窓口を確認','香港空港Terminal 2の専用ラウンジで当日の運行を確認する。'],
+          ['3','所要時間を固定しない','道路・国境審査の混雑を旅程に織り込む。'],
+          ['4','到着夜は軽くする','深圳到着が遅れた場合、海上世界は翌日に回す。']
+        ],
+        days:[
+          { label:'DAY 1', sub:'大阪 → 香港 → 深圳', steps:[['午前','KIX → HKG','運行時間内に越境バスへ接続'],['到着後','香港空港の専用窓口へ','当日券・乗車場所を確認'],['午後','越境バスで深圳へ','入境審査の待ち時間は変動'],['夜','南山へ移動・宿泊','初日は観光を必須にしない']] },
+          { label:'DAY 2', sub:'深圳の中核を回る', steps:[['09:30','華強北','技術・商業エリア'],['14:30','深圳人才公園','後海へ移動'],['17:30','深圳湾公園','海沿いを歩く'],['19:30','海上世界','食事後に同じホテルへ']] },
+          { label:'DAY 3', sub:'SZXまたはHKGへ', steps:[['午前','蛇口郵輪母港周辺','帰路に合わせて調整'],['直行便成立','地下鉄でSZXへ','ZH661を確認'],['直行便不成立','越境バスでHKGへ','国境混雑の余裕を確保'],['夜','大阪へ帰着','翌朝予定を詰めない']] }
+        ]
+      }
+    };
+
+    const routeSelector = document.querySelector('#route-selector');
+    const routeTitle = document.querySelector('#route-title');
+    const routeBadge = document.querySelector('#route-badge');
+    const routeFlow = document.querySelector('#route-flow');
+    const routeNote = document.querySelector('#route-note');
+    const constraintList = document.querySelector('#constraint-list');
+    const dayGrid = document.querySelector('#day-grid');
+    const placeList = document.querySelector('#place-list');
+    const sourceGrid = document.querySelector('#source-grid');
+
+    function escapeHtml(value) {
+      return String(value).replace(/[&<>'"]/g, char => ({'&':'&amp;','<':'&lt;','>':'&gt;',"'":'&#39;','"':'&quot;'}[char]));
+    }
+    function mapsUrl(query) {
+      return `https://www.google.com/maps/search/?api=1&query=${encodeURIComponent(query)}`;
+    }
+
+    Object.entries(routes).forEach(([id, route], index) => {
+      const button = document.createElement('button');
+      button.className = 'route-button';
+      button.dataset.route = id;
+      button.innerHTML = `<span class="route-number">0${index + 1}</span><b>${escapeHtml(route.name)}</b><small>${escapeHtml(route.short)}</small>`;
+      button.addEventListener('click', () => renderRoute(id));
+      routeSelector.appendChild(button);
+    });
+
+    function renderRoute(id) {
+      const route = routes[id];
+      document.querySelectorAll('.route-button').forEach(button => button.classList.toggle('active', button.dataset.route === id));
+      routeTitle.textContent = route.name;
+      routeBadge.textContent = route.badge;
+      routeFlow.innerHTML = route.flow.map((item, index) => `${index ? '<span class="arrow">›</span>' : ''}<span class="node"><small>${escapeHtml(item[1])}</small><b>${escapeHtml(item[0])}</b></span>`).join('');
+      routeNote.textContent = route.note;
+      constraintList.innerHTML = route.constraints.map(item => `<div class="constraint"><i>${escapeHtml(item[0])}</i><div><b>${escapeHtml(item[1])}</b><small>${escapeHtml(item[2])}</small></div></div>`).join('');
+      dayGrid.innerHTML = route.days.map(day => `<section class="day"><div class="day-head"><span>${escapeHtml(day.label)}</span><small>${escapeHtml(day.sub)}</small></div>${day.steps.map(step => `<div class="step"><time>${escapeHtml(step[0])}</time><b>${escapeHtml(step[1])}</b><small>${escapeHtml(step[2])}</small></div>`).join('')}</section>`).join('');
+      history.replaceState(null, '', `#${id}`);
+    }
+
+    placeList.innerHTML = places.map(place => `<article class="place"><div class="place-top"><b>${escapeHtml(place.name)}</b><span class="kind">${escapeHtml(place.kind)}</span></div><p>${escapeHtml(place.description)}</p><a href="${mapsUrl(place.query)}" target="_blank" rel="noreferrer">Google Mapsで開く ↗</a></article>`).join('');
+    sourceGrid.innerHTML = sources.map(source => `<a class="source" href="${source.url}" target="_blank" rel="noreferrer"><span>OFFICIAL</span><b>${escapeHtml(source.label)}</b><small>${escapeHtml(source.publisher)}<br>${escapeHtml(source.note)}</small></a>`).join('');
+
+    const initialRoute = location.hash.slice(1);
+    renderRoute(routes[initialRoute] ? initialRoute : 'direct');
+  </script>
+</body>
+</html>
