@@ -1,8 +1,11 @@
 .google-maps-dock{position:fixed;right:24px;bottom:24px;z-index:45;width:min(420px,calc(100vw - 32px));overflow:hidden;border:1px solid rgba(36,54,83,.18);border-radius:18px;background:rgba(251,250,247,.97);box-shadow:0 24px 70px rgba(36,54,83,.22);backdrop-filter:blur(18px);transition:width .18s ease,box-shadow .18s ease}
-.google-maps-dock:not(.is-open){width:auto;min-width:206px;box-shadow:0 10px 28px rgba(36,54,83,.16)}
+.google-maps-dock:not(.is-open){width:92px;min-width:92px;border-radius:999px;box-shadow:0 8px 22px rgba(36,54,83,.14)}
 .google-maps-dock button,.google-maps-dock a{font:inherit}
-.google-maps-dock-toggle{width:100%;min-height:48px;display:flex;align-items:center;justify-content:space-between;gap:18px;padding:0 16px;border:0;background:var(--ink);color:#fff;cursor:pointer}
+.google-maps-dock-toggle{width:100%;min-height:48px;display:flex;align-items:center;justify-content:space-between;gap:14px;padding:0 16px;border:0;background:var(--ink);color:#fff;cursor:pointer}
+.google-maps-dock:not(.is-open) .google-maps-dock-toggle{min-height:44px;gap:7px;padding:0 13px;border-radius:999px}
 .google-maps-dock-toggle span{display:inline-flex;align-items:center;gap:8px;font-size:12px;font-weight:700;white-space:nowrap}
+.google-maps-dock:not(.is-open) .google-maps-dock-toggle span{gap:6px;font-size:11px}
+.google-maps-dock:not(.is-open) .google-maps-dock-toggle>svg{width:14px;height:14px}
 .google-maps-dock-toggle>svg{transition:transform .18s ease}.google-maps-dock.is-open .google-maps-dock-toggle>svg{transform:rotate(180deg)}
 .google-maps-dock-body{padding:14px}
 .google-maps-dock-head{display:grid;grid-template-columns:minmax(0,1fr) auto;gap:12px;align-items:center;margin-bottom:12px}.google-maps-dock-head div{min-width:0}
@@ -17,6 +20,6 @@
 .google-maps-actions{display:grid;grid-template-columns:repeat(3,1fr);gap:7px;margin-top:10px}.google-maps-actions a{min-height:38px;display:inline-flex;align-items:center;justify-content:center;gap:6px;border:1px solid var(--line);border-radius:10px;background:#fff;color:var(--ink);font-size:9px;font-weight:700;text-decoration:none}
 .google-maps-note{margin:9px 2px 0;color:#7a8593;font-size:8px;line-height:1.55}
 .google-maps-dock a:hover,.google-maps-actions a:hover{border-color:#8fa7c8;background:var(--blue-pale)}.google-maps-dock :focus-visible{outline:3px solid #3f679e;outline-offset:2px}
-@media(max-width:860px){.google-maps-dock{right:12px;bottom:12px;width:calc(100vw - 24px);max-height:calc(100vh - 88px);overflow-y:auto}.google-maps-dock:not(.is-open){width:auto;max-width:calc(100vw - 24px);min-width:0}.google-maps-frame{height:min(300px,38vh)}}
+@media(max-width:860px){.google-maps-dock{right:12px;bottom:12px;width:calc(100vw - 24px);max-height:calc(100vh - 88px);overflow-y:auto}.google-maps-dock:not(.is-open){width:78px;min-width:78px}.google-maps-frame{height:min(300px,38vh)}}
 @media(max-width:560px){.google-maps-dock-body{padding:11px}.google-maps-dock-head{grid-template-columns:1fr;gap:8px}.google-maps-dock-head a{max-width:none;justify-content:center}.google-maps-frame{height:230px}.google-maps-actions{grid-template-columns:1fr 1fr}.google-maps-actions a:last-child{grid-column:1/-1}}
 @media(prefers-reduced-motion:reduce){.google-maps-dock,.google-maps-dock-toggle>svg{transition:none}}
