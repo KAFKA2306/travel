@@ -4,6 +4,8 @@ A reference implementation for a large-scale travel knowledge product. It combin
 
 **Live site:** https://kafka2306.github.io/travel/
 
+**Travel quick links:** https://kafka2306.github.io/travel/guides/
+
 **Osaka → Shenzhen route lab:** https://kafka2306.github.io/travel/shenzhen/
 
 The current interface uses a car-free, solo Sado Island trip as a realistic seed scenario: Osaka → Niigata → Ryotsu → Futatsugame → Aikawa, with live-data caveats exposed as evidence rather than hidden in a score.
@@ -12,13 +14,16 @@ The typed seed layer is intentionally additive. Sado remains the initial scenari
 
 The Shenzhen route lab adds an international, multimodal case without replacing the domestic models. It compares a recently operated Kansai–Shenzhen direct-flight pattern, an airside transfer from Hong Kong International Airport to Shenzhen Shekou by ferry, and a cross-border coach fallback. It explicitly excludes the suspended Shenzhen Fuyong–Hong Kong Airport ferry route, keeps flight and sailing times as revalidation constraints, and links every operational claim to its official source.
 
+The travel quick-links hub applies the same operational pattern to every saved trip. Sado prioritizes ferry status, ferry timetables and island buses; Kobe–Arima prioritizes the Sannomiya connection, public baths and current hotel access; Shenzhen links to the dedicated international route lab. Time-sensitive details remain on the official operator or destination page instead of being copied into static prose.
+
 ## Product views
 
 1. **Travel planner** — saved trip selection, explainable filters, spatial context and a feasibility-aware itinerary.
 2. **Google Maps panel** — an embedded place view that follows the selected location, trip-aware transit directions, current-location navigation and a full-itinerary link.
-3. **Shenzhen route lab** — direct flight, Hong Kong airside ferry and cross-border coach patterns with route-specific failure conditions.
-4. **Knowledge model** — five domain groups and the recommended storage pipeline.
-5. **Evidence drawer** — source, publisher and retrieval date for the claims currently shaping the plan.
+3. **Travel quick links** — trip-specific official links for live transport, tourism, facilities, weather and entry conditions.
+4. **Shenzhen route lab** — direct flight, Hong Kong airside ferry and cross-border coach patterns with route-specific failure conditions.
+5. **Knowledge model** — five domain groups and the recommended storage pipeline.
+6. **Evidence drawer** — source, publisher and retrieval date for the claims currently shaping the plan.
 
 ## Google Maps setup
 
@@ -81,6 +86,7 @@ npm run build
 src/GoogleMapsDock.tsx        Maps Embed API and Maps URLs integration
 src/google-maps.css           Responsive Google Maps panel styles
 src/                          Interactive reference UI and typed seed data
+public/guides/index.html      Trip-specific official quick-links hub
 public/shenzhen/index.html    Osaka–Shenzhen multimodal route lab
 database/schema.sql           PostgreSQL/PostGIS operational schema
 docs/ontology.md              Concepts, mappings and identity rules
