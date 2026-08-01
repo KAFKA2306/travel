@@ -2,7 +2,7 @@
 
 A reference implementation for a large-scale travel knowledge product. It combines a decision-oriented UI, a general travel ontology, and a PostgreSQL/PostGIS schema that can ingest accommodation, mobility, place, itinerary and provenance data without collapsing everything into one JSON document.
 
-The current interface uses a car-free, solo Sado Island trip as a realistic seed scenario: Osaka → Niigata → Ryotsu → Futatsugame → Aikawa, with live-data caveats exposed as evidence rather than hidden in a score.
+The current interface uses a car-free, solo Arima Onsen trip as a realistic seed scenario: Osaka/Umeda → Arima Onsen Station → Hotel Harvest Arima Rokusa(i), with the hotel's gold and silver springs, dining choices, and shuttle conditions exposed as evidence rather than hidden in a score.
 
 ## Why this stack
 
