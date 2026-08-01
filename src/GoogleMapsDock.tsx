@@ -11,17 +11,18 @@ import {
 
 type TripContext = 'sado' | 'arima'
 
-const SADO_DEFAULT_PLACE = 'SADO二ツ亀ビューホテル'
-const ARIMA_DEFAULT_PLACE = '神戸三宮 東急REIホテル'
+type GoogleMapsDockProps = {
+  tripId: string
+  selectedPlace: string
+}
+
 const RYOTSU_PORT = '両津港 佐渡市 新潟県'
+const FUTATSUGAME = 'SADO二ツ亀ビューホテル 佐渡市 新潟県'
 const SANNOMIYA_STATION = '三ノ宮駅 神戸市 兵庫県'
+const ARIMA_STATION = '有馬温泉駅 神戸市 兵庫県'
 
 function contextFromTripId(tripId: string): TripContext {
   return tripId === 'arima-onsen-2026' ? 'arima' : 'sado'
-}
-
-function defaultPlace(context: TripContext) {
-  return context === 'arima' ? ARIMA_DEFAULT_PLACE : SADO_DEFAULT_PLACE
 }
 
 function defaultSearch(context: TripContext) {
@@ -56,102 +57,26 @@ function mapsDirectionsUrl(destination: string, context: TripContext) {
   return `https://www.google.com/maps/dir/?${params.toString()}`
 }
 
-function fullItineraryUrl(context: TripContext) {
-  const params = context === 'arima'
-    ? new URLSearchParams({
-      api: '1',
-      origin: SANNOMIYA_STATION,
-      destination: SANNOMIYA_STATION,
-      waypoints: [
-        '有馬温泉駅 神戸市 兵庫県',
-        '有馬本温泉 金の湯 神戸市 兵庫県',
-        '有馬温泉街 神戸市 兵庫県',
-      ].join('|'),
-      travelmode: 'transit',
-    })
-    : new URLSearchParams({
-      api: '1',
-      origin: RYOTSU_PORT,
-      destination: 'HOTEL OOSADO 佐渡市 新潟県',
-      waypoints: [
-        'SADO二ツ亀ビューホテル 佐渡市 新潟県',
-        '二ツ亀 佐渡市 新潟県',
-        '相川 佐渡市 新潟県',
-      ].join('|'),
-      travelmode: 'transit',
-    })
-
+function primaryRouteUrl(context: TripContext) {
+  const params = new URLSearchParams({
+    api: '1',
+    origin: context === 'arima' ? SANNOMIYA_STATION : RYOTSU_PORT,
+    destination: context === 'arima' ? ARIMA_STATION : FUTATSUGAME,
+    travelmode: 'transit',
+  })
   return `https://www.google.com/maps/dir/?${params.toString()}`
 }
 
-function GoogleMapsDock() {
+export default function GoogleMapsDock({ tripId, selectedPlace }: GoogleMapsDockProps) {
   const apiKey = import.meta.env.VITE_GOOGLE_MAPS_API_KEY?.trim()
-  const [tripContext, setTripContext] = useState<TripContext>('sado')
-  const [selectedPlace, setSelectedPlace] = useState(SADO_DEFAULT_PLACE)
-  const [searchQuery, setSearchQuery] = useState(defaultSearch('sado'))
+  const tripContext = contextFromTripId(tripId)
+  const searchQuery = defaultSearch(tripContext)
   const [viewMode, setViewMode] = useState<'place' | 'directions'>('place')
   const [isOpen, setIsOpen] = useState(true)
 
   useEffect(() => {
-    const tripSelect = document.querySelector<HTMLSelectElement>('select[aria-label="保存済みの旅程モデルを選択"]')
-
-    const syncTrip = () => {
-      const nextContext = contextFromTripId(tripSelect?.value || 'sado-summer-2026')
-      setTripContext(nextContext)
-      setSearchQuery(defaultSearch(nextContext))
-
-      const selectedCardName = document
-        .querySelector<HTMLElement>('.place-card.selected .place-title-row b')
-        ?.textContent?.trim()
-      setSelectedPlace(selectedCardName || defaultPlace(nextContext))
-      setViewMode('place')
-    }
-
-    syncTrip()
-    tripSelect?.addEventListener('change', syncTrip)
-
-    const handleDocumentClick = (event: MouseEvent) => {
-      if (!(event.target instanceof Element)) return
-
-      const placeCard = event.target.closest<HTMLButtonElement>('.place-card')
-      const placeName = placeCard?.querySelector<HTMLElement>('.place-title-row b')?.textContent?.trim()
-      if (placeName) {
-        setSelectedPlace(placeName)
-        setViewMode('place')
-        return
-      }
-
-      const mapNode = event.target.closest<HTMLButtonElement>('.map-node')
-      const nodeName = mapNode?.title.trim() || mapNode?.getAttribute('aria-label')?.replace(/を選択$/, '').trim()
-      if (nodeName) {
-        setSelectedPlace(nodeName)
-        setViewMode('place')
-      }
-    }
-
-    const syncSelectedPlace = () => {
-      const selectedCardName = document
-        .querySelector<HTMLElement>('.place-card.selected .place-title-row b')
-        ?.textContent?.trim()
-      const selectedNode = document.querySelector<HTMLButtonElement>('.map-node.selected')
-      const selectedNodeName = selectedNode?.title.trim()
-        || selectedNode?.getAttribute('aria-label')?.replace(/を選択$/, '').trim()
-      const nextPlace = selectedCardName || selectedNodeName
-      if (nextPlace) setSelectedPlace(nextPlace)
-    }
-
-    syncSelectedPlace()
-    const appShell = document.querySelector('.app-shell')
-    const observer = appShell ? new MutationObserver(syncSelectedPlace) : null
-    observer?.observe(appShell!, { attributes: true, subtree: true, attributeFilter: ['class'] })
-
-    document.addEventListener('click', handleDocumentClick)
-    return () => {
-      tripSelect?.removeEventListener('change', syncTrip)
-      document.removeEventListener('click', handleDocumentClick)
-      observer?.disconnect()
-    }
-  }, [])
+    setViewMode('place')
+  }, [tripId, selectedPlace])
 
   const embedUrl = useMemo(() => {
     if (!apiKey) return null
@@ -167,7 +92,7 @@ function GoogleMapsDock() {
       params.set(
         'destination',
         tripContext === 'sado' && selectedPlace === '両津港'
-          ? 'SADO二ツ亀ビューホテル 佐渡市 新潟県'
+          ? FUTATSUGAME
           : withTripContext(selectedPlace, tripContext),
       )
       params.set('mode', 'transit')
@@ -187,15 +112,16 @@ function GoogleMapsDock() {
         type="button"
         onClick={() => setIsOpen((open) => !open)}
         aria-expanded={isOpen}
+        aria-controls="google-maps-dock-body"
       >
         <span><MapIcon size={17} /> Google Maps</span>
         <ChevronDown size={17} />
       </button>
 
       {isOpen && (
-        <div className="google-maps-dock-body">
+        <div className="google-maps-dock-body" id="google-maps-dock-body">
           <div className="google-maps-dock-head">
-            <div>
+            <div aria-live="polite">
               <small>選択中の場所</small>
               <strong>{selectedPlace}</strong>
             </div>
@@ -204,11 +130,10 @@ function GoogleMapsDock() {
             </a>
           </div>
 
-          <div className="google-maps-mode-tabs" role="tablist" aria-label="地図表示モード">
+          <div className="google-maps-mode-tabs" role="group" aria-label="地図表示モード">
             <button
               type="button"
-              role="tab"
-              aria-selected={viewMode === 'place'}
+              aria-pressed={viewMode === 'place'}
               className={viewMode === 'place' ? 'active' : ''}
               onClick={() => setViewMode('place')}
             >
@@ -216,8 +141,7 @@ function GoogleMapsDock() {
             </button>
             <button
               type="button"
-              role="tab"
-              aria-selected={viewMode === 'directions'}
+              aria-pressed={viewMode === 'directions'}
               className={viewMode === 'directions' ? 'active' : ''}
               onClick={() => setViewMode('directions')}
             >
@@ -250,14 +174,13 @@ function GoogleMapsDock() {
             <a href={mapsDirectionsUrl(selectedPlace, tripContext)} target="_blank" rel="noreferrer">
               <LocateFixed size={14} /> 現在地から
             </a>
-            <a href={fullItineraryUrl(tripContext)} target="_blank" rel="noreferrer">
-              <Navigation size={14} /> 旅程全体
+            <a href={primaryRouteUrl(tripContext)} target="_blank" rel="noreferrer">
+              <Navigation size={14} /> 主要区間
             </a>
           </div>
+          <p className="google-maps-note">複数日の旅程を1本の公共交通ルートに偽装せず、選択地点と主要区間だけをGoogle Mapsへ渡します。</p>
         </div>
       )}
     </aside>
   )
 }
-
-export default GoogleMapsDock
