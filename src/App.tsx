@@ -24,6 +24,8 @@ import {
   ThermometerSun,
   X,
 } from 'lucide-react'
+import GoogleMapsDock from './GoogleMapsDock'
+import TripAtlas from './TripAtlas'
 import { arimaItinerary, itinerary, ontologyGroups, places, sources, tripCatalog } from './data'
 import type { ItineraryItem, Place } from './types'
 
@@ -183,36 +185,12 @@ function App() {
                 <span>{visiblePlaces.length} 件 · 根拠あり</span>
               </div>
 
-              <div className="atlas-card" aria-label={`${selectedTrip.destination}の旅程マップ`}>
-                <div className="atlas-header">
-                  <span><MapPinned size={16} /> 移動関係を表示</span>
-                  <div className="atlas-legend">
-                    <i className="legend-bus" />{isArimaBudgetTrip ? '公共交通' : 'バス'}
-                    <i className="legend-ferry" />{isArimaBudgetTrip ? '徒歩' : 'フェリー'}
-                  </div>
-                </div>
-                <div className="atlas-surface">
-                  <svg viewBox="0 0 100 72" role="img" aria-label={`${selectedTrip.destination}の移動経路`}>
-                    <path className="island-shape" d="M77 2C90 7 91 20 82 31c-4 5-3 11-2 17 2 11-9 23-22 21-8-1-9-10-18-10-8 0-18 7-25 1-8-7-1-16 5-22 8-8 16-16 25-20C57 12 65-2 77 2Z" />
-                    <path className="route-line" d="M75 12 C80 26 76 38 70 48 C58 49 44 50 27 53" />
-                    <path className="ferry-line" d="M70 48 C82 52 91 55 103 57" />
-                  </svg>
-                  {places.filter((place) => isPlaceInTrip(place, selectedTripId)).slice(0, 6).map((place) => (
-                    <button
-                      key={place.id}
-                      className={`map-node accent-${place.accent} ${selectedPlace.id === place.id ? 'selected' : ''}`}
-                      style={{ left: `${place.map.x}%`, top: `${place.map.y}%` }}
-                      onClick={() => setSelectedPlaceId(place.id)}
-                      aria-label={`${place.name}を選択`}
-                      title={place.name}
-                    >
-                      <span />
-                      {(selectedPlace.id === place.id || ['futatsugame', 'ryotsu-port', 'aikawa', 'sannomiya-rei', 'arima-station', 'kin-no-yu'].includes(place.id)) && <b>{place.name.replace('SADO', '').replace('HOTEL ', '')}</b>}
-                    </button>
-                  ))}
-                  <div className="map-fact"><Clock3 size={14} /><span>{isArimaBudgetTrip ? '三宮 ↔ 有馬温泉<br /><b>日帰り · 公共交通</b>' : '両津 → 二ツ亀<br /><b>65分 · 直通</b>'}</span></div>
-                </div>
-              </div>
+              <TripAtlas
+                tripId={selectedTripId}
+                destination={selectedTrip.destination}
+                selectedPlaceId={selectedPlace.id}
+                onSelectPlace={setSelectedPlaceId}
+              />
 
               <div className="place-grid">
                 {visiblePlaces.length ? visiblePlaces.map((place) => (
@@ -274,6 +252,7 @@ function App() {
         <span>PostgreSQL + PostGIS · GTFS · Schema.org · PROV-O</span>
       </footer>
 
+      {tab === 'explore' && <GoogleMapsDock tripId={selectedTripId} selectedPlace={selectedPlace.name} />}
       {sourcesOpen && <SourceDrawer onClose={() => setSourcesOpen(false)} />}
     </div>
   )
