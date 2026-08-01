@@ -27,12 +27,43 @@ Wayweaveは、宿泊、移動、観光地、旅程、価格・空室、情報源
 ## 主な画面
 
 1. **旅行プランナー** — 行き先検索、条件フィルター、移動可能性、旅程
-2. **知識モデル** — 旅行データを構成する領域と保存方法
-3. **証拠ドロワー** — 判断に使った情報源、発行者、取得日
+2. **Google Maps連携** — 選択地点に追従する埋め込み地図、両津港からの公共交通ルート、現在地からのナビ、旅程全体
+3. **知識モデル** — 旅行データを構成する領域と保存方法
+4. **証拠ドロワー** — 判断に使った情報源、発行者、取得日
+
+## Google Maps API設定
+
+サイト内の地図表示には公式の **Maps Embed API**、Google Mapsアプリ・サイトを開く検索と経路には **Maps URLs** を使用します。
+
+公式資料:
+
+- Maps Embed API: https://developers.google.com/maps/documentation/embed/get-started
+- 埋め込みモードとパラメータ: https://developers.google.com/maps/documentation/embed/embedding-map
+- Maps URLs: https://developers.google.com/maps/documentation/urls/get-started
+- APIキーのセキュリティ: https://developers.google.com/maps/api-security-best-practices
+
+### GitHub Pages本番設定
+
+1. Google Cloudプロジェクトを作成または選択し、課金を有効化する
+2. **Maps Embed API** を有効化する
+3. ブラウザ用APIキーを作成する
+4. アプリケーション制限を **ウェブサイト** に設定し、次を許可する
+   - `https://kafka2306.github.io/travel/*`
+   - `http://localhost:5173/*`
+   - `http://127.0.0.1:5173/*`
+5. API制限を設定し、**Maps Embed API** のみを許可する
+6. GitHubリポジトリの **Settings → Secrets and variables → Actions** を開く
+7. `GOOGLE_MAPS_API_KEY` というRepository Secretを作成する
+8. **Deploy to GitHub Pages** を再実行するか、`main`へ新しいコミットをPushする
+
+Pagesワークフローはビルド時にSecretを`VITE_GOOGLE_MAPS_API_KEY`として注入します。ブラウザ用APIキーは公開サイトの通信から閲覧可能になる設計のため、Secret化だけでは保護になりません。ウェブサイト制限とAPI制限を必ず併用してください。
+
+APIキーが未設定でも外部Google Mapsリンクは利用できますが、ページ内の埋め込み地図には設定案内が表示されます。
 
 ## 技術構成
 
 - React + TypeScript + Vite — GitHub Pagesへ公開するUI
+- Google Maps Embed API / Maps URLs — 埋め込み地図、検索、経路連携
 - PostgreSQL — 関係、制約、有効期間を持つ正本DB
 - PostGIS — 距離、包含、経路周辺などの空間検索
 - Range Partition — 空室・価格スナップショットの時系列分割
@@ -51,6 +82,8 @@ Wayweaveは、宿泊、移動、観光地、旅程、価格・空室、情報源
 ## ローカル実行
 
 ```bash
+cp .env.example .env.local
+# .env.localへ制限済みブラウザAPIキーを設定
 npm install
 npm run dev
 ```
@@ -65,10 +98,12 @@ npm run build
 ## 主な構成
 
 ```text
-src/                 React UIと型付き旅行データ
-database/schema.sql  PostgreSQL / PostGISスキーマ
-docs/ontology.md     概念、外部語彙、同一性ルール
-.github/workflows/   GitHub Pages公開
+src/GoogleMapsDock.tsx  Google Maps Embed API / Maps URLs連携
+src/google-maps.css     地図パネルのレスポンシブUI
+src/                    React UIと型付き旅行データ
+database/schema.sql     PostgreSQL / PostGISスキーマ
+docs/ontology.md        概念、外部語彙、同一性ルール
+.github/workflows/      GitHub Pages公開
 ```
 
 ## データベース導入手順
@@ -86,9 +121,10 @@ docs/ontology.md     概念、外部語彙、同一性ルール
 - GitHub PagesでUIを公開済み
 - 佐渡島を主シナリオとして実装済み
 - 有馬温泉を追加データとして保持済み
+- Google Maps Embed APIとMaps URLsのUI・ビルド連携を実装済み
 - PostgreSQL / PostGISの運用スキーマを定義済み
 - キーボードフォーカスと文字コントラストを改善済み
-- 予約、リアルタイム空室、リアルタイム運行、Google Maps連携は別途実装・認証が必要
+- 予約、リアルタイム空室、リアルタイム運行は別途API連携が必要
 
 ## UX原則
 
