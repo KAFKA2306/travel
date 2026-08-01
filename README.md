@@ -6,12 +6,12 @@ A reference implementation for a large-scale travel knowledge product. It combin
 
 The current interface uses a car-free, solo Sado Island trip as a realistic seed scenario: Osaka → Niigata → Ryotsu → Futatsugame → Aikawa, with live-data caveats exposed as evidence rather than hidden in a score.
 
-The typed seed layer is intentionally additive: Sado remains the active scenario while `tripCatalog`, `places` and `arimaItinerary` retain an additional Arima Onsen / Hotel Harvest Arima Rokusa(i) scenario. Destination records can therefore accumulate in one generic travel dataset without replacing the current trip.
+The typed seed layer is intentionally additive. Sado remains the initial scenario, while the second saved model now uses two nights near Kobe-Sannomiya and treats Arima Onsen as a day trip. Hotel Harvest Arima Rokusa(i) remains in the dataset as a higher-priced comparison candidate rather than the executed stay. Destination records can therefore accumulate without replacing prior scenarios, and a price constraint can change the itinerary without deleting the rejected option.
 
 ## Product views
 
 1. **Travel planner** — saved trip selection, explainable filters, spatial context and a feasibility-aware itinerary.
-2. **Google Maps panel** — an embedded place view that follows the selected location, a Ryotsu Port transit view, current-location navigation and a full-itinerary link.
+2. **Google Maps panel** — an embedded place view that follows the selected location, trip-aware transit directions, current-location navigation and a full-itinerary link.
 3. **Knowledge model** — five domain groups and the recommended storage pipeline.
 4. **Evidence drawer** — source, publisher and retrieval date for the claims currently shaping the plan.
 
