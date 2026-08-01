@@ -8,7 +8,7 @@
   text-rendering: optimizeLegibility;
   --paper: #fbfaf7;
   --ink: #243653;
-  --muted: #6d7788;
+  --muted: #5d6878;
   --line: #dedbd3;
   --blue: #8fb5ec;
   --blue-pale: #e6effc;
@@ -234,6 +234,18 @@ button { color: inherit; }
 
 .footer { display: flex; justify-content: space-between; margin-top: 80px; padding-top: 24px; padding-bottom: 34px; border-top: 1px solid var(--line); color: #8a939e; font-size: 9px; }
 .footer b { color: var(--ink); }
+
+/* Keep keyboard focus visible even where the visual design removes native outlines. */
+:focus-visible { outline: 3px solid #3f679e; outline-offset: 3px; }
+.search-field input:focus-visible { outline: 3px solid #3f679e; outline-offset: 4px; border-radius: 4px; }
+.filter-row:focus-within .fake-check { outline: 3px solid #3f679e; outline-offset: 2px; }
+
+/* Small supporting labels remain readable on their actual card backgrounds. */
+:where(.eyebrow, .card-kicker, .weather-note small, .search-field label > span, .search-summary small, .rail-heading button, .rail-label, .section-heading > span, .place-area, .priority-card small, .atlas-legend, .map-fact, .day-tabs button:not(.active), .day-marker small, .timeline-item time, .timeline-copy small, .panel-title small, .stack-list small, .flow-row small, .source-list small, .footer) { color: #5d6878; }
+.evidence-row { color: #4f6f5a; }
+.feasible-badge { color: #45694f; }
+.source-kind { color: #4e6c96; }
+.source-kind.kind-climate { color: #765533; }
 
 @media (max-width: 1180px) {
   .workspace { grid-template-columns: 180px minmax(420px, 1fr); }
