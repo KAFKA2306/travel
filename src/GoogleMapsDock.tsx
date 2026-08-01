@@ -9,59 +9,106 @@ import {
   Search,
 } from 'lucide-react'
 
-const DEFAULT_PLACE = 'SADO二ツ亀ビューホテル'
-const DEFAULT_SEARCH = '佐渡島'
-const RYOTSU_PORT = '両津港 佐渡市 新潟県'
+type TripContext = 'sado' | 'arima'
 
-function withSadoContext(value: string) {
+const SADO_DEFAULT_PLACE = 'SADO二ツ亀ビューホテル'
+const ARIMA_DEFAULT_PLACE = '神戸三宮 東急REIホテル'
+const RYOTSU_PORT = '両津港 佐渡市 新潟県'
+const SANNOMIYA_STATION = '三ノ宮駅 神戸市 兵庫県'
+
+function contextFromTripId(tripId: string): TripContext {
+  return tripId === 'arima-onsen-2026' ? 'arima' : 'sado'
+}
+
+function defaultPlace(context: TripContext) {
+  return context === 'arima' ? ARIMA_DEFAULT_PLACE : SADO_DEFAULT_PLACE
+}
+
+function defaultSearch(context: TripContext) {
+  return context === 'arima' ? '神戸 有馬温泉' : '佐渡島'
+}
+
+function withTripContext(value: string, context: TripContext) {
   const trimmed = value.trim()
-  if (!trimmed) return DEFAULT_SEARCH
+  if (!trimmed) return defaultSearch(context)
+
+  if (context === 'arima') {
+    if (/有馬|三宮|神戸|兵庫/.test(trimmed)) return trimmed
+    return `${trimmed} 神戸市 兵庫県`
+  }
+
   if (/佐渡|新潟/.test(trimmed)) return trimmed
   return `${trimmed} 佐渡市 新潟県`
 }
 
-function mapsSearchUrl(query: string) {
-  const params = new URLSearchParams({ api: '1', query: withSadoContext(query) })
+function mapsSearchUrl(query: string, context: TripContext) {
+  const params = new URLSearchParams({ api: '1', query: withTripContext(query, context) })
   return `https://www.google.com/maps/search/?${params.toString()}`
 }
 
-function mapsDirectionsUrl(destination: string) {
+function mapsDirectionsUrl(destination: string, context: TripContext) {
   const params = new URLSearchParams({
     api: '1',
-    destination: withSadoContext(destination),
+    destination: withTripContext(destination, context),
     travelmode: 'transit',
     dir_action: 'navigate',
   })
   return `https://www.google.com/maps/dir/?${params.toString()}`
 }
 
-function fullItineraryUrl() {
-  const params = new URLSearchParams({
-    api: '1',
-    origin: RYOTSU_PORT,
-    destination: 'HOTEL OOSADO 佐渡市 新潟県',
-    waypoints: [
-      'SADO二ツ亀ビューホテル 佐渡市 新潟県',
-      '二ツ亀 佐渡市 新潟県',
-      '相川 佐渡市 新潟県',
-    ].join('|'),
-    travelmode: 'transit',
-  })
+function fullItineraryUrl(context: TripContext) {
+  const params = context === 'arima'
+    ? new URLSearchParams({
+      api: '1',
+      origin: SANNOMIYA_STATION,
+      destination: SANNOMIYA_STATION,
+      waypoints: [
+        '有馬温泉駅 神戸市 兵庫県',
+        '有馬本温泉 金の湯 神戸市 兵庫県',
+        '有馬温泉街 神戸市 兵庫県',
+      ].join('|'),
+      travelmode: 'transit',
+    })
+    : new URLSearchParams({
+      api: '1',
+      origin: RYOTSU_PORT,
+      destination: 'HOTEL OOSADO 佐渡市 新潟県',
+      waypoints: [
+        'SADO二ツ亀ビューホテル 佐渡市 新潟県',
+        '二ツ亀 佐渡市 新潟県',
+        '相川 佐渡市 新潟県',
+      ].join('|'),
+      travelmode: 'transit',
+    })
+
   return `https://www.google.com/maps/dir/?${params.toString()}`
 }
 
 function GoogleMapsDock() {
   const apiKey = import.meta.env.VITE_GOOGLE_MAPS_API_KEY?.trim()
-  const [selectedPlace, setSelectedPlace] = useState(DEFAULT_PLACE)
-  const [searchQuery, setSearchQuery] = useState(DEFAULT_SEARCH)
+  const [tripContext, setTripContext] = useState<TripContext>('sado')
+  const [selectedPlace, setSelectedPlace] = useState(SADO_DEFAULT_PLACE)
+  const [searchQuery, setSearchQuery] = useState(defaultSearch('sado'))
   const [viewMode, setViewMode] = useState<'place' | 'directions'>('place')
   const [isOpen, setIsOpen] = useState(true)
 
   useEffect(() => {
-    const searchInput = document.querySelector<HTMLInputElement>('input[aria-label="目的地・施設を検索"]')
-    const syncSearch = () => setSearchQuery(searchInput?.value.trim() || DEFAULT_SEARCH)
-    syncSearch()
-    searchInput?.addEventListener('input', syncSearch)
+    const tripSelect = document.querySelector<HTMLSelectElement>('select[aria-label="保存済みの旅程モデルを選択"]')
+
+    const syncTrip = () => {
+      const nextContext = contextFromTripId(tripSelect?.value || 'sado-summer-2026')
+      setTripContext(nextContext)
+      setSearchQuery(defaultSearch(nextContext))
+
+      const selectedCardName = document
+        .querySelector<HTMLElement>('.place-card.selected .place-title-row b')
+        ?.textContent?.trim()
+      setSelectedPlace(selectedCardName || defaultPlace(nextContext))
+      setViewMode('place')
+    }
+
+    syncTrip()
+    tripSelect?.addEventListener('change', syncTrip)
 
     const handleDocumentClick = (event: MouseEvent) => {
       if (!(event.target instanceof Element)) return
@@ -100,7 +147,7 @@ function GoogleMapsDock() {
 
     document.addEventListener('click', handleDocumentClick)
     return () => {
-      searchInput?.removeEventListener('input', syncSearch)
+      tripSelect?.removeEventListener('change', syncTrip)
       document.removeEventListener('click', handleDocumentClick)
       observer?.disconnect()
     }
@@ -116,20 +163,22 @@ function GoogleMapsDock() {
     })
 
     if (viewMode === 'directions') {
-      params.set('origin', RYOTSU_PORT)
+      params.set('origin', tripContext === 'arima' ? SANNOMIYA_STATION : RYOTSU_PORT)
       params.set(
         'destination',
-        selectedPlace === '両津港' ? 'SADO二ツ亀ビューホテル 佐渡市 新潟県' : withSadoContext(selectedPlace),
+        tripContext === 'sado' && selectedPlace === '両津港'
+          ? 'SADO二ツ亀ビューホテル 佐渡市 新潟県'
+          : withTripContext(selectedPlace, tripContext),
       )
       params.set('mode', 'transit')
       params.set('units', 'metric')
       return `https://www.google.com/maps/embed/v1/directions?${params.toString()}`
     }
 
-    params.set('q', withSadoContext(selectedPlace))
+    params.set('q', withTripContext(selectedPlace, tripContext))
     params.set('zoom', '13')
     return `https://www.google.com/maps/embed/v1/place?${params.toString()}`
-  }, [apiKey, selectedPlace, viewMode])
+  }, [apiKey, selectedPlace, tripContext, viewMode])
 
   return (
     <aside className={`google-maps-dock ${isOpen ? 'is-open' : ''}`} aria-label="Google Maps 連携">
@@ -150,8 +199,8 @@ function GoogleMapsDock() {
               <small>選択中の場所</small>
               <strong>{selectedPlace}</strong>
             </div>
-            <a href={mapsSearchUrl(searchQuery)} target="_blank" rel="noreferrer">
-              <Search size={15} />「{searchQuery || DEFAULT_SEARCH}」を検索
+            <a href={mapsSearchUrl(searchQuery, tripContext)} target="_blank" rel="noreferrer">
+              <Search size={15} />「{searchQuery}」を検索
             </a>
           </div>
 
@@ -172,7 +221,7 @@ function GoogleMapsDock() {
               className={viewMode === 'directions' ? 'active' : ''}
               onClick={() => setViewMode('directions')}
             >
-              <Route size={14} /> 両津港から
+              <Route size={14} /> {tripContext === 'arima' ? '三宮から' : '両津港から'}
             </button>
           </div>
 
@@ -195,13 +244,13 @@ function GoogleMapsDock() {
           </div>
 
           <div className="google-maps-actions">
-            <a href={mapsSearchUrl(selectedPlace)} target="_blank" rel="noreferrer">
+            <a href={mapsSearchUrl(selectedPlace, tripContext)} target="_blank" rel="noreferrer">
               <ExternalLink size={14} /> Mapsで開く
             </a>
-            <a href={mapsDirectionsUrl(selectedPlace)} target="_blank" rel="noreferrer">
+            <a href={mapsDirectionsUrl(selectedPlace, tripContext)} target="_blank" rel="noreferrer">
               <LocateFixed size={14} /> 現在地から
             </a>
-            <a href={fullItineraryUrl()} target="_blank" rel="noreferrer">
+            <a href={fullItineraryUrl(tripContext)} target="_blank" rel="noreferrer">
               <Navigation size={14} /> 旅程全体
             </a>
           </div>
