@@ -30,11 +30,13 @@ jobs:
       - name: Install
         run: npm ci
       - name: Build
+        env:
+          VITE_GOOGLE_MAPS_API_KEY: ${{ secrets.GOOGLE_MAPS_API_KEY }}
         run: npm run build
       - name: Verify Pages artifact
         run: test -s dist/index.html && test -n "$(find dist/assets -maxdepth 1 -type f -print -quit)"
       - name: Upload Pages artifact
-        uses: actions/upload-pages-artifact@v3
+        uses: actions/upload-pages-artifact@v4
         with:
           path: dist
 
