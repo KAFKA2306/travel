@@ -75,7 +75,8 @@ button { color: inherit; }
 .search-field, .search-summary { display: flex; align-items: center; gap: 13px; padding-left: 8px; }
 .search-field label, .search-summary span { display: flex; flex-direction: column; min-width: 0; }
 .search-field label > span, .search-summary small { color: #8a929e; font-size: 10px; font-weight: 600; }
-.search-field input { min-width: 0; width: 100%; padding: 2px 0 0; border: 0; outline: 0; color: var(--ink); background: transparent; font-size: 15px; font-weight: 700; }
+.search-field input, .search-field select { min-width: 0; width: 100%; padding: 2px 24px 0 0; border: 0; outline: 0; color: var(--ink); background: transparent; font-size: 15px; font-weight: 700; }
+.search-field select { appearance: none; cursor: pointer; }
 .search-summary b { overflow: hidden; text-overflow: ellipsis; white-space: nowrap; font-size: 13px; }
 .search-divider { height: 28px; background: var(--line); }
 .primary-search { display: flex; align-items: center; gap: 18px; padding: 14px 18px; border: 0; border-radius: 13px; background: var(--ink); color: #fff; font-size: 13px; font-weight: 700; cursor: pointer; }
@@ -237,7 +238,7 @@ button { color: inherit; }
 
 /* Keep keyboard focus visible even where the visual design removes native outlines. */
 :focus-visible { outline: 3px solid #3f679e; outline-offset: 3px; }
-.search-field input:focus-visible { outline: 3px solid #3f679e; outline-offset: 4px; border-radius: 4px; }
+.search-field input:focus-visible, .search-field select:focus-visible { outline: 3px solid #3f679e; outline-offset: 4px; border-radius: 4px; }
 .filter-row:focus-within .fake-check { outline: 3px solid #3f679e; outline-offset: 2px; }
 
 /* Small supporting labels remain readable on their actual card backgrounds. */
