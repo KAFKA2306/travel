@@ -4,16 +4,21 @@ A reference implementation for a large-scale travel knowledge product. It combin
 
 **Live site:** https://kafka2306.github.io/travel/
 
+**Osaka → Shenzhen route lab:** https://kafka2306.github.io/travel/shenzhen/
+
 The current interface uses a car-free, solo Sado Island trip as a realistic seed scenario: Osaka → Niigata → Ryotsu → Futatsugame → Aikawa, with live-data caveats exposed as evidence rather than hidden in a score.
 
 The typed seed layer is intentionally additive. Sado remains the initial scenario, while the second saved model now uses two nights near Kobe-Sannomiya and treats Arima Onsen as a day trip. Hotel Harvest Arima Rokusa(i) remains in the dataset as a higher-priced comparison candidate rather than the executed stay. Destination records can therefore accumulate without replacing prior scenarios, and a price constraint can change the itinerary without deleting the rejected option.
+
+The Shenzhen route lab adds an international, multimodal case without replacing the domestic models. It compares a recently operated Kansai–Shenzhen direct-flight pattern, an airside transfer from Hong Kong International Airport to Shenzhen Shekou by ferry, and a cross-border coach fallback. It explicitly excludes the suspended Shenzhen Fuyong–Hong Kong Airport ferry route, keeps flight and sailing times as revalidation constraints, and links every operational claim to its official source.
 
 ## Product views
 
 1. **Travel planner** — saved trip selection, explainable filters, spatial context and a feasibility-aware itinerary.
 2. **Google Maps panel** — an embedded place view that follows the selected location, trip-aware transit directions, current-location navigation and a full-itinerary link.
-3. **Knowledge model** — five domain groups and the recommended storage pipeline.
-4. **Evidence drawer** — source, publisher and retrieval date for the claims currently shaping the plan.
+3. **Shenzhen route lab** — direct flight, Hong Kong airside ferry and cross-border coach patterns with route-specific failure conditions.
+4. **Knowledge model** — five domain groups and the recommended storage pipeline.
+5. **Evidence drawer** — source, publisher and retrieval date for the claims currently shaping the plan.
 
 ## Google Maps setup
 
@@ -73,12 +78,13 @@ npm run build
 ## Repository map
 
 ```text
-src/GoogleMapsDock.tsx  Maps Embed API and Maps URLs integration
-src/google-maps.css     Responsive Google Maps panel styles
-src/                    Interactive reference UI and typed seed data
-database/schema.sql     PostgreSQL/PostGIS operational schema
-docs/ontology.md        Concepts, mappings and identity rules
-.github/workflows/      GitHub Pages deployment
+src/GoogleMapsDock.tsx        Maps Embed API and Maps URLs integration
+src/google-maps.css           Responsive Google Maps panel styles
+src/                          Interactive reference UI and typed seed data
+public/shenzhen/index.html    Osaka–Shenzhen multimodal route lab
+database/schema.sql           PostgreSQL/PostGIS operational schema
+docs/ontology.md              Concepts, mappings and identity rules
+.github/workflows/            GitHub Pages deployment
 ```
 
 ## Database rollout
