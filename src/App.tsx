@@ -45,7 +45,7 @@ const modeIcons: Record<ItineraryItem['mode'], typeof BusFront> = {
 function App() {
   const [tab, setTab] = useState<'explore' | 'model'>('explore')
   const [query, setQuery] = useState('有馬温泉')
-  const [activeFilters, setActiveFilters] = useState(new Set(['car-free', 'verified']))
+  const [activeFilters, setActiveFilters] = useState(new Set(['car-free', 'onsen', 'verified']))
   const [selectedPlaceId, setSelectedPlaceId] = useState('arima-roku')
   const [sourcesOpen, setSourcesOpen] = useState(false)
   const [menuOpen, setMenuOpen] = useState(false)
@@ -168,7 +168,7 @@ function App() {
               <div className="atlas-card" aria-label="有馬温泉の旅程マップ">
                 <div className="atlas-header">
                   <span><MapPinned size={16} /> 移動関係を表示</span>
-                  <div className="atlas-legend"><i className="legend-bus" />バス <i className="legend-ferry" />フェリー</div>
+                  <div className="atlas-legend"><i className="legend-bus" />バス <i className="legend-ferry" />徒歩</div>
                 </div>
                 <div className="atlas-surface">
                   <svg viewBox="0 0 100 72" role="img" aria-label="有馬温泉駅、有馬温泉街、有馬六彩を結ぶ経路">
