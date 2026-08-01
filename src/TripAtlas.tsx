@@ -1,4 +1,4 @@
-import { Clock3, MapPinned } from 'lucide-react'
+import { MapPinned } from 'lucide-react'
 import { arimaItinerary, itinerary, places } from './data'
 import type { ItineraryItem, Place } from './types'
 import './trip-atlas.css'
@@ -10,8 +10,40 @@ type TripAtlasProps = {
   onSelectPlace: (placeId: string) => void
 }
 
+type LabelPlacement = 'above' | 'below' | 'left' | 'right'
+
 const SADO_TRIP_ID = 'sado-summer-2026'
 const ARIMA_TRIP_ID = 'arima-onsen-2026'
+
+const shortLabels: Record<string, string> = {
+  'futatsugame-hotel': '二ツ亀ホテル',
+  'oosado-hotel': 'OOSADO',
+  futatsugame: '二ツ亀',
+  'ryotsu-port': '両津港',
+  aikawa: '相川',
+  kitazawa: '北沢遺構',
+  'sannomiya-rei': '三宮REI',
+  'sannomiya-station': '三宮駅',
+  'arima-station': '有馬温泉駅',
+  'arima-town': '温泉街',
+  'kin-no-yu': '金の湯',
+  'arima-roku': '有馬六彩',
+}
+
+const labelPlacements: Record<string, LabelPlacement> = {
+  'futatsugame-hotel': 'left',
+  'oosado-hotel': 'below',
+  futatsugame: 'right',
+  'ryotsu-port': 'right',
+  aikawa: 'left',
+  kitazawa: 'above',
+  'sannomiya-rei': 'below',
+  'sannomiya-station': 'above',
+  'arima-station': 'below',
+  'arima-town': 'left',
+  'kin-no-yu': 'left',
+  'arima-roku': 'right',
+}
 
 const isPlaceInTrip = (place: Place, tripId: string) => (
   place.tripId ? place.tripId === tripId : tripId === SADO_TRIP_ID
@@ -29,7 +61,7 @@ function routePlaces(items: ItineraryItem[], tripPlaces: Place[]) {
 }
 
 function labelForPlace(place: Place) {
-  return place.name.replace('SADO', '').replace('HOTEL ', '')
+  return shortLabels[place.id] ?? place.name.replace('SADO', '').replace('HOTEL ', '')
 }
 
 export default function TripAtlas({
@@ -44,7 +76,7 @@ export default function TripAtlas({
   const route = routePlaces(activeItinerary, tripPlaces)
   const routePointString = route.map((place) => `${place.map.x},${place.map.y}`).join(' ')
   const persistentLabels = new Set(isArima
-    ? ['sannomiya-rei', 'sannomiya-station', 'arima-station', 'kin-no-yu']
+    ? ['sannomiya-station', 'arima-station']
     : ['futatsugame', 'ryotsu-port', 'aikawa'])
 
   return (
@@ -77,33 +109,33 @@ export default function TripAtlas({
           {routePointString && <polyline className="route-line trip-route-line" points={routePointString} />}
         </svg>
 
-        {tripPlaces.map((place) => (
-          <button
-            key={place.id}
-            type="button"
-            className={`map-node accent-${place.accent} ${selectedPlaceId === place.id ? 'selected' : ''}`}
-            style={{ left: `${place.map.x}%`, top: `${place.map.y}%` }}
-            onClick={() => onSelectPlace(place.id)}
-            aria-pressed={selectedPlaceId === place.id}
-            aria-label={`${place.name}を選択`}
-            title={place.name}
-          >
-            <span />
-            {(selectedPlaceId === place.id || persistentLabels.has(place.id)) && <b>{labelForPlace(place)}</b>}
-          </button>
-        ))}
+        {tripPlaces.map((place) => {
+          const selected = selectedPlaceId === place.id
+          const anchor = persistentLabels.has(place.id)
+          const showLabel = selected || anchor
+          const placement = labelPlacements[place.id] ?? 'above'
 
-        <div className="map-fact">
-          <Clock3 size={14} />
-          {isArima ? (
-            <span>三宮 ↔ 有馬温泉<br /><b>日帰り・公共交通</b></span>
-          ) : (
-            <span>両津 → 二ツ亀<br /><b>65分・直通</b></span>
-          )}
-        </div>
+          return (
+            <button
+              key={place.id}
+              type="button"
+              className={`map-node accent-${place.accent} label-${placement} ${anchor ? 'is-anchor' : ''} ${selected ? 'selected' : ''}`}
+              style={{ left: `${place.map.x}%`, top: `${place.map.y}%` }}
+              onClick={() => onSelectPlace(place.id)}
+              aria-pressed={selected}
+              aria-label={`${place.name}を選択`}
+              title={place.name}
+            >
+              <span />
+              {showLabel && <b aria-hidden="true">{labelForPlace(place)}</b>}
+            </button>
+          )
+        })}
       </div>
+
       <figcaption className="atlas-caption">
-        地理的な距離や道路形状ではなく、旅程上の接続関係を示します。実経路はGoogle Mapsと公式交通情報で確認します。
+        <strong>{isArima ? '三宮 ↔ 有馬温泉・日帰り' : '両津 → 二ツ亀・65分'}</strong>
+        <span>地点名は主要拠点と選択中だけを表示します。実経路はGoogle Mapsと公式交通情報で確認します。</span>
       </figcaption>
     </figure>
   )
