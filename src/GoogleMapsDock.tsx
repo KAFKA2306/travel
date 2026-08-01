@@ -113,8 +113,9 @@ export default function GoogleMapsDock({ tripId, selectedPlace }: GoogleMapsDock
         onClick={() => setIsOpen((open) => !open)}
         aria-expanded={isOpen}
         aria-controls="google-maps-dock-body"
+        aria-label={isOpen ? 'Google Mapsを閉じる' : 'Google Mapsを開く'}
       >
-        <span><MapIcon size={17} /> {isOpen ? 'Google Maps' : 'Google Mapsを開く'}</span>
+        <span><MapIcon size={17} /> {isOpen ? 'Google Maps' : '地図'}</span>
         <ChevronDown size={17} />
       </button>
 
