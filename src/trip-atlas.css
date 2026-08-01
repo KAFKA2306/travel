@@ -1,25 +1,31 @@
 .trip-atlas{margin:0}
 .trip-atlas .atlas-header{gap:12px}
-.trip-atlas .atlas-legend{flex-wrap:wrap;justify-content:flex-end}
-.trip-atlas .atlas-legend em{margin-left:3px;color:#8993a1;font-size:8px;font-style:normal}
-.trip-atlas-svg{pointer-events:none}
-.trip-route-line{stroke-width:1.1;stroke-linecap:round;stroke-linejoin:round}
-.atlas-zone{stroke-width:.6}
-.atlas-zone-city{fill:rgba(230,239,252,.72);stroke:#8fa7c8}
-.atlas-zone-onsen{fill:rgba(248,229,233,.76);stroke:#c996a2}
-.atlas-corridor{fill:none;stroke:#5976a2;stroke-width:1.1;stroke-dasharray:2 1.5}
-.atlas-zone-label{fill:#667286;font-size:3.2px;font-weight:700;letter-spacing:.03em}
-.trip-atlas .map-node{z-index:2}
-.trip-atlas .map-node.selected{z-index:6}
-.trip-atlas .map-node:focus-visible{outline:3px solid #3f679e;outline-offset:5px;border-radius:999px}
-.trip-atlas .map-node b{top:auto;right:auto;bottom:auto;left:auto;translate:none;max-width:128px;padding:5px 8px;overflow:hidden;border:1px solid rgba(36,54,83,.1);border-radius:8px;background:rgba(255,255,255,.96);box-shadow:0 5px 15px rgba(36,54,83,.14);font-size:9px;line-height:1.2;text-overflow:ellipsis;white-space:nowrap;pointer-events:none}
-.trip-atlas .map-node[aria-pressed="true"] b{max-width:154px;color:var(--ink);font-weight:700}
-.trip-atlas .map-node.label-above b{bottom:22px;left:50%;transform:translateX(-50%)}
-.trip-atlas .map-node.label-below b{top:22px;left:50%;transform:translateX(-50%)}
-.trip-atlas .map-node.label-left b{top:50%;right:22px;transform:translateY(-50%)}
-.trip-atlas .map-node.label-right b{top:50%;left:22px;transform:translateY(-50%)}
-.atlas-caption{display:flex;align-items:center;justify-content:space-between;gap:14px;padding:10px 16px;border-top:1px solid rgba(36,54,83,.09);background:rgba(255,255,255,.72);color:#7a8593;font-size:9px;line-height:1.55}
+.trip-atlas .atlas-legend{justify-content:flex-end}
+.trip-atlas .atlas-legend em{color:#8993a1;font-size:8px;font-style:normal}
+.route-list{display:grid;gap:0;margin:0;padding:18px;list-style:none;background:linear-gradient(180deg,#eef1ed 0%,#f7f5ef 100%)}
+.route-list li{position:relative;display:grid;justify-items:stretch}
+.route-stop{width:100%;display:grid;grid-template-columns:48px minmax(150px,1fr) minmax(150px,.9fr);gap:14px;align-items:center;padding:14px 16px;border:1px solid rgba(36,54,83,.12);border-radius:15px;background:rgba(255,255,255,.92);text-align:left;cursor:pointer;box-shadow:0 7px 20px rgba(36,54,83,.06);transition:border-color .16s ease,box-shadow .16s ease,transform .16s ease}
+.route-stop:hover{transform:translateY(-1px);border-color:#8fa7c8;box-shadow:0 10px 24px rgba(36,54,83,.1)}
+.route-list li.selected .route-stop{border-color:#5278b4;box-shadow:0 0 0 3px rgba(143,181,236,.25),0 10px 26px rgba(36,54,83,.1)}
+.route-stop:focus-visible{outline:3px solid #3f679e;outline-offset:3px}
+.route-stop-index{width:38px;height:38px;display:grid;place-items:center;border-radius:12px;background:var(--blue-pale);color:#45678f;font-size:11px;font-weight:800;letter-spacing:.04em}
+.route-stop-copy{min-width:0;display:grid;gap:3px}
+.route-stop-copy small{color:#8993a1;font-size:8px;font-weight:800;letter-spacing:.09em}
+.route-stop-copy strong{overflow:hidden;color:var(--ink);font-size:13px;text-overflow:ellipsis;white-space:nowrap}
+.route-stop-copy>span{color:#7a8593;font-size:9px}
+.route-stop-purpose{justify-self:end;max-width:220px;color:#59677a;font-size:10px;font-weight:600;line-height:1.45;text-align:right}
+.route-connector{justify-self:center;margin:3px 0;color:#7790b2}
+.route-alternatives{display:grid;grid-template-columns:minmax(180px,.8fr) 1.2fr;gap:16px;align-items:center;padding:14px 18px;border-top:1px solid rgba(36,54,83,.08);background:#f3efe7}
+.route-alternatives>div:first-child{display:grid;gap:2px}
+.route-alternatives small{color:#6e7890;font-size:9px;font-weight:800}
+.route-alternatives span{color:#8993a1;font-size:8px;line-height:1.5}
+.route-alternative-list{display:flex;flex-wrap:wrap;justify-content:flex-end;gap:7px}
+.route-alternative-list button{padding:7px 10px;border:1px solid var(--line);border-radius:999px;background:#fff;color:var(--ink);font-size:9px;font-weight:700;cursor:pointer}
+.route-alternative-list button:hover,.route-alternative-list button.selected{border-color:#5278b4;background:var(--blue-pale)}
+.route-alternative-list button:focus-visible{outline:3px solid #3f679e;outline-offset:2px}
+.atlas-caption{display:flex;align-items:center;justify-content:space-between;gap:14px;padding:10px 16px;border-top:1px solid rgba(36,54,83,.09);background:rgba(255,255,255,.78);color:#7a8593;font-size:9px;line-height:1.55}
 .atlas-caption strong{flex:0 0 auto;color:var(--ink);font-size:9px}
 .atlas-caption span{text-align:right}
-@media(max-width:760px){.trip-atlas .atlas-surface{height:300px}.trip-atlas .map-node.is-anchor:not([aria-pressed="true"]) b{display:none}.atlas-caption{align-items:flex-start;flex-direction:column;gap:3px}.atlas-caption span{text-align:left}}
-@media(max-width:560px){.trip-atlas .atlas-header{height:auto;min-height:48px;padding-block:9px;align-items:flex-start}.trip-atlas .atlas-legend{max-width:54%;gap:5px}.trip-atlas .atlas-surface{height:280px}.trip-atlas .map-node b,.trip-atlas .map-node[aria-pressed="true"] b{max-width:116px;font-size:8px}.trip-atlas .map-node.label-above b{bottom:20px}.trip-atlas .map-node.label-below b{top:20px}.trip-atlas .map-node.label-left b{right:20px}.trip-atlas .map-node.label-right b{left:20px}.atlas-caption{font-size:8px}}
+@media(max-width:760px){.route-list{padding:12px}.route-stop{grid-template-columns:40px minmax(0,1fr);gap:11px;padding:12px}.route-stop-index{width:34px;height:34px}.route-stop-purpose{grid-column:2;justify-self:start;max-width:none;text-align:left}.route-alternatives{grid-template-columns:1fr}.route-alternative-list{justify-content:flex-start}.atlas-caption{align-items:flex-start;flex-direction:column;gap:3px}.atlas-caption span{text-align:left}}
+@media(max-width:560px){.trip-atlas .atlas-header{height:auto;min-height:48px;padding-block:9px;align-items:flex-start}.trip-atlas .atlas-legend{max-width:45%}.route-stop-copy strong{white-space:normal}.route-stop-purpose{font-size:9px}.atlas-caption{font-size:8px}}
+@media(prefers-reduced-motion:reduce){.route-stop{transition:none}}
