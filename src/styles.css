@@ -241,7 +241,7 @@ button { color: inherit; }
 .filter-row:focus-within .fake-check { outline: 3px solid #3f679e; outline-offset: 2px; }
 
 /* Small supporting labels remain readable on their actual card backgrounds. */
-:where(.eyebrow, .card-kicker, .weather-note small, .search-field label > span, .search-summary small, .rail-heading button, .rail-label, .section-heading > span, .place-area, .priority-card small, .atlas-legend, .map-fact, .day-tabs button:not(.active), .day-marker small, .timeline-item time, .timeline-copy small, .panel-title small, .stack-list small, .flow-row small, .source-list small, .footer) { color: #5d6878; }
+:where(.eyebrow, .card-kicker, .weather-note small, .search-field label > span, .search-summary small, .rail-heading button, .rail-label, .section-heading > span, .place-area, .priority-card small, .atlas-legend, .map-fact, .day-tabs button:not(.active), .day-marker small, .timeline-item time, .timeline-copy small, .panel-title small, .stack-list small, .flow-row small, .source-list small, .footer) { color: #5d6878 !important; }
 .evidence-row { color: #4f6f5a; }
 .feasible-badge { color: #45694f; }
 .source-kind { color: #4e6c96; }
