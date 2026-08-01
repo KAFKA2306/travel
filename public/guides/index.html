@@ -1,0 +1,131 @@
+<!doctype html>
+<html lang="ja">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="theme-color" content="#fbfaf7" />
+  <meta name="description" content="佐渡島、有馬温泉、深圳旅行で現地利用する公式観光・交通リンク集" />
+  <meta name="wayweave-release" content="travel-guides-2026-08-02" />
+  <title>旅行別・便利リンク｜Wayweave</title>
+  <style>
+    :root {
+      --bg:#fbfaf7; --ink:#243653; --muted:#68758b; --line:rgba(67,87,119,.14);
+      --blue:#8fb5ec; --blue-soft:#e9f1fc; --lavender:#b9a8e6; --lavender-soft:#f0ecfa;
+      --rose:#efb4c1; --rose-soft:#fcecf0; --mint:#b7dbc8; --mint-soft:#eaf7f0;
+      --apricot:#f3cfaa; --apricot-soft:#fff2e3; --white:rgba(255,255,255,.9);
+      --radius:22px; --shadow:0 18px 50px rgba(76,91,125,.09);
+      font-family:Inter,"Noto Sans JP","Hiragino Sans","Yu Gothic",sans-serif;
+    }
+    *{box-sizing:border-box} html{scroll-behavior:smooth} body{margin:0;color:var(--ink);background:radial-gradient(circle at 12% 0%,rgba(143,181,236,.22),transparent 32rem),radial-gradient(circle at 95% 20%,rgba(183,219,200,.25),transparent 30rem),var(--bg)}
+    a{color:inherit} button{font:inherit;color:inherit}.shell{width:min(1180px,calc(100% - 32px));margin:auto}
+    .topbar{position:sticky;top:0;z-index:20;display:flex;align-items:center;justify-content:space-between;min-height:68px;padding:12px max(16px,calc((100vw - 1180px)/2));background:rgba(251,250,247,.88);backdrop-filter:blur(18px);border-bottom:1px solid var(--line)}
+    .brand{display:flex;gap:10px;align-items:center;text-decoration:none;font-weight:900}.mark{display:grid;place-items:center;width:38px;height:38px;border-radius:14px;background:var(--blue)}
+    .toplinks{display:flex;gap:9px}.toplinks a{padding:9px 12px;border:1px solid var(--line);border-radius:13px;background:#fff;text-decoration:none;font-size:12px;font-weight:800}
+    .hero{padding:68px 0 30px;display:grid;grid-template-columns:1.25fr .75fr;gap:24px}.eyebrow{margin:0 0 13px;color:#5c76a2;font-size:12px;font-weight:900;letter-spacing:.14em}h1{margin:0;font-size:clamp(44px,7vw,82px);line-height:1;letter-spacing:-.065em}h1 em{font-style:normal;color:#648fc9}.lead{max-width:720px;margin:23px 0 0;color:var(--muted);font-size:16px;line-height:1.85}
+    .rule{padding:24px;border:1px solid var(--line);border-radius:var(--radius);background:var(--white);box-shadow:var(--shadow)}.rule b{font-size:20px}.rule ul{margin:16px 0 0;padding-left:19px;color:var(--muted);font-size:13px;line-height:1.8}
+    .trip-tabs{display:grid;grid-template-columns:repeat(3,1fr);gap:12px;margin:12px 0 24px}.trip-tab{padding:18px;border:1px solid var(--line);border-radius:20px;background:#fff;text-align:left;cursor:pointer}.trip-tab.active{background:var(--blue-soft);border-color:rgba(84,121,173,.32);box-shadow:var(--shadow)}.trip-tab:nth-child(2).active{background:var(--apricot-soft)}.trip-tab:nth-child(3).active{background:var(--mint-soft)}.trip-tab small{display:block;color:var(--muted);margin-bottom:5px}.trip-tab b{font-size:18px}
+    .panel{padding:26px;border:1px solid var(--line);border-radius:var(--radius);background:var(--white);box-shadow:var(--shadow);margin-bottom:24px}.panel-head{display:flex;justify-content:space-between;align-items:flex-start;gap:12px;margin-bottom:20px}.panel-head h2{margin:0;font-size:24px}.panel-head p{margin:7px 0 0;color:var(--muted);font-size:13px;line-height:1.65}.badge{padding:7px 10px;border-radius:999px;background:var(--mint-soft);font-size:11px;font-weight:900;white-space:nowrap}
+    .filters{display:flex;gap:8px;flex-wrap:wrap;margin-bottom:18px}.filter{padding:8px 11px;border:1px solid var(--line);border-radius:999px;background:#fff;cursor:pointer;font-size:11px;font-weight:850}.filter.active{background:var(--ink);color:#fff}
+    .grid{display:grid;grid-template-columns:repeat(3,1fr);gap:12px}.card{display:flex;flex-direction:column;min-height:184px;padding:17px;border:1px solid var(--line);border-radius:18px;background:#fff;text-decoration:none;transition:.2s}.card:hover{transform:translateY(-2px);box-shadow:0 14px 32px rgba(76,91,125,.1)}.card-top{display:flex;justify-content:space-between;gap:10px;align-items:flex-start}.icon{font-size:24px}.type{padding:5px 8px;border-radius:999px;background:var(--lavender-soft);font-size:9px;font-weight:900;letter-spacing:.08em}.card h3{margin:13px 0 7px;font-size:15px}.card p{margin:0;color:var(--muted);font-size:12px;line-height:1.6}.open{margin-top:auto;padding-top:13px;color:#5479ad;font-size:11px;font-weight:900}
+    .trip-note{margin-top:16px;padding:15px 17px;border-radius:17px;background:var(--rose-soft);color:#74505a;font-size:12px;line-height:1.7}
+    footer{display:flex;justify-content:space-between;gap:16px;padding:24px 0 36px;border-top:1px solid var(--line);color:var(--muted);font-size:12px}
+    [hidden]{display:none!important}
+    @media(max-width:900px){.hero{grid-template-columns:1fr}.grid{grid-template-columns:repeat(2,1fr)}}
+    @media(max-width:620px){.shell{width:min(100% - 20px,1180px)}.topbar{padding-inline:12px}.toplinks a:first-child{display:none}.trip-tabs,.grid{grid-template-columns:1fr}.panel{padding:18px}h1{font-size:48px}.panel-head{flex-direction:column}footer{flex-direction:column}}
+  </style>
+</head>
+<body>
+  <header class="topbar">
+    <a class="brand" href="../"><span class="mark">↗</span><span>wayweave</span></a>
+    <nav class="toplinks"><a href="../">旅程モデル</a><a href="../shenzhen/">深圳 Route Lab</a><a href="https://github.com/KAFKA2306/travel" target="_blank" rel="noreferrer">GitHub ↗</a></nav>
+  </header>
+
+  <main class="shell">
+    <section class="hero">
+      <div><p class="eyebrow">OFFICIAL LINKS BY TRIP</p><h1>旅先ごとに、<br><em>使うWebだけ。</em></h1><p class="lead">観光記事を大量に並べず、現地で判断に使う公式ページを、交通・運航・観光・施設に分けました。時刻や営業情報は固定せず、旅行当日に一次情報へ移動できます。</p></div>
+      <aside class="rule"><b>リンク選定ルール</b><ul><li>行政、交通事業者、観光局、施設公式を優先</li><li>運航・時刻・休館は当日ページへ直接接続</li><li>Google Mapsは地点検索の補助として分離</li></ul></aside>
+    </section>
+
+    <div class="trip-tabs" role="tablist" aria-label="旅行を選択">
+      <button class="trip-tab active" data-trip="sado"><small>海・フェリー・島内バス</small><b>佐渡島</b></button>
+      <button class="trip-tab" data-trip="arima"><small>三宮泊・日帰り温泉</small><b>神戸・有馬温泉</b></button>
+      <button class="trip-tab" data-trip="shenzhen"><small>航空・フェリー・地下鉄</small><b>深圳</b></button>
+    </div>
+
+    <section class="panel" id="guide-panel">
+      <div class="panel-head"><div><h2 id="trip-title">佐渡島</h2><p id="trip-description"></p></div><span class="badge">取得 2026-08-02</span></div>
+      <div class="filters" id="filters"></div>
+      <div class="grid" id="link-grid"></div>
+      <div class="trip-note" id="trip-note"></div>
+    </section>
+  </main>
+
+  <footer class="shell"><span><b>wayweave</b> · official travel links</span><span>時刻・運航・営業は訪問直前に再確認</span></footer>
+
+  <script>
+    const trips = {
+      sado: {
+        title:'佐渡島', description:'新潟港・両津港、二ツ亀、相川を公共交通でつなぐ旅行向け。船の運航状況を最初に確認します。',
+        note:'佐渡島内バスは2026年4月1日から11月30日の通常ダイヤが公開されています。平日の一部路線には減便があるため、内海府線・本線を旅行日ごとに確認してください。',
+        links:[
+          ['live','⛴️','運航','佐渡汽船・本日の運航状況','欠航・運航未定を最優先で確認。','https://www.sadokisen.co.jp/reservation/service-status/?route=1'],
+          ['transport','🕒','時刻','佐渡汽船・時刻表','新潟―両津、直江津―小木の便を確認。','https://www.sadokisen.co.jp/reservation/timetables/'],
+          ['transport','🎫','運賃','佐渡汽船・運賃表','2026年4月改定後の最新運賃を確認。','https://www.sadokisen.co.jp/faretables/'],
+          ['transport','🚌','バス','新潟交通佐渡・路線バス','時刻表、路線図、Google経路、dayパス。','https://www.sado-bus.com/route/'],
+          ['tourism','🧭','観光','さど観光ナビ・観る','北沢浮遊選鉱場跡など公式観光情報。','https://www.visitsado.com/view/'],
+          ['tourism','🌊','地図','二ツ亀を地図で開く','宿・バス停・海岸の位置確認。','https://www.google.com/maps/search/?api=1&query=%E4%BA%8C%E3%83%84%E4%BA%80+%E4%BD%90%E6%B8%A1'],
+          ['tourism','🏭','地図','北沢浮遊選鉱場跡を開く','相川滞在時の徒歩・バス接続を確認。','https://www.google.com/maps/search/?api=1&query=%E5%8C%97%E6%B2%A2%E6%B5%AE%E9%81%8A%E9%81%B8%E9%89%B1%E5%A0%B4%E8%B7%A1'],
+          ['weather','🌦️','天気','気象庁・佐渡の気象情報','海況と島内移動の判断補助。','https://www.jma.go.jp/bosai/forecast/#area_type=class20s&area_code=1522400']
+        ]
+      },
+      arima: {
+        title:'神戸・有馬温泉', description:'三宮で2連泊し、有馬温泉を日帰りにする旅行向け。三宮―有馬の経路と外湯営業を確認します。',
+        note:'金の湯は通常8:00―22:00、最終入館21:30、第2・第4火曜などが休館日です。ただし臨時変更があり得るため、訪問当日に施設公式を再確認してください。',
+        links:[
+          ['transport','🚃','経路','有馬温泉・交通アクセス','大阪、三宮、新神戸からの公式経路。','https://www.arima-onsen.com/access/'],
+          ['transport','🚇','三宮発','三宮から有馬温泉','地下鉄・神戸電鉄で約30分の経路案内。','https://www.arima-onsen.com/access/hyogo/'],
+          ['transport','🚌','高速バス','大阪―有馬温泉 高速バス','時刻、運賃、空席、WEB予約。','https://www.hankyu-kankobus.co.jp/highway/timetable/AO/'],
+          ['onsen','♨️','温泉','有馬本温泉 金の湯','営業時間・休館日・設備の確認。','https://arimaspa-kingin.jp/kin-01.htm'],
+          ['tourism','🗺️','観光','有馬温泉エリアガイド','金泉・銀泉、泉源、町歩き。','https://www.feel-kobe.jp/area-guide/arima/'],
+          ['tourism','🧭','公式','有馬温泉観光協会','店、食事、施設、季節情報、地図。','https://www.arima-onsen.com/'],
+          ['stay','🏨','ホテル','神戸三宮 東急REI アクセス','周辺工事による迂回を含む最新経路。','https://www.tokyuhotels.co.jp/kobesannomiya-r/access/index.html'],
+          ['tourism','📍','地図','有馬温泉街を地図で開く','駅、金の湯、湯本坂をまとめて確認。','https://www.google.com/maps/search/?api=1&query=%E6%9C%89%E9%A6%AC%E6%B8%A9%E6%B3%89+%E9%87%91%E3%81%AE%E6%B9%AF+%E6%B9%AF%E6%9C%AC%E5%9D%82']
+        ]
+      },
+      shenzhen: {
+        title:'深圳', description:'関空直行、香港空港から蛇口フェリー、越境バスを比較する旅行向け。専用ページに詳細な運航条件を保存しています。',
+        note:'深圳の航空・香港空港フェリー・決済・地下鉄リンクは専用Route Labで管理します。福永―香港空港航路ではなく、蛇口航路を確認してください。',
+        links:[
+          ['route','✈️','旅程','大阪→深圳 Route Lab','3経路、観光、地下鉄、決済、入境を一画面で確認。','../shenzhen/'],
+          ['tourism','🧭','観光','深圳市公式・観光トップ','自然、文化、買い物、交通の入口。','https://www.sz.gov.cn/en_szgov/travel/index.html'],
+          ['transport','🚇','地下鉄','深圳地鉄・路線案内','空港、後海、華強北、蛇口の接続確認。','https://www.szmc.net/map/'],
+          ['transport','⛴️','フェリー','香港空港・SkyPier乗継','入境前E2乗継の公式条件。','https://www.hongkongairport.com/en/transport/mainland-connection/ferry-transfer.page'],
+          ['money','📱','決済','海外旅行者向け決済案内','カード、現金、モバイル決済の案内。','https://www.sz.gov.cn/en_szgov/news/latest/content/post_12601710.html'],
+          ['entry','🛂','入境','日本旅券の査証条件','出発前に中国大使館の最新条件を確認。','https://jp.china-embassy.gov.cn/jpn/lszc/hzqzyw/202512/t20251216_11774313.htm']
+        ]
+      }
+    };
+
+    const labels={all:'すべて',live:'運航',transport:'交通',tourism:'観光',weather:'天気',onsen:'温泉',stay:'宿泊',route:'旅程',money:'決済',entry:'入境'};
+    let currentTrip='sado', currentFilter='all';
+    const title=document.querySelector('#trip-title'), description=document.querySelector('#trip-description'), note=document.querySelector('#trip-note'), filters=document.querySelector('#filters'), grid=document.querySelector('#link-grid');
+    const escapeHtml=value=>String(value).replace(/[&<>'"]/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;',"'":'&#39;','"':'&quot;'}[c]));
+
+    function renderFilters(){
+      const categories=['all',...new Set(trips[currentTrip].links.map(link=>link[0]))];
+      if(!categories.includes(currentFilter)) currentFilter='all';
+      filters.innerHTML=categories.map(category=>`<button class="filter ${category===currentFilter?'active':''}" data-filter="${category}">${labels[category]||category}</button>`).join('');
+      filters.querySelectorAll('button').forEach(button=>button.addEventListener('click',()=>{currentFilter=button.dataset.filter;render()}));
+    }
+    function render(){
+      const trip=trips[currentTrip]; title.textContent=trip.title; description.textContent=trip.description; note.textContent=trip.note; renderFilters();
+      const links=trip.links.filter(link=>currentFilter==='all'||link[0]===currentFilter);
+      grid.innerHTML=links.map(link=>`<a class="card" href="${link[5]}" target="_blank" rel="noreferrer"><div class="card-top"><span class="icon">${link[1]}</span><span class="type">${escapeHtml(link[2])}</span></div><h3>${escapeHtml(link[3])}</h3><p>${escapeHtml(link[4])}</p><span class="open">公式ページを開く ↗</span></a>`).join('');
+      document.querySelectorAll('.trip-tab').forEach(button=>button.classList.toggle('active',button.dataset.trip===currentTrip));
+      history.replaceState(null,'',`#${currentTrip}`);
+    }
+    document.querySelectorAll('.trip-tab').forEach(button=>button.addEventListener('click',()=>{currentTrip=button.dataset.trip;currentFilter='all';render()}));
+    const initial=location.hash.slice(1); if(trips[initial]) currentTrip=initial; render();
+  </script>
+</body>
+</html>
