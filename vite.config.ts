@@ -1,4 +1,4 @@
-import { resolve } from 'node:path'
+import { fileURLToPath, URL } from 'node:url'
 import { defineConfig } from 'vite'
 import react from '@vitejs/plugin-react'
 
@@ -8,8 +8,8 @@ export default defineConfig({
   build: {
     rollupOptions: {
       input: {
-        home: resolve(__dirname, 'index.html'),
-        planner: resolve(__dirname, 'planner/index.html'),
+        home: fileURLToPath(new URL('./index.html', import.meta.url)),
+        planner: fileURLToPath(new URL('./planner/index.html', import.meta.url)),
       },
     },
   },
