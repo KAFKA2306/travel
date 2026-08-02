@@ -34,7 +34,14 @@ jobs:
           VITE_GOOGLE_MAPS_API_KEY: ${{ secrets.GOOGLE_MAPS_API_KEY }}
         run: npm run build
       - name: Verify Pages artifact
-        run: test -s dist/index.html && test -n "$(find dist/assets -maxdepth 1 -type f -print -quit)"
+        run: |
+          test -s dist/index.html
+          test -s dist/planner/index.html
+          test -s dist/destinations/index.html
+          test -s dist/heat-escape-2026/index.html
+          grep -q '旅行の判断を始める' dist/index.html
+          grep -q '旅程ワークスペース' dist/planner/index.html
+          test -n "$(find dist/assets -maxdepth 1 -type f -print -quit)"
       - name: Upload Pages artifact
         uses: actions/upload-pages-artifact@v4
         with:
