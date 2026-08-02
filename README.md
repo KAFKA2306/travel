@@ -6,6 +6,8 @@ A reference implementation for a large-scale travel knowledge product. It combin
 
 **Travel quick links:** https://kafka2306.github.io/travel/guides/
 
+**Heat escape 2026 plans:** https://kafka2306.github.io/travel/heat-escape-2026/
+
 **Osaka → Shenzhen route lab:** https://kafka2306.github.io/travel/shenzhen/
 
 The current interface uses a car-free, solo Sado Island trip as a realistic seed scenario: Osaka → Niigata → Ryotsu → Futatsugame → Aikawa, with live-data caveats exposed as evidence rather than hidden in a score.
@@ -16,14 +18,17 @@ The Shenzhen route lab adds an international, multimodal case without replacing 
 
 The travel quick-links hub applies the same operational pattern to every saved trip. Sado prioritizes ferry status, ferry timetables and island buses; Kobe–Arima prioritizes the Sannomiya connection, public baths and current hotel access; Shenzhen links to the dedicated international route lab. Time-sensitive details remain on the official operator or destination page instead of being copied into static prose.
 
+The heat-escape page converts a user-supplied 2026 ranking into ten alternative, car-free plans that can be executed from Osaka during 2026-08-03 through 2026-08-09. Each destination has a target date, route, minimum stay, booking order, removable itinerary elements, official sources, and a 48-hour go/no-go gate. The ranking image itself is not republished because its original article URL has not been verified.
+
 ## Product views
 
 1. **Travel planner** — saved trip selection, explainable filters, spatial context and a feasibility-aware itinerary.
 2. **Google Maps panel** — an embedded place view that follows the selected location, trip-aware transit directions, current-location navigation and a full-itinerary link.
 3. **Travel quick links** — trip-specific official links for live transport, tourism, facilities, weather and entry conditions.
-4. **Shenzhen route lab** — direct flight, Hong Kong airside ferry and cross-border coach patterns with route-specific failure conditions.
-5. **Knowledge model** — five domain groups and the recommended storage pipeline.
-6. **Evidence drawer** — source, publisher and retrieval date for the claims currently shaping the plan.
+4. **Heat escape 2026** — ten ranked cool-weather destinations converted into next-week-ready Osaka-origin alternative itineraries with booking and cancellation gates.
+5. **Shenzhen route lab** — direct flight, Hong Kong airside ferry and cross-border coach patterns with route-specific failure conditions.
+6. **Knowledge model** — five domain groups and the recommended storage pipeline.
+7. **Evidence drawer** — source, publisher and retrieval date for the claims currently shaping the plan.
 
 ## Google Maps setup
 
@@ -83,14 +88,15 @@ npm run build
 ## Repository map
 
 ```text
-src/GoogleMapsDock.tsx        Maps Embed API and Maps URLs integration
-src/google-maps.css           Responsive Google Maps panel styles
-src/                          Interactive reference UI and typed seed data
-public/guides/index.html      Trip-specific official quick-links hub
-public/shenzhen/index.html    Osaka–Shenzhen multimodal route lab
-database/schema.sql           PostgreSQL/PostGIS operational schema
-docs/ontology.md              Concepts, mappings and identity rules
-.github/workflows/            GitHub Pages deployment
+src/GoogleMapsDock.tsx                  Maps Embed API and Maps URLs integration
+src/google-maps.css                     Responsive Google Maps panel styles
+src/                                    Interactive reference UI and typed seed data
+public/guides/index.html                Trip-specific official quick-links hub
+public/heat-escape-2026/index.html      Next-week heat-escape alternatives for ten ranked destinations
+public/shenzhen/index.html              Osaka–Shenzhen multimodal route lab
+database/schema.sql                     PostgreSQL/PostGIS operational schema
+docs/ontology.md                        Concepts, mappings and identity rules
+.github/workflows/                       GitHub Pages deployment
 ```
 
 ## Database rollout
