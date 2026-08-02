@@ -1,0 +1,15 @@
+{
+  "release": "official-media-site-ontology-2026-08-02",
+  "publishedAt": "2026-08-02T16:25:00+09:00",
+  "views": [
+    "/travel/",
+    "/travel/destinations/",
+    "/travel/heat-escape-2026/",
+    "/travel/guides/",
+    "/travel/shenzhen/",
+    "/travel/sitemap/"
+  ],
+  "destinationCount": 10,
+  "officialVisualCoverage": 10,
+  "mediaPolicy": "official OG or official remote preview first; official-page snapshot fallback; no automatic local rehosting"
+}
