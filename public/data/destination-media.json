@@ -41,10 +41,10 @@
       "sourceUrl": "https://www.utsukushigaharakogen.jp/",
       "publisher": "美ヶ原高原観光協議会",
       "mode": "official-page-snapshot",
-      "status": "official-page-snapshot",
+      "status": "stale",
       "verifiedAt": "2026-08-02",
       "licenseUrl": null,
-      "licenseNote": "公式ページのOG画像をリモート表示し、画像ファイルは再配布しない。",
+      "licenseNote": "公式ページの外観をリモート生成したプレビューで表示し、掲載写真を抽出・再配布しない。",
       "imageHost": "s.wordpress.com"
     },
     "oirase": {
@@ -59,14 +59,14 @@
       "imageHost": "aomori-tourism.com"
     },
     "okunikko": {
-      "imageUrl": "http://www.nikko-kankou.org/storage/post_picture/20231018142231_12-1.jpg",
-      "sourceUrl": "https://www.nikko-kankou.org/spot?areaIds=2",
+      "imageUrl": "https://www.nikko-kankou.org/storage/post_picture/%5B640_640%5D_20231018141930_10-1.jpg",
+      "sourceUrl": "https://www.nikko-kankou.org/spot/10",
       "publisher": "日光市観光協会",
-      "mode": "official-og-preview",
+      "mode": "official-remote-preview",
       "status": "verified",
       "verifiedAt": "2026-08-02",
-      "licenseUrl": null,
-      "licenseNote": "公式観光ページのOG画像をリモート表示する。画像の再配布は行わない。",
+      "licenseUrl": "https://www.nikko-kankou.org/houjin/photo",
+      "licenseNote": "公式スポットページへの誘導を前提にリモート表示し、画像の再配布には公式フォトライブラリーを使用する。",
       "imageHost": "www.nikko-kankou.org"
     },
     "nasu": {
@@ -81,26 +81,26 @@
       "imageHost": "www.nasukogen.org"
     },
     "kirigamine": {
-      "imageUrl": "https://s.wordpress.com/mshots/v1/https%3A%2F%2Fwww.suwakanko.jp%2Fcategory%2F%25E9%259C%25A7%25E3%2583%25B6%25E5%25B3%25B0%2F?w=1200",
-      "sourceUrl": "https://www.suwakanko.jp/category/%E9%9C%A7%E3%83%B6%E5%B3%B0/",
+      "imageUrl": "https://kirigamine.suwakanko.jp/wp/wp-content/uploads/2024/07/449592483_504892615248488_6043512208052837239_n-uai-258x110.jpg",
+      "sourceUrl": "https://kirigamine.suwakanko.jp/",
       "publisher": "諏訪観光協会",
-      "mode": "official-page-snapshot",
-      "status": "official-page-snapshot",
-      "verifiedAt": "2026-08-02",
-      "licenseUrl": null,
-      "licenseNote": "公式観光ページのOG画像をリモート表示し、画像ファイルは再配布しない。",
-      "imageHost": "s.wordpress.com"
-    },
-    "nobeyama": {
-      "imageUrl": "https://db.go-nagano.net/files/user/share.png",
-      "sourceUrl": "https://db.go-nagano.net/themelist/detail/id=3851",
-      "publisher": "長野県観光機構",
-      "mode": "official-og-preview",
+      "mode": "official-remote-preview",
       "status": "verified",
       "verifiedAt": "2026-08-02",
       "licenseUrl": null,
-      "licenseNote": "長野県公式観光ページのOG画像をリモート表示し、画像ファイルは再配布しない。",
-      "imageHost": "db.go-nagano.net"
+      "licenseNote": "霧ヶ峰公式サイトが配信する画像をリモート表示し、画像ファイルは再配布しない。",
+      "imageHost": "kirigamine.suwakanko.jp"
+    },
+    "nobeyama": {
+      "imageUrl": "https://go-nagano.a.kuroco-img.app/v%3D1569893402/files/topics/3851_ext_01_0.jpg",
+      "sourceUrl": "https://db.go-nagano.net/themelist/detail/id=3851",
+      "publisher": "長野県観光機構",
+      "mode": "official-remote-preview",
+      "status": "verified",
+      "verifiedAt": "2026-08-02",
+      "licenseUrl": null,
+      "licenseNote": "長野県公式観光ページが配信する野辺山高原の画像をリモート表示し、画像ファイルは再配布しない。",
+      "imageHost": "go-nagano.a.kuroco-img.app"
     },
     "fuji-fifth-station": {
       "imageUrl": "https://www.yamanashi-kankou.jp/special/fujisan/images/5th-tenbo_01.jpg",
