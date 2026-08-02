@@ -1,0 +1,221 @@
+<!doctype html>
+<html lang="ja">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="theme-color" content="#fbfaf7" />
+  <meta name="description" content="大阪発・車なしで2026年8月3日から9日に実行できる、涼しい観光地10候補の具体的な代替旅行計画" />
+  <meta name="wayweave-release" content="heat-escape-2026-08-02" />
+  <title>猛暑回避10プラン｜Wayweave</title>
+  <style>
+    :root {
+      --bg:#fbfaf7; --ink:#243653; --muted:#68758b; --line:rgba(67,87,119,.15);
+      --blue:#8fb5ec; --blue-soft:#e9f1fc; --lavender:#b9a8e6; --lavender-soft:#f0ecfa;
+      --rose:#efb4c1; --rose-soft:#fcecf0; --mint:#b7dbc8; --mint-soft:#eaf7f0;
+      --apricot:#f3cfaa; --apricot-soft:#fff2e3; --white:rgba(255,255,255,.92);
+      --radius:22px; --shadow:0 18px 50px rgba(76,91,125,.09);
+      font-family:Inter,"Noto Sans JP","Hiragino Sans","Yu Gothic",sans-serif;
+    }
+    *{box-sizing:border-box}
+    html{scroll-behavior:smooth;overflow-x:hidden}
+    body{margin:0;min-width:0;color:var(--ink);background:radial-gradient(circle at 8% 0%,rgba(143,181,236,.24),transparent 31rem),radial-gradient(circle at 95% 18%,rgba(183,219,200,.26),transparent 29rem),var(--bg);overflow-x:hidden}
+    a{color:inherit} button{font:inherit;color:inherit}.shell{width:min(1180px,calc(100% - 32px));margin:auto;min-width:0}
+    .topbar{position:sticky;top:0;z-index:30;display:flex;align-items:center;justify-content:space-between;gap:16px;min-height:68px;padding:12px max(16px,calc((100vw - 1180px)/2));background:rgba(251,250,247,.9);backdrop-filter:blur(18px);border-bottom:1px solid var(--line)}
+    .brand{display:flex;gap:10px;align-items:center;text-decoration:none;font-weight:900}.mark{display:grid;place-items:center;width:38px;height:38px;border-radius:14px;background:var(--blue)}
+    .toplinks{display:flex;gap:8px;flex-wrap:wrap;justify-content:flex-end}.toplinks a{padding:9px 12px;border:1px solid var(--line);border-radius:13px;background:#fff;text-decoration:none;font-size:12px;font-weight:800}
+    .hero{padding:64px 0 30px;display:grid;grid-template-columns:minmax(0,1.28fr) minmax(270px,.72fr);gap:24px;align-items:start}.eyebrow{margin:0 0 13px;color:#5c76a2;font-size:12px;font-weight:900;letter-spacing:.14em}h1{margin:0;font-size:clamp(43px,7vw,80px);line-height:1;letter-spacing:-.065em}h1 em{font-style:normal;color:#648fc9}.lead{max-width:760px;margin:23px 0 0;color:var(--muted);font-size:16px;line-height:1.85}
+    .scope{padding:23px;border:1px solid var(--line);border-radius:var(--radius);background:var(--white);box-shadow:var(--shadow)}.scope b{display:block;font-size:19px}.scope dl{display:grid;grid-template-columns:auto 1fr;gap:10px 14px;margin:17px 0 0;font-size:12px}.scope dt{color:var(--muted)}.scope dd{margin:0;font-weight:850}.scope p{margin:16px 0 0;padding-top:14px;border-top:1px solid var(--line);color:var(--muted);font-size:11px;line-height:1.7}
+    .decision{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:12px;margin:8px auto 22px}.decision article{padding:18px;border:1px solid var(--line);border-radius:19px;background:#fff}.decision small{display:block;color:var(--muted);font-weight:800}.decision b{display:block;margin-top:6px;font-size:17px}.decision p{margin:7px 0 0;color:var(--muted);font-size:12px;line-height:1.6}.decision article:nth-child(1){background:var(--mint-soft)}.decision article:nth-child(2){background:var(--blue-soft)}.decision article:nth-child(3){background:var(--apricot-soft)}
+    .toolbar{position:sticky;top:68px;z-index:20;display:flex;align-items:center;justify-content:space-between;gap:14px;margin:0 auto 20px;padding:13px 15px;border:1px solid var(--line);border-radius:17px;background:rgba(255,255,255,.92);box-shadow:0 12px 35px rgba(76,91,125,.08);backdrop-filter:blur(16px)}.filters{display:flex;gap:7px;flex-wrap:wrap}.filter{padding:8px 11px;border:1px solid var(--line);border-radius:999px;background:#fff;cursor:pointer;font-size:11px;font-weight:850}.filter.active{background:var(--ink);color:#fff}.count{font-size:12px;color:var(--muted);white-space:nowrap}
+    .plans{display:grid;gap:17px;padding-bottom:28px}.plan{display:grid;grid-template-columns:176px minmax(0,1fr);overflow:hidden;border:1px solid var(--line);border-radius:var(--radius);background:var(--white);box-shadow:var(--shadow)}.rank{display:flex;flex-direction:column;justify-content:space-between;padding:23px;background:linear-gradient(145deg,var(--blue-soft),#fff)}.rank strong{font-size:12px;letter-spacing:.14em;color:#5b75a0}.rank .number{font-size:58px;line-height:1;font-weight:950;letter-spacing:-.08em}.rank .pref{align-self:flex-start;padding:7px 10px;border-radius:999px;background:#fff;font-size:11px;font-weight:900}.rank small{color:var(--muted);line-height:1.6}.plan:nth-child(3n+2) .rank{background:linear-gradient(145deg,var(--mint-soft),#fff)}.plan:nth-child(3n) .rank{background:linear-gradient(145deg,var(--apricot-soft),#fff)}
+    .plan-body{min-width:0;padding:23px}.plan-head{display:flex;justify-content:space-between;gap:18px;align-items:flex-start}.plan-head h2{margin:0;font-size:27px;letter-spacing:-.035em}.plan-head p{margin:7px 0 0;color:var(--muted);font-size:13px;line-height:1.65}.badges{display:flex;justify-content:flex-end;gap:7px;flex-wrap:wrap}.badge{padding:7px 10px;border-radius:999px;background:var(--lavender-soft);font-size:10px;font-weight:900;white-space:nowrap}.badge.primary{background:var(--rose-soft);color:#78505b}
+    .route{margin-top:17px;padding:14px 16px;border-radius:16px;background:#f7f9fc;font-size:12px;line-height:1.75}.route b{display:block;margin-bottom:2px}.route span{color:var(--muted)}
+    .plan-grid{display:grid;grid-template-columns:1.15fr 1fr 1fr;gap:11px;margin-top:12px}.cell{min-width:0;padding:15px;border:1px solid var(--line);border-radius:16px;background:#fff}.cell h3{margin:0 0 9px;font-size:11px;letter-spacing:.08em;color:#5b75a0}.cell ul{margin:0;padding-left:17px;color:var(--muted);font-size:12px;line-height:1.7}.cell li+li{margin-top:5px}.cell strong{color:var(--ink)}
+    .gates{display:grid;grid-template-columns:1fr 1fr;gap:10px;margin-top:11px}.gate{padding:14px 15px;border-radius:15px;font-size:12px;line-height:1.65}.gate b{display:block;margin-bottom:3px}.book{background:var(--mint-soft)}.check{background:var(--rose-soft)}
+    .sources{display:flex;gap:8px;flex-wrap:wrap;margin-top:13px}.sources a{display:inline-flex;align-items:center;gap:5px;padding:8px 10px;border:1px solid var(--line);border-radius:11px;background:#fff;text-decoration:none;font-size:10px;font-weight:850}.sources a:hover{border-color:#7d9dcc;background:var(--blue-soft)}
+    .method{margin:0 auto 34px;padding:24px;border:1px solid var(--line);border-radius:var(--radius);background:var(--white)}.method h2{margin:0;font-size:22px}.method-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:13px;margin-top:15px}.method article{padding:15px;border-radius:16px;background:#f7f9fc}.method b{font-size:13px}.method p{margin:7px 0 0;color:var(--muted);font-size:11px;line-height:1.7}.provenance{margin-top:15px;padding-top:14px;border-top:1px solid var(--line);color:var(--muted);font-size:11px;line-height:1.75}
+    footer{display:flex;justify-content:space-between;gap:16px;padding:24px 0 36px;border-top:1px solid var(--line);color:var(--muted);font-size:12px}
+    [hidden]{display:none!important}
+    @media(max-width:980px){.hero{grid-template-columns:1fr}.decision{grid-template-columns:1fr}.plan{grid-template-columns:135px minmax(0,1fr)}.plan-grid{grid-template-columns:1fr 1fr}.plan-grid .cell:first-child{grid-column:1/-1}.method-grid{grid-template-columns:1fr}}
+    @media(max-width:680px){.shell{width:min(100% - 20px,1180px)}.topbar{padding-inline:10px;align-items:flex-start}.toplinks a:nth-child(2){display:none}.hero{padding-top:42px}h1{font-size:47px}.toolbar{top:68px;align-items:flex-start;flex-direction:column}.plan{grid-template-columns:1fr}.rank{display:grid;grid-template-columns:auto 1fr auto;align-items:center;gap:13px;padding:16px}.rank .number{font-size:40px}.rank small{display:none}.plan-body{padding:17px}.plan-head{flex-direction:column}.badges{justify-content:flex-start}.plan-grid,.gates{grid-template-columns:1fr}.plan-grid .cell:first-child{grid-column:auto}.route{overflow-wrap:anywhere}footer{flex-direction:column}}
+  </style>
+</head>
+<body>
+  <header class="topbar">
+    <a class="brand" href="../"><span class="mark">↗</span><span>wayweave</span></a>
+    <nav class="toplinks"><a href="../">旅程モデル</a><a href="../guides/">公式リンク集</a><a href="https://github.com/KAFKA2306/travel" target="_blank" rel="noreferrer">GitHub ↗</a></nav>
+  </header>
+
+  <main>
+    <section class="hero shell">
+      <div>
+        <p class="eyebrow">HEAT ESCAPE · 2026-08-03 — 08-09</p>
+        <h1>涼しい10地点を、<br><em>来週行ける旅</em>に。</h1>
+        <p class="lead">ランキングを眺めるだけで終わらせず、大阪発・1名・車なしを前提に、移動、滞在、最初に予約するもの、48時間前の中止条件まで落とし込みました。10件は同時実行ではなく、日数と移動負荷で選ぶ代替案です。</p>
+      </div>
+      <aside class="scope">
+        <b>計画の固定条件</b>
+        <dl><dt>出発</dt><dd>大阪・新大阪／梅田</dd><dt>期間</dt><dd>2026年8月3日（月）〜9日（日）</dd><dt>人数</dt><dd>大人1名</dd><dt>移動</dt><dd>公共交通のみ</dd><dt>予約</dt><dd>空席・空室は未確保</dd></dl>
+        <p>表示時刻は「予約検索の目標帯」です。購入前に各運行会社・施設の公式画面で確定してください。</p>
+      </aside>
+    </section>
+
+    <section class="decision shell" aria-label="選び方">
+      <article><small>最短で成立</small><b>3位 秋芳洞</b><p>日帰りで実行可能。洞内を主目的にして、屋外の秋吉台は体調と気温で削る。</p></article>
+      <article><small>涼しさと旅情の両立</small><b>1位 上高地</b><p>1泊2日。宿と上高地発バスを先に確保し、平坦な河童橋周辺に限定する。</p></article>
+      <article><small>長距離だが別格</small><b>5位 奥入瀬渓流</b><p>2泊3日。八戸または青森を玄関口にして、14km全踏破ではなく短区間＋路線バスで組む。</p></article>
+    </section>
+
+    <section class="toolbar shell" aria-label="旅行日数で絞り込み">
+      <div class="filters">
+        <button class="filter active" data-filter="all">すべて</button>
+        <button class="filter" data-filter="day">日帰り</button>
+        <button class="filter" data-filter="one">1泊2日</button>
+        <button class="filter" data-filter="two">2泊3日</button>
+      </div>
+      <span class="count" id="count">10件の代替案</span>
+    </section>
+
+    <section class="plans shell" id="plans"></section>
+
+    <section class="method shell">
+      <h2>実行前の共通ゲート</h2>
+      <div class="method-grid">
+        <article><b>今すぐ：主交通と宿</b><p>往復の長距離交通、現地で本数が少ない予約制バス、宿を同じブラウザセッションで仮押さえする。片道だけ取れた状態では確定しない。</p></article>
+        <article><b>48時間前：気象と運行</b><p>警報、道路・鉄道・ロープウェイ・登山道・船便を公式情報で再確認。最高気温だけでなく雷、強風、降水、視界を判定する。</p></article>
+        <article><b>当日朝：撤退条件</b><p>主要交通の運休、警報、現地の強風・雷予報、体調不良のどれかがあれば中止。代替案は秋芳洞など屋内比率の高い計画へ切り替える。</p></article>
+      </div>
+      <p class="provenance"><b>順位の出典:</b> ユーザー提供画像「熱中症調査2026 実際に行ってみて涼しかった観光地は？」（実施日 2026年7月21日、参加人数 3,433）を転記。原記事URLは未特定のため、このページでは順位以外の営業時間・交通・料金・運行期間を各公式サイトで個別に確認しています。第三者画像そのものは再掲載していません。</p>
+    </section>
+  </main>
+
+  <footer class="shell"><span><b>wayweave</b> · next-week executable alternatives</span><span>取得・検証 2026-08-02 · 空席と空室は購入時に再確認</span></footer>
+
+  <script>
+    const plans = [
+      {
+        rank:1, name:'上高地', pref:'長野県', duration:'one', durationLabel:'1泊2日', date:'8/6（木）– 8/7（金）', effort:'予約優先',
+        summary:'大阪から直行バス、または新大阪―名古屋―松本―新島々経由。上高地は通年マイカー規制で、公共交通を前提にすると計画が明確になる。',
+        route:'新大阪 → 名古屋 → 松本 → 新島々 → 上高地バスターミナル。大阪・京都発の直行バスも公式に案内されるため、空席があれば乗換を削減。',
+        schedule:['DAY 1｜06:00–07:00 大阪発を目標','12:00–13:30 上高地着・荷物預け','午後｜河童橋〜田代橋の平坦区間を往復','DAY 2｜朝の散策後、予約済み便で下山'],
+        book:['上高地または松本の宿','往路と<strong>上高地発</strong>の復路バス','直行バス満席時の鉄道代替'],
+        check:['上高地公園線・バス運行','雷・強風・大雨','混雑時は散策範囲を河童橋周辺へ縮小'],
+        sources:[['上高地アクセス','https://www.kamikochi.or.jp/access/'],['大阪・京都発直行バス','https://www.kamikochi.or.jp/access/bus/']]
+      },
+      {
+        rank:2, name:'軽井沢', pref:'長野県', duration:'one', durationLabel:'1泊2日', date:'8/5（水）– 8/6（木）', effort:'鉄道中心',
+        summary:'新幹線を乗り継ぎ、旧軽井沢・雲場池・駅周辺を徒歩、路線バス、レンタサイクルで回す。繁忙期はタクシー不足を前提にしない。',
+        route:'新大阪 → 東京 → 軽井沢。到着後は駅の観光案内所で当日の路線バスと自転車営業を確認。',
+        schedule:['DAY 1｜06:00台 大阪発を目標','昼｜軽井沢駅で荷物を預ける','午後｜旧軽井沢〜雲場池を短距離で周回','DAY 2｜朝のサイクリング後、15:00までに駅へ'],
+        book:['軽井沢駅徒歩圏の宿','新幹線の往復指定席','レンタサイクルを使う場合は事前予約'],
+        check:['町内バスの夏季運行','自転車は雨・雷なら中止','タクシーを必須接続にしない'],
+        sources:[['軽井沢アクセス','https://karuizawa-kankokyokai.jp/access/'],['公式モデルコース','https://karuizawa-kankokyokai.jp/course/']]
+      },
+      {
+        rank:3, name:'秋芳洞', pref:'山口県', duration:'day', durationLabel:'日帰り', date:'8/4（火）', effort:'最短成立',
+        summary:'洞内を主目的にすれば、来週の代替案で最も短く成立しやすい。2026年夏季は9:00–17:30、JR新山口駅からバス約40分＋徒歩10分。',
+        route:'新大阪 → 新山口 → 路線バス「秋芳洞」 → 徒歩。往復バス時刻を先に固定してから新幹線を選ぶ。',
+        schedule:['06:00–07:00 大阪発を目標','10:00–10:30 秋芳洞入洞','12:30 昼食・休憩','13:30 秋吉台は短時間のみ','16:00前後 新山口方面へ戻る'],
+        book:['新幹線の往復指定席','新山口―秋芳洞の往復バス時刻確認','夏季大人料金1,900円を想定'],
+        check:['洞外の暑さが強ければ秋吉台を削除','黒谷・エレベーター入口は16:30まで','最終バスに依存しない1本前で戻る'],
+        sources:[['秋芳洞 公式情報','https://yamaguchi-tourism.jp/spot/detail_14475.html']]
+      },
+      {
+        rank:4, name:'美ヶ原高原', pref:'長野県', duration:'one', durationLabel:'1泊2日', date:'8/6（木）– 8/7（金）', effort:'予約制バス',
+        summary:'松本を前泊拠点にし、翌朝の美ヶ原高原直行バスで自然保護センターへ。2026年7月13日〜8月31日は毎日運行、事前予約・決済制。',
+        route:'新大阪 → 名古屋 → 松本。翌日、松本駅アルプス口 → 美ヶ原自然保護センターの予約制直行バス。',
+        schedule:['DAY 1｜午後までに松本入り・宿泊','DAY 2｜公式予約画面の朝便で高原へ','午前〜昼｜自然保護センター側を3時間散策','午後便で松本へ戻り、大阪へ'],
+        book:['松本駅周辺の宿','直行バス往復（通常片道1,500円）','2日前までの早割は席数限定'],
+        check:['バスが往復とも確保できた場合だけ確定','濃霧・雷・強風なら高原散策を短縮','別ターミナルまで徒歩横断しない'],
+        sources:[['2026直行バス','https://visitmatsumoto.com/news/detail_22.html'],['バス予約サイト','https://www.utsukushigahara-bus.net/']]
+      },
+      {
+        rank:5, name:'奥入瀬渓流', pref:'青森県', duration:'two', durationLabel:'2泊3日', date:'8/5（水）– 8/7（金）', effort:'長距離',
+        summary:'青森または八戸を玄関口に2泊。渓流全14kmを歩き切らず、石ヶ戸を起点に短区間を歩き、JRバスで戻る。',
+        route:'大阪 → 青森空港／新青森、または新大阪 → 東京 → 八戸。JRバスで焼山・奥入瀬渓流館方面へ。',
+        schedule:['DAY 1｜移動日・焼山または十和田湖周辺泊','DAY 2｜朝に石ヶ戸へ','石ヶ戸から見どころ区間を2〜3時間歩く','JRバスで子ノ口または焼山へ移動','DAY 3｜午前に予備時間を置き大阪へ'],
+        book:['2泊の宿と長距離交通','八戸発おいらせ号は要予約案内あり','自転車利用なら前日までにWeb予約'],
+        check:['大雨時は渓流歩道を中止','バスの最終便から逆算','自転車は車道走行のため無理に採用しない'],
+        sources:[['青森県公式アクセス','https://aomori-tourism.com/spot/detail_339.html'],['奥入瀬レンタサイクル','https://oirase.or.jp/rakuchari/rakuchari.html']]
+      },
+      {
+        rank:6, name:'奥日光', pref:'栃木県', duration:'one', durationLabel:'1泊2日', date:'8/6（木）– 8/7（金）', effort:'バス接続',
+        summary:'中禅寺湖・戦場ヶ原・湯元温泉を1泊でつなぐ。赤沼から2026年4月25日開始の低公害バスを使い、歩行距離を調整する。',
+        route:'新大阪 → 東京 → 宇都宮／日光 → 東武日光駅。湯元温泉行きバスで中禅寺湖・赤沼・湯元へ。',
+        schedule:['DAY 1｜午前移動、午後に中禅寺湖周辺','夕方までに湯元温泉の宿へ','DAY 2｜赤沼車庫から低公害バス','小田代原または千手ヶ浜を短時間散策','午後早めに東武日光駅へ戻る'],
+        book:['湯元温泉または中禅寺湖の宿','東京方面までの往復指定席','現地バス時刻を宿到着時刻と照合'],
+        check:['東武日光駅―赤沼は約65分を見込む','低公害バスは大人500円','雷雨なら湖畔・湿原歩きを中止'],
+        sources:[['2026低公害バス','https://www.tobu-bus.com/pc/topics/detail.html?key=118'],['日光エリア時刻案内','https://www.tobu-bus.com/pc/area/nikko/']]
+      },
+      {
+        rank:7, name:'那須高原', pref:'栃木県', duration:'one', durationLabel:'1泊2日', date:'8/7（金）– 8/8（土）', effort:'周遊バス',
+        summary:'那須塩原駅から路線・周遊バスで高原へ。2026年4月1日〜11月30日は夏ダイヤで、周遊1DAYパス1,500円、2日フリーパス3,000円。',
+        route:'新大阪 → 東京 → 那須塩原。駅から那須湯本／那須ロープウェイ方面のバスと周遊バスを組み合わせる。',
+        schedule:['DAY 1｜昼までに那須塩原着','友愛の森で路線と営業情報を再確認','午後｜那須湯本周辺・宿泊','DAY 2｜天候良好時のみロープウェイ方面','15:00までに那須塩原へ戻る'],
+        book:['那須湯本またはバス沿線の宿','新幹線指定席','宿の送迎を使う場合は事前確約'],
+        check:['高速バス那須・塩原号は運休中','周遊バスの最終接続','強風時はロープウェイを計画から外す'],
+        sources:[['那須高原アクセス・2026バス','https://www.nasukogen.org/access/']]
+      },
+      {
+        rank:8, name:'霧ヶ峰', pref:'長野県', duration:'one', durationLabel:'1泊2日', date:'8/6（木）– 8/7（金）', effort:'季節バス',
+        summary:'上諏訪で前泊し、翌朝の霧ヶ峰線へ。2026年8月1日〜30日は上諏訪駅―霧ヶ峰―八島湿原―車山高原のバスが毎日運行。',
+        route:'新大阪 → 名古屋 → 塩尻 → 上諏訪。翌日、上諏訪駅から霧ヶ峰線で目的停留所へ。',
+        schedule:['DAY 1｜夕方までに上諏訪着・宿泊','DAY 2｜朝の霧ヶ峰線に乗車','八島湿原または車山高原の一方に絞る','2〜3時間散策し、復路バスへ','夕方以降に大阪へ'],
+        book:['上諏訪駅周辺の宿','特急の往復指定席','往路・復路バス時刻を同時に保存'],
+        check:['8月は毎日運行だが最新時刻を再確認','復路バスを逃さない単一路線計画','雷・濃霧時は稜線歩きを中止'],
+        sources:[['2026霧ヶ峰線','https://kirigamine.suwakanko.jp/2026/07/16/%E9%9C%A7%E3%83%B6%E5%B3%B0%E7%B7%9A%EF%BC%88%E4%B8%8A%E8%AB%8F%E8%A8%AA%E9%A7%85%E3%83%BC%E9%9C%A7%E3%83%B6%E5%B3%B0%E3%82%A4%E3%83%B3%E3%82%BF%E3%83%BC%E3%83%81%E3%82%A7%E3%83%B3%E3%82%B8%EF%BC%89-2/']]
+      },
+      {
+        rank:9, name:'野辺山高原', pref:'長野県', duration:'one', durationLabel:'1泊2日', date:'8/7（金）– 8/8（土）', effort:'小海線',
+        summary:'小淵沢から小海線で標高1,350mの野辺山へ。国立天文台野辺山宇宙電波観測所は8:30–17:00、自由見学無料・予約不要。',
+        route:'新大阪 → 名古屋 → 塩尻 → 小淵沢 → JR小海線 野辺山。駅から観測所は徒歩40分、レンタサイクル約10分。',
+        schedule:['DAY 1｜昼までに野辺山着を目標','午後｜観測所を約1時間見学','高原内に宿泊','DAY 2｜朝の高原散策','小海線の時刻に合わせて小淵沢へ戻る'],
+        book:['野辺山駅周辺の宿','特急と小海線の接続確認','レンタサイクルを使う場合は事前確認'],
+        check:['気象警報時は観測所見学不可','場内では電波オフの案内に従う','小海線の本数を基準に行程を固定'],
+        sources:[['野辺山観測所 見学','https://www.nro.nao.ac.jp/visit/']]
+      },
+      {
+        rank:10, name:'富士山 五合目', pref:'山梨・静岡県', duration:'one', durationLabel:'1泊2日', date:'8/8（土）– 8/9（日）', effort:'登頂しない',
+        summary:'来週の即席計画では山頂登山を外し、河口湖前泊＋五合目の自然解説・短時間散策に限定する。五合目〜六合目の公式解説コースは目安2時間30分。',
+        route:'新大阪 → 東京 → 大月 → 河口湖。翌朝、富士山五合目方面の公式バス運行と富士スバルライン状況を確認して移動。',
+        schedule:['DAY 1｜河口湖へ移動・前泊','DAY 2｜午前に五合目へ','10:00–15:00枠の自然解説を確認','五合目〜泉ヶ滝〜六合目の範囲で終了','午後早めに河口湖へ下山'],
+        book:['河口湖の宿','鉄道往復指定席','自然解説を利用する場合は申込状況確認'],
+        check:['山頂登山はこの計画に含めない','強風・雷・スバルライン規制で中止','防寒着・雨具・歩行装備を持参'],
+        sources:[['2026五合目自然解説','https://www.yamanashi-kankou.jp/fujisan/tanosimo/tanosimo001.html'],['2026富士登山規制','https://www.pref.yamanashi.jp/fujisan/annzenn/documents/r8fujitozan.html']]
+      }
+    ];
+
+    const plansNode = document.getElementById('plans');
+    const countNode = document.getElementById('count');
+    const render = (filter='all') => {
+      const visible = plans.filter(plan => filter === 'all' || plan.duration === filter);
+      countNode.textContent = `${visible.length}件の代替案`;
+      plansNode.innerHTML = visible.map(plan => `
+        <article class="plan" id="rank-${plan.rank}">
+          <div class="rank"><strong>RANK</strong><span class="number">${plan.rank}</span><span class="pref">${plan.pref}</span><small>${plan.date}<br>${plan.durationLabel}</small></div>
+          <div class="plan-body">
+            <div class="plan-head">
+              <div><h2>${plan.name}</h2><p>${plan.summary}</p></div>
+              <div class="badges"><span class="badge primary">${plan.date}</span><span class="badge">${plan.durationLabel}</span><span class="badge">${plan.effort}</span></div>
+            </div>
+            <div class="route"><b>大阪からの実行ルート</b><span>${plan.route}</span></div>
+            <div class="plan-grid">
+              <section class="cell"><h3>行程の目標帯</h3><ul>${plan.schedule.map(item => `<li>${item}</li>`).join('')}</ul></section>
+              <section class="cell"><h3>今日予約する</h3><ul>${plan.book.map(item => `<li>${item}</li>`).join('')}</ul></section>
+              <section class="cell"><h3>現地で削れる部分</h3><ul>${plan.check.map(item => `<li>${item}</li>`).join('')}</ul></section>
+            </div>
+            <div class="gates"><div class="gate book"><b>確定条件</b>往復交通・宿・本数の少ない現地交通を同時に確保できること。</div><div class="gate check"><b>48時間前の中止条件</b>警報、主要交通の運休、雷・強風、体調不良のいずれか。</div></div>
+            <div class="sources">${plan.sources.map(source => `<a href="${source[1]}" target="_blank" rel="noreferrer">${source[0]} ↗</a>`).join('')}</div>
+          </div>
+        </article>`).join('');
+    };
+
+    document.querySelectorAll('.filter').forEach(button => button.addEventListener('click', () => {
+      document.querySelectorAll('.filter').forEach(item => item.classList.remove('active'));
+      button.classList.add('active');
+      render(button.dataset.filter);
+    }));
+    render();
+  </script>
+</body>
+</html>
