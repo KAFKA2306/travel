@@ -6,6 +6,10 @@ A reference implementation for a large-scale travel knowledge product. It combin
 
 **Travel quick links:** https://kafka2306.github.io/travel/guides/
 
+**Destination atlas:** https://kafka2306.github.io/travel/destinations/
+
+**Site ontology:** https://kafka2306.github.io/travel/sitemap/
+
 **Heat escape 2026 plans:** https://kafka2306.github.io/travel/heat-escape-2026/
 
 **Osaka → Shenzhen route lab:** https://kafka2306.github.io/travel/shenzhen/
@@ -92,6 +96,9 @@ src/GoogleMapsDock.tsx                  Maps Embed API and Maps URLs integration
 src/google-maps.css                     Responsive Google Maps panel styles
 src/                                    Interactive reference UI and typed seed data
 public/guides/index.html                Trip-specific official quick-links hub
+public/destinations/index.html           Official-media destination atlas
+public/sitemap/index.html                Ontology-driven site map
+public/data/*.json                       Destination, media and site ontology data
 public/heat-escape-2026/index.html      Next-week heat-escape alternatives for ten ranked destinations
 public/shenzhen/index.html              Osaka–Shenzhen multimodal route lab
 database/schema.sql                     PostgreSQL/PostGIS operational schema

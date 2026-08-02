@@ -1,76 +1,117 @@
 {
   "version": "2026-08-02",
   "generatedBy": "scripts/sync-official-media.mjs",
+  "policy": "official-og-first; official-page-snapshot fallback; no automatic local rehosting",
   "destinations": {
     "kamikochi": {
       "imageUrl": "https://i.ytimg.com/vi/XmDC_DWvit4/maxresdefault.jpg",
       "sourceUrl": "https://www.youtube.com/watch?v=XmDC_DWvit4",
       "publisher": "上高地観光旅館組合",
       "mode": "official-embed",
-      "verifiedAt": "2026-08-02"
+      "status": "verified",
+      "verifiedAt": "2026-08-02",
+      "licenseUrl": "https://www.kamikochi.or.jp/photos/",
+      "licenseNote": "公式サイト掲載写真は再配布せず、公式チャンネルのリモートプレビューだけを表示する。",
+      "imageHost": "i.ytimg.com"
     },
     "karuizawa": {
-      "imageUrl": null,
+      "imageUrl": "https://karuizawa-kankokyokai.jp/wordpress/wp-content/uploads/2023/05/2305_karuizawa_web_OGP_0501_5.jpg",
       "sourceUrl": "https://karuizawa-kankokyokai.jp/",
       "publisher": "軽井沢観光協会",
       "mode": "official-og-preview",
-      "verifiedAt": null
+      "status": "verified",
+      "verifiedAt": "2026-08-02",
+      "licenseUrl": null,
+      "licenseNote": "公式ページが公開するOG画像をリモート表示し、画像ファイルは再配布しない。",
+      "imageHost": "karuizawa-kankokyokai.jp"
     },
     "akiyoshido": {
       "imageUrl": "https://yamaguchi-tourism.jp/lsc/api/photo/?src=1700667",
       "sourceUrl": "https://yamaguchi-tourism.jp/photo/detail_1700667.html",
       "publisher": "山口県観光連盟",
       "mode": "official-photo-library",
-      "verifiedAt": "2026-08-02"
+      "status": "verified",
+      "verifiedAt": "2026-08-02",
+      "licenseUrl": "https://yamaguchi-tourism.jp/photo/detail_1700667.html",
+      "licenseNote": "公式フォトライブラリーの観光PR利用規約に従い、出典ページへ常時リンクする。",
+      "imageHost": "yamaguchi-tourism.jp"
     },
     "utsukushigahara": {
-      "imageUrl": null,
+      "imageUrl": "https://s.wordpress.com/mshots/v1/https%3A%2F%2Fwww.utsukushigaharakogen.jp%2F?w=1200",
       "sourceUrl": "https://www.utsukushigaharakogen.jp/",
       "publisher": "美ヶ原高原観光協議会",
-      "mode": "official-og-preview",
-      "verifiedAt": null
+      "mode": "official-page-snapshot",
+      "status": "official-page-snapshot",
+      "verifiedAt": "2026-08-02",
+      "licenseUrl": null,
+      "licenseNote": "公式ページのOG画像をリモート表示し、画像ファイルは再配布しない。",
+      "imageHost": "s.wordpress.com"
     },
     "oirase": {
-      "imageUrl": null,
+      "imageUrl": "https://aomori-tourism.com/lsc/upfile/spot/0000/0339/339_12_l.jpg",
       "sourceUrl": "https://aomori-tourism.com/spot/detail_339.html",
       "publisher": "青森県観光国際交流機構",
       "mode": "official-og-preview",
-      "verifiedAt": null
+      "status": "verified",
+      "verifiedAt": "2026-08-02",
+      "licenseUrl": null,
+      "licenseNote": "公式観光ページのOG画像をリモート表示し、画像ファイルは再配布しない。",
+      "imageHost": "aomori-tourism.com"
     },
     "okunikko": {
-      "imageUrl": null,
+      "imageUrl": "http://www.nikko-kankou.org/storage/post_picture/20231018142231_12-1.jpg",
       "sourceUrl": "https://www.nikko-kankou.org/spot?areaIds=2",
       "publisher": "日光市観光協会",
       "mode": "official-og-preview",
-      "verifiedAt": null
+      "status": "verified",
+      "verifiedAt": "2026-08-02",
+      "licenseUrl": null,
+      "licenseNote": "公式観光ページのOG画像をリモート表示する。画像の再配布は行わない。",
+      "imageHost": "www.nikko-kankou.org"
     },
     "nasu": {
-      "imageUrl": null,
+      "imageUrl": "https://www.nasukogen.org/banner/pict/00285_1.jpg",
       "sourceUrl": "https://www.nasukogen.org/",
       "publisher": "那須町観光協会",
       "mode": "official-og-preview",
-      "verifiedAt": null
+      "status": "verified",
+      "verifiedAt": "2026-08-02",
+      "licenseUrl": null,
+      "licenseNote": "公式観光ページのOG画像をリモート表示し、画像ファイルは再配布しない。",
+      "imageHost": "www.nasukogen.org"
     },
     "kirigamine": {
-      "imageUrl": null,
+      "imageUrl": "https://s.wordpress.com/mshots/v1/https%3A%2F%2Fwww.suwakanko.jp%2Fcategory%2F%25E9%259C%25A7%25E3%2583%25B6%25E5%25B3%25B0%2F?w=1200",
       "sourceUrl": "https://www.suwakanko.jp/category/%E9%9C%A7%E3%83%B6%E5%B3%B0/",
       "publisher": "諏訪観光協会",
-      "mode": "official-og-preview",
-      "verifiedAt": null
+      "mode": "official-page-snapshot",
+      "status": "official-page-snapshot",
+      "verifiedAt": "2026-08-02",
+      "licenseUrl": null,
+      "licenseNote": "公式観光ページのOG画像をリモート表示し、画像ファイルは再配布しない。",
+      "imageHost": "s.wordpress.com"
     },
     "nobeyama": {
-      "imageUrl": null,
+      "imageUrl": "https://db.go-nagano.net/files/user/share.png",
       "sourceUrl": "https://db.go-nagano.net/themelist/detail/id=3851",
       "publisher": "長野県観光機構",
       "mode": "official-og-preview",
-      "verifiedAt": null
+      "status": "verified",
+      "verifiedAt": "2026-08-02",
+      "licenseUrl": null,
+      "licenseNote": "長野県公式観光ページのOG画像をリモート表示し、画像ファイルは再配布しない。",
+      "imageHost": "db.go-nagano.net"
     },
     "fuji-fifth-station": {
-      "imageUrl": null,
+      "imageUrl": "https://www.yamanashi-kankou.jp/special/fujisan/images/5th-tenbo_01.jpg",
       "sourceUrl": "https://www.yamanashi-kankou.jp/special/fujisan/5th-station.html",
       "publisher": "やまなし観光推進機構",
       "mode": "official-og-preview",
-      "verifiedAt": null
+      "status": "verified",
+      "verifiedAt": "2026-08-02",
+      "licenseUrl": null,
+      "licenseNote": "山梨県公式観光ページのOG画像をリモート表示し、画像ファイルは再配布しない。",
+      "imageHost": "www.yamanashi-kankou.jp"
     }
   }
 }

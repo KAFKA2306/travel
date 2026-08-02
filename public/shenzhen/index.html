@@ -161,6 +161,7 @@
       footer { flex-direction:column; }
     }
   </style>
+  <link rel="stylesheet" href="/travel/site-shell.css" />
 </head>
 <body>
   <header class="topbar">
@@ -311,5 +312,6 @@
 
     const initialRoute=location.hash.slice(1); renderRoute(routes[initialRoute]?initialRoute:'direct');
   </script>
+  <script src="/travel/site-shell.js" defer></script>
 </body>
 </html>

@@ -39,6 +39,7 @@
     @media(max-width:980px){.hero{grid-template-columns:1fr}.decision{grid-template-columns:1fr}.plan{grid-template-columns:135px minmax(0,1fr)}.plan-grid{grid-template-columns:1fr 1fr}.plan-grid .cell:first-child{grid-column:1/-1}.method-grid{grid-template-columns:1fr}}
     @media(max-width:680px){.shell{width:min(100% - 20px,1180px)}.topbar{padding-inline:10px;align-items:flex-start}.toplinks a:nth-child(2){display:none}.hero{padding-top:42px}h1{font-size:47px}.toolbar{top:68px;align-items:flex-start;flex-direction:column}.plan{grid-template-columns:1fr}.rank{display:grid;grid-template-columns:auto 1fr auto;align-items:center;gap:13px;padding:16px}.rank .number{font-size:40px}.rank small{display:none}.plan-body{padding:17px}.plan-head{flex-direction:column}.badges{justify-content:flex-start}.plan-grid,.gates{grid-template-columns:1fr}.plan-grid .cell:first-child{grid-column:auto}.route{overflow-wrap:anywhere}footer{flex-direction:column}}
   </style>
+  <link rel="stylesheet" href="/travel/site-shell.css" />
 </head>
 <body>
   <header class="topbar">
@@ -217,5 +218,6 @@
     }));
     render();
   </script>
+  <script src="/travel/site-shell.js" defer></script>
 </body>
 </html>
