@@ -1,5 +1,5 @@
 {
-  "generatedAt": "2026-08-02T23:53:23.238Z",
+  "generatedAt": "2026-08-02T23:56:36.912Z",
   "baseUrl": "https://kafka2306.github.io/travel",
   "results": [
     {
@@ -67,9 +67,7 @@
       "headings": 11,
       "brokenImages": [],
       "pendingImages": [
-        "https://karuizawa-kankokyokai.jp/wordpress/wp-content/uploads/2023/05/2305_karuizawa_web_OGP_0501_5.jpg",
-        "https://yamaguchi-tourism.jp/lsc/api/photo/?src=1700667",
-        "https://www.nikko-kankou.org/storage/post_picture/%5B640_640%5D_20231018141930_10-1.jpg"
+        "https://yamaguchi-tourism.jp/lsc/api/photo/?src=1700667"
       ],
       "unlabeledButtons": 0,
       "unlabeledLinks": 0
@@ -93,8 +91,6 @@
       "headings": 23,
       "brokenImages": [],
       "pendingImages": [
-        "https://karuizawa-kankokyokai.jp/wordpress/wp-content/uploads/2023/05/2305_karuizawa_web_OGP_0501_5.jpg",
-        "https://www.nikko-kankou.org/storage/post_picture/%5B640_640%5D_20231018141930_10-1.jpg",
         "https://www.kanko-nobeyama.jp/wp/wp-content/themes/minamimakimura/img/home/slide02.jpg",
         "https://www.yamanashi-kankou.jp/special/fujisan/images/5th-tenbo_01.jpg",
         "https://s.wordpress.com/mshots/v1/https%3A%2F%2Fwww.shiretoko.asia%2F?w=1200",
@@ -132,7 +128,6 @@
       "headings": 42,
       "brokenImages": [],
       "pendingImages": [
-        "https://karuizawa-kankokyokai.jp/wordpress/wp-content/uploads/2023/05/2305_karuizawa_web_OGP_0501_5.jpg",
         "https://aomori-tourism.com/lsc/upfile/spot/0000/0339/339_12_l.jpg",
         "https://www.nikko-kankou.org/storage/post_picture/%5B640_640%5D_20231018141930_10-1.jpg",
         "https://www.nasukogen.org/blog/%E3%82%B7%E3%83%AD%E3%83%A4%E3%82%B7%E3%82%AA.jpg",
@@ -227,7 +222,9 @@
       "buttons": 1,
       "headings": 10,
       "brokenImages": [],
-      "pendingImages": [],
+      "pendingImages": [
+        "https://yamaguchi-tourism.jp/lsc/api/photo/?src=1700667"
+      ],
       "unlabeledButtons": 0,
       "unlabeledLinks": 0
     },
@@ -272,8 +269,6 @@
       "headings": 11,
       "brokenImages": [],
       "pendingImages": [
-        "https://karuizawa-kankokyokai.jp/wordpress/wp-content/uploads/2023/05/2305_karuizawa_web_OGP_0501_5.jpg",
-        "https://www.nikko-kankou.org/storage/post_picture/%5B640_640%5D_20231018141930_10-1.jpg",
         "https://kirigamine.suwakanko.jp/wp/wp-content/uploads/2024/07/449592483_504892615248488_6043512208052837239_n.jpg",
         "https://www.kanko-nobeyama.jp/wp/wp-content/themes/minamimakimura/img/home/slide02.jpg",
         "https://www.yamanashi-kankou.jp/special/fujisan/images/5th-tenbo_01.jpg"
@@ -300,7 +295,6 @@
       "headings": 23,
       "brokenImages": [],
       "pendingImages": [
-        "https://karuizawa-kankokyokai.jp/wordpress/wp-content/uploads/2023/05/2305_karuizawa_web_OGP_0501_5.jpg",
         "https://visitmatsumoto.com/lsc/api/photo/?src=233",
         "https://aomori-tourism.com/lsc/upfile/spot/0000/0339/339_12_l.jpg",
         "https://www.nikko-kankou.org/storage/post_picture/%5B640_640%5D_20231018141930_10-1.jpg",
@@ -343,7 +337,6 @@
       "headings": 42,
       "brokenImages": [],
       "pendingImages": [
-        "https://karuizawa-kankokyokai.jp/wordpress/wp-content/uploads/2023/05/2305_karuizawa_web_OGP_0501_5.jpg",
         "https://www.nikko-kankou.org/storage/post_picture/%5B640_640%5D_20231018141930_10-1.jpg",
         "https://www.nasukogen.org/blog/%E3%82%B7%E3%83%AD%E3%83%A4%E3%82%B7%E3%82%AA.jpg",
         "https://kirigamine.suwakanko.jp/wp/wp-content/uploads/2024/07/449592483_504892615248488_6043512208052837239_n.jpg",
