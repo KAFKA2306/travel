@@ -10,6 +10,8 @@ A reference implementation for a travel knowledge product. The root is a decisio
 
 **Destination atlas:** https://kafka2306.github.io/travel/destinations/
 
+**Official content network:** https://kafka2306.github.io/travel/official/
+
 **Site ontology:** https://kafka2306.github.io/travel/sitemap/
 
 **Heat escape 2026 plans:** https://kafka2306.github.io/travel/heat-escape-2026/
