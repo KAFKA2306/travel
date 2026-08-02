@@ -1,72 +1,81 @@
 <!doctype html>
 <html lang="ja">
-  <head>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <meta name="theme-color" content="#f6f3ed" />
-    <meta name="robots" content="index, follow, max-image-preview:large" />
-    <meta
-      name="description"
-      content="大阪発・1名・2泊3日の旅行条件を、価格・公共交通・温泉・根拠から比較するWayweave旅行プランナー。神戸・三宮2連泊と有馬温泉日帰りモデルを掲載。"
-    />
-    <meta name="wayweave-release" content="map-audit-seo-2026-08-02" />
-
-    <link rel="canonical" href="https://kafka2306.github.io/travel/" />
-    <link rel="sitemap" type="application/xml" href="/travel/sitemap.xml" />
-
-    <meta property="og:type" content="website" />
-    <meta property="og:locale" content="ja_JP" />
-    <meta property="og:site_name" content="Wayweave" />
-    <meta property="og:title" content="Wayweave｜予算と公共交通から組み替える旅行プランナー" />
-    <meta
-      property="og:description"
-      content="神戸・三宮2連泊＋有馬温泉日帰りなど、価格制約と移動根拠から実行可能な旅程を比較します。"
-    />
-    <meta property="og:url" content="https://kafka2306.github.io/travel/" />
-
-    <meta name="twitter:card" content="summary" />
-    <meta name="twitter:title" content="Wayweave｜予算と公共交通から組み替える旅行プランナー" />
-    <meta
-      name="twitter:description"
-      content="価格・公共交通・温泉・根拠をまとめて比較する旅行プランナー。"
-    />
-
-    <script type="application/ld+json">
-      {
-        "@context": "https://schema.org",
-        "@graph": [
-          {
-            "@type": "WebSite",
-            "@id": "https://kafka2306.github.io/travel/#website",
-            "url": "https://kafka2306.github.io/travel/",
-            "name": "Wayweave",
-            "alternateName": "予算と公共交通から組み替える旅行プランナー",
-            "inLanguage": "ja"
-          },
-          {
-            "@type": "WebApplication",
-            "@id": "https://kafka2306.github.io/travel/#application",
-            "name": "Wayweave",
-            "alternateName": "予算と公共交通から組み替える旅行プランナー",
-            "url": "https://kafka2306.github.io/travel/",
-            "isPartOf": {
-              "@id": "https://kafka2306.github.io/travel/#website"
-            },
-            "applicationCategory": "TravelApplication",
-            "operatingSystem": "Web",
-            "inLanguage": "ja",
-            "description": "価格、公共交通、温泉、一次情報を結び、実行可能な旅行モデルを比較するWebアプリケーション。"
-          }
-        ]
-      }
-    </script>
-
-    <title>Wayweave｜予算と公共交通から組み替える旅行プランナー</title>
-    <link rel="stylesheet" href="/travel/site-shell.css" />
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="theme-color" content="#fbfaf7" />
+  <meta name="robots" content="index, follow, max-image-preview:large" />
+  <meta name="description" content="旅先を探す、来週の計画を選ぶ、保存済み旅程を編集する、当日の公式情報を確認する。Wayweave旅行知識ポータル。" />
+  <meta name="wayweave-release" content="decision-front-2026-08-02" />
+  <link rel="canonical" href="https://kafka2306.github.io/travel/" />
+  <link rel="sitemap" type="application/xml" href="/travel/sitemap.xml" />
+  <meta property="og:type" content="website" />
+  <meta property="og:locale" content="ja_JP" />
+  <meta property="og:site_name" content="Wayweave" />
+  <meta property="og:title" content="Wayweave｜旅行の判断を始める" />
+  <meta property="og:description" content="写真、旅程、交通、一次情報を、次の判断ごとに整理する旅行知識ポータル。" />
+  <meta property="og:url" content="https://kafka2306.github.io/travel/" />
+  <meta name="twitter:card" content="summary_large_image" />
+  <meta name="twitter:title" content="Wayweave｜旅行の判断を始める" />
+  <meta name="twitter:description" content="写真、旅程、交通、一次情報を、次の判断ごとに整理する旅行知識ポータル。" />
+  <title>Wayweave｜旅行の判断を始める</title>
+  <link rel="stylesheet" href="/travel/site-shell.css" />
+  <style>
+    :root{--bg:#fbfaf7;--ink:#243653;--muted:#68758b;--line:rgba(67,87,119,.15);--blue:#8fb5ec;--blue-soft:#e9f1fc;--mint:#b7dbc8;--mint-soft:#eaf7f0;--rose:#efb4c1;--rose-soft:#fcecf0;--apricot:#f3cfaa;--apricot-soft:#fff2e3;--lavender-soft:#f0ecfa;--shadow:0 18px 50px rgba(76,91,125,.09);font-family:Inter,"Noto Sans JP","Hiragino Sans","Yu Gothic",sans-serif}
+    *{box-sizing:border-box}html,body{max-width:100%;overflow-x:hidden}body{margin:0;color:var(--ink);background:radial-gradient(circle at 8% 0%,rgba(143,181,236,.24),transparent 31rem),radial-gradient(circle at 96% 14%,rgba(183,219,200,.26),transparent 30rem),var(--bg)}a{color:inherit}.shell{width:min(1180px,calc(100% - 28px));margin:auto;min-width:0}
+    .hero{display:grid;grid-template-columns:minmax(0,1.25fr) minmax(300px,.75fr);gap:28px;align-items:end;padding:76px 0 42px}.eyebrow{margin:0 0 14px;color:#5c76a2;font-size:12px;font-weight:950;letter-spacing:.15em}.hero h1{margin:0;font-size:clamp(50px,8vw,94px);line-height:.95;letter-spacing:-.07em}.hero h1 em{font-style:normal;color:#648fc9}.lead{max-width:760px;margin:25px 0 0;color:var(--muted);font-size:16px;line-height:1.9}.hero-aside{padding:24px;border:1px solid var(--line);border-radius:24px;background:rgba(255,255,255,.9);box-shadow:var(--shadow)}.hero-aside small{display:block;color:#5c76a2;font-size:10px;font-weight:950;letter-spacing:.12em}.hero-aside b{display:block;margin-top:9px;font-size:22px}.hero-aside p{margin:10px 0 0;color:var(--muted);font-size:12px;line-height:1.75}.hero-aside a{display:inline-flex;margin-top:17px;padding:10px 13px;border-radius:12px;background:var(--ink);color:#fff;font-size:11px;font-weight:900;text-decoration:none}
+    .section{padding:28px 0}.section-head{display:flex;justify-content:space-between;gap:18px;align-items:end;margin-bottom:17px}.section-head h2{margin:0;font-size:31px;letter-spacing:-.04em}.section-head p{max-width:590px;margin:0;color:var(--muted);font-size:12px;line-height:1.7}.actions{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:12px}.action{display:flex;flex-direction:column;min-height:230px;padding:20px;border:1px solid var(--line);border-radius:21px;background:#fff;text-decoration:none;box-shadow:var(--shadow);transition:transform .18s ease,box-shadow .18s ease}.action:hover{transform:translateY(-2px);box-shadow:0 22px 55px rgba(76,91,125,.13)}.action:nth-child(1){background:var(--rose-soft)}.action:nth-child(2){background:var(--blue-soft)}.action:nth-child(3){background:var(--mint-soft)}.action:nth-child(4){background:var(--apricot-soft)}.action small{color:#5c76a2;font-size:10px;font-weight:950;letter-spacing:.11em}.action b{margin-top:17px;font-size:22px;line-height:1.25}.action p{margin:10px 0 0;color:var(--muted);font-size:12px;line-height:1.7}.action span{margin-top:auto;padding-top:18px;font-size:11px;font-weight:950}
+    .focus-grid{display:grid;grid-template-columns:1.15fr .85fr;gap:14px}.focus-card{position:relative;overflow:hidden;min-height:310px;padding:27px;border:1px solid var(--line);border-radius:24px;background:#fff;box-shadow:var(--shadow)}.focus-card.primary{background:linear-gradient(145deg,var(--blue-soft),rgba(255,255,255,.95))}.focus-card.secondary{background:linear-gradient(145deg,var(--mint-soft),rgba(255,255,255,.95))}.focus-card small{display:block;color:#5c76a2;font-size:10px;font-weight:950;letter-spacing:.12em}.focus-card h3{max-width:620px;margin:15px 0 0;font-size:clamp(28px,4vw,46px);line-height:1.08;letter-spacing:-.045em}.focus-card p{max-width:630px;margin:14px 0 0;color:var(--muted);font-size:13px;line-height:1.8}.focus-links{display:flex;flex-wrap:wrap;gap:8px;margin-top:24px}.focus-links a{padding:10px 12px;border:1px solid var(--line);border-radius:12px;background:#fff;font-size:10px;font-weight:900;text-decoration:none}.focus-links a:first-child{background:var(--ink);color:#fff;border-color:var(--ink)}.metric{position:absolute;right:24px;bottom:20px;color:rgba(36,54,83,.12);font-size:86px;font-weight:950;letter-spacing:-.08em;line-height:1}
+    .visuals{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:12px}.visual{overflow:hidden;border:1px solid var(--line);border-radius:21px;background:#fff;box-shadow:var(--shadow)}.visual-media{display:block;position:relative;aspect-ratio:16/10;overflow:hidden;background:linear-gradient(135deg,var(--blue-soft),var(--mint-soft))}.visual-media img{width:100%;height:100%;display:block;object-fit:cover;transition:transform .22s ease}.visual:hover img{transform:scale(1.02)}.visual-rank{position:absolute;left:12px;top:12px;padding:6px 9px;border-radius:999px;background:rgba(255,255,255,.93);font-size:9px;font-weight:950}.visual-copy{padding:17px}.visual-copy h3{margin:0;font-size:19px}.visual-copy p{margin:8px 0 0;color:var(--muted);font-size:11px;line-height:1.65}.visual-actions{display:flex;gap:7px;margin-top:13px}.visual-actions a{padding:8px 9px;border:1px solid var(--line);border-radius:10px;background:#fff;font-size:9px;font-weight:900;text-decoration:none}.visual-actions a:first-child{background:var(--blue-soft)}
+    .system-grid{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:11px}.system-card{padding:19px;border:1px solid var(--line);border-radius:18px;background:rgba(255,255,255,.88)}.system-card small{color:#5c76a2;font-size:9px;font-weight:950;letter-spacing:.1em}.system-card b{display:block;margin-top:8px;font-size:17px}.system-card p{margin:7px 0 0;color:var(--muted);font-size:11px;line-height:1.65}.system-card a{display:inline-block;margin-top:13px;font-size:10px;font-weight:900}
+    .fallback{display:grid;place-items:center;height:100%;padding:20px;color:#5b75a0;text-align:center;font-size:11px;font-weight:900}.release{display:flex;justify-content:space-between;gap:14px;margin:16px 0 0;padding:14px 16px;border:1px solid var(--line);border-radius:15px;background:rgba(255,255,255,.75);color:var(--muted);font-size:10px;line-height:1.6}footer{display:flex;justify-content:space-between;gap:16px;padding:28px 0 38px;border-top:1px solid var(--line);color:var(--muted);font-size:11px}
+    @media(max-width:980px){.hero{grid-template-columns:1fr}.actions{grid-template-columns:1fr 1fr}.focus-grid{grid-template-columns:1fr}.visuals{grid-template-columns:1fr 1fr}.system-grid{grid-template-columns:1fr 1fr}}
+    @media(max-width:620px){.shell{width:min(100% - 20px,1180px)}.hero{padding-top:48px}.hero h1{font-size:52px}.actions,.visuals,.system-grid{grid-template-columns:1fr}.section-head{align-items:flex-start;flex-direction:column}.focus-card{min-height:0}.metric{display:none}.release,footer{flex-direction:column}}
+    @media(prefers-reduced-motion:reduce){.action,.visual-media img{transition:none}}
+  </style>
 </head>
-  <body>
-    <div id="root"></div>
-    <script type="module" src="/src/main.tsx"></script>
-    <script src="/travel/site-shell.js" defer></script>
+<body>
+  <main id="ww-main" class="shell">
+    <section class="hero">
+      <div><p class="eyebrow">WAYWEAVE · TRAVEL DECISION PORTAL</p><h1>旅を探す前に、<br><em>次の判断</em>を選ぶ。</h1><p class="lead">ここは旅程編集画面ではありません。写真から旅先を探す、来週行ける案を比較する、保存済み旅程を組み替える、当日の公式情報を確認する。その入口を一つにまとめます。</p></div>
+      <aside class="hero-aside"><small>NOW · 2026 SUMMER</small><b>猛暑回避10候補を公開中</b><p>大阪発・1名・公共交通を前提に、日数、予約順、撤退条件まで比較できます。</p><a href="/travel/heat-escape-2026/">10プランを見る →</a></aside>
+    </section>
+
+    <section class="section" aria-labelledby="next-action"><div class="section-head"><h2 id="next-action">何をしたいですか</h2><p>画面の種類ではなく、今の目的から移動します。</p></div><div class="actions">
+      <a class="action" href="/travel/heat-escape-2026/"><small>DECIDE NOW</small><b>来週行ける旅を選ぶ</b><p>10候補を日帰り・宿泊日数・移動負荷・中止条件で比較します。</p><span>猛暑回避10プラン →</span></a>
+      <a class="action" href="/travel/destinations/"><small>DISCOVER</small><b>写真から旅先を探す</b><p>公式観光サイトのビジュアルから、旅先と具体計画へ移動します。</p><span>旅先図鑑 →</span></a>
+      <a class="action" href="/travel/planner/"><small>PLAN</small><b>保存済み旅程を編集する</b><p>佐渡、有馬などの旅程モデル、候補地、地図、根拠を一画面で扱います。</p><span>旅程ワークスペース →</span></a>
+      <a class="action" href="/travel/guides/"><small>CHECK LIVE</small><b>当日の公式情報を確認する</b><p>運行、時刻、営業、天気、入域条件を一次情報で確認します。</p><span>公式リンク集 →</span></a>
+    </div></section>
+
+    <section class="section" aria-labelledby="current-focus"><div class="section-head"><h2 id="current-focus">現在の主要導線</h2><p>選択と編集を混在させず、役割ごとに画面を分けています。</p></div><div class="focus-grid">
+      <article class="focus-card primary"><small>ACTIVE DECISION</small><h3>涼しい観光地ランキングを、実行可能な代替旅程へ。</h3><p>上高地、軽井沢、秋芳洞、美ヶ原、奥入瀬、奥日光、那須、霧ヶ峰、野辺山、富士山五合目を比較します。</p><div class="focus-links"><a href="/travel/heat-escape-2026/">比較を始める</a><a href="/travel/destinations/">写真で見る</a></div><span class="metric">10</span></article>
+      <article class="focus-card secondary"><small>SAVED MODELS</small><h3>佐渡・有馬の旅程は、編集画面へ分離。</h3><p>トップページで一つの旅程を既定表示せず、保存済みモデルを選ぶ場合だけワークスペースへ移動します。</p><div class="focus-links"><a href="/travel/planner/">旅程を編集</a><a href="/travel/guides/">公式情報を確認</a></div></article>
+    </div></section>
+
+    <section class="section" aria-labelledby="visual-heading"><div class="section-head"><h2 id="visual-heading">公式ビジュアルから見る</h2><p>10地点のうち優先候補を表示します。画像は公式配信元をリモート参照し、ローカル再配布しません。</p></div><div class="visuals" id="visuals"><div class="fallback">公式ビジュアルを読み込んでいます。</div></div></section>
+
+    <section class="section" aria-labelledby="structure-heading"><div class="section-head"><h2 id="structure-heading">情報の構造</h2><p>判断、旅程、旅先、経路、根拠、公式ビジュアルを別のエンティティとして管理しています。</p></div><div class="system-grid">
+      <article class="system-card"><small>ONTOLOGY</small><b>サイト構造を見る</b><p>各画面とデータの関係を可視化します。</p><a href="/travel/sitemap/">構造ページ →</a></article>
+      <article class="system-card"><small>ROUTE LAB</small><b>国際複合経路を比較</b><p>大阪から深圳への航空・フェリー・陸路候補。</p><a href="/travel/shenzhen/">深圳 Route Lab →</a></article>
+      <article class="system-card"><small>PROVENANCE</small><b>機械可読データ</b><p>旅先、媒体、サイト構造をJSONで公開します。</p><a href="/travel/data/site-ontology.json">データを見る →</a></article>
+    </div><div class="release" id="release"><span>公開状態を確認中</span><span>Wayweave</span></div></section>
+
+    <footer><span><b>wayweave</b> · travel decision portal</span><span>ホーム → 判断 → 旅先／旅程 → 公式情報</span></footer>
+  </main>
+  <script>
+    const esc=(v)=>String(v??'').replaceAll('&','&amp;').replaceAll('<','&lt;').replaceAll('>','&gt;').replaceAll('"','&quot;').replaceAll("'",'&#039;');
+    Promise.all([
+      fetch('/travel/data/destinations.json',{cache:'no-cache'}).then(r=>r.json()),
+      fetch('/travel/data/destination-media.json',{cache:'no-cache'}).then(r=>r.json()),
+      fetch('/travel/release.json',{cache:'no-cache'}).then(r=>r.json())
+    ]).then(([catalog,media,release])=>{
+      const preferred=[1,3,5];
+      const items=preferred.map(rank=>catalog.destinations.find(d=>d.rank===rank)).filter(Boolean);
+      document.getElementById('visuals').innerHTML=items.map(d=>{const m=media.destinations?.[d.id]||{};const image=m.imageUrl||d.overrideImageUrl||'';const source=m.sourceUrl||d.mediaPage||d.officialUrl;return `<article class="visual"><a class="visual-media" href="${esc(source)}" target="_blank" rel="noreferrer"><span class="visual-rank">RANK ${d.rank}</span>${image?`<img src="${esc(image)}" alt="${esc(d.name)}の公式ビジュアル" loading="lazy" decoding="async" referrerpolicy="no-referrer" onerror="this.replaceWith(Object.assign(document.createElement('div'),{className:'fallback',textContent:'公式ページで確認してください。'}))">`:'<div class="fallback">公式ページで確認してください。</div>'}</a><div class="visual-copy"><h3>${esc(d.name)}</h3><p>${esc(d.routeSummary)}</p><div class="visual-actions"><a href="${esc(d.planUrl)}">計画を見る</a><a href="${esc(d.officialUrl)}" target="_blank" rel="noreferrer">公式観光</a></div></div></article>`}).join('');
+      document.getElementById('release').innerHTML=`<span>${esc(release.release)} · ${release.destinationCount} destinations</span><span>公式ビジュアル ${release.officialVisualCoverage}/${release.destinationCount}</span>`;
+    }).catch(()=>{document.getElementById('visuals').innerHTML='<div class="fallback">旅先データを読み込めませんでした。</div>';document.getElementById('release').innerHTML='<span>公開データを確認できませんでした。</span>'});
+  </script>
+  <script src="/travel/site-shell.js" defer></script>
 </body>
 </html>
