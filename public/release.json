@@ -1,10 +1,11 @@
 {
-  "release": "decision-portal-planner-split-ui-baseline-2026-08-02",
-  "publishedAt": "2026-08-02T16:52:00+09:00",
+  "release": "official-content-network-2026-08-02",
+  "publishedAt": "2026-08-02T17:56:00+09:00",
   "views": [
     "/travel/",
     "/travel/planner/",
     "/travel/destinations/",
+    "/travel/official/",
     "/travel/heat-escape-2026/",
     "/travel/guides/",
     "/travel/shenzhen/",
@@ -12,8 +13,11 @@
   ],
   "destinationCount": 10,
   "officialVisualCoverage": 10,
+  "officialContentCoverage": 50,
+  "officialContentStages": 5,
   "rootRole": "decision portal",
   "plannerRole": "saved itinerary workspace",
+  "officialRole": "official tourism content organized by travel lifecycle",
   "uiAudit": "desktop and mobile screenshots after every successful Pages deployment",
   "mediaPolicy": "official OG or official remote preview first; official-page snapshot fallback; no automatic local rehosting"
 }
