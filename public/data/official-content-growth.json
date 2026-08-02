@@ -73,6 +73,24 @@
         { "stage": "experience", "type": "activity", "title": "伊勢志摩ならではの体験", "description": "真珠取り出し、海や漁村、ものづくり、自然学習など、地域固有の公式体験を選ぶ。", "url": "https://www.iseshima-kanko.jp/gakuyu", "publisher": "公益社団法人 伊勢志摩観光コンベンション機構" },
         { "stage": "check", "type": "live-operations", "title": "伊勢志摩のお知らせ", "description": "交通、施設営業、行事、台風・災害、参拝・観覧時の注意など、訪問直前の更新情報を確認する。", "url": "https://www.iseshima-kanko.jp/news", "publisher": "公益社団法人 伊勢志摩観光コンベンション機構" }
       ]
+    },
+    {
+      "id": "kurashiki",
+      "name": "倉敷",
+      "prefecture": "岡山県",
+      "region": "中国・四国",
+      "publisher": "倉敷市・公益社団法人倉敷観光コンベンションビューロー",
+      "officialUrl": "https://www.kurashiki-tabi.jp/",
+      "imageUrl": "https://s.wordpress.com/mshots/v1/https%3A%2F%2Fwww.kurashiki-tabi.jp%2F?w=1200",
+      "routeSummary": "新大阪から新幹線で岡山駅へ、JR山陽本線で倉敷駅へ移動し、美観地区は徒歩、児島・玉島・真備などは鉄道・路線バス・車を組み合わせる。",
+      "summary": "美観地区の町並みだけでなく、日本遺産の三つの物語、繊維産業、瀬戸内、ものづくり、交通・通行情報を市域全体の文化として読む。",
+      "items": [
+        { "stage": "discover", "type": "portal", "title": "倉敷観光WEB", "description": "美観地区、児島、水島、玉島、真備・船穂の景観、文化、食、催事を市域全体から発見する公式入口。", "url": "https://www.kurashiki-tabi.jp/", "publisher": "倉敷市・公益社団法人倉敷観光コンベンションビューロー" },
+        { "stage": "understand", "type": "japan-heritage", "title": "日本遺産のまち・倉敷市", "description": "綿花と繊維産業、北前船、古代吉備という三つの日本遺産ストーリーから地域の歴史的な重なりを理解する。", "url": "https://www.kurashiki-tabi.jp/standard/japan-heritage-kurashiki/", "publisher": "倉敷市・公益社団法人倉敷観光コンベンションビューロー" },
+        { "stage": "plan", "type": "access-and-course", "title": "アクセスとモデルコース", "description": "鉄道、空港連絡バス、車、市内交通を確認し、美観地区、児島、玉島などの公式モデルコースへ接続する。", "url": "https://www.kurashiki-tabi.jp/access-to-kurashiki/access-by-vehicle/", "publisher": "倉敷市・公益社団法人倉敷観光コンベンションビューロー" },
+        { "stage": "experience", "type": "activity", "title": "倉敷の体験", "description": "美術館・資料館の観覧、酒蔵や工場の見学、川舟、陶芸、繊維・ものづくりなど地域固有の体験を選ぶ。", "url": "https://www.kurashiki-tabi.jp/rm_experience/", "publisher": "倉敷市・公益社団法人倉敷観光コンベンションビューロー" },
+        { "stage": "check", "type": "live-operations", "title": "倉敷観光WEB 新着情報", "description": "道路の通行止め、駐車場、施設・イベント運用、公共設備など、訪問直前の重要情報を確認する。", "url": "https://www.kurashiki-tabi.jp/info/", "publisher": "倉敷市・公益社団法人倉敷観光コンベンションビューロー" }
+      ]
     }
   ]
 }
