@@ -81,11 +81,13 @@ jobs:
           if (new Set(ids).size !== ids.length) throw new Error('official content contains duplicate region ids');
           const expectedStages = new Set(official.stages.map((stage) => stage.id));
           for (const region of officialRegions) {
-            if (!region.officialUrl?.startsWith('https://')) throw new Error(`incomplete official region: ${region.id}`);
             if (region.items.length !== 5) throw new Error(`${region.id} must contain exactly 5 official items`);
             const stages = new Set(region.items.map((item) => item.stage));
             if (stages.size !== 5 || [...expectedStages].some((stage) => !stages.has(stage))) throw new Error(`${region.id} does not cover all lifecycle stages`);
             if (region.items.some((item) => !item.url.startsWith('https://'))) throw new Error(`${region.id} contains a non-HTTPS source`);
+          }
+          for (const region of [...expansion.destinations, ...growth.destinations]) {
+            if (!region.officialUrl?.startsWith('https://')) throw new Error(`incomplete official region: ${region.id}`);
           }
           if (release.officialRegionCount !== officialRegions.length) throw new Error('release region count is stale');
           if (release.officialContentCoverage !== officialItems.length) throw new Error('release content count is stale');
