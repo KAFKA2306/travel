@@ -4,6 +4,11 @@ on:
   workflow_run:
     workflows: ['Deploy to GitHub Pages']
     types: [completed]
+  push:
+    branches: [main]
+    paths:
+      - '.github/workflows/capture-pages-ui.yml'
+      - 'scripts/capture-pages.mjs'
   workflow_dispatch:
 
 permissions:
@@ -26,21 +31,20 @@ jobs:
           fetch-depth: 0
 
       - name: Verify exact deployed revision
-        if: github.event_name == 'workflow_run'
         env:
-          SOURCE_SHA: ${{ github.event.workflow_run.head_sha }}
+          SOURCE_SHA: ${{ github.event.workflow_run.head_sha || github.sha }}
         run: |
-          for attempt in $(seq 1 20); do
+          for attempt in $(seq 1 24); do
             git fetch origin deployed-pages --quiet
             deployed_sha="$(git rev-parse origin/deployed-pages)"
             if [ "$deployed_sha" = "$SOURCE_SHA" ]; then
               echo "Verified deployed revision: $SOURCE_SHA"
               exit 0
             fi
-            echo "Waiting for deployed-pages marker ($attempt/20): $deployed_sha"
+            echo "Waiting for deployed-pages marker ($attempt/24): $deployed_sha"
             sleep 15
           done
-          echo "::error::deployed-pages does not match successful deployment $SOURCE_SHA"
+          echo "::error::deployed-pages does not match target revision $SOURCE_SHA"
           exit 1
 
       - name: Remove stale evidence
