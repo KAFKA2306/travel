@@ -31,7 +31,7 @@
     { "path": "/travel/", "id": "home", "label": "判断ポータル", "primaryClass": "Decision", "purpose": "旅を探す、比較する、編集する、公式コンテンツを読む、当日確認する、という次の行動を選ぶ。" },
     { "path": "/travel/planner/", "id": "planner", "label": "旅程ワークスペース", "primaryClass": "TripPlan", "purpose": "保存済み旅程、地図、候補地、根拠を同じ編集画面で扱う。" },
     { "path": "/travel/destinations/", "id": "destinations", "label": "旅先図鑑", "primaryClass": "Destination", "purpose": "公式ビジュアルから旅先を比較し、計画と公式コンテンツ群へ移動する。" },
-    { "path": "/travel/official/", "id": "official", "label": "公式コンテンツ・ネットワーク", "primaryClass": "OfficialContentCollection", "purpose": "20地域・100件の物語、解説、モデルコース、地図、ガイド、イベント、ライブ情報を旅行段階ごとに紹介する。" },
+    { "path": "/travel/official/", "id": "official", "label": "公式コンテンツ・ネットワーク", "primaryClass": "OfficialContentCollection", "purpose": "21地域・105件の物語、解説、モデルコース、地図、ガイド、イベント、ライブ情報を旅行段階ごとに紹介する。" },
     { "path": "/travel/heat-escape-2026/", "id": "heat-escape", "label": "猛暑回避10プラン", "primaryClass": "Decision", "purpose": "10候補を日数、交通、予約順、撤退条件で比較する。" },
     { "path": "/travel/guides/", "id": "guides", "label": "当日情報", "primaryClass": "GuideHub", "purpose": "旅行当日に使う運行、時刻、営業、天気の公式ページへ接続する。" },
     { "path": "/travel/shenzhen/", "id": "shenzhen", "label": "深圳 Route Lab", "primaryClass": "Route", "purpose": "国際・複合交通の経路候補と失敗条件を比較する。" },
