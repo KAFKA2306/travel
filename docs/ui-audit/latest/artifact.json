@@ -1,9 +1,9 @@
 {
-  "runId": "30739508876",
+  "runId": "30740887530",
   "runAttempt": "1",
-  "artifactId": "8830835173",
-  "artifactUrl": "https://github.com/KAFKA2306/travel/actions/runs/30739508876/artifacts/8830835173",
-  "sourceSha": "d674ea161e748856d20070037424df7338056f54",
-  "generatedAt": "2026-08-02T08:22:56.639Z",
+  "artifactId": "8831270348",
+  "artifactUrl": "https://github.com/KAFKA2306/travel/actions/runs/30740887530/artifacts/8831270348",
+  "sourceSha": "782a33843df666d5622e6ef51ed7a5eee33cf00b",
+  "generatedAt": "2026-08-02T09:03:07.465Z",
   "captureOutcome": "success"
 }
