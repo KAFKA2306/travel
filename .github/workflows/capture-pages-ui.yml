@@ -11,7 +11,7 @@ permissions:
 
 concurrency:
   group: capture-pages-ui
-  cancel-in-progress: true
+  cancel-in-progress: false
 
 jobs:
   capture:
@@ -23,6 +23,9 @@ jobs:
         with:
           ref: main
           fetch-depth: 0
+
+      - name: Remove stale evidence
+        run: rm -rf docs/ui-audit/latest
 
       - name: Setup Node
         uses: actions/setup-node@v4
@@ -38,6 +41,8 @@ jobs:
         run: sleep 20
 
       - name: Capture desktop and mobile screenshots
+        id: capture
+        continue-on-error: true
         env:
           SITE_URL: https://kafka2306.github.io/travel
           SCREENSHOT_DIR: docs/ui-audit/latest
@@ -45,7 +50,7 @@ jobs:
 
       - name: Upload screenshot bundle
         id: screenshots
-        if: always()
+        if: ${{ !cancelled() && (steps.capture.outcome == 'success' || steps.capture.outcome == 'failure') }}
         uses: actions/upload-artifact@v4
         with:
           name: travel-ui-screenshots-${{ github.run_id }}
@@ -54,10 +59,11 @@ jobs:
           retention-days: 14
 
       - name: Record artifact metadata
-        if: always()
+        if: ${{ !cancelled() && (steps.capture.outcome == 'success' || steps.capture.outcome == 'failure') }}
         env:
           ARTIFACT_ID: ${{ steps.screenshots.outputs.artifact-id }}
           ARTIFACT_URL: ${{ steps.screenshots.outputs.artifact-url }}
+          CAPTURE_OUTCOME: ${{ steps.capture.outcome }}
         run: |
           node --input-type=module <<'NODE'
           import { readFile, writeFile } from 'node:fs/promises';
@@ -69,12 +75,13 @@ jobs:
             artifactUrl: process.env.ARTIFACT_URL,
             sourceSha: process.env.GITHUB_SHA,
             generatedAt: report.generatedAt,
+            captureOutcome: process.env.CAPTURE_OUTCOME,
           };
           await writeFile('docs/ui-audit/latest/artifact.json', `${JSON.stringify(metadata, null, 2)}\n`);
           NODE
 
       - name: Commit screenshot evidence
-        if: always()
+        if: ${{ !cancelled() && (steps.capture.outcome == 'success' || steps.capture.outcome == 'failure') }}
         run: |
           git config user.name 'github-actions[bot]'
           git config user.email '41898282+github-actions[bot]@users.noreply.github.com'
@@ -84,4 +91,9 @@ jobs:
             exit 0
           fi
           git commit -m 'docs(ui): capture deployed Pages screens'
+          git pull --rebase origin main
           git push
+
+      - name: Enforce screenshot audit result
+        if: ${{ !cancelled() && steps.capture.outcome == 'failure' }}
+        run: exit 1
