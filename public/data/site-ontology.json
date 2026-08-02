@@ -1,7 +1,7 @@
 {
   "version": "2026-08-02",
   "baseUrl": "https://kafka2306.github.io/travel",
-  "principle": "The root is a decision portal. Editing a specific itinerary is a subordinate workspace, not the default front page.",
+  "principle": "The root is a decision portal. Itineraries, destinations, official content, routes and live operational information are separate but connected layers.",
   "classes": [
     {
       "id": "Decision",
@@ -19,19 +19,29 @@
       "description": "訪問対象となる地域、景勝地、施設または交通拠点。"
     },
     {
+      "id": "OfficialContentCollection",
+      "label": "公式コンテンツ群",
+      "description": "地域の物語、解説、モデルコース、地図、ガイド、イベント、ライブ情報を一次発信主体ごとに束ねた集合。"
+    },
+    {
+      "id": "LifecycleStage",
+      "label": "旅行段階",
+      "description": "発見、理解、計画、体験、当日確認という旅行者の意思決定段階。"
+    },
+    {
       "id": "Route",
       "label": "経路",
       "description": "出発地から旅先までをつなぐ交通手段と接続条件。"
     },
     {
       "id": "GuideHub",
-      "label": "公式リンク集",
-      "description": "運行、営業、予約、天気など当日の確認に使う一次情報への入口。"
+      "label": "当日情報",
+      "description": "運行、営業、予約、天気など訪問直前・当日に使う一次情報への入口。"
     },
     {
       "id": "EvidenceSource",
       "label": "根拠",
-      "description": "旅程の時刻、料金、営業、アクセスを支える公式情報。"
+      "description": "旅程、解説、時刻、料金、営業、アクセスを支える公式情報。"
     },
     {
       "id": "MediaAsset",
@@ -50,7 +60,10 @@
     { "from": "TripPlan", "predicate": "targets", "to": "Destination", "label": "旅程が旅先を対象にする" },
     { "from": "TripPlan", "predicate": "uses", "to": "Route", "label": "旅程が経路を使う" },
     { "from": "TripPlan", "predicate": "supportedBy", "to": "EvidenceSource", "label": "旅程が根拠に支えられる" },
-    { "from": "Destination", "predicate": "describedBy", "to": "GuideHub", "label": "旅先が公式リンク集で説明される" },
+    { "from": "Destination", "predicate": "interpretedBy", "to": "OfficialContentCollection", "label": "旅先を公式の物語・地図・体験から理解する" },
+    { "from": "OfficialContentCollection", "predicate": "organizedBy", "to": "LifecycleStage", "label": "公式コンテンツを旅行者の意思決定段階で再編集する" },
+    { "from": "OfficialContentCollection", "predicate": "publishedBy", "to": "EvidenceSource", "label": "各コンテンツの公式発信主体を記録する" },
+    { "from": "Destination", "predicate": "describedBy", "to": "GuideHub", "label": "旅先が当日情報で補完される" },
     { "from": "Destination", "predicate": "depictedBy", "to": "MediaAsset", "label": "旅先が公式ビジュアルで表現される" },
     { "from": "MediaAsset", "predicate": "publishedBy", "to": "EvidenceSource", "label": "ビジュアルの配信主体を記録する" }
   ],
@@ -60,7 +73,7 @@
       "id": "home",
       "label": "判断ポータル",
       "primaryClass": "Decision",
-      "purpose": "旅を探す、比較する、編集する、当日確認する、という次の行動を選ぶ。"
+      "purpose": "旅を探す、比較する、編集する、公式コンテンツを読む、当日確認する、という次の行動を選ぶ。"
     },
     {
       "path": "/travel/planner/",
@@ -74,7 +87,14 @@
       "id": "destinations",
       "label": "旅先図鑑",
       "primaryClass": "Destination",
-      "purpose": "公式ビジュアルから旅先を比較し、計画と一次情報へ移動する。"
+      "purpose": "公式ビジュアルから旅先を比較し、計画と公式コンテンツ群へ移動する。"
+    },
+    {
+      "path": "/travel/official/",
+      "id": "official",
+      "label": "公式コンテンツ・ネットワーク",
+      "primaryClass": "OfficialContentCollection",
+      "purpose": "10地域の物語、解説、モデルコース、地図、ガイド、イベント、ライブ情報を旅行段階ごとに紹介する。"
     },
     {
       "path": "/travel/heat-escape-2026/",
@@ -86,7 +106,7 @@
     {
       "path": "/travel/guides/",
       "id": "guides",
-      "label": "公式リンク集",
+      "label": "当日情報",
       "primaryClass": "GuideHub",
       "purpose": "旅行当日に使う運行、時刻、営業、天気の公式ページへ接続する。"
     },
