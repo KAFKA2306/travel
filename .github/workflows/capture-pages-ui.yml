@@ -43,6 +43,36 @@ jobs:
           SCREENSHOT_DIR: docs/ui-audit/latest
         run: node scripts/capture-pages.mjs
 
+      - name: Upload screenshot bundle
+        id: screenshots
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: travel-ui-screenshots-${{ github.run_id }}
+          path: docs/ui-audit/latest
+          if-no-files-found: error
+          retention-days: 14
+
+      - name: Record artifact metadata
+        if: always()
+        env:
+          ARTIFACT_ID: ${{ steps.screenshots.outputs.artifact-id }}
+          ARTIFACT_URL: ${{ steps.screenshots.outputs.artifact-url }}
+        run: |
+          node --input-type=module <<'NODE'
+          import { readFile, writeFile } from 'node:fs/promises';
+          const report = JSON.parse(await readFile('docs/ui-audit/latest/report.json', 'utf8'));
+          const metadata = {
+            runId: process.env.GITHUB_RUN_ID,
+            runAttempt: process.env.GITHUB_RUN_ATTEMPT,
+            artifactId: process.env.ARTIFACT_ID,
+            artifactUrl: process.env.ARTIFACT_URL,
+            sourceSha: process.env.GITHUB_SHA,
+            generatedAt: report.generatedAt,
+          };
+          await writeFile('docs/ui-audit/latest/artifact.json', `${JSON.stringify(metadata, null, 2)}\n`);
+          NODE
+
       - name: Commit screenshot evidence
         if: always()
         run: |
