@@ -1,8 +1,10 @@
 # Wayweave
 
-A reference implementation for a large-scale travel knowledge product. It combines a decision-oriented UI, a general travel ontology, and a PostgreSQL/PostGIS schema that can ingest accommodation, mobility, place, itinerary and provenance data without collapsing everything into one JSON document.
+A reference implementation for a travel knowledge product. The root is a decision portal: it helps the user choose whether to discover destinations, compare a current decision set, edit a saved itinerary, or verify live official information. The planner is a subordinate workspace rather than the public front page.
 
-**Live site:** https://kafka2306.github.io/travel/
+**Decision portal:** https://kafka2306.github.io/travel/
+
+**Planner workspace:** https://kafka2306.github.io/travel/planner/
 
 **Travel quick links:** https://kafka2306.github.io/travel/guides/
 
@@ -14,34 +16,32 @@ A reference implementation for a large-scale travel knowledge product. It combin
 
 **Osaka → Shenzhen route lab:** https://kafka2306.github.io/travel/shenzhen/
 
-The current interface uses a car-free, solo Sado Island trip as a realistic seed scenario: Osaka → Niigata → Ryotsu → Futatsugame → Aikawa, with live-data caveats exposed as evidence rather than hidden in a score.
+The decision portal does not select one saved itinerary on behalf of the visitor. It exposes four primary intents: choose a next-week alternative, discover destinations through official media, edit a saved plan, or check live official information.
 
-The typed seed layer is intentionally additive. Sado remains the initial scenario, while the second saved model now uses two nights near Kobe-Sannomiya and treats Arima Onsen as a day trip. Hotel Harvest Arima Rokusa(i) remains in the dataset as a higher-priced comparison candidate rather than the executed stay. Destination records can therefore accumulate without replacing prior scenarios, and a price constraint can change the itinerary without deleting the rejected option.
+The planner workspace retains the car-free, solo Sado Island seed scenario and the Kobe-Sannomiya / Arima day-trip model. These are editable planning records, not the information architecture of the whole site.
 
-The Shenzhen route lab adds an international, multimodal case without replacing the domestic models. It compares a recently operated Kansai–Shenzhen direct-flight pattern, an airside transfer from Hong Kong International Airport to Shenzhen Shekou by ferry, and a cross-border coach fallback. It explicitly excludes the suspended Shenzhen Fuyong–Hong Kong Airport ferry route, keeps flight and sailing times as revalidation constraints, and links every operational claim to its official source.
+The Shenzhen route lab adds an international, multimodal case without replacing the domestic models. It compares a Kansai–Shenzhen direct-flight pattern, an airside transfer from Hong Kong International Airport to Shenzhen Shekou by ferry, and a cross-border coach fallback. Time-sensitive operations remain revalidation constraints linked to official sources.
 
-The travel quick-links hub applies the same operational pattern to every saved trip. Sado prioritizes ferry status, ferry timetables and island buses; Kobe–Arima prioritizes the Sannomiya connection, public baths and current hotel access; Shenzhen links to the dedicated international route lab. Time-sensitive details remain on the official operator or destination page instead of being copied into static prose.
-
-The heat-escape page converts a user-supplied 2026 ranking into ten alternative, car-free plans that can be executed from Osaka during 2026-08-03 through 2026-08-09. Each destination has a target date, route, minimum stay, booking order, removable itinerary elements, official sources, and a 48-hour go/no-go gate. The ranking image itself is not republished because its original article URL has not been verified.
+The travel quick-links hub prioritizes operational pages used on the travel day. The destination atlas connects official visual media to a concrete plan and its official publisher. The heat-escape page converts a user-supplied 2026 ranking into ten alternative, car-free plans from Osaka, each with a target date, route, minimum stay, booking order, removable elements, official sources and a 48-hour go/no-go gate.
 
 ## Product views
 
-1. **Travel planner** — saved trip selection, explainable filters, spatial context and a feasibility-aware itinerary.
-2. **Google Maps panel** — an embedded place view that follows the selected location, trip-aware transit directions, current-location navigation and a full-itinerary link.
-3. **Travel quick links** — trip-specific official links for live transport, tourism, facilities, weather and entry conditions.
-4. **Heat escape 2026** — ten ranked cool-weather destinations converted into next-week-ready Osaka-origin alternative itineraries with booking and cancellation gates.
-5. **Shenzhen route lab** — direct flight, Hong Kong airside ferry and cross-border coach patterns with route-specific failure conditions.
-6. **Knowledge model** — five domain groups and the recommended storage pipeline.
-7. **Evidence drawer** — source, publisher and retrieval date for the claims currently shaping the plan.
+1. **Decision portal** — the public front page; routes the visitor by intent instead of opening an arbitrary saved itinerary.
+2. **Planner workspace** — saved trip selection, explainable filters, spatial context, Google Maps and a feasibility-aware itinerary.
+3. **Destination atlas** — official remote visuals connected to concrete plans and publisher pages.
+4. **Heat escape 2026** — ten ranked cool-weather destinations converted into next-week-ready alternatives.
+5. **Travel quick links** — trip-specific official links for transport, tourism, facilities, weather and entry conditions.
+6. **Shenzhen route lab** — direct flight, Hong Kong airside ferry and cross-border coach patterns with route-specific failure conditions.
+7. **Site ontology** — the relationship between Decision, TripPlan, Destination, Route, EvidenceSource and MediaAsset.
 
 ## Google Maps setup
 
-The in-page map uses the official **Maps Embed API**. Search, navigation and full-itinerary actions use **Maps URLs**.
+The planner uses the official **Maps Embed API**. Search, navigation and full-itinerary actions use **Maps URLs**.
 
 Official documentation:
 
 - Maps Embed API: https://developers.google.com/maps/documentation/embed/get-started
-- Embed modes and parameters: https://developers.google.com/maps/documentation/embed/embedding-map
+- Embed modes and parameters: https://developers.google.com/maps/documentation/embedding-map
 - Maps URLs: https://developers.google.com/maps/documentation/urls/get-started
 - API key security: https://developers.google.com/maps/api-security-best-practices
 
@@ -65,13 +65,12 @@ Without the key, external Google Maps links remain available and the embedded pa
 
 ## Why this stack
 
-- **React + TypeScript + Vite** keeps the reference UI fast, typed and deployable to GitHub Pages.
-- **Google Maps Embed API + Maps URLs** provide an interactive map and cross-platform handoff without adding a server-side directions proxy.
-- **PostgreSQL** is the transactional source of truth for relationships, validity windows and integrity constraints.
-- **PostGIS** handles nearby, containment, corridor and geographic filtering with spatial indexes.
-- **Range partitions** isolate high-volume availability and price snapshots by capture time.
-- **Parquet exports** are the better boundary for analytical scans and data distribution; they do not replace the operational database.
-- **Schema.org + GTFS + PROV-O** keep external mappings explicit and avoid an isolated in-house vocabulary.
+- **Vite multi-page build** separates the static decision portal from the React planner workspace.
+- **React + TypeScript** power the stateful planner without forcing the whole site into one application view.
+- **Google Maps Embed API + Maps URLs** provide interactive map handoff without a server-side directions proxy.
+- **PostgreSQL + PostGIS** remain the operational model for relationships, validity windows and spatial filtering.
+- **Schema.org + GTFS + PROV-O** keep external mappings explicit.
+- **Remote official media manifests** preserve publisher attribution and avoid automatic local rehosting.
 
 ## Run locally
 
@@ -92,29 +91,32 @@ npm run build
 ## Repository map
 
 ```text
+index.html                              Decision-oriented public front page
+planner/index.html                      React planner HTML entry
+src/                                    Interactive planner UI and typed seed data
 src/GoogleMapsDock.tsx                  Maps Embed API and Maps URLs integration
 src/google-maps.css                     Responsive Google Maps panel styles
-src/                                    Interactive reference UI and typed seed data
+public/destinations/index.html          Official-media destination atlas
+public/heat-escape-2026/index.html      Next-week heat-escape alternatives
 public/guides/index.html                Trip-specific official quick-links hub
-public/destinations/index.html           Official-media destination atlas
-public/sitemap/index.html                Ontology-driven site map
-public/data/*.json                       Destination, media and site ontology data
-public/heat-escape-2026/index.html      Next-week heat-escape alternatives for ten ranked destinations
 public/shenzhen/index.html              Osaka–Shenzhen multimodal route lab
+public/sitemap/index.html               Ontology-driven site map
+public/data/*.json                      Destination, media and site ontology data
+scripts/                                Deterministic shell and media refresh tasks
 database/schema.sql                     PostgreSQL/PostGIS operational schema
 docs/ontology.md                        Concepts, mappings and identity rules
-.github/workflows/                       GitHub Pages deployment
+.github/workflows/                       Refresh and GitHub Pages deployment
 ```
 
 ## Database rollout
 
 1. Provision PostgreSQL with PostGIS.
 2. Apply `database/schema.sql` through a migration tool rather than manually in production.
-3. Create monthly partitions for `availability_snapshot` ahead of ingestion; the default partition is only a safety net.
+3. Create monthly partitions for `availability_snapshot` ahead of ingestion.
 4. Ingest raw records into `source` and `source_record`, then resolve canonical entities.
 5. Materialize claims and typed domain rows in one transaction.
 6. Expose planner-specific read models through an API; do not send raw normalized tables directly to the browser.
 
 ## UX principle
 
-The primary unit is a **decision**, not a place card. A result should answer four questions together: does it match the traveler, can they reach it, is it available for the party and date, and what source supports that conclusion?
+The primary unit is a **decision**, not a place card and not a saved itinerary. The root should answer “what do you want to do next?” before exposing a stateful planning workspace.
