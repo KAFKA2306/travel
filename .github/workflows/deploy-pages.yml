@@ -71,8 +71,10 @@ jobs:
             if (region.items.length !== 5) throw new Error(`${region.id} must contain exactly 5 official items`);
             const stages = new Set(region.items.map((item) => item.stage));
             if (stages.size !== 5 || [...validStages].some((stage) => !stages.has(stage))) throw new Error(`${region.id} does not cover all lifecycle stages`);
-            if (!region.officialUrl?.startsWith('https://')) throw new Error(`${region.id} has no HTTPS official URL`);
             if (region.items.some((item) => !item.url.startsWith('https://'))) throw new Error(`${region.id} contains a non-HTTPS source`);
+          }
+          for (const region of [...expansion.destinations, ...growth.destinations]) {
+            if (!region.officialUrl?.startsWith('https://')) throw new Error(`${region.id} has no HTTPS official URL`);
           }
           if (release.officialRegionCount !== regions.length) throw new Error(`release region count ${release.officialRegionCount} does not match ${regions.length}`);
           if (release.officialContentCoverage !== items.length) throw new Error(`release content count ${release.officialContentCoverage} does not match ${items.length}`);
