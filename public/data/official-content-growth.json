@@ -1,5 +1,5 @@
 {
-  "version": "2026-08-02",
+  "version": "2026-08-03",
   "principle": "Each scheduled expansion adds one non-duplicate region backed by official primary sources across all five travel lifecycle stages.",
   "destinations": [
     {
@@ -36,6 +36,24 @@
         { "stage": "plan", "type": "access", "title": "松江への交通手段", "description": "出雲縁結び空港、米子鬼太郎空港、鉄道、空港連絡バス、船などの公式交通情報を確認する。", "url": "https://www.kankou-matsue.jp/access/access", "publisher": "一般社団法人 松江観光協会" },
         { "stage": "experience", "type": "guide", "title": "松江市観光ガイド・コース一覧", "description": "松江城や城下町を地域ガイド、時代案内人、外国語通訳ガイドと歩く公式コースを選ぶ。", "url": "https://www.kankou-matsue.jp/machiaruki/course", "publisher": "一般社団法人 松江観光協会" },
         { "stage": "check", "type": "news", "title": "松江観光協会 お知らせ", "description": "交通、施設営業、イベント、暑熱対策など、訪問直前の更新情報を確認する。", "url": "https://www.kankou-matsue.jp/news", "publisher": "一般社団法人 松江観光協会" }
+      ]
+    },
+    {
+      "id": "takachiho",
+      "name": "高千穂",
+      "prefecture": "宮崎県",
+      "region": "九州・沖縄",
+      "publisher": "一般社団法人 高千穂町観光協会",
+      "officialUrl": "https://www.takachiho-kanko.info/",
+      "imageUrl": "https://s.wordpress.com/mshots/v1/https%3A%2F%2Fwww.takachiho-kanko.info%2F?w=1200",
+      "routeSummary": "熊本空港・福岡空港・宮崎方面から高速バスや車で入り、町内は路線バス、シャトルバス、タクシー、徒歩を組み合わせる。",
+      "summary": "高千穂峡の景観だけでなく、神話伝承、夜神楽、地域ガイド、移動計画、災害・営業情報を一つの滞在として読む。",
+      "items": [
+        { "stage": "discover", "type": "portal", "title": "神都高千穂 公式観光サイト", "description": "神話の舞台、高千穂峡、夜神楽、宿泊、食、季節の情報を町全体から発見する公式入口。", "url": "https://www.takachiho-kanko.info/", "publisher": "一般社団法人 高千穂町観光協会" },
+        { "stage": "understand", "type": "myth-and-culture", "title": "高千穂の魅力", "description": "天岩戸などの神話伝承と、五穀豊穣を願う夜神楽が地域文化として継承される背景を理解する。", "url": "https://www.takachiho-kanko.info/highlights/", "publisher": "一般社団法人 高千穂町観光協会" },
+        { "stage": "plan", "type": "access-and-course", "title": "アクセスとモデルコース", "description": "空港・鉄道・高速バス・車の経路を確認し、家族旅行やグループ旅行の公式モデルコースへ接続する。", "url": "https://www.takachiho-kanko.info/access/", "publisher": "一般社団法人 高千穂町観光協会" },
+        { "stage": "experience", "type": "guided-tour", "title": "おすすめツアー・体験", "description": "観光ガイドと神話ゆかりの地や高千穂峡を巡るツアー、自然・文化体験を公式予約ページから選ぶ。", "url": "https://www.takachiho-kanko.info/experience/", "publisher": "一般社団法人 高千穂町観光協会" },
+        { "stage": "check", "type": "live-operations", "title": "新着情報・当日営業状況", "description": "高千穂峡貸しボート、神楽、シャトルバス、道路・遊歩道規制、イベントの最新運用情報を訪問直前に確認する。", "url": "https://www.takachiho-kanko.info/news/", "publisher": "一般社団法人 高千穂町観光協会" }
       ]
     }
   ]
