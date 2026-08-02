@@ -1,0 +1,57 @@
+name: Capture deployed Pages UI
+
+on:
+  workflow_run:
+    workflows: ['Deploy to GitHub Pages']
+    types: [completed]
+  workflow_dispatch:
+
+permissions:
+  contents: write
+
+concurrency:
+  group: capture-pages-ui
+  cancel-in-progress: true
+
+jobs:
+  capture:
+    if: github.event_name == 'workflow_dispatch' || github.event.workflow_run.conclusion == 'success'
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout main
+        uses: actions/checkout@v4
+        with:
+          ref: main
+          fetch-depth: 0
+
+      - name: Setup Node
+        uses: actions/setup-node@v4
+        with:
+          node-version: 22
+
+      - name: Install Playwright without changing the lockfile
+        run: |
+          npm install --no-save --package-lock=false playwright@1.55.0
+          npx playwright install --with-deps chromium
+
+      - name: Wait for Pages edge propagation
+        run: sleep 20
+
+      - name: Capture desktop and mobile screenshots
+        env:
+          SITE_URL: https://kafka2306.github.io/travel
+          SCREENSHOT_DIR: docs/ui-audit/latest
+        run: node scripts/capture-pages.mjs
+
+      - name: Commit screenshot evidence
+        if: always()
+        run: |
+          git config user.name 'github-actions[bot]'
+          git config user.email '41898282+github-actions[bot]@users.noreply.github.com'
+          git add docs/ui-audit/latest
+          if git diff --cached --quiet; then
+            echo 'No screenshot changes.'
+            exit 0
+          fi
+          git commit -m 'docs(ui): capture deployed Pages screens'
+          git push
