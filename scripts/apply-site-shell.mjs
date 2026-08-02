@@ -4,9 +4,12 @@ import path from 'node:path';
 const root = process.cwd();
 const htmlFiles = [
   'index.html',
+  'planner/index.html',
   'public/guides/index.html',
   'public/shenzhen/index.html',
   'public/heat-escape-2026/index.html',
+  'public/destinations/index.html',
+  'public/sitemap/index.html',
 ];
 const stylesheet = '  <link rel="stylesheet" href="/travel/site-shell.css" />';
 const script = '  <script src="/travel/site-shell.js" defer></script>';
@@ -30,16 +33,16 @@ for (const relativePath of htmlFiles) {
 const readmePath = path.join(root, 'README.md');
 let readme = await readFile(readmePath, 'utf8');
 const before = readme;
-if (!readme.includes('**Destination atlas:**')) {
+if (!readme.includes('**Planner workspace:**')) {
   readme = readme.replace(
-    '**Travel quick links:** https://kafka2306.github.io/travel/guides/',
-    '**Travel quick links:** https://kafka2306.github.io/travel/guides/\n\n**Destination atlas:** https://kafka2306.github.io/travel/destinations/\n\n**Site ontology:** https://kafka2306.github.io/travel/sitemap/'
+    '**Live site:** https://kafka2306.github.io/travel/',
+    '**Decision portal:** https://kafka2306.github.io/travel/\n\n**Planner workspace:** https://kafka2306.github.io/travel/planner/'
   );
 }
-if (!readme.includes('public/destinations/index.html')) {
+if (!readme.includes('planner/index.html')) {
   readme = readme.replace(
-    'public/guides/index.html                Trip-specific official quick-links hub',
-    'public/guides/index.html                Trip-specific official quick-links hub\npublic/destinations/index.html           Official-media destination atlas\npublic/sitemap/index.html                Ontology-driven site map\npublic/data/*.json                       Destination, media and site ontology data'
+    'src/                                    Interactive reference UI and typed seed data',
+    'src/                                    Interactive planner UI and typed seed data\nplanner/index.html                         Planner HTML entry for the React workspace'
   );
 }
 if (readme !== before) {
