@@ -12,10 +12,13 @@ on:
       - 'scripts/sync-official-media.mjs'
       - 'scripts/apply-site-shell.mjs'
       - 'public/data/destinations.json'
+      - 'public/data/destination-media.json'
+      - 'public/data/official-content.json'
       - 'public/data/site-ontology.json'
       - 'public/site-shell.css'
       - 'public/site-shell.js'
       - 'public/destinations/index.html'
+      - 'public/official/index.html'
       - 'public/sitemap/index.html'
       - 'public/sitemap.xml'
       - 'public/release.json'
@@ -59,28 +62,39 @@ jobs:
           npm run typecheck
           npm run build
 
-      - name: Verify destination coverage and Pages output
+      - name: Verify destination, official-content and Pages coverage
         run: |
           node --input-type=module <<'NODE'
           import { readFile } from 'node:fs/promises';
           const catalog = JSON.parse(await readFile('public/data/destinations.json', 'utf8'));
           const media = JSON.parse(await readFile('public/data/destination-media.json', 'utf8'));
+          const official = JSON.parse(await readFile('public/data/official-content.json', 'utf8'));
           const ontology = JSON.parse(await readFile('public/data/site-ontology.json', 'utf8'));
           if (catalog.destinations.length !== 10) throw new Error(`expected 10 destinations, got ${catalog.destinations.length}`);
           const missing = catalog.destinations.filter((item) => !media.destinations?.[item.id]?.imageUrl);
           if (missing.length) throw new Error(`missing official visuals: ${missing.map((item) => item.id).join(', ')}`);
+          const officialItems = official.destinations.flatMap((destination) => destination.items);
+          if (official.destinations.length !== 10) throw new Error(`expected 10 official-content destinations, got ${official.destinations.length}`);
+          if (officialItems.length < 50) throw new Error(`expected at least 50 official-content items, got ${officialItems.length}`);
+          if (official.stages.length !== 5) throw new Error(`expected 5 lifecycle stages, got ${official.stages.length}`);
+          const invalidUrls = officialItems.filter((item) => !item.url.startsWith('https://'));
+          if (invalidUrls.length) throw new Error(`official content contains non-HTTPS URLs: ${invalidUrls.map((item) => item.url).join(', ')}`);
           if (!ontology.views.some((view) => view.path === '/travel/' && view.id === 'home')) throw new Error('missing decision portal ontology');
           if (!ontology.views.some((view) => view.path === '/travel/planner/' && view.id === 'planner')) throw new Error('missing planner workspace ontology');
+          if (!ontology.views.some((view) => view.path === '/travel/official/' && view.id === 'official')) throw new Error('missing official content network ontology');
           NODE
           test -s dist/index.html
           test -s dist/planner/index.html
           test -s dist/destinations/index.html
+          test -s dist/official/index.html
           test -s dist/heat-escape-2026/index.html
           test -s dist/guides/index.html
           test -s dist/shenzhen/index.html
           test -s dist/sitemap/index.html
           grep -q '旅行の判断を始める' dist/index.html
+          grep -q '公式コンテンツ・ネットワーク' dist/official/index.html
           grep -q '/travel/site-shell.js' dist/planner/index.html
+          grep -q '/travel/site-shell.js' dist/official/index.html
           grep -q '/travel/site-shell.js' dist/heat-escape-2026/index.html
 
       - name: Commit refreshed manifests and navigation
@@ -91,6 +105,6 @@ jobs:
           fi
           git config user.name 'github-actions[bot]'
           git config user.email '41898282+github-actions[bot]@users.noreply.github.com'
-          git add README.md index.html planner/index.html public/guides/index.html public/shenzhen/index.html public/heat-escape-2026/index.html public/data/destination-media.json
+          git add README.md index.html planner/index.html public/guides/index.html public/shenzhen/index.html public/heat-escape-2026/index.html public/destinations/index.html public/official/index.html public/data/destination-media.json
           git commit -m 'chore(site): refresh official media and navigation'
           git push
