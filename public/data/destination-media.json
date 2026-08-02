@@ -37,7 +37,7 @@
       "imageHost": "yamaguchi-tourism.jp"
     },
     "utsukushigahara": {
-      "imageUrl": "https://visitmatsumoto.com/common/images/ogImg.png",
+      "imageUrl": "https://visitmatsumoto.com/lsc/api/photo/?src=233",
       "sourceUrl": "https://visitmatsumoto.com/photo/detail_233.html",
       "publisher": "松本市公式観光サイト",
       "mode": "official-photo-library",
@@ -70,25 +70,25 @@
       "imageHost": "www.nikko-kankou.org"
     },
     "nasu": {
-      "imageUrl": "https://www.nasukogen.org/banner/pict/00203_1.gif",
-      "sourceUrl": "https://www.nasukogen.org/charm/",
+      "imageUrl": "https://www.nasukogen.org/blog/%E3%82%B7%E3%83%AD%E3%83%A4%E3%82%B7%E3%82%AA.jpg",
+      "sourceUrl": "https://www.nasukogen.org/blog/2026/05/post_188.html",
       "publisher": "那須町観光協会",
-      "mode": "official-og-preview",
+      "mode": "official-remote-preview",
       "status": "verified",
       "verifiedAt": "2026-08-02",
       "licenseUrl": null,
-      "licenseNote": "那須町観光協会の観光案内ページが配信する画像をリモート表示し、画像ファイルは再配布しない。",
+      "licenseNote": "那須町観光協会の公式ブログが配信する高原の自然写真をリモート表示し、画像ファイルは再配布しない。",
       "imageHost": "www.nasukogen.org"
     },
     "kirigamine": {
-      "imageUrl": "https://kirigamine.suwakanko.jp/wp/wp-content/uploads/2024/07/449592483_504892615248488_6043512208052837239_n-uai-258x110.jpg",
-      "sourceUrl": "https://kirigamine.suwakanko.jp/",
+      "imageUrl": "https://kirigamine.suwakanko.jp/wp/wp-content/uploads/2024/07/449592483_504892615248488_6043512208052837239_n.jpg",
+      "sourceUrl": "https://kirigamine.suwakanko.jp/about/",
       "publisher": "諏訪観光協会",
-      "mode": "official-og-preview",
-      "status": "stale",
+      "mode": "official-remote-preview",
+      "status": "verified",
       "verifiedAt": "2026-08-02",
       "licenseUrl": null,
-      "licenseNote": "霧ヶ峰公式サイトの紹介ページが配信する画像をリモート表示し、画像ファイルは再配布しない。",
+      "licenseNote": "霧ヶ峰公式サイトが配信する高原写真をリモート表示し、画像ファイルは再配布しない。",
       "imageHost": "kirigamine.suwakanko.jp"
     },
     "nobeyama": {
