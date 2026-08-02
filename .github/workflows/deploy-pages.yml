@@ -40,12 +40,23 @@ jobs:
           test -s dist/index.html
           test -s dist/planner/index.html
           test -s dist/destinations/index.html
+          test -s dist/official/index.html
           test -s dist/heat-escape-2026/index.html
           test -s dist/guides/index.html
           test -s dist/shenzhen/index.html
           test -s dist/sitemap/index.html
+          test -s dist/data/official-content.json
           grep -q '旅行の判断を始める' dist/index.html
           grep -q '旅程ワークスペース' dist/planner/index.html
+          grep -q '公式コンテンツ・ネットワーク' dist/official/index.html
+          node --input-type=module <<'NODE'
+          import { readFile } from 'node:fs/promises';
+          const content = JSON.parse(await readFile('dist/data/official-content.json', 'utf8'));
+          const items = content.destinations.flatMap((destination) => destination.items);
+          if (content.destinations.length !== 10) throw new Error(`expected 10 official content destinations, got ${content.destinations.length}`);
+          if (items.length < 50) throw new Error(`expected at least 50 official content items, got ${items.length}`);
+          if (content.stages.length !== 5) throw new Error(`expected 5 lifecycle stages, got ${content.stages.length}`);
+          NODE
           test -n "$(find dist/assets -maxdepth 1 -type f -print -quit)"
       - name: Upload Pages artifact
         uses: actions/upload-pages-artifact@v4
