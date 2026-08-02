@@ -3,6 +3,8 @@ name: Deploy to GitHub Pages
 on:
   push:
     branches: [main]
+    paths-ignore:
+      - 'docs/ui-audit/**'
   workflow_dispatch:
 
 permissions:
@@ -39,6 +41,9 @@ jobs:
           test -s dist/planner/index.html
           test -s dist/destinations/index.html
           test -s dist/heat-escape-2026/index.html
+          test -s dist/guides/index.html
+          test -s dist/shenzhen/index.html
+          test -s dist/sitemap/index.html
           grep -q '旅行の判断を始める' dist/index.html
           grep -q '旅程ワークスペース' dist/planner/index.html
           test -n "$(find dist/assets -maxdepth 1 -type f -print -quit)"
