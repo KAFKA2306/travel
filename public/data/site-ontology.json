@@ -1,0 +1,101 @@
+{
+  "version": "2026-08-02",
+  "baseUrl": "https://kafka2306.github.io/travel",
+  "principle": "A travel page should lead from a decision to a place, route, evidence, official media and next action without making the user reconstruct the chain.",
+  "classes": [
+    {
+      "id": "Decision",
+      "label": "判断",
+      "description": "日数、予算、移動負荷、気象リスクを踏まえた選択単位。"
+    },
+    {
+      "id": "TripPlan",
+      "label": "旅程",
+      "description": "出発地、日付、人数、交通、宿泊、撤退条件を持つ実行可能な計画。"
+    },
+    {
+      "id": "Destination",
+      "label": "旅先",
+      "description": "訪問対象となる地域、景勝地、施設または交通拠点。"
+    },
+    {
+      "id": "Route",
+      "label": "経路",
+      "description": "出発地から旅先までをつなぐ交通手段と接続条件。"
+    },
+    {
+      "id": "GuideHub",
+      "label": "公式リンク集",
+      "description": "運行、営業、予約、天気など当日の確認に使う一次情報への入口。"
+    },
+    {
+      "id": "EvidenceSource",
+      "label": "根拠",
+      "description": "旅程の時刻、料金、営業、アクセスを支える公式情報。"
+    },
+    {
+      "id": "MediaAsset",
+      "label": "公式ビジュアル",
+      "description": "公式サイト、公式フォトライブラリー、公式チャンネルが配信する画像またはプレビュー。"
+    },
+    {
+      "id": "SiteView",
+      "label": "画面",
+      "description": "利用者の目的別に上記エンティティを組み合わせるUI。"
+    }
+  ],
+  "relations": [
+    { "from": "Decision", "predicate": "selects", "to": "TripPlan", "label": "判断が旅程を選ぶ" },
+    { "from": "TripPlan", "predicate": "targets", "to": "Destination", "label": "旅程が旅先を対象にする" },
+    { "from": "TripPlan", "predicate": "uses", "to": "Route", "label": "旅程が経路を使う" },
+    { "from": "TripPlan", "predicate": "supportedBy", "to": "EvidenceSource", "label": "旅程が根拠に支えられる" },
+    { "from": "Destination", "predicate": "describedBy", "to": "GuideHub", "label": "旅先が公式リンク集で説明される" },
+    { "from": "Destination", "predicate": "depictedBy", "to": "MediaAsset", "label": "旅先が公式ビジュアルで表現される" },
+    { "from": "MediaAsset", "predicate": "publishedBy", "to": "EvidenceSource", "label": "ビジュアルの配信主体を記録する" },
+    { "from": "SiteView", "predicate": "presents", "to": "Decision", "label": "画面が判断を提示する" }
+  ],
+  "views": [
+    {
+      "path": "/travel/",
+      "id": "planner",
+      "label": "旅程ワークスペース",
+      "primaryClass": "TripPlan",
+      "purpose": "保存済み旅程、地図、候補地、根拠を同じ判断画面で扱う。"
+    },
+    {
+      "path": "/travel/destinations/",
+      "id": "destinations",
+      "label": "旅先図鑑",
+      "primaryClass": "Destination",
+      "purpose": "公式ビジュアルから旅先を比較し、計画と一次情報へ移動する。"
+    },
+    {
+      "path": "/travel/heat-escape-2026/",
+      "id": "heat-escape",
+      "label": "猛暑回避10プラン",
+      "primaryClass": "Decision",
+      "purpose": "10候補を日数、交通、予約順、撤退条件で比較する。"
+    },
+    {
+      "path": "/travel/guides/",
+      "id": "guides",
+      "label": "公式リンク集",
+      "primaryClass": "GuideHub",
+      "purpose": "旅行当日に使う運行、時刻、営業、天気の公式ページへ接続する。"
+    },
+    {
+      "path": "/travel/shenzhen/",
+      "id": "shenzhen",
+      "label": "深圳 Route Lab",
+      "primaryClass": "Route",
+      "purpose": "国際・複合交通の経路候補と失敗条件を比較する。"
+    },
+    {
+      "path": "/travel/sitemap/",
+      "id": "sitemap",
+      "label": "サイト構造",
+      "primaryClass": "SiteView",
+      "purpose": "ページ、データ、エンティティ間の関係を可視化する。"
+    }
+  ]
+}
