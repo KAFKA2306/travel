@@ -1,6 +1,6 @@
 {
-  "release": "official-content-network-expanded-2026-08-02",
-  "publishedAt": "2026-08-02T18:43:00+09:00",
+  "release": "official-content-network-expanded-2026-08-02-r2",
+  "publishedAt": "2026-08-02T21:00:00+09:00",
   "views": [
     "/travel/",
     "/travel/planner/",
@@ -12,11 +12,12 @@
     "/travel/sitemap/"
   ],
   "destinationCount": 10,
-  "officialRegionCount": 16,
-  "expansionRegionCount": 6,
+  "officialRegionCount": 17,
+  "expansionRegionCount": 7,
   "officialVisualCoverage": 10,
-  "officialContentCoverage": 80,
+  "officialContentCoverage": 85,
   "officialContentStages": 5,
+  "latestAddedRegion": "aso",
   "rootRole": "decision portal",
   "plannerRole": "saved itinerary workspace",
   "officialRole": "official tourism content organized by travel lifecycle",
