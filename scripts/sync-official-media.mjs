@@ -34,6 +34,8 @@ const resolveUrl = (value, baseUrl) => {
   }
 };
 
+const officialPageSnapshot = (sourceUrl) => `https://s.wordpress.com/mshots/v1/${encodeURIComponent(sourceUrl)}?w=1200`;
+
 const extractOfficialImage = (html, baseUrl, destinationName) => {
   const metaCandidates = [];
   for (const match of html.matchAll(/<meta\b[^>]*>/gi)) {
@@ -125,24 +127,30 @@ for (const destination of catalog.destinations) {
     }
   }
 
-  const unchanged = imageUrl === previous.imageUrl && sourceUrl === previous.sourceUrl && status === previous.status;
+  if (!imageUrl) {
+    imageUrl = officialPageSnapshot(sourceUrl);
+    status = 'official-page-snapshot';
+  }
+
+  const mode = status === 'official-page-snapshot' ? 'official-page-snapshot' : destination.mediaPolicy;
+  const unchanged = imageUrl === previous.imageUrl && sourceUrl === previous.sourceUrl && status === previous.status && mode === previous.mode;
   generated[destination.id] = {
     imageUrl,
     sourceUrl,
     publisher: destination.publisher,
-    mode: destination.mediaPolicy,
+    mode,
     status,
-    verifiedAt: unchanged ? (previous.verifiedAt || null) : (imageUrl ? today : null),
+    verifiedAt: unchanged ? (previous.verifiedAt || null) : today,
     licenseUrl: destination.licenseUrl || null,
     licenseNote: destination.licenseNote,
-    imageHost: imageUrl ? new URL(imageUrl).host : null,
+    imageHost: new URL(imageUrl).host,
   };
 }
 
 const output = {
   version: catalog.version,
   generatedBy: 'scripts/sync-official-media.mjs',
-  policy: 'remote-official-preview-first; no automatic local rehosting',
+  policy: 'official-og-first; official-page-snapshot fallback; no automatic local rehosting',
   destinations: generated,
 };
 await writeFile(outputPath, `${JSON.stringify(output, null, 2)}\n`, 'utf8');
