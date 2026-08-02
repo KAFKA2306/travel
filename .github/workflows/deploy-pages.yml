@@ -90,18 +90,95 @@ jobs:
         with:
           path: dist
 
-  deploy:
+  deploy-and-audit:
     environment:
       name: github-pages
       url: ${{ steps.deployment.outputs.page_url }}
     runs-on: ubuntu-latest
-    timeout-minutes: 15
+    timeout-minutes: 35
     needs: build
     steps:
       - name: Deploy to GitHub Pages
         id: deployment
         uses: actions/deploy-pages@v4
-      - name: Checkout deployed revision
+
+      - name: Checkout main for evidence
         uses: actions/checkout@v4
-      - name: Mark deployed revision
+        with:
+          ref: main
+          fetch-depth: 0
+
+      - name: Mark exact deployed revision
         run: git push --force origin "${GITHUB_SHA}:refs/heads/deployed-pages"
+
+      - name: Setup Node for UI audit
+        uses: actions/setup-node@v4
+        with:
+          node-version: 22
+
+      - name: Install Playwright
+        run: |
+          npm install --no-save --package-lock=false playwright@1.55.0
+          npx playwright install --with-deps chromium
+
+      - name: Wait for Pages edge propagation
+        run: sleep 30
+
+      - name: Capture desktop and mobile screenshots
+        id: capture
+        continue-on-error: true
+        env:
+          SITE_URL: https://kafka2306.github.io/travel
+          SCREENSHOT_DIR: docs/ui-audit/latest
+        run: node scripts/capture-pages.mjs
+
+      - name: Upload screenshot bundle
+        id: screenshots
+        if: ${{ !cancelled() && (steps.capture.outcome == 'success' || steps.capture.outcome == 'failure') }}
+        uses: actions/upload-artifact@v4
+        with:
+          name: travel-ui-screenshots-${{ github.run_id }}
+          path: docs/ui-audit/latest
+          if-no-files-found: error
+          retention-days: 14
+
+      - name: Record exact audit provenance
+        if: ${{ !cancelled() && (steps.capture.outcome == 'success' || steps.capture.outcome == 'failure') }}
+        env:
+          ARTIFACT_ID: ${{ steps.screenshots.outputs.artifact-id }}
+          ARTIFACT_URL: ${{ steps.screenshots.outputs.artifact-url }}
+          CAPTURE_OUTCOME: ${{ steps.capture.outcome }}
+          SOURCE_SHA: ${{ github.sha }}
+        run: |
+          node --input-type=module <<'NODE'
+          import { readFile, writeFile } from 'node:fs/promises';
+          const report = JSON.parse(await readFile('docs/ui-audit/latest/report.json', 'utf8'));
+          const metadata = {
+            runId: process.env.GITHUB_RUN_ID,
+            runAttempt: process.env.GITHUB_RUN_ATTEMPT,
+            artifactId: process.env.ARTIFACT_ID,
+            artifactUrl: process.env.ARTIFACT_URL,
+            sourceSha: process.env.SOURCE_SHA,
+            generatedAt: report.generatedAt,
+            captureOutcome: process.env.CAPTURE_OUTCOME,
+          };
+          await writeFile('docs/ui-audit/latest/artifact.json', `${JSON.stringify(metadata, null, 2)}\n`);
+          NODE
+
+      - name: Commit screenshot evidence
+        if: ${{ !cancelled() && (steps.capture.outcome == 'success' || steps.capture.outcome == 'failure') }}
+        run: |
+          git config user.name 'github-actions[bot]'
+          git config user.email '41898282+github-actions[bot]@users.noreply.github.com'
+          git add docs/ui-audit/latest
+          if git diff --cached --quiet; then
+            echo 'No screenshot changes.'
+            exit 0
+          fi
+          git commit -m 'docs(ui): capture deployed Pages screens'
+          git pull --rebase origin main
+          git push origin HEAD:main
+
+      - name: Enforce screenshot audit result
+        if: ${{ !cancelled() && steps.capture.outcome == 'failure' }}
+        run: exit 1
