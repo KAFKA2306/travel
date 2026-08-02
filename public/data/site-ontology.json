@@ -1,7 +1,7 @@
 {
   "version": "2026-08-02",
   "baseUrl": "https://kafka2306.github.io/travel",
-  "principle": "A travel page should lead from a decision to a place, route, evidence, official media and next action without making the user reconstruct the chain.",
+  "principle": "The root is a decision portal. Editing a specific itinerary is a subordinate workspace, not the default front page.",
   "classes": [
     {
       "id": "Decision",
@@ -45,22 +45,29 @@
     }
   ],
   "relations": [
+    { "from": "SiteView", "predicate": "startsWith", "to": "Decision", "label": "ホームは最初の目的選択を提示する" },
     { "from": "Decision", "predicate": "selects", "to": "TripPlan", "label": "判断が旅程を選ぶ" },
     { "from": "TripPlan", "predicate": "targets", "to": "Destination", "label": "旅程が旅先を対象にする" },
     { "from": "TripPlan", "predicate": "uses", "to": "Route", "label": "旅程が経路を使う" },
     { "from": "TripPlan", "predicate": "supportedBy", "to": "EvidenceSource", "label": "旅程が根拠に支えられる" },
     { "from": "Destination", "predicate": "describedBy", "to": "GuideHub", "label": "旅先が公式リンク集で説明される" },
     { "from": "Destination", "predicate": "depictedBy", "to": "MediaAsset", "label": "旅先が公式ビジュアルで表現される" },
-    { "from": "MediaAsset", "predicate": "publishedBy", "to": "EvidenceSource", "label": "ビジュアルの配信主体を記録する" },
-    { "from": "SiteView", "predicate": "presents", "to": "Decision", "label": "画面が判断を提示する" }
+    { "from": "MediaAsset", "predicate": "publishedBy", "to": "EvidenceSource", "label": "ビジュアルの配信主体を記録する" }
   ],
   "views": [
     {
       "path": "/travel/",
+      "id": "home",
+      "label": "判断ポータル",
+      "primaryClass": "Decision",
+      "purpose": "旅を探す、比較する、編集する、当日確認する、という次の行動を選ぶ。"
+    },
+    {
+      "path": "/travel/planner/",
       "id": "planner",
       "label": "旅程ワークスペース",
       "primaryClass": "TripPlan",
-      "purpose": "保存済み旅程、地図、候補地、根拠を同じ判断画面で扱う。"
+      "purpose": "保存済み旅程、地図、候補地、根拠を同じ編集画面で扱う。"
     },
     {
       "path": "/travel/destinations/",
