@@ -9,6 +9,7 @@ const htmlFiles = [
   'public/shenzhen/index.html',
   'public/heat-escape-2026/index.html',
   'public/destinations/index.html',
+  'public/official/index.html',
   'public/sitemap/index.html',
 ];
 const stylesheet = '  <link rel="stylesheet" href="/travel/site-shell.css" />';
@@ -39,10 +40,22 @@ if (!readme.includes('**Planner workspace:**')) {
     '**Decision portal:** https://kafka2306.github.io/travel/\n\n**Planner workspace:** https://kafka2306.github.io/travel/planner/'
   );
 }
+if (!readme.includes('**Official content network:**')) {
+  readme = readme.replace(
+    '**Destination atlas:** https://kafka2306.github.io/travel/destinations/',
+    '**Destination atlas:** https://kafka2306.github.io/travel/destinations/\n\n**Official content network:** https://kafka2306.github.io/travel/official/'
+  );
+}
 if (!readme.includes('planner/index.html')) {
   readme = readme.replace(
     'src/                                    Interactive reference UI and typed seed data',
     'src/                                    Interactive planner UI and typed seed data\nplanner/index.html                         Planner HTML entry for the React workspace'
+  );
+}
+if (!readme.includes('public/official/index.html')) {
+  readme = readme.replace(
+    'public/destinations/index.html           Official-media destination atlas',
+    'public/destinations/index.html           Official-media destination atlas\npublic/official/index.html               Official content network organized by travel lifecycle'
   );
 }
 if (readme !== before) {
