@@ -1,0 +1,114 @@
+{
+  "version": "2026-08-02",
+  "principle": "Expansion regions are curated from official primary sources and follow the same travel lifecycle as the core collection.",
+  "destinations": [
+    {
+      "id": "shiretoko",
+      "name": "知床",
+      "prefecture": "北海道",
+      "region": "北海道",
+      "publisher": "知床斜里町観光協会",
+      "officialUrl": "https://www.shiretoko.asia/",
+      "imageUrl": "https://s.wordpress.com/mshots/v1/https%3A%2F%2Fwww.shiretoko.asia%2F?w=1200",
+      "routeSummary": "女満別空港・網走方面から斜里、ウトロへ移動し、路線バスやレンタカーを組み合わせる。",
+      "summary": "絶景の消費ではなく、世界自然遺産の生態系、ヒグマとの共存、安全対策、ガイド体験を一体として読む。",
+      "items": [
+        { "stage": "discover", "type": "story", "title": "知床の観光情報", "description": "四季の景観、自然体験、地域事業者、最新情報を俯瞰する公式入口。", "url": "https://www.shiretoko.asia/", "publisher": "知床斜里町観光協会" },
+        { "stage": "understand", "type": "heritage", "title": "世界自然遺産と旅の豆知識", "description": "海・川・陸をつなぐ食物連鎖、温泉、野生動物、季節と服装を学ぶ。", "url": "https://www.shiretoko.asia/shiretoko_trip_guide", "publisher": "知床斜里町観光協会" },
+        { "stage": "plan", "type": "access", "title": "知床までのアクセス", "description": "空港、鉄道、バス、車を組み合わせた地域への入り方を確認する。", "url": "https://www.shiretoko.asia/access", "publisher": "知床斜里町観光協会" },
+        { "stage": "experience", "type": "guide", "title": "自然体験・ネイチャーガイド", "description": "森林、野生動物、流氷などを地域のガイドと体験する。", "url": "https://www.shiretoko.asia/list/nature_experience", "publisher": "知床斜里町観光協会" },
+        { "stage": "check", "type": "safety", "title": "知床の安全対策", "description": "観光船、自然体験、登山などの安全方針と確認事項を読む。", "url": "https://www.shiretoko.asia/safety", "publisher": "知床斜里町観光協会" }
+      ]
+    },
+    {
+      "id": "sado",
+      "name": "佐渡",
+      "prefecture": "新潟県",
+      "region": "北陸・甲信越",
+      "publisher": "佐渡観光交流機構",
+      "officialUrl": "https://www.visitsado.com/",
+      "imageUrl": "https://s.wordpress.com/mshots/v1/https%3A%2F%2Fwww.visitsado.com%2F?w=1200",
+      "routeSummary": "新潟港から両津港、または直江津港から小木港へ渡り、島内バスやレンタカーで巡る。",
+      "summary": "金銀山やトキだけに閉じず、島の歴史、芸能、集落、航路、ガイドとの対話を一つの滞在として組み立てる。",
+      "items": [
+        { "stage": "discover", "type": "portal", "title": "さど観光ナビ", "description": "四季、文化、世界遺産、食、体験を横断して佐渡を発見する。", "url": "https://www.visitsado.com/", "publisher": "佐渡観光交流機構" },
+        { "stage": "understand", "type": "beginner", "title": "初めて佐渡に来る方へ", "description": "島の大きさ、必要日数、移動方法、旅の組み立て方を最初に把握する。", "url": "https://www.visitsado.com/usefulinfo/beginner/", "publisher": "佐渡観光交流機構" },
+        { "stage": "plan", "type": "course", "title": "佐渡モデルコース", "description": "日数、テーマ、交通手段から実行可能な島内旅程を選ぶ。", "url": "https://www.visitsado.com/model/", "publisher": "佐渡観光交流機構" },
+        { "stage": "experience", "type": "guide", "title": "佐渡観光ガイド紹介", "description": "金銀山、トキ、歴史文化などを地域の認定ガイドと深く体験する。", "url": "https://www.visitsado.com/guide/", "publisher": "佐渡観光交流機構" },
+        { "stage": "check", "type": "live-info", "title": "旅のお役立ち情報", "description": "航路、路線バス、季節運行、観光案内など訪問直前の情報を確認する。", "url": "https://www.visitsado.com/usefulinfo/", "publisher": "佐渡観光交流機構" }
+      ]
+    },
+    {
+      "id": "kanazawa",
+      "name": "金沢",
+      "prefecture": "石川県",
+      "region": "北陸・甲信越",
+      "publisher": "金沢市観光協会",
+      "officialUrl": "https://visitkanazawa.jp/",
+      "imageUrl": "https://s.wordpress.com/mshots/v1/https%3A%2F%2Fvisitkanazawa.jp%2Fen%2F?w=1200",
+      "routeSummary": "鉄道で金沢駅へ入り、徒歩と路線バスを中心に歴史地区、庭園、市場、文化施設をつなぐ。",
+      "summary": "名所のチェックリストではなく、武家文化、茶屋街、工芸、食、現代美術を地域の創造性として読み解く。",
+      "items": [
+        { "stage": "discover", "type": "introduction", "title": "初めての金沢", "description": "歴史、工芸、食、庭園、現代文化をコンパクトな都市体験として俯瞰する。", "url": "https://visitkanazawa.jp/en/feature/detail_240.html", "publisher": "金沢市観光協会" },
+        { "stage": "understand", "type": "culture", "title": "Thoughtful Travel Guide", "description": "地域文化への敬意、持続可能な訪問、暮らしとの距離感を学ぶ。", "url": "https://visitkanazawa.jp/en/traveler/", "publisher": "金沢市観光協会" },
+        { "stage": "plan", "type": "itinerary", "title": "公式モデルコース", "description": "定番、文化、食、周辺地域を組み合わせた旅程を選ぶ。", "url": "https://visitkanazawa.jp/en/itineraries/index.html", "publisher": "金沢市観光協会" },
+        { "stage": "experience", "type": "activity", "title": "Hello Kanazawa 体験", "description": "工芸、茶文化、芸能、地域の人との交流を予約可能な体験から探す。", "url": "https://visitkanazawa.jp/en/activities/index.html", "publisher": "金沢市観光協会" },
+        { "stage": "check", "type": "practical", "title": "Know Before You Go", "description": "交通、マナー、天候、ライブカメラなど旅行前の実用情報を確認する。", "url": "https://visitkanazawa.jp/en/know-before-you-go/index.html", "publisher": "金沢市観光協会" }
+      ]
+    },
+    {
+      "id": "shirakawa-go",
+      "name": "白川郷",
+      "prefecture": "岐阜県",
+      "region": "東海",
+      "publisher": "白川郷観光協会",
+      "officialUrl": "https://shirakawa-go.gr.jp/",
+      "imageUrl": "https://s.wordpress.com/mshots/v1/https%3A%2F%2Fshirakawa-go.gr.jp%2F?w=1200",
+      "routeSummary": "金沢、高山、富山、名古屋などの交通拠点から高速バスで白川郷バスターミナルへ向かう。",
+      "summary": "合掌造りの写真だけでなく、生活文化、建築、保存、地域ガイド、混雑回避まで含めて集落を理解する。",
+      "items": [
+        { "stage": "discover", "type": "portal", "title": "白川郷観光協会公式サイト", "description": "集落、季節、宿泊、食、最新情報を地域全体から見渡す。", "url": "https://shirakawa-go.gr.jp/", "publisher": "白川郷観光協会" },
+        { "stage": "understand", "type": "museum", "title": "観る・楽しむ", "description": "合掌造り民家園やミュージアムなど、建築と暮らしを学ぶ施設を探す。", "url": "https://shirakawa-go.gr.jp/active/", "publisher": "白川郷観光協会" },
+        { "stage": "plan", "type": "map", "title": "観光マップ・公式ガイドブック", "description": "エリアマップと公式ガイドブックを取得して徒歩動線を組み立てる。", "url": "https://shirakawa-go.gr.jp/download/", "publisher": "白川郷観光協会" },
+        { "stage": "experience", "type": "tour", "title": "ツアー・アクティビティ", "description": "地元ガイド、自然体験、文化体験から滞在の深度を選ぶ。", "url": "https://shirakawa-go.gr.jp/tours/", "publisher": "白川郷観光協会" },
+        { "stage": "check", "type": "news", "title": "お知らせ・イベント", "description": "交通、駐車場、イベント、季節の注意事項を訪問前に確認する。", "url": "https://shirakawa-go.gr.jp/events/", "publisher": "白川郷観光協会" }
+      ]
+    },
+    {
+      "id": "koyasan",
+      "name": "高野山",
+      "prefecture": "和歌山県",
+      "region": "関西",
+      "publisher": "高野山真言宗 総本山金剛峯寺",
+      "officialUrl": "https://www.koyasan.or.jp/",
+      "imageUrl": "https://s.wordpress.com/mshots/v1/https%3A%2F%2Fwww.koyasan.or.jp%2F?w=1200",
+      "routeSummary": "大阪・なんば方面から南海高野線で極楽橋へ進み、ケーブルカーと山内交通を利用する。",
+      "summary": "寺院を巡る観光から、真言密教の歴史、祈り、行事、写経や瞑想、参拝作法へ体験を深める。",
+      "items": [
+        { "stage": "discover", "type": "sacred-place", "title": "高野山・金剛峯寺公式案内", "description": "聖地の歴史、主要伽藍、最新の拝観情報へ入る公式入口。", "url": "https://www.koyasan.or.jp/", "publisher": "高野山真言宗 総本山金剛峯寺" },
+        { "stage": "understand", "type": "heritage", "title": "高野山の見どころ", "description": "壇上伽藍、奥之院、金剛峯寺などを歴史と宗教的意味から理解する。", "url": "https://www.koyasan.or.jp/meguru/", "publisher": "高野山真言宗 総本山金剛峯寺" },
+        { "stage": "plan", "type": "access", "title": "交通アクセス", "description": "鉄道、ケーブルカー、車、山内交通と参拝案内を確認する。", "url": "https://www.koyasan.or.jp/access/", "publisher": "高野山真言宗 総本山金剛峯寺" },
+        { "stage": "experience", "type": "practice", "title": "高野山で体験", "description": "瞑想、写経、御詠歌、華道など、目と身体で伝統に触れる。", "url": "https://www.koyasan.or.jp/experience/", "publisher": "高野山真言宗 総本山金剛峯寺" },
+        { "stage": "check", "type": "calendar", "title": "年中行事", "description": "法会、儀式、季節行事と拝観への影響を事前に確認する。", "url": "https://www.koyasan.or.jp/kongobuji/event.html", "publisher": "高野山真言宗 総本山金剛峯寺" }
+      ]
+    },
+    {
+      "id": "yakushima",
+      "name": "屋久島",
+      "prefecture": "鹿児島県",
+      "region": "九州・沖縄",
+      "publisher": "屋久島観光協会",
+      "officialUrl": "https://yakukan.jp/",
+      "imageUrl": "https://s.wordpress.com/mshots/v1/https%3A%2F%2Fyakukan.jp%2F?w=1200",
+      "routeSummary": "鹿児島から飛行機、高速船またはフェリーで入り、島内バスやレンタカーで移動する。",
+      "summary": "縄文杉だけに集中せず、森、海、里、雨、ガイド、安全、島民との関係を含む世界自然遺産の旅として構成する。",
+      "items": [
+        { "stage": "discover", "type": "portal", "title": "屋久島観光協会公式サイト", "description": "世界自然遺産の自然、集落、食、体験、宿泊を島全体から探す。", "url": "https://yakukan.jp/", "publisher": "屋久島観光協会" },
+        { "stage": "understand", "type": "etiquette", "title": "旅の心得とマナー", "description": "自然環境と島民の暮らしを尊重する訪問ルールを理解する。", "url": "https://yakukan.jp/guideline.html", "publisher": "屋久島観光協会" },
+        { "stage": "plan", "type": "brochure", "title": "パンフレット・登山ガイドマップ", "description": "自治体発行の観光資料、登山ガイド、島内マップを取得する。", "url": "https://yakukan.jp/safe-travel/brochure-download.html", "publisher": "屋久島観光協会" },
+        { "stage": "experience", "type": "activity", "title": "体験・アクティビティ", "description": "登山、森、海、川、工芸、ウェルネスを地域のガイドから選ぶ。", "url": "https://yakukan.jp/experience/", "publisher": "屋久島観光協会" },
+        { "stage": "check", "type": "topics", "title": "最新トピックス", "description": "交通、登山、施設、イベントなど島内の更新情報を確認する。", "url": "https://yakukan.jp/topics", "publisher": "屋久島観光協会" }
+      ]
+    }
+  ]
+}
