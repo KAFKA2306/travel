@@ -1,0 +1,59 @@
+{
+  "version": "2026-08-02",
+  "principle": "Each scheduled expansion adds one non-duplicate region backed by official primary sources across all five travel lifecycle stages.",
+  "destinations": [
+    {
+      "id": "aso",
+      "name": "阿蘇",
+      "prefecture": "熊本県",
+      "region": "九州・沖縄",
+      "publisher": "NPO法人ASO田園空間博物館（道の駅阿蘇）",
+      "officialUrl": "https://www.aso-denku.jp/",
+      "imageUrl": "https://s.wordpress.com/mshots/v1/https%3A%2F%2Fwww.aso-denku.jp%2F?w=1200",
+      "routeSummary": "熊本駅からJR豊肥本線で阿蘇駅へ、または阿蘇くまもと空港・熊本市内からバスや車で入り、山上と阿蘇谷を結ぶ。",
+      "summary": "火山景観だけでなく、人と草原がつくる田園空間、地域資源の保全、牧野ガイド体験、火口規制を一体として読む。",
+      "items": [
+        {
+          "stage": "discover",
+          "type": "portal",
+          "title": "道の駅阿蘇・ASO田園空間博物館",
+          "description": "景観、食、観光スポット、イベント、アクティビティを阿蘇市全体から発見する公式入口。",
+          "url": "https://www.aso-denku.jp/",
+          "publisher": "NPO法人ASO田園空間博物館（道の駅阿蘇）"
+        },
+        {
+          "stage": "understand",
+          "type": "landscape-museum",
+          "title": "ASO田園空間博物館とは",
+          "description": "阿蘇市全体を屋根のない博物館として捉え、自然・景観・歴史文化を地域住民と保全活用する考え方を理解する。",
+          "url": "https://www.aso-denku.jp/denku/",
+          "publisher": "NPO法人ASO田園空間博物館（道の駅阿蘇）"
+        },
+        {
+          "stage": "plan",
+          "type": "access",
+          "title": "アクセス・交通情報",
+          "description": "熊本駅、阿蘇くまもと空港、熊本市、大分方面からの鉄道・バス・車の入り方と関連交通情報を確認する。",
+          "url": "https://www.aso-denku.jp/access/",
+          "publisher": "NPO法人ASO田園空間博物館（道の駅阿蘇）"
+        },
+        {
+          "stage": "experience",
+          "type": "guided-activity",
+          "title": "阿蘇アクティビティツアー",
+          "description": "許可を受けたガイドと牧野を巡るサイクリングやトレッキングなど、保全につながる体験を選ぶ。",
+          "url": "https://www.aso-denku.jp/topcontents/activity-tours/",
+          "publisher": "NPO法人ASO田園空間博物館（道の駅阿蘇）"
+        },
+        {
+          "stage": "check",
+          "type": "safety",
+          "title": "阿蘇中岳火口の見学規制情報",
+          "description": "噴火警戒レベルや火口周辺の立入規制など、訪問直前に必要な安全情報を確認する。",
+          "url": "https://www.aso-denku.jp/information/2026/05/%E3%80%90%E8%A6%8B%E5%AD%A6%E8%A6%8F%E5%88%B6%E3%80%91%E9%98%BF%E8%98%87%E4%B8%AD%E5%B2%B3%E7%81%AB%E5%8F%A3%E8%A6%8B%E5%AD%A6%E3%81%AB%E3%81%A4%E3%81%84%E3%81%A6/",
+          "publisher": "NPO法人ASO田園空間博物館（道の駅阿蘇）"
+        }
+      ]
+    }
+  ]
+}
