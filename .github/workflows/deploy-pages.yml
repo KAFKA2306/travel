@@ -14,11 +14,12 @@ permissions:
 
 concurrency:
   group: pages
-  cancel-in-progress: true
+  cancel-in-progress: false
 
 jobs:
   build:
     runs-on: ubuntu-latest
+    timeout-minutes: 20
     steps:
       - name: Checkout
         uses: actions/checkout@v4
@@ -48,6 +49,7 @@ jobs:
           test -s dist/data/official-content.json
           test -s dist/data/official-content-expansion.json
           test -s dist/data/official-content-growth.json
+          test -s dist/release.json
           grep -q '旅行の判断を始める' dist/index.html
           grep -q '旅程ワークスペース' dist/planner/index.html
           grep -q '公式コンテンツ・ネットワーク' dist/official/index.html
@@ -57,13 +59,11 @@ jobs:
           const content = JSON.parse(await readFile('dist/data/official-content.json', 'utf8'));
           const expansion = JSON.parse(await readFile('dist/data/official-content-expansion.json', 'utf8'));
           const growth = JSON.parse(await readFile('dist/data/official-content-growth.json', 'utf8'));
+          const release = JSON.parse(await readFile('dist/release.json', 'utf8'));
           const regions = [...content.destinations, ...expansion.destinations, ...growth.destinations];
           const items = regions.flatMap((destination) => destination.items);
           if (content.destinations.length !== 10) throw new Error(`expected 10 core official content regions, got ${content.destinations.length}`);
-          if (expansion.destinations.length !== 6) throw new Error(`expected 6 expansion regions, got ${expansion.destinations.length}`);
-          if (growth.destinations.length !== 6) throw new Error(`expected 6 scheduled-growth regions, got ${growth.destinations.length}`);
-          if (regions.length !== 22) throw new Error(`expected 22 official content regions, got ${regions.length}`);
-          if (items.length !== 110) throw new Error(`expected 110 official content items, got ${items.length}`);
+          if (expansion.destinations.length < 6) throw new Error(`expected at least 6 expansion regions, got ${expansion.destinations.length}`);
           if (new Set(regions.map((region) => region.id)).size !== regions.length) throw new Error('duplicate official content region id');
           if (content.stages.length !== 5) throw new Error(`expected 5 lifecycle stages, got ${content.stages.length}`);
           const validStages = new Set(content.stages.map((stage) => stage.id));
@@ -71,8 +71,14 @@ jobs:
             if (region.items.length !== 5) throw new Error(`${region.id} must contain exactly 5 official items`);
             const stages = new Set(region.items.map((item) => item.stage));
             if (stages.size !== 5 || [...validStages].some((stage) => !stages.has(stage))) throw new Error(`${region.id} does not cover all lifecycle stages`);
+            if (!region.officialUrl?.startsWith('https://')) throw new Error(`${region.id} has no HTTPS official URL`);
             if (region.items.some((item) => !item.url.startsWith('https://'))) throw new Error(`${region.id} contains a non-HTTPS source`);
           }
+          if (release.officialRegionCount !== regions.length) throw new Error(`release region count ${release.officialRegionCount} does not match ${regions.length}`);
+          if (release.officialContentCoverage !== items.length) throw new Error(`release content count ${release.officialContentCoverage} does not match ${items.length}`);
+          if (release.expansionRegionCount !== expansion.destinations.length + growth.destinations.length) throw new Error('release expansion count is stale');
+          const latestGrowth = growth.destinations.at(-1)?.id;
+          if (latestGrowth && release.latestAddedRegion !== latestGrowth) throw new Error(`release latestAddedRegion ${release.latestAddedRegion} does not match ${latestGrowth}`);
           NODE
           test -n "$(find dist/assets -maxdepth 1 -type f -print -quit)"
       - name: Upload Pages artifact
@@ -85,6 +91,7 @@ jobs:
       name: github-pages
       url: ${{ steps.deployment.outputs.page_url }}
     runs-on: ubuntu-latest
+    timeout-minutes: 15
     needs: build
     steps:
       - name: Deploy to GitHub Pages
