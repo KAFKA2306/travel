@@ -4,6 +4,12 @@ on:
   workflow_run:
     workflows: ['Deploy to GitHub Pages']
     types: [completed]
+  push:
+    branches: [main]
+    paths:
+      - '.github/workflows/capture-pages-ui.yml'
+      - 'scripts/capture-pages.mjs'
+      - 'public/release.json'
   workflow_dispatch:
 
 permissions:
@@ -15,7 +21,7 @@ concurrency:
 
 jobs:
   capture:
-    if: github.event_name == 'workflow_dispatch' || github.event.workflow_run.conclusion == 'success'
+    if: github.event_name != 'workflow_run' || github.event.workflow_run.conclusion == 'success'
     runs-on: ubuntu-latest
     steps:
       - name: Checkout main
@@ -38,7 +44,7 @@ jobs:
           npx playwright install --with-deps chromium
 
       - name: Wait for Pages edge propagation
-        run: sleep 20
+        run: sleep 45
 
       - name: Capture desktop and mobile screenshots
         id: capture
