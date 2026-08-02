@@ -1,4 +1,4 @@
-name: Refresh official media and site structure
+name: Validate site structure
 
 on:
   push:
@@ -9,7 +9,6 @@ on:
       - 'planner/index.html'
       - 'vite.config.ts'
       - 'src/**'
-      - 'scripts/sync-official-media.mjs'
       - 'scripts/apply-site-shell.mjs'
       - 'public/data/destinations.json'
       - 'public/data/destination-media.json'
@@ -29,29 +28,24 @@ on:
     - cron: '20 21 * * *'
 
 permissions:
-  contents: write
+  contents: read
 
 concurrency:
-  group: refresh-site-structure
-  cancel-in-progress: false
+  group: validate-site-structure
+  cancel-in-progress: true
 
 jobs:
-  refresh:
+  validate:
     runs-on: ubuntu-latest
+    timeout-minutes: 20
     steps:
       - name: Checkout
         uses: actions/checkout@v4
-        with:
-          fetch-depth: 0
       - name: Setup Node
         uses: actions/setup-node@v4
         with:
           node-version: 22
           cache: npm
-      - name: Resolve official destination media
-        run: node scripts/sync-official-media.mjs
-      - name: Apply global navigation shell
-        run: node scripts/apply-site-shell.mjs
       - name: Install dependencies
         run: npm ci
       - name: Typecheck and build
@@ -109,14 +103,3 @@ jobs:
           test -s dist/data/official-content-growth.json
           grep -q '公式コンテンツ・ネットワーク' dist/official/index.html
           grep -q 'official-content-growth.json' dist/official/index.html
-      - name: Commit refreshed manifests and navigation
-        run: |
-          if git diff --quiet; then
-            echo 'No generated changes.'
-            exit 0
-          fi
-          git config user.name 'github-actions[bot]'
-          git config user.email '41898282+github-actions[bot]@users.noreply.github.com'
-          git add README.md index.html planner/index.html public/guides/index.html public/shenzhen/index.html public/heat-escape-2026/index.html public/destinations/index.html public/official/index.html public/data/destination-media.json
-          git commit -m 'chore(site): refresh official media and navigation'
-          git push
