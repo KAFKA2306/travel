@@ -1,6 +1,6 @@
 {
-  "release": "decision-portal-planner-split-2026-08-02",
-  "publishedAt": "2026-08-02T16:31:00+09:00",
+  "release": "decision-portal-planner-split-ui-baseline-2026-08-02",
+  "publishedAt": "2026-08-02T16:52:00+09:00",
   "views": [
     "/travel/",
     "/travel/planner/",
@@ -14,5 +14,6 @@
   "officialVisualCoverage": 10,
   "rootRole": "decision portal",
   "plannerRole": "saved itinerary workspace",
+  "uiAudit": "desktop and mobile screenshots after every successful Pages deployment",
   "mediaPolicy": "official OG or official remote preview first; official-page snapshot fallback; no automatic local rehosting"
 }
