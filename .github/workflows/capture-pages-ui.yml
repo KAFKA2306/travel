@@ -4,12 +4,6 @@ on:
   workflow_run:
     workflows: ['Deploy to GitHub Pages']
     types: [completed]
-  push:
-    branches: [main]
-    paths:
-      - '.github/workflows/capture-pages-ui.yml'
-      - 'scripts/capture-pages.mjs'
-      - 'public/release.json'
   workflow_dispatch:
 
 permissions:
@@ -17,18 +11,37 @@ permissions:
 
 concurrency:
   group: capture-pages-ui
-  cancel-in-progress: false
+  cancel-in-progress: true
 
 jobs:
   capture:
     if: github.event_name != 'workflow_run' || github.event.workflow_run.conclusion == 'success'
     runs-on: ubuntu-latest
+    timeout-minutes: 25
     steps:
       - name: Checkout main
         uses: actions/checkout@v4
         with:
           ref: main
           fetch-depth: 0
+
+      - name: Verify exact deployed revision
+        if: github.event_name == 'workflow_run'
+        env:
+          SOURCE_SHA: ${{ github.event.workflow_run.head_sha }}
+        run: |
+          for attempt in $(seq 1 20); do
+            git fetch origin deployed-pages --quiet
+            deployed_sha="$(git rev-parse origin/deployed-pages)"
+            if [ "$deployed_sha" = "$SOURCE_SHA" ]; then
+              echo "Verified deployed revision: $SOURCE_SHA"
+              exit 0
+            fi
+            echo "Waiting for deployed-pages marker ($attempt/20): $deployed_sha"
+            sleep 15
+          done
+          echo "::error::deployed-pages does not match successful deployment $SOURCE_SHA"
+          exit 1
 
       - name: Remove stale evidence
         run: rm -rf docs/ui-audit/latest
@@ -70,6 +83,7 @@ jobs:
           ARTIFACT_ID: ${{ steps.screenshots.outputs.artifact-id }}
           ARTIFACT_URL: ${{ steps.screenshots.outputs.artifact-url }}
           CAPTURE_OUTCOME: ${{ steps.capture.outcome }}
+          SOURCE_SHA: ${{ github.event.workflow_run.head_sha || github.sha }}
         run: |
           node --input-type=module <<'NODE'
           import { readFile, writeFile } from 'node:fs/promises';
@@ -79,7 +93,7 @@ jobs:
             runAttempt: process.env.GITHUB_RUN_ATTEMPT,
             artifactId: process.env.ARTIFACT_ID,
             artifactUrl: process.env.ARTIFACT_URL,
-            sourceSha: process.env.GITHUB_SHA,
+            sourceSha: process.env.SOURCE_SHA,
             generatedAt: report.generatedAt,
             captureOutcome: process.env.CAPTURE_OUTCOME,
           };
@@ -91,13 +105,13 @@ jobs:
         run: |
           git config user.name 'github-actions[bot]'
           git config user.email '41898282+github-actions[bot]@users.noreply.github.com'
+          git pull --rebase origin main
           git add docs/ui-audit/latest
           if git diff --cached --quiet; then
             echo 'No screenshot changes.'
             exit 0
           fi
           git commit -m 'docs(ui): capture deployed Pages screens'
-          git pull --rebase origin main
           git push
 
       - name: Enforce screenshot audit result
