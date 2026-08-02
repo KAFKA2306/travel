@@ -1,6 +1,6 @@
 {
-  "release": "official-content-network-expanded-2026-08-03-r4",
-  "publishedAt": "2026-08-03T01:02:00+09:00",
+  "release": "official-content-network-expanded-2026-08-03-r5",
+  "publishedAt": "2026-08-03T03:06:00+09:00",
   "views": [
     "/travel/",
     "/travel/planner/",
@@ -12,12 +12,12 @@
     "/travel/sitemap/"
   ],
   "destinationCount": 10,
-  "officialRegionCount": 19,
-  "expansionRegionCount": 9,
+  "officialRegionCount": 20,
+  "expansionRegionCount": 10,
   "officialVisualCoverage": 10,
-  "officialContentCoverage": 95,
+  "officialContentCoverage": 100,
   "officialContentStages": 5,
-  "latestAddedRegion": "takachiho",
+  "latestAddedRegion": "iseshima",
   "rootRole": "decision portal",
   "plannerRole": "saved itinerary workspace",
   "officialRole": "official tourism content organized by travel lifecycle",
