@@ -15,6 +15,7 @@ on:
       - 'public/data/destination-media.json'
       - 'public/data/official-content.json'
       - 'public/data/official-content-expansion.json'
+      - 'public/data/official-content-growth.json'
       - 'public/data/site-ontology.json'
       - 'public/site-shell.css'
       - 'public/site-shell.js'
@@ -71,29 +72,32 @@ jobs:
           const media = JSON.parse(await readFile('public/data/destination-media.json', 'utf8'));
           const official = JSON.parse(await readFile('public/data/official-content.json', 'utf8'));
           const expansion = JSON.parse(await readFile('public/data/official-content-expansion.json', 'utf8'));
+          const growth = JSON.parse(await readFile('public/data/official-content-growth.json', 'utf8'));
           const ontology = JSON.parse(await readFile('public/data/site-ontology.json', 'utf8'));
           if (catalog.destinations.length !== 10) throw new Error(`expected 10 planned destinations, got ${catalog.destinations.length}`);
           const missing = catalog.destinations.filter((item) => !media.destinations?.[item.id]?.imageUrl);
           if (missing.length) throw new Error(`missing official visuals: ${missing.map((item) => item.id).join(', ')}`);
-          const officialRegions = [...official.destinations, ...expansion.destinations];
+          const officialRegions = [...official.destinations, ...expansion.destinations, ...growth.destinations];
           const officialItems = officialRegions.flatMap((destination) => destination.items);
           if (official.destinations.length !== 10) throw new Error(`expected 10 core official-content regions, got ${official.destinations.length}`);
           if (expansion.destinations.length !== 6) throw new Error(`expected 6 expansion regions, got ${expansion.destinations.length}`);
-          if (officialRegions.length !== 16) throw new Error(`expected 16 official-content regions, got ${officialRegions.length}`);
-          if (officialItems.length !== 80) throw new Error(`expected 80 official-content items, got ${officialItems.length}`);
+          if (growth.destinations.length !== 1) throw new Error(`expected 1 scheduled-growth region, got ${growth.destinations.length}`);
+          if (officialRegions.length !== 17) throw new Error(`expected 17 official-content regions, got ${officialRegions.length}`);
+          if (officialItems.length !== 85) throw new Error(`expected 85 official-content items, got ${officialItems.length}`);
           if (official.stages.length !== 5) throw new Error(`expected 5 lifecycle stages, got ${official.stages.length}`);
           const ids = officialRegions.map((destination) => destination.id);
           if (new Set(ids).size !== ids.length) throw new Error('official content contains duplicate region ids');
           const expectedStages = new Set(official.stages.map((stage) => stage.id));
-          const invalidStages = officialItems.filter((item) => !expectedStages.has(item.stage));
-          if (invalidStages.length) throw new Error(`official content contains invalid lifecycle stages: ${invalidStages.map((item) => item.stage).join(', ')}`);
-          const invalidUrls = officialItems.filter((item) => !item.url.startsWith('https://'));
-          if (invalidUrls.length) throw new Error(`official content contains non-HTTPS URLs: ${invalidUrls.map((item) => item.url).join(', ')}`);
-          const incompleteExpansion = expansion.destinations.filter((destination) => !destination.officialUrl?.startsWith('https://') || !destination.imageUrl?.startsWith('https://') || destination.items.length !== 5);
-          if (incompleteExpansion.length) throw new Error(`incomplete expansion regions: ${incompleteExpansion.map((item) => item.id).join(', ')}`);
+          for (const region of officialRegions) {
+            if (!region.officialUrl?.startsWith('https://') || !region.imageUrl?.startsWith('https://')) throw new Error(`incomplete official region: ${region.id}`);
+            if (region.items.length !== 5) throw new Error(`${region.id} must contain exactly 5 official items`);
+            const stages = new Set(region.items.map((item) => item.stage));
+            if (stages.size !== 5 || [...expectedStages].some((stage) => !stages.has(stage))) throw new Error(`${region.id} does not cover all lifecycle stages`);
+            if (region.items.some((item) => !item.url.startsWith('https://'))) throw new Error(`${region.id} contains a non-HTTPS source`);
+          }
           if (!ontology.views.some((view) => view.path === '/travel/' && view.id === 'home')) throw new Error('missing decision portal ontology');
           if (!ontology.views.some((view) => view.path === '/travel/planner/' && view.id === 'planner')) throw new Error('missing planner workspace ontology');
-          if (!ontology.views.some((view) => view.path === '/travel/official/' && view.id === 'official')) throw new Error('missing official content network ontology');
+          if (!ontology.views.some((view) => view.path === '/travel/official/' && view.id === 'official' && view.purpose.includes('17地域・85件'))) throw new Error('missing updated official content network ontology');
           NODE
           test -s dist/index.html
           test -s dist/planner/index.html
@@ -103,9 +107,10 @@ jobs:
           test -s dist/guides/index.html
           test -s dist/shenzhen/index.html
           test -s dist/sitemap/index.html
+          test -s dist/data/official-content-growth.json
           grep -q '旅行の判断を始める' dist/index.html
           grep -q '公式コンテンツ・ネットワーク' dist/official/index.html
-          grep -q 'official-content-expansion.json' dist/official/index.html
+          grep -q 'official-content-growth.json' dist/official/index.html
           grep -q '/travel/site-shell.js' dist/planner/index.html
           grep -q '/travel/site-shell.js' dist/official/index.html
           grep -q '/travel/site-shell.js' dist/heat-escape-2026/index.html
