@@ -25,86 +25,129 @@ await mkdir(outputDir, { recursive: true });
 const browser = await chromium.launch({ headless: true });
 const results = [];
 
-for (const [viewportName, viewport] of viewports) {
-  const context = await browser.newContext({
-    viewport,
-    deviceScaleFactor: 1,
-    colorScheme: 'light',
-    reducedMotion: 'reduce',
-  });
-
-  for (const [name, route] of pages) {
-    const page = await context.newPage();
-    const consoleErrors = [];
-    const pageErrors = [];
-    page.on('console', (message) => {
-      if (message.type() === 'error') consoleErrors.push(message.text());
+try {
+  for (const [viewportName, viewport] of viewports) {
+    const context = await browser.newContext({
+      viewport,
+      deviceScaleFactor: 1,
+      colorScheme: 'light',
+      reducedMotion: 'reduce',
     });
-    page.on('pageerror', (error) => pageErrors.push(error.message));
 
-    const url = `${baseUrl}${route}`;
-    const response = await page.goto(url, { waitUntil: 'networkidle', timeout: 90_000 });
-    await page.waitForTimeout(2500);
-    await page.evaluate(async () => {
-      if (document.fonts?.ready) await document.fonts.ready;
-      for (const image of document.images) {
-        if (!image.complete) await new Promise((resolve) => image.addEventListener('load', resolve, { once: true }));
+    try {
+      for (const [name, route] of pages) {
+        const page = await context.newPage();
+        const consoleErrors = [];
+        const pageErrors = [];
+        page.on('console', (message) => {
+          if (message.type() === 'error') consoleErrors.push(message.text());
+        });
+        page.on('pageerror', (error) => pageErrors.push(error.message));
+
+        const url = `${baseUrl}${route}`;
+        const fileName = `${name}-${viewportName}.png`;
+        let response;
+        let metrics = {
+          title: '',
+          width: viewport.width,
+          scrollWidth: viewport.width,
+          height: 0,
+          horizontalOverflow: false,
+          links: 0,
+          buttons: 0,
+          headings: 0,
+          brokenImages: [],
+          unlabeledButtons: 0,
+          unlabeledLinks: 0,
+        };
+        let captureError = null;
+
+        try {
+          response = await page.goto(url, { waitUntil: 'domcontentloaded', timeout: 90_000 });
+          await page.waitForLoadState('networkidle', { timeout: 15_000 }).catch(() => {});
+          await page.waitForTimeout(2500);
+          await page.evaluate(async () => {
+            const timeout = (milliseconds) => new Promise((resolve) => setTimeout(resolve, milliseconds));
+            if (document.fonts?.ready) await Promise.race([document.fonts.ready, timeout(5000)]);
+            await Promise.all([...document.images].map(async (image) => {
+              if (image.complete) return;
+              await Promise.race([
+                new Promise((resolve) => {
+                  image.addEventListener('load', resolve, { once: true });
+                  image.addEventListener('error', resolve, { once: true });
+                }),
+                timeout(5000),
+              ]);
+            }));
+            window.scrollTo(0, 0);
+          });
+
+          metrics = await page.evaluate(() => {
+            const html = document.documentElement;
+            const brokenImages = [...document.images]
+              .filter((image) => image.complete && image.naturalWidth === 0)
+              .map((image) => image.currentSrc || image.src);
+            const unlabeledButtons = [...document.querySelectorAll('button')]
+              .filter((button) => !button.textContent?.trim() && !button.getAttribute('aria-label'))
+              .length;
+            const unlabeledLinks = [...document.querySelectorAll('a')]
+              .filter((link) => !link.textContent?.trim() && !link.getAttribute('aria-label') && !link.querySelector('img[alt]'))
+              .length;
+            return {
+              title: document.title,
+              width: html.clientWidth,
+              scrollWidth: html.scrollWidth,
+              height: html.scrollHeight,
+              horizontalOverflow: html.scrollWidth > html.clientWidth + 1,
+              links: document.links.length,
+              buttons: document.querySelectorAll('button').length,
+              headings: document.querySelectorAll('h1,h2,h3').length,
+              brokenImages,
+              unlabeledButtons,
+              unlabeledLinks,
+            };
+          });
+
+          await page.screenshot({ path: path.join(outputDir, fileName), fullPage: true, timeout: 90_000 });
+        } catch (error) {
+          captureError = error instanceof Error ? error.message : String(error);
+          pageErrors.push(captureError);
+          try {
+            await page.screenshot({ path: path.join(outputDir, fileName), fullPage: false, timeout: 15_000 });
+          } catch {
+            // The JSON report still records a page-level failure when even a partial image cannot be captured.
+          }
+        } finally {
+          results.push({
+            name,
+            route,
+            viewport: viewportName,
+            screenshot: fileName,
+            status: response?.status() ?? null,
+            finalUrl: page.url(),
+            consoleErrors,
+            pageErrors,
+            captureError,
+            ...metrics,
+          });
+          await page.close();
+        }
       }
-      window.scrollTo(0, 0);
-    });
-
-    const metrics = await page.evaluate(() => {
-      const html = document.documentElement;
-      const brokenImages = [...document.images]
-        .filter((image) => image.complete && image.naturalWidth === 0)
-        .map((image) => image.currentSrc || image.src);
-      const unlabeledButtons = [...document.querySelectorAll('button')]
-        .filter((button) => !button.textContent?.trim() && !button.getAttribute('aria-label'))
-        .length;
-      const unlabeledLinks = [...document.querySelectorAll('a')]
-        .filter((link) => !link.textContent?.trim() && !link.getAttribute('aria-label') && !link.querySelector('img[alt]'))
-        .length;
-      return {
-        title: document.title,
-        width: html.clientWidth,
-        scrollWidth: html.scrollWidth,
-        height: html.scrollHeight,
-        horizontalOverflow: html.scrollWidth > html.clientWidth + 1,
-        links: document.links.length,
-        buttons: document.querySelectorAll('button').length,
-        headings: document.querySelectorAll('h1,h2,h3').length,
-        brokenImages,
-        unlabeledButtons,
-        unlabeledLinks,
-      };
-    });
-
-    const fileName = `${name}-${viewportName}.png`;
-    await page.screenshot({ path: path.join(outputDir, fileName), fullPage: true });
-    results.push({
-      name,
-      route,
-      viewport: viewportName,
-      screenshot: fileName,
-      status: response?.status() ?? null,
-      finalUrl: page.url(),
-      consoleErrors,
-      pageErrors,
-      ...metrics,
-    });
-    await page.close();
+    } finally {
+      await context.close();
+    }
   }
-  await context.close();
+} finally {
+  await browser.close();
 }
 
-await browser.close();
 const generatedAt = new Date().toISOString();
 await writeFile(path.join(outputDir, 'report.json'), `${JSON.stringify({ generatedAt, baseUrl, results }, null, 2)}\n`);
 
 const rows = results.map((item) =>
   `| ${item.name} | ${item.viewport} | ${item.status ?? 'n/a'} | ${item.horizontalOverflow ? 'FAIL' : 'PASS'} | ${item.brokenImages.length} | ${item.consoleErrors.length + item.pageErrors.length} | [PNG](./${item.screenshot}) |`,
 ).join('\n');
-const failures = results.filter((item) => item.horizontalOverflow || item.brokenImages.length || item.consoleErrors.length || item.pageErrors.length || (item.status && item.status >= 400));
+const failures = results.filter((item) => item.captureError || item.horizontalOverflow || item.brokenImages.length || item.consoleErrors.length || item.pageErrors.length || item.unlabeledButtons || item.unlabeledLinks || (item.status && item.status >= 400));
 const markdown = `# Wayweave UI audit\n\nGenerated: ${generatedAt}\n\nBase URL: ${baseUrl}\n\n| Page | Viewport | HTTP | Horizontal overflow | Broken images | Runtime errors | Screenshot |\n|---|---|---:|---|---:|---:|---|\n${rows}\n\n## Result\n\n${failures.length ? `Detected ${failures.length} audit failures. See report.json.` : 'All automated screenshot checks passed.'}\n`;
 await writeFile(path.join(outputDir, 'README.md'), markdown);
 
