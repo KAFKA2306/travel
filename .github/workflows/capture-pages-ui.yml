@@ -1,26 +1,17 @@
-name: Capture deployed Pages UI
+name: Capture deployed Pages UI manually
 
 on:
-  workflow_run:
-    workflows: ['Deploy to GitHub Pages']
-    types: [completed]
-  push:
-    branches: [main]
-    paths:
-      - '.github/workflows/capture-pages-ui.yml'
-      - 'scripts/capture-pages.mjs'
   workflow_dispatch:
 
 permissions:
   contents: write
 
 concurrency:
-  group: capture-pages-ui
+  group: capture-pages-ui-manual
   cancel-in-progress: true
 
 jobs:
   capture:
-    if: github.event_name != 'workflow_run' || github.event.workflow_run.conclusion == 'success'
     runs-on: ubuntu-latest
     timeout-minutes: 25
     steps:
@@ -30,9 +21,9 @@ jobs:
           ref: main
           fetch-depth: 0
 
-      - name: Verify exact deployed revision
+      - name: Verify main is deployed
         env:
-          SOURCE_SHA: ${{ github.event.workflow_run.head_sha || github.sha }}
+          SOURCE_SHA: ${{ github.sha }}
         run: |
           for attempt in $(seq 1 24); do
             git fetch origin deployed-pages --quiet
@@ -44,24 +35,18 @@ jobs:
             echo "Waiting for deployed-pages marker ($attempt/24): $deployed_sha"
             sleep 15
           done
-          echo "::error::deployed-pages does not match target revision $SOURCE_SHA"
+          echo "::error::deployed-pages does not match main $SOURCE_SHA"
           exit 1
-
-      - name: Remove stale evidence
-        run: rm -rf docs/ui-audit/latest
 
       - name: Setup Node
         uses: actions/setup-node@v4
         with:
           node-version: 22
 
-      - name: Install Playwright without changing the lockfile
+      - name: Install Playwright
         run: |
           npm install --no-save --package-lock=false playwright@1.55.0
           npx playwright install --with-deps chromium
-
-      - name: Wait for Pages edge propagation
-        run: sleep 45
 
       - name: Capture desktop and mobile screenshots
         id: capture
@@ -87,7 +72,7 @@ jobs:
           ARTIFACT_ID: ${{ steps.screenshots.outputs.artifact-id }}
           ARTIFACT_URL: ${{ steps.screenshots.outputs.artifact-url }}
           CAPTURE_OUTCOME: ${{ steps.capture.outcome }}
-          SOURCE_SHA: ${{ github.event.workflow_run.head_sha || github.sha }}
+          SOURCE_SHA: ${{ github.sha }}
         run: |
           node --input-type=module <<'NODE'
           import { readFile, writeFile } from 'node:fs/promises';
