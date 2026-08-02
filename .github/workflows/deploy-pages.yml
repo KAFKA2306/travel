@@ -46,15 +46,21 @@ jobs:
           test -s dist/shenzhen/index.html
           test -s dist/sitemap/index.html
           test -s dist/data/official-content.json
+          test -s dist/data/official-content-expansion.json
           grep -q '旅行の判断を始める' dist/index.html
           grep -q '旅程ワークスペース' dist/planner/index.html
           grep -q '公式コンテンツ・ネットワーク' dist/official/index.html
+          grep -q 'official-content-expansion.json' dist/official/index.html
           node --input-type=module <<'NODE'
           import { readFile } from 'node:fs/promises';
           const content = JSON.parse(await readFile('dist/data/official-content.json', 'utf8'));
-          const items = content.destinations.flatMap((destination) => destination.items);
-          if (content.destinations.length !== 10) throw new Error(`expected 10 official content destinations, got ${content.destinations.length}`);
-          if (items.length < 50) throw new Error(`expected at least 50 official content items, got ${items.length}`);
+          const expansion = JSON.parse(await readFile('dist/data/official-content-expansion.json', 'utf8'));
+          const regions = [...content.destinations, ...expansion.destinations];
+          const items = regions.flatMap((destination) => destination.items);
+          if (content.destinations.length !== 10) throw new Error(`expected 10 core official content regions, got ${content.destinations.length}`);
+          if (expansion.destinations.length !== 6) throw new Error(`expected 6 expansion regions, got ${expansion.destinations.length}`);
+          if (regions.length !== 16) throw new Error(`expected 16 official content regions, got ${regions.length}`);
+          if (items.length !== 80) throw new Error(`expected 80 official content items, got ${items.length}`);
           if (content.stages.length !== 5) throw new Error(`expected 5 lifecycle stages, got ${content.stages.length}`);
           NODE
           test -n "$(find dist/assets -maxdepth 1 -type f -print -quit)"
