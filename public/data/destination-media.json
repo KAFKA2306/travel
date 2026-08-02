@@ -1,0 +1,76 @@
+{
+  "version": "2026-08-02",
+  "generatedBy": "scripts/sync-official-media.mjs",
+  "destinations": {
+    "kamikochi": {
+      "imageUrl": "https://i.ytimg.com/vi/XmDC_DWvit4/maxresdefault.jpg",
+      "sourceUrl": "https://www.youtube.com/watch?v=XmDC_DWvit4",
+      "publisher": "上高地観光旅館組合",
+      "mode": "official-embed",
+      "verifiedAt": "2026-08-02"
+    },
+    "karuizawa": {
+      "imageUrl": null,
+      "sourceUrl": "https://karuizawa-kankokyokai.jp/",
+      "publisher": "軽井沢観光協会",
+      "mode": "official-og-preview",
+      "verifiedAt": null
+    },
+    "akiyoshido": {
+      "imageUrl": "https://yamaguchi-tourism.jp/lsc/api/photo/?src=1700667",
+      "sourceUrl": "https://yamaguchi-tourism.jp/photo/detail_1700667.html",
+      "publisher": "山口県観光連盟",
+      "mode": "official-photo-library",
+      "verifiedAt": "2026-08-02"
+    },
+    "utsukushigahara": {
+      "imageUrl": null,
+      "sourceUrl": "https://www.utsukushigaharakogen.jp/",
+      "publisher": "美ヶ原高原観光協議会",
+      "mode": "official-og-preview",
+      "verifiedAt": null
+    },
+    "oirase": {
+      "imageUrl": null,
+      "sourceUrl": "https://aomori-tourism.com/spot/detail_339.html",
+      "publisher": "青森県観光国際交流機構",
+      "mode": "official-og-preview",
+      "verifiedAt": null
+    },
+    "okunikko": {
+      "imageUrl": null,
+      "sourceUrl": "https://www.nikko-kankou.org/spot?areaIds=2",
+      "publisher": "日光市観光協会",
+      "mode": "official-og-preview",
+      "verifiedAt": null
+    },
+    "nasu": {
+      "imageUrl": null,
+      "sourceUrl": "https://www.nasukogen.org/",
+      "publisher": "那須町観光協会",
+      "mode": "official-og-preview",
+      "verifiedAt": null
+    },
+    "kirigamine": {
+      "imageUrl": null,
+      "sourceUrl": "https://www.suwakanko.jp/category/%E9%9C%A7%E3%83%B6%E5%B3%B0/",
+      "publisher": "諏訪観光協会",
+      "mode": "official-og-preview",
+      "verifiedAt": null
+    },
+    "nobeyama": {
+      "imageUrl": null,
+      "sourceUrl": "https://db.go-nagano.net/themelist/detail/id=3851",
+      "publisher": "長野県観光機構",
+      "mode": "official-og-preview",
+      "verifiedAt": null
+    },
+    "fuji-fifth-station": {
+      "imageUrl": null,
+      "sourceUrl": "https://www.yamanashi-kankou.jp/special/fujisan/5th-station.html",
+      "publisher": "やまなし観光推進機構",
+      "mode": "official-og-preview",
+      "verifiedAt": null
+    }
+  }
+}
