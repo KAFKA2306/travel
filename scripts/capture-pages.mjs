@@ -42,14 +42,33 @@ for (const [viewportName, viewport] of viewports) {
     page.on('pageerror', (error) => pageErrors.push(error.message));
 
     const url = `${baseUrl}${route}`;
-    const response = await page.goto(url, { waitUntil: 'networkidle', timeout: 90_000 });
-    await page.waitForTimeout(2500);
+    const response = await page.goto(url, { waitUntil: 'domcontentloaded', timeout: 90_000 });
+    await page.waitForLoadState('networkidle', { timeout: 20_000 }).catch(() => undefined);
+    await page.waitForTimeout(1500);
+
     await page.evaluate(async () => {
-      if (document.fonts?.ready) await document.fonts.ready;
-      for (const image of document.images) {
-        if (!image.complete) await new Promise((resolve) => image.addEventListener('load', resolve, { once: true }));
+      if (document.fonts?.ready) await Promise.race([
+        document.fonts.ready,
+        new Promise((resolve) => setTimeout(resolve, 4000)),
+      ]);
+
+      const step = Math.max(360, Math.floor(window.innerHeight * 0.72));
+      for (let y = 0; y < document.documentElement.scrollHeight; y += step) {
+        window.scrollTo(0, y);
+        await new Promise((resolve) => setTimeout(resolve, 90));
       }
+
+      const pendingImages = [...document.images]
+        .filter((image) => !image.complete)
+        .map((image) => new Promise((resolve) => {
+          const done = () => resolve(undefined);
+          image.addEventListener('load', done, { once: true });
+          image.addEventListener('error', done, { once: true });
+          setTimeout(done, 3500);
+        }));
+      await Promise.all(pendingImages);
       window.scrollTo(0, 0);
+      await new Promise((resolve) => setTimeout(resolve, 250));
     });
 
     const metrics = await page.evaluate(() => {
