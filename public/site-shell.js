@@ -4,8 +4,9 @@
     { id: 'home', path: `${BASE}/`, label: 'ホーム' },
     { id: 'planner', path: `${BASE}/planner/`, label: '旅程編集' },
     { id: 'destinations', path: `${BASE}/destinations/`, label: '旅先図鑑' },
+    { id: 'official', path: `${BASE}/official/`, label: '公式特集' },
     { id: 'heat-escape', path: `${BASE}/heat-escape-2026/`, label: '猛暑回避10案' },
-    { id: 'guides', path: `${BASE}/guides/`, label: '公式リンク' },
+    { id: 'guides', path: `${BASE}/guides/`, label: '当日情報' },
     { id: 'shenzhen', path: `${BASE}/shenzhen/`, label: '深圳 Route Lab' },
     { id: 'sitemap', path: `${BASE}/sitemap/`, label: 'サイト構造' },
   ];
@@ -82,6 +83,12 @@
       catalog: await destinationResponse.json(),
       media: await mediaResponse.json(),
     };
+  };
+
+  const getOfficialContent = async () => {
+    const response = await fetch(`${BASE}/data/official-content.json`, { cache: 'no-cache' });
+    if (!response.ok) throw new Error('official content unavailable');
+    return response.json();
   };
 
   const mediaMarkup = (destination, media) => {
@@ -161,6 +168,14 @@
         }
         installImageFallback(article);
 
+        if (!article.querySelector('.ww-official-deep-link')) {
+          const deepLink = document.createElement('a');
+          deepLink.className = 'ww-official-deep-link';
+          deepLink.href = `${BASE}/official/#${destination.id}`;
+          deepLink.textContent = `${destination.name}の公式特集・地図・ガイドを見る →`;
+          article.querySelector('.ww-official-visual')?.insertAdjacentElement('afterend', deepLink);
+        }
+
         let detail = article.querySelector('.ww-plan-detail');
         if (!detail) {
           detail = document.createElement('div');
@@ -197,5 +212,39 @@
     mobileQuery.addEventListener('change', decorate);
   };
 
+  const decorateDestinationAtlas = async () => {
+    const grid = document.getElementById('grid');
+    if (!grid) return;
+    let catalog;
+    let official;
+    try {
+      [catalog, official] = await Promise.all([
+        fetch(`${BASE}/data/destinations.json`, { cache: 'no-cache' }).then((response) => response.json()),
+        getOfficialContent(),
+      ]);
+    } catch {
+      return;
+    }
+    const byName = new Map(catalog.destinations.map((destination) => [destination.name, destination]));
+    const officialById = new Map(official.destinations.map((destination) => [destination.id, destination]));
+    const decorate = () => {
+      grid.querySelectorAll('.card').forEach((card) => {
+        if (card.querySelector('.ww-official-deep-link')) return;
+        const name = card.querySelector('h2')?.textContent?.trim();
+        const destination = byName.get(name);
+        const collection = destination ? officialById.get(destination.id) : null;
+        if (!destination || !collection) return;
+        const link = document.createElement('a');
+        link.className = 'ww-official-deep-link';
+        link.href = `${BASE}/official/#${destination.id}`;
+        link.textContent = `公式の物語・地図・体験 ${collection.items.length}件 →`;
+        card.querySelector('.body')?.appendChild(link);
+      });
+    };
+    decorate();
+    new MutationObserver(decorate).observe(grid, { childList: true });
+  };
+
   if (currentPath.startsWith(`${BASE}/heat-escape-2026/`)) decorateHeatEscape();
+  if (currentPath.startsWith(`${BASE}/destinations/`)) decorateDestinationAtlas();
 })();
