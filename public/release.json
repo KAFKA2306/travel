@@ -1,6 +1,6 @@
 {
-  "release": "official-content-network-expanded-2026-08-03-r5",
-  "publishedAt": "2026-08-03T03:06:00+09:00",
+  "release": "official-content-network-expanded-2026-08-03-r6",
+  "publishedAt": "2026-08-03T05:00:00+09:00",
   "views": [
     "/travel/",
     "/travel/planner/",
@@ -12,12 +12,12 @@
     "/travel/sitemap/"
   ],
   "destinationCount": 10,
-  "officialRegionCount": 20,
-  "expansionRegionCount": 10,
+  "officialRegionCount": 21,
+  "expansionRegionCount": 11,
   "officialVisualCoverage": 10,
-  "officialContentCoverage": 100,
+  "officialContentCoverage": 105,
   "officialContentStages": 5,
-  "latestAddedRegion": "iseshima",
+  "latestAddedRegion": "kurashiki",
   "rootRole": "decision portal",
   "plannerRole": "saved itinerary workspace",
   "officialRole": "official tourism content organized by travel lifecycle",
