@@ -47,21 +47,32 @@ jobs:
           test -s dist/sitemap/index.html
           test -s dist/data/official-content.json
           test -s dist/data/official-content-expansion.json
+          test -s dist/data/official-content-growth.json
           grep -q '旅行の判断を始める' dist/index.html
           grep -q '旅程ワークスペース' dist/planner/index.html
           grep -q '公式コンテンツ・ネットワーク' dist/official/index.html
-          grep -q 'official-content-expansion.json' dist/official/index.html
+          grep -q 'official-content-growth.json' dist/official/index.html
           node --input-type=module <<'NODE'
           import { readFile } from 'node:fs/promises';
           const content = JSON.parse(await readFile('dist/data/official-content.json', 'utf8'));
           const expansion = JSON.parse(await readFile('dist/data/official-content-expansion.json', 'utf8'));
-          const regions = [...content.destinations, ...expansion.destinations];
+          const growth = JSON.parse(await readFile('dist/data/official-content-growth.json', 'utf8'));
+          const regions = [...content.destinations, ...expansion.destinations, ...growth.destinations];
           const items = regions.flatMap((destination) => destination.items);
           if (content.destinations.length !== 10) throw new Error(`expected 10 core official content regions, got ${content.destinations.length}`);
           if (expansion.destinations.length !== 6) throw new Error(`expected 6 expansion regions, got ${expansion.destinations.length}`);
-          if (regions.length !== 16) throw new Error(`expected 16 official content regions, got ${regions.length}`);
-          if (items.length !== 80) throw new Error(`expected 80 official content items, got ${items.length}`);
+          if (growth.destinations.length !== 1) throw new Error(`expected 1 scheduled-growth region, got ${growth.destinations.length}`);
+          if (regions.length !== 17) throw new Error(`expected 17 official content regions, got ${regions.length}`);
+          if (items.length !== 85) throw new Error(`expected 85 official content items, got ${items.length}`);
+          if (new Set(regions.map((region) => region.id)).size !== regions.length) throw new Error('duplicate official content region id');
           if (content.stages.length !== 5) throw new Error(`expected 5 lifecycle stages, got ${content.stages.length}`);
+          const validStages = new Set(content.stages.map((stage) => stage.id));
+          for (const region of regions) {
+            if (region.items.length !== 5) throw new Error(`${region.id} must contain exactly 5 official items`);
+            const stages = new Set(region.items.map((item) => item.stage));
+            if (stages.size !== 5 || [...validStages].some((stage) => !stages.has(stage))) throw new Error(`${region.id} does not cover all lifecycle stages`);
+            if (region.items.some((item) => !item.url.startsWith('https://'))) throw new Error(`${region.id} contains a non-HTTPS source`);
+          }
           NODE
           test -n "$(find dist/assets -maxdepth 1 -type f -print -quit)"
       - name: Upload Pages artifact
