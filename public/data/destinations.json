@@ -66,8 +66,8 @@
       "officialUrl": "https://www.utsukushigaharakogen.jp/",
       "mediaPage": "https://www.utsukushigaharakogen.jp/",
       "publisher": "美ヶ原高原観光協議会",
-      "mediaPolicy": "official-og-preview",
-      "licenseNote": "公式ページのOG画像をリモート表示し、画像ファイルは再配布しない。",
+      "mediaPolicy": "official-page-snapshot",
+      "licenseNote": "公式ページの外観をリモート生成したプレビューで表示し、掲載写真を抽出・再配布しない。",
       "tags": ["高原", "松本", "予約制バス", "展望"]
     },
     {
@@ -95,11 +95,13 @@
       "duration": "1泊2日",
       "routeSummary": "東武日光駅から路線バスで中禅寺湖・戦場ヶ原・湯元温泉へ。",
       "planUrl": "/travel/heat-escape-2026/#rank-6",
-      "officialUrl": "https://www.nikko-kankou.org/spot?areaIds=2",
-      "mediaPage": "https://www.nikko-kankou.org/spot?areaIds=2",
+      "officialUrl": "https://www.nikko-kankou.org/spot/10",
+      "mediaPage": "https://www.nikko-kankou.org/spot/10",
       "publisher": "日光市観光協会",
-      "mediaPolicy": "official-og-preview",
-      "licenseNote": "公式観光ページのOG画像をリモート表示する。画像の再配布は行わない。",
+      "mediaPolicy": "official-remote-preview",
+      "licenseUrl": "https://www.nikko-kankou.org/houjin/photo",
+      "licenseNote": "公式スポットページへの誘導を前提にリモート表示し、画像の再配布には公式フォトライブラリーを使用する。",
+      "overrideImageUrl": "https://www.nikko-kankou.org/storage/post_picture/%5B640_640%5D_20231018141930_10-1.jpg",
       "tags": ["中禅寺湖", "戦場ヶ原", "温泉", "バス"]
     },
     {
@@ -127,11 +129,12 @@
       "duration": "1泊2日",
       "routeSummary": "上諏訪で前泊し、季節運行の霧ヶ峰線で八島湿原または車山へ。",
       "planUrl": "/travel/heat-escape-2026/#rank-8",
-      "officialUrl": "https://www.suwakanko.jp/category/%E9%9C%A7%E3%83%B6%E5%B3%B0/",
-      "mediaPage": "https://www.suwakanko.jp/category/%E9%9C%A7%E3%83%B6%E5%B3%B0/",
+      "officialUrl": "https://kirigamine.suwakanko.jp/",
+      "mediaPage": "https://kirigamine.suwakanko.jp/",
       "publisher": "諏訪観光協会",
-      "mediaPolicy": "official-og-preview",
-      "licenseNote": "公式観光ページのOG画像をリモート表示し、画像ファイルは再配布しない。",
+      "mediaPolicy": "official-remote-preview",
+      "licenseNote": "霧ヶ峰公式サイトが配信する画像をリモート表示し、画像ファイルは再配布しない。",
+      "overrideImageUrl": "https://kirigamine.suwakanko.jp/wp/wp-content/uploads/2024/07/449592483_504892615248488_6043512208052837239_n-uai-258x110.jpg",
       "tags": ["湿原", "高原", "上諏訪", "季節バス"]
     },
     {
@@ -146,8 +149,9 @@
       "officialUrl": "https://db.go-nagano.net/themelist/detail/id=3851",
       "mediaPage": "https://db.go-nagano.net/themelist/detail/id=3851",
       "publisher": "長野県観光機構",
-      "mediaPolicy": "official-og-preview",
-      "licenseNote": "長野県公式観光ページのOG画像をリモート表示し、画像ファイルは再配布しない。",
+      "mediaPolicy": "official-remote-preview",
+      "licenseNote": "長野県公式観光ページが配信する野辺山高原の画像をリモート表示し、画像ファイルは再配布しない。",
+      "overrideImageUrl": "https://go-nagano.a.kuroco-img.app/v%3D1569893402/files/topics/3851_ext_01_0.jpg",
       "tags": ["高原", "小海線", "電波望遠鏡", "星空"]
     },
     {
