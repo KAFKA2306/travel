@@ -61,9 +61,9 @@ jobs:
           const items = regions.flatMap((destination) => destination.items);
           if (content.destinations.length !== 10) throw new Error(`expected 10 core official content regions, got ${content.destinations.length}`);
           if (expansion.destinations.length !== 6) throw new Error(`expected 6 expansion regions, got ${expansion.destinations.length}`);
-          if (growth.destinations.length !== 1) throw new Error(`expected 1 scheduled-growth region, got ${growth.destinations.length}`);
-          if (regions.length !== 17) throw new Error(`expected 17 official content regions, got ${regions.length}`);
-          if (items.length !== 85) throw new Error(`expected 85 official content items, got ${items.length}`);
+          if (growth.destinations.length !== 2) throw new Error(`expected 2 scheduled-growth regions, got ${growth.destinations.length}`);
+          if (regions.length !== 18) throw new Error(`expected 18 official content regions, got ${regions.length}`);
+          if (items.length !== 90) throw new Error(`expected 90 official content items, got ${items.length}`);
           if (new Set(regions.map((region) => region.id)).size !== regions.length) throw new Error('duplicate official content region id');
           if (content.stages.length !== 5) throw new Error(`expected 5 lifecycle stages, got ${content.stages.length}`);
           const validStages = new Set(content.stages.map((stage) => stage.id));
