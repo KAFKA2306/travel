@@ -81,9 +81,9 @@ jobs:
           const officialItems = officialRegions.flatMap((destination) => destination.items);
           if (official.destinations.length !== 10) throw new Error(`expected 10 core official-content regions, got ${official.destinations.length}`);
           if (expansion.destinations.length !== 6) throw new Error(`expected 6 expansion regions, got ${expansion.destinations.length}`);
-          if (growth.destinations.length !== 2) throw new Error(`expected 2 scheduled-growth regions, got ${growth.destinations.length}`);
-          if (officialRegions.length !== 18) throw new Error(`expected 18 official-content regions, got ${officialRegions.length}`);
-          if (officialItems.length !== 90) throw new Error(`expected 90 official-content items, got ${officialItems.length}`);
+          if (growth.destinations.length !== 3) throw new Error(`expected 3 scheduled-growth regions, got ${growth.destinations.length}`);
+          if (officialRegions.length !== 19) throw new Error(`expected 19 official-content regions, got ${officialRegions.length}`);
+          if (officialItems.length !== 95) throw new Error(`expected 95 official-content items, got ${officialItems.length}`);
           if (official.stages.length !== 5) throw new Error(`expected 5 lifecycle stages, got ${official.stages.length}`);
           const ids = officialRegions.map((destination) => destination.id);
           if (new Set(ids).size !== ids.length) throw new Error('official content contains duplicate region ids');
@@ -97,7 +97,7 @@ jobs:
           }
           if (!ontology.views.some((view) => view.path === '/travel/' && view.id === 'home')) throw new Error('missing decision portal ontology');
           if (!ontology.views.some((view) => view.path === '/travel/planner/' && view.id === 'planner')) throw new Error('missing planner workspace ontology');
-          if (!ontology.views.some((view) => view.path === '/travel/official/' && view.id === 'official' && view.purpose.includes('18地域・90件'))) throw new Error('missing updated official content network ontology');
+          if (!ontology.views.some((view) => view.path === '/travel/official/' && view.id === 'official' && view.purpose.includes('19地域・95件'))) throw new Error('missing updated official content network ontology');
           NODE
           test -s dist/index.html
           test -s dist/planner/index.html
