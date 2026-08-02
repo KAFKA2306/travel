@@ -69,6 +69,7 @@
       "mediaPolicy": "official-photo-library",
       "licenseUrl": "https://visitmatsumoto.com/photo/detail_233.html",
       "licenseNote": "松本市公式観光サイトのフォトライブラリーを出所として表示し、利用時は同ライブラリーの申請条件に従う。",
+      "overrideImageUrl": "https://visitmatsumoto.com/lsc/api/photo/?src=233",
       "tags": ["高原", "松本", "予約制バス", "展望"]
     },
     {
@@ -115,10 +116,11 @@
       "routeSummary": "那須塩原駅から路線・周遊バスで那須湯本方面へ。",
       "planUrl": "/travel/heat-escape-2026/#rank-7",
       "officialUrl": "https://www.nasukogen.org/",
-      "mediaPage": "https://www.nasukogen.org/charm/",
+      "mediaPage": "https://www.nasukogen.org/blog/2026/05/post_188.html",
       "publisher": "那須町観光協会",
-      "mediaPolicy": "official-og-preview",
-      "licenseNote": "那須町観光協会の観光案内ページが配信する画像をリモート表示し、画像ファイルは再配布しない。",
+      "mediaPolicy": "official-remote-preview",
+      "licenseNote": "那須町観光協会の公式ブログが配信する高原の自然写真をリモート表示し、画像ファイルは再配布しない。",
+      "overrideImageUrl": "https://www.nasukogen.org/blog/%E3%82%B7%E3%83%AD%E3%83%A4%E3%82%B7%E3%82%AA.jpg",
       "tags": ["高原", "温泉", "周遊バス", "ロープウェイ"]
     },
     {
@@ -133,8 +135,9 @@
       "officialUrl": "https://kirigamine.suwakanko.jp/",
       "mediaPage": "https://kirigamine.suwakanko.jp/about/",
       "publisher": "諏訪観光協会",
-      "mediaPolicy": "official-og-preview",
-      "licenseNote": "霧ヶ峰公式サイトの紹介ページが配信する画像をリモート表示し、画像ファイルは再配布しない。",
+      "mediaPolicy": "official-remote-preview",
+      "licenseNote": "霧ヶ峰公式サイトが配信する高原写真をリモート表示し、画像ファイルは再配布しない。",
+      "overrideImageUrl": "https://kirigamine.suwakanko.jp/wp/wp-content/uploads/2024/07/449592483_504892615248488_6043512208052837239_n.jpg",
       "tags": ["湿原", "高原", "上諏訪", "季節バス"]
     },
     {
