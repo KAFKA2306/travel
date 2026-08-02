@@ -55,6 +55,24 @@
         { "stage": "experience", "type": "guided-tour", "title": "おすすめツアー・体験", "description": "観光ガイドと神話ゆかりの地や高千穂峡を巡るツアー、自然・文化体験を公式予約ページから選ぶ。", "url": "https://www.takachiho-kanko.info/experience/", "publisher": "一般社団法人 高千穂町観光協会" },
         { "stage": "check", "type": "live-operations", "title": "新着情報・当日営業状況", "description": "高千穂峡貸しボート、神楽、シャトルバス、道路・遊歩道規制、イベントの最新運用情報を訪問直前に確認する。", "url": "https://www.takachiho-kanko.info/news/", "publisher": "一般社団法人 高千穂町観光協会" }
       ]
+    },
+    {
+      "id": "iseshima",
+      "name": "伊勢志摩",
+      "prefecture": "三重県",
+      "region": "東海",
+      "publisher": "公益社団法人 伊勢志摩観光コンベンション機構",
+      "officialUrl": "https://www.iseshima-kanko.jp/",
+      "imageUrl": "https://s.wordpress.com/mshots/v1/https%3A%2F%2Fwww.iseshima-kanko.jp%2F?w=1200",
+      "routeSummary": "大阪・京都・名古屋方面から近鉄またはJRで伊勢市・鳥羽・志摩へ入り、鉄道、路線バス、観光バス、船を組み合わせて周遊する。",
+      "summary": "伊勢神宮だけに閉じず、信仰、海女文化、リアス海岸、真珠、食、地域体験、交通・災害情報を広域の文化圏として読む。",
+      "items": [
+        { "stage": "discover", "type": "portal", "title": "伊勢志摩観光ナビ", "description": "伊勢、鳥羽、志摩、南伊勢の景観、文化、食、宿泊、イベントを広域から発見する公式入口。", "url": "https://www.iseshima-kanko.jp/", "publisher": "公益社団法人 伊勢志摩観光コンベンション機構" },
+        { "stage": "understand", "type": "regional-strategy", "title": "伊勢志摩の価値と持続可能な地域づくり", "description": "地域文化の価値継承、地域経済の好循環、住民と来訪者の共鳴を目指す公式観光戦略から地域を理解する。", "url": "https://www.iseshima-kanko.jp/news/396", "publisher": "公益社団法人 伊勢志摩観光コンベンション機構" },
+        { "stage": "plan", "type": "model-course", "title": "伊勢志摩モデルコース", "description": "日帰り・宿泊、交通手段、自然、文化、食などから65件の公式旅程を比較して計画する。", "url": "https://www.iseshima-kanko.jp/course", "publisher": "公益社団法人 伊勢志摩観光コンベンション機構" },
+        { "stage": "experience", "type": "activity", "title": "伊勢志摩ならではの体験", "description": "真珠取り出し、海や漁村、ものづくり、自然学習など、地域固有の公式体験を選ぶ。", "url": "https://www.iseshima-kanko.jp/gakuyu", "publisher": "公益社団法人 伊勢志摩観光コンベンション機構" },
+        { "stage": "check", "type": "live-operations", "title": "伊勢志摩のお知らせ", "description": "交通、施設営業、行事、台風・災害、参拝・観覧時の注意など、訪問直前の更新情報を確認する。", "url": "https://www.iseshima-kanko.jp/news", "publisher": "公益社団法人 伊勢志摩観光コンベンション機構" }
+      ]
     }
   ]
 }
