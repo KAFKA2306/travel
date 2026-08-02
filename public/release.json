@@ -1,6 +1,6 @@
 {
-  "release": "official-content-network-2026-08-02",
-  "publishedAt": "2026-08-02T17:56:00+09:00",
+  "release": "official-content-network-expanded-2026-08-02",
+  "publishedAt": "2026-08-02T18:43:00+09:00",
   "views": [
     "/travel/",
     "/travel/planner/",
@@ -12,8 +12,10 @@
     "/travel/sitemap/"
   ],
   "destinationCount": 10,
+  "officialRegionCount": 16,
+  "expansionRegionCount": 6,
   "officialVisualCoverage": 10,
-  "officialContentCoverage": 50,
+  "officialContentCoverage": 80,
   "officialContentStages": 5,
   "rootRole": "decision portal",
   "plannerRole": "saved itinerary workspace",
