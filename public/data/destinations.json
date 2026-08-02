@@ -64,10 +64,11 @@
       "routeSummary": "松本で前泊し、予約制直行バスで美ヶ原自然保護センターへ。",
       "planUrl": "/travel/heat-escape-2026/#rank-4",
       "officialUrl": "https://www.utsukushigaharakogen.jp/",
-      "mediaPage": "https://www.utsukushigaharakogen.jp/",
-      "publisher": "美ヶ原高原観光協議会",
-      "mediaPolicy": "official-page-snapshot",
-      "licenseNote": "公式ページの外観をリモート生成したプレビューで表示し、掲載写真を抽出・再配布しない。",
+      "mediaPage": "https://visitmatsumoto.com/photo/detail_233.html",
+      "publisher": "松本市公式観光サイト",
+      "mediaPolicy": "official-photo-library",
+      "licenseUrl": "https://visitmatsumoto.com/photo/detail_233.html",
+      "licenseNote": "松本市公式観光サイトのフォトライブラリーを出所として表示し、利用時は同ライブラリーの申請条件に従う。",
       "tags": ["高原", "松本", "予約制バス", "展望"]
     },
     {
@@ -114,10 +115,10 @@
       "routeSummary": "那須塩原駅から路線・周遊バスで那須湯本方面へ。",
       "planUrl": "/travel/heat-escape-2026/#rank-7",
       "officialUrl": "https://www.nasukogen.org/",
-      "mediaPage": "https://www.nasukogen.org/",
+      "mediaPage": "https://www.nasukogen.org/charm/",
       "publisher": "那須町観光協会",
       "mediaPolicy": "official-og-preview",
-      "licenseNote": "公式観光ページのOG画像をリモート表示し、画像ファイルは再配布しない。",
+      "licenseNote": "那須町観光協会の観光案内ページが配信する画像をリモート表示し、画像ファイルは再配布しない。",
       "tags": ["高原", "温泉", "周遊バス", "ロープウェイ"]
     },
     {
@@ -130,11 +131,10 @@
       "routeSummary": "上諏訪で前泊し、季節運行の霧ヶ峰線で八島湿原または車山へ。",
       "planUrl": "/travel/heat-escape-2026/#rank-8",
       "officialUrl": "https://kirigamine.suwakanko.jp/",
-      "mediaPage": "https://kirigamine.suwakanko.jp/",
+      "mediaPage": "https://kirigamine.suwakanko.jp/about/",
       "publisher": "諏訪観光協会",
-      "mediaPolicy": "official-remote-preview",
-      "licenseNote": "霧ヶ峰公式サイトが配信する画像をリモート表示し、画像ファイルは再配布しない。",
-      "overrideImageUrl": "https://kirigamine.suwakanko.jp/wp/wp-content/uploads/2024/07/449592483_504892615248488_6043512208052837239_n-uai-258x110.jpg",
+      "mediaPolicy": "official-og-preview",
+      "licenseNote": "霧ヶ峰公式サイトの紹介ページが配信する画像をリモート表示し、画像ファイルは再配布しない。",
       "tags": ["湿原", "高原", "上諏訪", "季節バス"]
     },
     {
@@ -146,12 +146,12 @@
       "duration": "1泊2日",
       "routeSummary": "小淵沢からJR小海線で野辺山へ。観測所と高原を徒歩・自転車で巡る。",
       "planUrl": "/travel/heat-escape-2026/#rank-9",
-      "officialUrl": "https://db.go-nagano.net/themelist/detail/id=3851",
-      "mediaPage": "https://db.go-nagano.net/themelist/detail/id=3851",
-      "publisher": "長野県観光機構",
+      "officialUrl": "https://www.kanko-nobeyama.jp/",
+      "mediaPage": "https://www.kanko-nobeyama.jp/",
+      "publisher": "南牧村観光協会",
       "mediaPolicy": "official-remote-preview",
-      "licenseNote": "長野県公式観光ページが配信する野辺山高原の画像をリモート表示し、画像ファイルは再配布しない。",
-      "overrideImageUrl": "https://go-nagano.a.kuroco-img.app/v%3D1569893402/files/topics/3851_ext_01_0.jpg",
+      "licenseNote": "南牧村観光協会の公式サイトが配信する野辺山高原の画像をリモート表示し、画像ファイルは再配布しない。",
+      "overrideImageUrl": "https://www.kanko-nobeyama.jp/wp/wp-content/themes/minamimakimura/img/home/slide02.jpg",
       "tags": ["高原", "小海線", "電波望遠鏡", "星空"]
     },
     {
