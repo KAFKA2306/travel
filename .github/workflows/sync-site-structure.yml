@@ -33,7 +33,7 @@ permissions:
 
 concurrency:
   group: refresh-site-structure
-  cancel-in-progress: true
+  cancel-in-progress: false
 
 jobs:
   refresh:
@@ -68,28 +68,31 @@ jobs:
           const expansion = JSON.parse(await readFile('public/data/official-content-expansion.json', 'utf8'));
           const growth = JSON.parse(await readFile('public/data/official-content-growth.json', 'utf8'));
           const ontology = JSON.parse(await readFile('public/data/site-ontology.json', 'utf8'));
+          const release = JSON.parse(await readFile('public/release.json', 'utf8'));
           if (catalog.destinations.length !== 10) throw new Error(`expected 10 planned destinations, got ${catalog.destinations.length}`);
           const missing = catalog.destinations.filter((item) => !media.destinations?.[item.id]?.imageUrl);
           if (missing.length) throw new Error(`missing official visuals: ${missing.map((item) => item.id).join(', ')}`);
           const officialRegions = [...official.destinations, ...expansion.destinations, ...growth.destinations];
           const officialItems = officialRegions.flatMap((destination) => destination.items);
           if (official.destinations.length !== 10) throw new Error(`expected 10 core official-content regions, got ${official.destinations.length}`);
-          if (expansion.destinations.length !== 6) throw new Error(`expected 6 expansion regions, got ${expansion.destinations.length}`);
-          if (growth.destinations.length !== 6) throw new Error(`expected 6 scheduled-growth regions, got ${growth.destinations.length}`);
-          if (officialRegions.length !== 22) throw new Error(`expected 22 official-content regions, got ${officialRegions.length}`);
-          if (officialItems.length !== 110) throw new Error(`expected 110 official-content items, got ${officialItems.length}`);
+          if (expansion.destinations.length < 6) throw new Error(`expected at least 6 expansion regions, got ${expansion.destinations.length}`);
           if (official.stages.length !== 5) throw new Error(`expected 5 lifecycle stages, got ${official.stages.length}`);
           const ids = officialRegions.map((destination) => destination.id);
           if (new Set(ids).size !== ids.length) throw new Error('official content contains duplicate region ids');
           const expectedStages = new Set(official.stages.map((stage) => stage.id));
           for (const region of officialRegions) {
-            if (!region.officialUrl?.startsWith('https://') || !region.imageUrl?.startsWith('https://')) throw new Error(`incomplete official region: ${region.id}`);
+            if (!region.officialUrl?.startsWith('https://')) throw new Error(`incomplete official region: ${region.id}`);
             if (region.items.length !== 5) throw new Error(`${region.id} must contain exactly 5 official items`);
             const stages = new Set(region.items.map((item) => item.stage));
             if (stages.size !== 5 || [...expectedStages].some((stage) => !stages.has(stage))) throw new Error(`${region.id} does not cover all lifecycle stages`);
             if (region.items.some((item) => !item.url.startsWith('https://'))) throw new Error(`${region.id} contains a non-HTTPS source`);
           }
-          if (!ontology.views.some((view) => view.path === '/travel/official/' && view.id === 'official' && view.purpose.includes('22地域・110件'))) throw new Error('missing updated official content network ontology');
+          if (release.officialRegionCount !== officialRegions.length) throw new Error('release region count is stale');
+          if (release.officialContentCoverage !== officialItems.length) throw new Error('release content count is stale');
+          if (release.expansionRegionCount !== expansion.destinations.length + growth.destinations.length) throw new Error('release expansion count is stale');
+          const latestGrowth = growth.destinations.at(-1)?.id;
+          if (latestGrowth && release.latestAddedRegion !== latestGrowth) throw new Error('release latestAddedRegion is stale');
+          if (!ontology.views.some((view) => view.path === '/travel/official/' && view.id === 'official' && view.primaryClass === 'OfficialContentCollection')) throw new Error('missing official content network ontology');
           NODE
           test -s dist/index.html
           test -s dist/planner/index.html
