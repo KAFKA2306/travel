@@ -14,6 +14,7 @@ on:
       - 'public/data/destinations.json'
       - 'public/data/destination-media.json'
       - 'public/data/official-content.json'
+      - 'public/data/official-content-expansion.json'
       - 'public/data/site-ontology.json'
       - 'public/site-shell.css'
       - 'public/site-shell.js'
@@ -69,16 +70,27 @@ jobs:
           const catalog = JSON.parse(await readFile('public/data/destinations.json', 'utf8'));
           const media = JSON.parse(await readFile('public/data/destination-media.json', 'utf8'));
           const official = JSON.parse(await readFile('public/data/official-content.json', 'utf8'));
+          const expansion = JSON.parse(await readFile('public/data/official-content-expansion.json', 'utf8'));
           const ontology = JSON.parse(await readFile('public/data/site-ontology.json', 'utf8'));
-          if (catalog.destinations.length !== 10) throw new Error(`expected 10 destinations, got ${catalog.destinations.length}`);
+          if (catalog.destinations.length !== 10) throw new Error(`expected 10 planned destinations, got ${catalog.destinations.length}`);
           const missing = catalog.destinations.filter((item) => !media.destinations?.[item.id]?.imageUrl);
           if (missing.length) throw new Error(`missing official visuals: ${missing.map((item) => item.id).join(', ')}`);
-          const officialItems = official.destinations.flatMap((destination) => destination.items);
-          if (official.destinations.length !== 10) throw new Error(`expected 10 official-content destinations, got ${official.destinations.length}`);
-          if (officialItems.length < 50) throw new Error(`expected at least 50 official-content items, got ${officialItems.length}`);
+          const officialRegions = [...official.destinations, ...expansion.destinations];
+          const officialItems = officialRegions.flatMap((destination) => destination.items);
+          if (official.destinations.length !== 10) throw new Error(`expected 10 core official-content regions, got ${official.destinations.length}`);
+          if (expansion.destinations.length !== 6) throw new Error(`expected 6 expansion regions, got ${expansion.destinations.length}`);
+          if (officialRegions.length !== 16) throw new Error(`expected 16 official-content regions, got ${officialRegions.length}`);
+          if (officialItems.length !== 80) throw new Error(`expected 80 official-content items, got ${officialItems.length}`);
           if (official.stages.length !== 5) throw new Error(`expected 5 lifecycle stages, got ${official.stages.length}`);
+          const ids = officialRegions.map((destination) => destination.id);
+          if (new Set(ids).size !== ids.length) throw new Error('official content contains duplicate region ids');
+          const expectedStages = new Set(official.stages.map((stage) => stage.id));
+          const invalidStages = officialItems.filter((item) => !expectedStages.has(item.stage));
+          if (invalidStages.length) throw new Error(`official content contains invalid lifecycle stages: ${invalidStages.map((item) => item.stage).join(', ')}`);
           const invalidUrls = officialItems.filter((item) => !item.url.startsWith('https://'));
           if (invalidUrls.length) throw new Error(`official content contains non-HTTPS URLs: ${invalidUrls.map((item) => item.url).join(', ')}`);
+          const incompleteExpansion = expansion.destinations.filter((destination) => !destination.officialUrl?.startsWith('https://') || !destination.imageUrl?.startsWith('https://') || destination.items.length !== 5);
+          if (incompleteExpansion.length) throw new Error(`incomplete expansion regions: ${incompleteExpansion.map((item) => item.id).join(', ')}`);
           if (!ontology.views.some((view) => view.path === '/travel/' && view.id === 'home')) throw new Error('missing decision portal ontology');
           if (!ontology.views.some((view) => view.path === '/travel/planner/' && view.id === 'planner')) throw new Error('missing planner workspace ontology');
           if (!ontology.views.some((view) => view.path === '/travel/official/' && view.id === 'official')) throw new Error('missing official content network ontology');
@@ -93,6 +105,7 @@ jobs:
           test -s dist/sitemap/index.html
           grep -q '旅行の判断を始める' dist/index.html
           grep -q '公式コンテンツ・ネットワーク' dist/official/index.html
+          grep -q 'official-content-expansion.json' dist/official/index.html
           grep -q '/travel/site-shell.js' dist/planner/index.html
           grep -q '/travel/site-shell.js' dist/official/index.html
           grep -q '/travel/site-shell.js' dist/heat-escape-2026/index.html
