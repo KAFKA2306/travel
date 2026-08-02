@@ -1,7 +1,8 @@
 (() => {
   const BASE = '/travel';
   const routes = [
-    { path: `${BASE}/`, label: '旅程' },
+    { path: `${BASE}/`, label: 'ホーム' },
+    { path: `${BASE}/planner/`, label: '旅程編集' },
     { path: `${BASE}/destinations/`, label: '旅先図鑑' },
     { path: `${BASE}/heat-escape-2026/`, label: '猛暑回避10案' },
     { path: `${BASE}/guides/`, label: '公式リンク' },
@@ -37,7 +38,7 @@
   if (main && !main.id) main.id = 'ww-main';
   if (main && main.id !== 'ww-main') main.setAttribute('tabindex', '-1');
 
-  if (currentPath !== `${BASE}/sitemap/`) {
+  if (currentPath !== `${BASE}/sitemap/` && currentPath !== `${BASE}/`) {
     const context = document.createElement('div');
     context.className = 'ww-context';
     context.innerHTML = `<a href="${BASE}/">Wayweave</a><span>›</span><strong>${escapeHtml(activeRoute.label)}</strong><span>›</span><a href="${BASE}/sitemap/">構造を見る</a>`;
