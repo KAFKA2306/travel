@@ -4,9 +4,9 @@ import App from './App'
 import './styles.css'
 import './google-maps.css'
 
-const PAGE_TITLE = 'Wayweave｜予算と公共交通から組み替える旅行プランナー'
-const PAGE_DESCRIPTION = '大阪発・1名・2泊3日の旅行条件を、価格・公共交通・温泉・根拠から比較するWayweave旅行プランナー。神戸・三宮2連泊と有馬温泉日帰りモデルを掲載。'
-const CANONICAL_URL = 'https://kafka2306.github.io/travel/'
+const PAGE_TITLE = '旅程ワークスペース｜Wayweave'
+const PAGE_DESCRIPTION = '保存済み旅程、候補地、地図、移動制約、一次情報を一つの画面で比較するWayweave旅行プランナー。'
+const CANONICAL_URL = 'https://kafka2306.github.io/travel/planner/'
 
 function setMetaContent(selector: string, content: string) {
   document.querySelector<HTMLMetaElement>(selector)?.setAttribute('content', content)
