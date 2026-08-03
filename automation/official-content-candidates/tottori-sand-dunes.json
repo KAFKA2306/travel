@@ -1,0 +1,53 @@
+{
+  "id": "tottori-sand-dunes",
+  "name": "鳥取砂丘",
+  "prefecture": "鳥取県",
+  "region": "中国・四国",
+  "publisher": "公益社団法人 鳥取県観光連盟",
+  "officialUrl": "https://www.tottori-guide.jp/sakyu/",
+  "imageUrl": "https://s.wordpress.com/mshots/v1/https%3A%2F%2Fwww.tottori-guide.jp%2Fsakyu%2F?w=1200",
+  "routeSummary": "JR鳥取駅から路線バスで約20分、または鳥取ICから車で約20分。砂丘周辺は徒歩と公式案内の交通情報を組み合わせる。",
+  "summary": "巨大な砂景観だけでなく、風紋、地質、動植物、山陰海岸国立公園、保全活動、砂丘固有の体験、ライブ情報を一つのフィールドとして読む。",
+  "items": [
+    {
+      "stage": "discover",
+      "type": "portal",
+      "title": "鳥取砂丘 公式特集",
+      "description": "四季と時間帯、景観、アクティビティ、学習施設、食、アクセスを横断して鳥取砂丘を発見する公式入口。",
+      "url": "https://www.tottori-guide.jp/sakyu/",
+      "publisher": "公益社団法人 鳥取県観光連盟"
+    },
+    {
+      "stage": "understand",
+      "type": "nature-and-geology",
+      "title": "鳥取砂丘を鑑賞・理解する",
+      "description": "風紋の形成、地質、砂丘に適応した動植物、国立公園、ビジターセンターなど自然と歴史の背景を理解する。",
+      "url": "https://www.tottori-guide.jp/sakyu/appreciation.html",
+      "publisher": "公益社団法人 鳥取県観光連盟"
+    },
+    {
+      "stage": "plan",
+      "type": "model-course",
+      "title": "砂丘・浦富海岸 体験モデルコース",
+      "description": "鳥取砂丘と浦富海岸の体験を組み込み、空港や県内各地への移動も含めた公式旅程を計画する。",
+      "url": "https://www.tottori-guide.jp/824/845/30175.html",
+      "publisher": "公益社団法人 鳥取県観光連盟"
+    },
+    {
+      "stage": "experience",
+      "type": "guided-activity",
+      "title": "鳥取砂丘セグウェイ アドベンチャーツアー",
+      "description": "砂丘西側をオフロード用セグウェイで巡り、通常の徒歩観光とは異なる景観をガイド付きで体験する。",
+      "url": "https://www.tottori-guide.jp/tourism/tour/view/1060",
+      "publisher": "公益社団法人 鳥取県観光連盟"
+    },
+    {
+      "stage": "check",
+      "type": "live-operations",
+      "title": "今日の鳥取砂丘・便利情報",
+      "description": "ライブカメラ、アクセス、バリアフリー、周辺案内など、訪問当日に必要な現況を公式特集から確認する。",
+      "url": "https://www.tottori-guide.jp/sakyu/",
+      "publisher": "公益社団法人 鳥取県観光連盟"
+    }
+  ]
+}
