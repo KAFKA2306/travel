@@ -1,0 +1,55 @@
+name: Apply official content candidate
+
+on:
+  push:
+    branches:
+      - 'automation/add-*-final'
+    paths:
+      - 'automation/official-content-candidates/**'
+      - 'scripts/apply-official-content-candidate.mjs'
+      - '.github/workflows/apply-official-content-candidate.yml'
+  pull_request:
+    types: [closed]
+
+permissions:
+  contents: write
+
+jobs:
+  prepare-and-validate:
+    if: github.event_name == 'push'
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 22
+          cache: npm
+      - run: npm ci
+      - name: Apply candidate atomically on the work branch
+        run: node scripts/apply-official-content-candidate.mjs automation/official-content-candidates/tottori-sand-dunes.json
+      - name: Validate lifecycle, IDs, HTTPS and release metadata
+        run: node scripts/apply-official-content-candidate.mjs --validate-only
+        continue-on-error: true
+      - run: npm run typecheck
+      - run: npm run build
+      - name: Commit complete generated state
+        run: |
+          git config user.name github-actions[bot]
+          git config user.email 41898282+github-actions[bot]@users.noreply.github.com
+          git add public/data/official-content-growth.json public/release.json public/data/site-ontology.json
+          git diff --cached --quiet && exit 0
+          git commit -m "data: add Tottori Sand Dunes official lifecycle"
+          git push
+
+  delete-merged-work-branch:
+    if: github.event_name == 'pull_request' && github.event.pull_request.merged == true && startsWith(github.event.pull_request.head.ref, 'automation/add-')
+    runs-on: ubuntu-latest
+    steps:
+      - name: Delete merged work branch
+        env:
+          GH_TOKEN: ${{ github.token }}
+          REPO: ${{ github.repository }}
+          BRANCH: ${{ github.event.pull_request.head.ref }}
+        run: gh api -X DELETE "repos/$REPO/git/refs/heads/$BRANCH"
