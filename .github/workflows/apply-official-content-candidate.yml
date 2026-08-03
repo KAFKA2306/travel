@@ -9,29 +9,27 @@ on:
       - 'scripts/apply-official-content-candidate.mjs'
       - '.github/workflows/apply-official-content-candidate.yml'
   pull_request:
-    types: [closed]
+    types: [opened, synchronize, reopened, closed]
 
 permissions:
   contents: write
 
 jobs:
   prepare-and-validate:
-    if: github.event_name == 'push'
+    if: github.event_name == 'push' || (github.event_name == 'pull_request' && github.event.action != 'closed' && github.event.pull_request.head.repo.full_name == github.repository)
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v4
         with:
+          ref: ${{ github.event_name == 'pull_request' && github.event.pull_request.head.ref || github.ref_name }}
           fetch-depth: 0
       - uses: actions/setup-node@v4
         with:
           node-version: 22
           cache: npm
       - run: npm ci
-      - name: Apply candidate atomically on the work branch
+      - name: Apply and validate candidate
         run: node scripts/apply-official-content-candidate.mjs automation/official-content-candidates/tottori-sand-dunes.json
-      - name: Validate lifecycle, IDs, HTTPS and release metadata
-        run: node scripts/apply-official-content-candidate.mjs --validate-only
-        continue-on-error: true
       - run: npm run typecheck
       - run: npm run build
       - name: Commit complete generated state
@@ -41,10 +39,10 @@ jobs:
           git add public/data/official-content-growth.json public/release.json public/data/site-ontology.json
           git diff --cached --quiet && exit 0
           git commit -m "data: add Tottori Sand Dunes official lifecycle"
-          git push
+          git push origin HEAD:${{ github.event_name == 'pull_request' && github.event.pull_request.head.ref || github.ref_name }}
 
   delete-merged-work-branch:
-    if: github.event_name == 'pull_request' && github.event.pull_request.merged == true && startsWith(github.event.pull_request.head.ref, 'automation/add-')
+    if: github.event_name == 'pull_request' && github.event.action == 'closed' && github.event.pull_request.merged == true && startsWith(github.event.pull_request.head.ref, 'automation/add-')
     runs-on: ubuntu-latest
     steps:
       - name: Delete merged work branch
