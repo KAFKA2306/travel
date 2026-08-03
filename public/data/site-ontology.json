@@ -1,7 +1,7 @@
 {
   "version": "2026-08-03",
   "baseUrl": "https://kafka2306.github.io/travel",
-  "principle": "The root is a decision portal. Itineraries, destinations, official content, routes and live operational information are separate but connected layers.",
+  "principle": "The root is a decision portal. Itineraries, destinations, official content, routes and live operational information are separate but connected layers. Official content collections grow only through validated, non-duplicate regions backed by primary sources.",
   "classes": [
     { "id": "Decision", "label": "判断", "description": "日数、予算、移動負荷、気象リスクを踏まえた選択単位。" },
     { "id": "TripPlan", "label": "旅程", "description": "出発地、日付、人数、交通、宿泊、撤退条件を持つ実行可能な計画。" },
