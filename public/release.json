@@ -1,6 +1,6 @@
 {
-  "release": "official-content-network-expanded-2026-08-03-r8",
-  "publishedAt": "2026-08-03T09:05:00+09:00",
+  "release": "official-content-network-expanded-2026-08-03-r9",
+  "publishedAt": "2026-08-03T11:02:00+09:00",
   "views": [
     "/travel/",
     "/travel/planner/",
@@ -12,12 +12,12 @@
     "/travel/sitemap/"
   ],
   "destinationCount": 10,
-  "officialRegionCount": 23,
-  "expansionRegionCount": 13,
+  "officialRegionCount": 24,
+  "expansionRegionCount": 14,
   "officialVisualCoverage": 10,
-  "officialContentCoverage": 115,
+  "officialContentCoverage": 120,
   "officialContentStages": 5,
-  "latestAddedRegion": "hagi",
+  "latestAddedRegion": "ogasawara",
   "rootRole": "decision portal",
   "plannerRole": "saved itinerary workspace",
   "officialRole": "official tourism content organized by travel lifecycle",
