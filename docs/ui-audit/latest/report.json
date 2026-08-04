@@ -1,5 +1,5 @@
 {
-  "generatedAt": "2026-08-03T02:09:23.016Z",
+  "generatedAt": "2026-08-04T10:19:03.836Z",
   "baseUrl": "https://kafka2306.github.io/travel",
   "results": [
     {
@@ -21,7 +21,7 @@
       "headings": 10,
       "brokenImages": [],
       "pendingImages": [
-        "https://aomori-tourism.com/lsc/upfile/spot/0000/0339/339_12_l.jpg"
+        "https://yamaguchi-tourism.jp/lsc/api/photo/?src=1700667"
       ],
       "unlabeledButtons": 0,
       "unlabeledLinks": 0
@@ -66,7 +66,9 @@
       "buttons": 9,
       "headings": 11,
       "brokenImages": [],
-      "pendingImages": [],
+      "pendingImages": [
+        "https://yamaguchi-tourism.jp/lsc/api/photo/?src=1700667"
+      ],
       "unlabeledButtons": 0,
       "unlabeledLinks": 0
     },
@@ -330,13 +332,14 @@
       "title": "猛暑回避10プラン｜Wayweave",
       "width": 390,
       "scrollWidth": 390,
-      "height": 7053,
+      "height": 7014,
       "horizontalOverflow": false,
       "links": 52,
       "buttons": 17,
       "headings": 42,
       "brokenImages": [],
       "pendingImages": [
+        "https://yamaguchi-tourism.jp/lsc/api/photo/?src=1700667",
         "https://www.nikko-kankou.org/storage/post_picture/%5B640_640%5D_20231018141930_10-1.jpg",
         "https://www.nasukogen.org/blog/%E3%82%B7%E3%83%AD%E3%83%A4%E3%82%B7%E3%82%AA.jpg",
         "https://kirigamine.suwakanko.jp/wp/wp-content/uploads/2024/07/449592483_504892615248488_6043512208052837239_n.jpg",
