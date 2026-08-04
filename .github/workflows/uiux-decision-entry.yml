@@ -1,0 +1,25 @@
+name: Validate travel decision entry
+on:
+  pull_request:
+    paths:
+      - "public/decision/index.html"
+      - ".github/workflows/uiux-decision-entry.yml"
+  workflow_dispatch:
+permissions:
+  contents: read
+jobs:
+  validate:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - name: Validate decision hierarchy and accessibility
+        run: |
+          grep -q 'CURRENT TRAVEL DECISION' public/decision/index.html
+          grep -q 'ACTIVE DECISION' public/decision/index.html
+          test "$(grep -o 'action action-primary' public/decision/index.html | wc -l)" -eq 1
+          grep -q 'font-size:16px' public/decision/index.html
+          grep -q 'min-height:44px' public/decision/index.html
+          grep -q 'href="../heat-escape-2026/"' public/decision/index.html
+          grep -q 'href="../planner/"' public/decision/index.html
+          grep -q 'href="../guides/"' public/decision/index.html
+          grep -q 'prefers-reduced-motion' public/decision/index.html
