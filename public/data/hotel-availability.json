@@ -1,0 +1,33 @@
+{
+  "schema_version": 1,
+  "records": [
+    {
+      "place_id": "arima-roku",
+      "status": "fetch_failed",
+      "fetched_at": "2026-08-09T01:00:00+09:00",
+      "status_reason": "live_inventory_adapter_not_configured",
+      "source_url": "https://www.harvestclub.com/Un/Hotel/Ar/"
+    },
+    {
+      "place_id": "futatsugame-hotel",
+      "status": "fetch_failed",
+      "fetched_at": "2026-08-09T01:00:00+09:00",
+      "status_reason": "live_inventory_adapter_not_configured",
+      "source_url": "https://sfvh.jp/"
+    },
+    {
+      "place_id": "oosado-hotel",
+      "status": "fetch_failed",
+      "fetched_at": "2026-08-09T01:00:00+09:00",
+      "status_reason": "live_inventory_adapter_not_configured",
+      "source_url": "https://hotel-oosado.jp/"
+    },
+    {
+      "place_id": "sannomiya-rei",
+      "status": "fetch_failed",
+      "fetched_at": "2026-08-09T01:00:00+09:00",
+      "status_reason": "live_inventory_adapter_not_configured",
+      "source_url": "https://www.tokyuhotels.co.jp/kobesannomiya-r/"
+    }
+  ]
+}
