@@ -1,0 +1,51 @@
+name: Hotel availability audit
+
+on:
+  pull_request:
+    paths:
+      - 'src/data/hotel-availability.source.json'
+      - 'public/data/hotel-availability.json'
+      - 'scripts/build-hotel-availability.mjs'
+      - 'tests/hotel-availability.test.mjs'
+      - 'src/App.tsx'
+      - 'package.json'
+      - 'package-lock.json'
+      - '.github/workflows/hotel-availability-audit.yml'
+  push:
+    branches: [main]
+    paths:
+      - 'src/data/hotel-availability.source.json'
+      - 'public/data/hotel-availability.json'
+      - 'scripts/build-hotel-availability.mjs'
+      - 'tests/hotel-availability.test.mjs'
+      - 'src/App.tsx'
+      - 'package.json'
+      - 'package-lock.json'
+      - '.github/workflows/hotel-availability-audit.yml'
+
+permissions:
+  contents: read
+
+jobs:
+  audit:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v7
+      - uses: actions/setup-node@v6
+        with:
+          node-version: 22
+          cache: npm
+      - run: npm ci
+      - name: Regenerate availability snapshot
+        run: npm run build:hotel-availability
+      - name: Reject generated-data drift
+        run: git diff --exit-code -- public/data/hotel-availability.json
+      - name: Test missing and explicit availability states
+        run: npm run test:hotel-availability
+      - name: Typecheck and build UI
+        run: npm run build
+      - name: Upload audited availability snapshot
+        uses: actions/upload-artifact@v4
+        with:
+          name: hotel-availability-${{ github.run_id }}
+          path: public/data/hotel-availability.json
