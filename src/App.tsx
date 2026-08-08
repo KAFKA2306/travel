@@ -27,7 +27,36 @@ import {
 import GoogleMapsDock from './GoogleMapsDock'
 import TripAtlas from './TripAtlas'
 import { arimaItinerary, itinerary, ontologyGroups, places, sources, tripCatalog } from './data'
+import hotelAvailability from './data/hotel-availability.source.json'
 import type { ItineraryItem, Place } from './types'
+
+type HotelAvailabilityStatus = 'available' | 'sold_out' | 'fetch_failed'
+type HotelAvailabilityRecord = {
+  place_id: string
+  status: HotelAvailabilityStatus
+  fetched_at: string
+  status_reason: string
+  source_url: string
+}
+
+const hotelAvailabilityByPlace = new Map(
+  (hotelAvailability.records as HotelAvailabilityRecord[]).map((record) => [record.place_id, record]),
+)
+
+const availabilityLabel: Record<HotelAvailabilityStatus, string> = {
+  available: '空室あり',
+  sold_out: '満室',
+  fetch_failed: '取得失敗',
+}
+
+const formatAvailabilityTime = (value: string) => new Intl.DateTimeFormat('ja-JP', {
+  year: 'numeric',
+  month: '2-digit',
+  day: '2-digit',
+  hour: '2-digit',
+  minute: '2-digit',
+  hour12: false,
+}).format(new Date(value))
 
 const filters = [
   { id: 'car-free', label: '車なし', test: (place: Place) => place.tags.some((tag) => ['バス', '徒歩', '送迎相談', '送迎', '鉄道', '車なし'].includes(tag)) || place.kind === 'transport' },
@@ -193,21 +222,31 @@ function App() {
               />
 
               <div className="place-grid">
-                {visiblePlaces.length ? visiblePlaces.map((place) => (
-                  <button key={place.id} className={`place-card ${selectedPlace.id === place.id ? 'selected' : ''}`} onClick={() => setSelectedPlaceId(place.id)}>
-                    <span className={`place-visual accent-${place.accent}`}>
-                      {place.kind === 'stay' ? <BedDouble size={26} /> : place.kind === 'transport' ? <Ship size={26} /> : <MapPinned size={26} />}
-                      <small>{place.eyebrow}</small>
-                    </span>
-                    <span className="place-body">
-                      <span className="place-title-row"><b>{place.name}</b><ChevronRight size={17} /></span>
-                      <span className="place-area">{place.area}</span>
-                      <span className="place-description">{place.description}</span>
-                      <span className="tag-row">{place.tags.slice(0, 3).map((tag) => <i key={tag}>{tag}</i>)}</span>
-                      <span className="evidence-row"><ShieldCheck size={14} />{place.sourceIds.length ? `${place.sourceIds.length}件の一次情報` : 'サンプルデータ'}{place.priceLabel && <em>{place.priceLabel}</em>}</span>
-                    </span>
-                  </button>
-                )) : (
+                {visiblePlaces.length ? visiblePlaces.map((place) => {
+                  const availability = hotelAvailabilityByPlace.get(place.id)
+                  return (
+                    <button key={place.id} className={`place-card ${selectedPlace.id === place.id ? 'selected' : ''}`} onClick={() => setSelectedPlaceId(place.id)}>
+                      <span className={`place-visual accent-${place.accent}`}>
+                        {place.kind === 'stay' ? <BedDouble size={26} /> : place.kind === 'transport' ? <Ship size={26} /> : <MapPinned size={26} />}
+                        <small>{place.eyebrow}</small>
+                      </span>
+                      <span className="place-body">
+                        <span className="place-title-row"><b>{place.name}</b><ChevronRight size={17} /></span>
+                        <span className="place-area">{place.area}</span>
+                        <span className="place-description">{place.description}</span>
+                        <span className="tag-row">{place.tags.slice(0, 3).map((tag) => <i key={tag}>{tag}</i>)}</span>
+                        <span className="evidence-row"><ShieldCheck size={14} />{place.sourceIds.length ? `${place.sourceIds.length}件の一次情報` : 'サンプルデータ'}{place.priceLabel && !availability && <em>{place.priceLabel}</em>}</span>
+                        {availability && (
+                          <span className="evidence-row" data-availability-status={availability.status} title={availability.status_reason}>
+                            <Clock3 size={14} />
+                            {availabilityLabel[availability.status]} · 取得 {formatAvailabilityTime(availability.fetched_at)}
+                            <em>{availability.status === 'fetch_failed' ? '空室判定不能' : availability.status === 'sold_out' ? '在庫なし' : '在庫確認済み'}</em>
+                          </span>
+                        )}
+                      </span>
+                    </button>
+                  )
+                }) : (
                   <div className="empty-state"><Search size={24} /><b>条件に合う場所がありません</b><span>選択中の旅程モデルのフィルターを1つ外してみてください。</span></div>
                 )}
               </div>
