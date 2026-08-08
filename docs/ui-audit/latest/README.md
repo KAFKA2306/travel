@@ -1,14 +1,14 @@
 # Wayweave UI audit
 
-Generated: 2026-08-08T05:10:30.586Z
+Generated: 2026-08-08T06:10:26.616Z
 
 Base URL: https://kafka2306.github.io/travel
 
 | Page | Viewport | HTTP | Horizontal overflow | Broken images | Pending images | Runtime errors | Screenshot |
 |---|---|---:|---|---:|---:|---:|---|
-| home | desktop | 200 | PASS | 0 | 1 | 0 | [PNG](./home-desktop.png) |
+| home | desktop | 200 | PASS | 0 | 0 | 0 | [PNG](./home-desktop.png) |
 | planner | desktop | 200 | PASS | 0 | 0 | 0 | [PNG](./planner-desktop.png) |
-| destinations | desktop | 200 | PASS | 0 | 1 | 0 | [PNG](./destinations-desktop.png) |
+| destinations | desktop | 200 | PASS | 0 | 0 | 0 | [PNG](./destinations-desktop.png) |
 | official | desktop | 200 | PASS | 0 | 16 | 0 | [PNG](./official-desktop.png) |
 | heat-escape | desktop | 200 | PASS | 0 | 6 | 0 | [PNG](./heat-escape-desktop.png) |
 | guides | desktop | 200 | PASS | 0 | 0 | 0 | [PNG](./guides-desktop.png) |

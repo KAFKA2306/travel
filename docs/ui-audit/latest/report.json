@@ -1,5 +1,5 @@
 {
-  "generatedAt": "2026-08-08T05:10:30.586Z",
+  "generatedAt": "2026-08-08T06:10:26.616Z",
   "baseUrl": "https://kafka2306.github.io/travel",
   "results": [
     {
@@ -20,9 +20,7 @@
       "buttons": 1,
       "headings": 10,
       "brokenImages": [],
-      "pendingImages": [
-        "https://yamaguchi-tourism.jp/lsc/api/photo/?src=1700667"
-      ],
+      "pendingImages": [],
       "unlabeledButtons": 0,
       "unlabeledLinks": 0
     },
@@ -66,9 +64,7 @@
       "buttons": 9,
       "headings": 11,
       "brokenImages": [],
-      "pendingImages": [
-        "https://yamaguchi-tourism.jp/lsc/api/photo/?src=1700667"
-      ],
+      "pendingImages": [],
       "unlabeledButtons": 0,
       "unlabeledLinks": 0
     },
