@@ -1,6 +1,6 @@
 # Wayweave UI audit
 
-Generated: 2026-08-08T16:10:00.141Z
+Generated: 2026-08-09T13:57:53.222Z
 
 Base URL: https://kafka2306.github.io/travel
 
@@ -14,11 +14,11 @@ Base URL: https://kafka2306.github.io/travel
 | guides | desktop | 200 | PASS | 0 | 0 | 0 | [PNG](./guides-desktop.png) |
 | shenzhen | desktop | 200 | PASS | 0 | 0 | 0 | [PNG](./shenzhen-desktop.png) |
 | sitemap | desktop | 200 | PASS | 0 | 0 | 0 | [PNG](./sitemap-desktop.png) |
-| home | mobile | 200 | PASS | 0 | 0 | 0 | [PNG](./home-mobile.png) |
+| home | mobile | 200 | PASS | 0 | 1 | 0 | [PNG](./home-mobile.png) |
 | planner | mobile | 200 | PASS | 0 | 0 | 0 | [PNG](./planner-mobile.png) |
-| destinations | mobile | 200 | PASS | 0 | 3 | 0 | [PNG](./destinations-mobile.png) |
+| destinations | mobile | 200 | PASS | 0 | 4 | 0 | [PNG](./destinations-mobile.png) |
 | official | mobile | 200 | PASS | 0 | 21 | 0 | [PNG](./official-mobile.png) |
-| heat-escape | mobile | 200 | PASS | 0 | 6 | 0 | [PNG](./heat-escape-mobile.png) |
+| heat-escape | mobile | 200 | PASS | 0 | 5 | 0 | [PNG](./heat-escape-mobile.png) |
 | guides | mobile | 200 | PASS | 0 | 0 | 0 | [PNG](./guides-mobile.png) |
 | shenzhen | mobile | 200 | PASS | 0 | 0 | 0 | [PNG](./shenzhen-mobile.png) |
 | sitemap | mobile | 200 | PASS | 0 | 0 | 0 | [PNG](./sitemap-mobile.png) |
