@@ -1,22 +1,31 @@
 (() => {
   const BASE = '/travel';
-  const routes = [
-    { id: 'home', path: `${BASE}/`, label: 'ホーム' },
-    { id: 'planner', path: `${BASE}/planner/`, label: '旅程編集' },
-    { id: 'destinations', path: `${BASE}/destinations/`, label: '旅先図鑑' },
-    { id: 'kansai-museums', path: `${BASE}/kansai-museums/`, label: '大阪・京都ミュージアム' },
-    { id: 'official', path: `${BASE}/official/`, label: '公式特集' },
-    { id: 'heat-escape', path: `${BASE}/heat-escape-2026/`, label: '猛暑回避10案' },
-    { id: 'guides', path: `${BASE}/guides/`, label: '当日情報' },
-    { id: 'shenzhen', path: `${BASE}/shenzhen/`, label: '深圳 Route Lab' },
-    { id: 'sitemap', path: `${BASE}/sitemap/`, label: 'サイト構造' },
+
+  // Primary navigation is intentionally fixed. New content must belong to one
+  // of these sections instead of creating another top-level navigation item.
+  const primaryRoutes = [
+    { id: 'map', path: `${BASE}/`, label: '地図' },
+    { id: 'areas', path: `${BASE}/destinations/`, label: 'エリア' },
+    { id: 'plans', path: `${BASE}/planner/`, label: '旅程' },
+    { id: 'live', path: `${BASE}/guides/`, label: '当日情報' },
+  ];
+
+  const childRoutes = [
+    { id: 'kansai-museums', path: `${BASE}/kansai-museums/`, label: '大阪・京都ミュージアム', parentId: 'areas' },
+    { id: 'official', path: `${BASE}/official/`, label: '公式特集', parentId: 'areas' },
+    { id: 'heat-escape', path: `${BASE}/heat-escape-2026/`, label: '猛暑回避10案', parentId: 'plans' },
+    { id: 'shenzhen', path: `${BASE}/shenzhen/`, label: '深圳 Route Lab', parentId: 'plans' },
+    { id: 'sitemap', path: `${BASE}/sitemap/`, label: 'サイト構造', parentId: 'map' },
   ];
 
   const currentPath = location.pathname.endsWith('/') ? location.pathname : `${location.pathname}/`;
-  const activeRoute = routes
+  const allRoutes = [...childRoutes, ...primaryRoutes];
+  const activePage = allRoutes
     .filter((route) => currentPath.startsWith(route.path))
-    .sort((a, b) => b.path.length - a.path.length)[0] || routes[0];
-  document.body.classList.add(`ww-route-${activeRoute.id}`);
+    .sort((a, b) => b.path.length - a.path.length)[0] || primaryRoutes[0];
+  const activePrimary = primaryRoutes.find((route) => route.id === (activePage.parentId || activePage.id)) || primaryRoutes[0];
+
+  document.body.classList.add(`ww-route-${activePage.id}`);
 
   const escapeHtml = (value) => String(value ?? '')
     .replaceAll('&', '&amp;')
@@ -33,7 +42,7 @@
       <a class="ww-global-home" href="${BASE}/"><span>↗</span><span>wayweave</span></a>
       <button class="ww-menu-button" type="button" aria-expanded="false" aria-controls="ww-global-links">メニュー</button>
       <nav class="ww-global-links" id="ww-global-links" aria-label="Wayweave 全体ナビゲーション">
-        ${routes.map((route) => `<a href="${route.path}"${route.id === activeRoute.id ? ' aria-current="page"' : ''}>${route.label}</a>`).join('')}
+        ${primaryRoutes.map((route) => `<a href="${route.path}"${route.id === activePrimary.id ? ' aria-current="page"' : ''}>${route.label}</a>`).join('')}
       </nav>
     </div>`;
   document.body.prepend(global);
@@ -41,6 +50,7 @@
   const menuButton = global.querySelector('.ww-menu-button');
   const globalLinks = global.querySelector('.ww-global-links');
   const mobileQuery = window.matchMedia('(max-width: 760px)');
+
   const syncMenu = () => {
     if (mobileQuery.matches) {
       globalLinks.hidden = menuButton.getAttribute('aria-expanded') !== 'true';
@@ -49,17 +59,20 @@
       menuButton.setAttribute('aria-expanded', 'false');
     }
   };
+
   menuButton.addEventListener('click', () => {
     const expanded = menuButton.getAttribute('aria-expanded') === 'true';
     menuButton.setAttribute('aria-expanded', String(!expanded));
     globalLinks.hidden = expanded;
   });
+
   globalLinks.addEventListener('click', (event) => {
     if (mobileQuery.matches && event.target.closest('a')) {
       menuButton.setAttribute('aria-expanded', 'false');
       globalLinks.hidden = true;
     }
   });
+
   mobileQuery.addEventListener('change', syncMenu);
   syncMenu();
 
@@ -67,185 +80,16 @@
   if (main && !main.id) main.id = 'ww-main';
   if (main && main.id !== 'ww-main') main.setAttribute('tabindex', '-1');
 
-  if (currentPath !== `${BASE}/sitemap/` && currentPath !== `${BASE}/`) {
+  if (currentPath !== `${BASE}/`) {
     const context = document.createElement('div');
     context.className = 'ww-context';
-    context.innerHTML = `<a href="${BASE}/">Wayweave</a><span>›</span><strong>${escapeHtml(activeRoute.label)}</strong><span>›</span><a href="${BASE}/sitemap/">構造を見る</a>`;
+    const pageIsPrimary = !activePage.parentId;
+    const parts = [
+      `<a href="${BASE}/">地図</a>`,
+      ...(activePrimary.id !== 'map' ? [`<span>›</span><a href="${activePrimary.path}">${escapeHtml(activePrimary.label)}</a>`] : []),
+      ...(!pageIsPrimary ? [`<span>›</span><strong>${escapeHtml(activePage.label)}</strong>`] : []),
+    ];
+    context.innerHTML = parts.join('');
     global.insertAdjacentElement('afterend', context);
   }
-
-  const getData = async () => {
-    const [destinationResponse, mediaResponse] = await Promise.all([
-      fetch(`${BASE}/data/destinations.json`, { cache: 'no-cache' }),
-      fetch(`${BASE}/data/destination-media.json`, { cache: 'no-cache' }),
-    ]);
-    if (!destinationResponse.ok || !mediaResponse.ok) throw new Error('destination data unavailable');
-    return {
-      catalog: await destinationResponse.json(),
-      media: await mediaResponse.json(),
-    };
-  };
-
-  const getOfficialContent = async () => {
-    const response = await fetch(`${BASE}/data/official-content.json`, { cache: 'no-cache' });
-    if (!response.ok) throw new Error('official content unavailable');
-    return response.json();
-  };
-
-  const mediaMarkup = (destination, media) => {
-    const sourceUrl = media?.sourceUrl || destination.mediaPage || destination.officialUrl;
-    const imageUrl = media?.imageUrl || destination.overrideImageUrl || '';
-    const mode = media?.mode || destination.mediaPolicy;
-    const visual = imageUrl
-      ? `<img src="${escapeHtml(imageUrl)}" alt="${escapeHtml(destination.name)}の公式ビジュアル" loading="lazy" decoding="async" referrerpolicy="no-referrer">`
-      : `<div class="ww-media-fallback">公式ビジュアルは公式ページで確認できます。</div>`;
-    return `
-      <a class="ww-official-visual" href="${escapeHtml(sourceUrl)}" target="_blank" rel="noreferrer" aria-label="${escapeHtml(destination.name)}の公式ビジュアルを開く">
-        <span class="ww-official-visual-media">${visual}</span>
-        <span class="ww-official-visual-copy">
-          <small>OFFICIAL VISUAL · RANK ${destination.rank}</small>
-          <b>${escapeHtml(destination.name)}</b>
-          <p>${escapeHtml(destination.publisher)}が配信する公式ページまたは公式チャンネルのビジュアルです。画像ファイルの出所と利用方針を分離して管理しています。</p>
-          <span>公式配信元で見る ↗</span>
-          <span class="ww-media-note"><i>${escapeHtml(mode)}</i><i>${escapeHtml(destination.publisher)}</i></span>
-        </span>
-      </a>`;
-  };
-
-  const installImageFallback = (root) => {
-    root.querySelectorAll('.ww-official-visual img').forEach((image) => {
-      if (image.dataset.fallbackBound) return;
-      image.dataset.fallbackBound = 'true';
-      image.addEventListener('error', () => {
-        const fallback = document.createElement('div');
-        fallback.className = 'ww-media-fallback';
-        fallback.textContent = '公式ビジュアルを表示できません。公式ページで確認してください。';
-        image.replaceWith(fallback);
-      }, { once: true });
-    });
-  };
-
-  const decorateHeatEscape = async () => {
-    const plansNode = document.getElementById('plans');
-    if (!plansNode) return;
-    let data;
-    try {
-      data = await getData();
-    } catch {
-      return;
-    }
-    const byRank = new Map(data.catalog.destinations.map((destination) => [destination.rank, destination]));
-    const detailSelectors = ['.route', '.plan-grid', '.gates', '.sources'];
-
-    if (!document.querySelector('.ww-plan-controls')) {
-      const controls = document.createElement('div');
-      controls.className = 'ww-plan-controls shell';
-      controls.innerHTML = '<button type="button" data-plan-action="expand">すべて展開</button><button type="button" data-plan-action="collapse">すべて閉じる</button>';
-      plansNode.insertAdjacentElement('beforebegin', controls);
-      controls.addEventListener('click', (event) => {
-        const action = event.target.closest('button')?.dataset.planAction;
-        if (!action) return;
-        plansNode.querySelectorAll('.ww-plan-detail').forEach((detail) => {
-          detail.hidden = action === 'collapse';
-        });
-        plansNode.querySelectorAll('.ww-plan-toggle').forEach((button) => {
-          const expanded = action === 'expand';
-          button.setAttribute('aria-expanded', String(expanded));
-          button.textContent = expanded ? '詳細を閉じる' : '経路・予約・中止条件を見る';
-        });
-      });
-    }
-
-    const decorate = () => {
-      plansNode.querySelectorAll('.plan[id^="rank-"]').forEach((article) => {
-        const rank = Number(article.id.replace('rank-', ''));
-        const destination = byRank.get(rank);
-        const body = article.querySelector('.plan-body');
-        if (!destination || !body) return;
-
-        if (!article.querySelector('.ww-official-visual')) {
-          const media = data.media.destinations?.[destination.id];
-          body.insertAdjacentHTML('afterbegin', mediaMarkup(destination, media));
-        }
-        installImageFallback(article);
-
-        if (!article.querySelector('.ww-official-deep-link')) {
-          const deepLink = document.createElement('a');
-          deepLink.className = 'ww-official-deep-link';
-          deepLink.href = `${BASE}/official/#${destination.id}`;
-          deepLink.textContent = `${destination.name}の公式特集・地図・ガイドを見る →`;
-          article.querySelector('.ww-official-visual')?.insertAdjacentElement('afterend', deepLink);
-        }
-
-        let detail = article.querySelector('.ww-plan-detail');
-        if (!detail) {
-          detail = document.createElement('div');
-          detail.className = 'ww-plan-detail';
-          const firstDetail = body.querySelector(detailSelectors[0]);
-          if (firstDetail) firstDetail.insertAdjacentElement('beforebegin', detail);
-          detailSelectors.forEach((selector) => {
-            const node = body.querySelector(selector);
-            if (node) detail.appendChild(node);
-          });
-        }
-
-        let toggle = article.querySelector('.ww-plan-toggle');
-        if (!toggle) {
-          toggle = document.createElement('button');
-          toggle.type = 'button';
-          toggle.className = 'ww-plan-toggle';
-          toggle.setAttribute('aria-expanded', 'false');
-          toggle.textContent = '経路・予約・中止条件を見る';
-          article.querySelector('.plan-head')?.insertAdjacentElement('afterend', toggle);
-          toggle.addEventListener('click', () => {
-            const expanded = toggle.getAttribute('aria-expanded') === 'true';
-            toggle.setAttribute('aria-expanded', String(!expanded));
-            toggle.textContent = expanded ? '経路・予約・中止条件を見る' : '詳細を閉じる';
-            detail.hidden = expanded;
-          });
-        }
-        detail.hidden = mobileQuery.matches && toggle.getAttribute('aria-expanded') !== 'true';
-      });
-    };
-
-    decorate();
-    new MutationObserver(decorate).observe(plansNode, { childList: true });
-    mobileQuery.addEventListener('change', decorate);
-  };
-
-  const decorateDestinationAtlas = async () => {
-    const grid = document.getElementById('grid');
-    if (!grid) return;
-    let catalog;
-    let official;
-    try {
-      [catalog, official] = await Promise.all([
-        fetch(`${BASE}/data/destinations.json`, { cache: 'no-cache' }).then((response) => response.json()),
-        getOfficialContent(),
-      ]);
-    } catch {
-      return;
-    }
-    const byName = new Map(catalog.destinations.map((destination) => [destination.name, destination]));
-    const officialById = new Map(official.destinations.map((destination) => [destination.id, destination]));
-    const decorate = () => {
-      grid.querySelectorAll('.card').forEach((card) => {
-        if (card.querySelector('.ww-official-deep-link')) return;
-        const name = card.querySelector('h2')?.textContent?.trim();
-        const destination = byName.get(name);
-        const collection = destination ? officialById.get(destination.id) : null;
-        if (!destination || !collection) return;
-        const link = document.createElement('a');
-        link.className = 'ww-official-deep-link';
-        link.href = `${BASE}/official/#${destination.id}`;
-        link.textContent = `公式の物語・地図・体験 ${collection.items.length}件 →`;
-        card.querySelector('.body')?.appendChild(link);
-      });
-    };
-    decorate();
-    new MutationObserver(decorate).observe(grid, { childList: true });
-  };
-
-  if (currentPath.startsWith(`${BASE}/heat-escape-2026/`)) decorateHeatEscape();
-  if (currentPath.startsWith(`${BASE}/destinations/`)) decorateDestinationAtlas();
 })();
