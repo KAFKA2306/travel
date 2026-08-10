@@ -1,0 +1,71 @@
+{
+  "version": "2026-08-11",
+  "principle": "Top-level navigation is stable. New content is attached to an area or plan and must not create a new primary navigation item.",
+  "areas": [
+    {
+      "id": "kansai",
+      "label": "大阪・京都",
+      "country": "日本",
+      "lat": 34.85,
+      "lng": 135.63,
+      "summary": "美術館・博物館、街歩き、近距離の日帰り候補。",
+      "primaryPath": "/travel/kansai-museums/",
+      "links": [
+        { "label": "美術館・博物館", "path": "/travel/kansai-museums/" },
+        { "label": "当日情報", "path": "/travel/guides/" }
+      ]
+    },
+    {
+      "id": "sado",
+      "label": "佐渡島",
+      "country": "日本",
+      "lat": 38.02,
+      "lng": 138.37,
+      "summary": "海、島内バス、フェリー、宿泊を組み合わせる保存済み旅程。",
+      "primaryPath": "/travel/planner/",
+      "links": [
+        { "label": "旅程", "path": "/travel/planner/" },
+        { "label": "当日情報", "path": "/travel/guides/" }
+      ]
+    },
+    {
+      "id": "kobe-arima",
+      "label": "神戸・有馬",
+      "country": "日本",
+      "lat": 34.75,
+      "lng": 135.19,
+      "summary": "三宮を拠点に、有馬温泉を公共交通で日帰りする保存済み旅程。",
+      "primaryPath": "/travel/planner/",
+      "links": [
+        { "label": "旅程", "path": "/travel/planner/" },
+        { "label": "当日情報", "path": "/travel/guides/" }
+      ]
+    },
+    {
+      "id": "japan-heat-escape",
+      "label": "日本・避暑候補",
+      "country": "日本",
+      "lat": 36.2,
+      "lng": 138.0,
+      "summary": "上高地、軽井沢、奥入瀬など10候補を比較する企画。",
+      "primaryPath": "/travel/heat-escape-2026/",
+      "links": [
+        { "label": "10候補を比較", "path": "/travel/heat-escape-2026/" },
+        { "label": "旅先図鑑", "path": "/travel/destinations/" }
+      ]
+    },
+    {
+      "id": "shenzhen",
+      "label": "深圳",
+      "country": "中国",
+      "lat": 22.54,
+      "lng": 114.06,
+      "summary": "航空・フェリー・地下鉄をつなぐ国際複合経路。",
+      "primaryPath": "/travel/shenzhen/",
+      "links": [
+        { "label": "経路比較", "path": "/travel/shenzhen/" },
+        { "label": "当日情報", "path": "/travel/guides/" }
+      ]
+    }
+  ]
+}
