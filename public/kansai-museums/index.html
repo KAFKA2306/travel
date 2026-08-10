@@ -1,0 +1,90 @@
+<!doctype html>
+<html lang="ja">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="theme-color" content="#fbfaf7" />
+  <meta name="description" content="大阪・京都の主要美術館・博物館を、公式一次情報と休館注意付きで選べる旅行用ガイド" />
+  <title>大阪・京都 美術館・博物館｜Wayweave</title>
+  <style>
+    :root{font-family:Inter,"Noto Sans JP","Hiragino Sans","Yu Gothic",sans-serif;color:#243653;background:#fbfaf7;--line:rgba(67,87,119,.14);--muted:#68758b;--card:#fff;--blue:#e9f1fc;--mint:#eaf7f0;--rose:#fcecf0}
+    *{box-sizing:border-box}body{margin:0;background:radial-gradient(circle at 10% 0%,rgba(143,181,236,.20),transparent 28rem),#fbfaf7}a{color:inherit}.shell{width:min(1160px,calc(100% - 28px));margin:auto}
+    header{position:sticky;top:0;z-index:10;border-bottom:1px solid var(--line);background:rgba(251,250,247,.9);backdrop-filter:blur(16px)}header .shell{min-height:64px;display:flex;align-items:center;justify-content:space-between;gap:12px}.brand{font-weight:900;text-decoration:none}.back{font-size:12px;font-weight:800;text-decoration:none;padding:9px 12px;border:1px solid var(--line);border-radius:12px;background:#fff}
+    .hero{padding:58px 0 24px}.eyebrow{font-size:12px;font-weight:900;letter-spacing:.13em;color:#5c76a2}.hero h1{font-size:clamp(38px,7vw,72px);line-height:1.02;letter-spacing:-.055em;margin:10px 0 16px}.hero p{max-width:790px;color:var(--muted);line-height:1.8}.notice{padding:15px 17px;border-radius:16px;background:var(--rose);font-size:12px;line-height:1.7}
+    .controls{display:flex;gap:8px;flex-wrap:wrap;padding:20px 0}.filter{border:1px solid var(--line);background:#fff;border-radius:999px;padding:9px 13px;font-weight:850;cursor:pointer}.filter.active{background:#243653;color:#fff}.meta{margin-left:auto;color:var(--muted);font-size:12px;align-self:center}
+    .section{padding:10px 0 34px}.section h2{font-size:26px;margin:0 0 14px}.grid{display:grid;grid-template-columns:repeat(3,1fr);gap:12px}.card{display:flex;flex-direction:column;min-height:270px;padding:18px;border:1px solid var(--line);border-radius:20px;background:var(--card);box-shadow:0 16px 40px rgba(76,91,125,.06)}.card-head{display:flex;justify-content:space-between;gap:8px}.chips{display:flex;gap:6px;flex-wrap:wrap}.chip{font-size:10px;font-weight:900;border-radius:999px;padding:6px 8px;background:var(--blue)}.chip.museum{background:var(--mint)}.chip.closed{background:var(--rose);color:#824f59}.card h3{font-size:18px;margin:14px 0 8px}.area{font-size:12px;color:var(--muted);font-weight:800}.desc{font-size:12px;line-height:1.7;color:var(--muted);margin:10px 0}.themes{font-size:11px;line-height:1.65;color:#52627a}.status{font-size:11px;line-height:1.6;padding:10px 11px;background:var(--rose);border-radius:12px;margin-top:10px}.actions{display:grid;grid-template-columns:1fr 1fr 1fr;gap:7px;margin-top:auto;padding-top:15px}.actions a{text-align:center;text-decoration:none;border:1px solid var(--line);border-radius:11px;padding:9px 7px;font-size:10px;font-weight:900}.actions a:first-child{background:#243653;color:#fff}
+    footer{padding:24px 0 38px;border-top:1px solid var(--line);color:var(--muted);font-size:11px;line-height:1.7}
+    [hidden]{display:none!important}@media(max-width:900px){.grid{grid-template-columns:repeat(2,1fr)}}@media(max-width:620px){.grid{grid-template-columns:1fr}.meta{width:100%;margin-left:0}.hero{padding-top:40px}.actions{grid-template-columns:1fr}}
+  </style>
+  <link rel="stylesheet" href="/travel/site-shell.css" />
+</head>
+<body>
+  <header><div class="shell"><a class="brand" href="/travel/">wayweave</a><a class="back" href="/travel/guides/">旅行用リンク集へ</a></div></header>
+  <main class="shell">
+    <section class="hero">
+      <div class="eyebrow">OSAKA / KYOTO · MUSEUM GUIDE</div>
+      <h1>美術館・博物館を、<br>公式情報から選ぶ。</h1>
+      <p>大阪市・京都市の主要施設を、美術館／博物館、エリア、テーマで整理しました。営業時間・展示・料金は変わるため固定せず、旅行当日は各施設の公式ページで再確認します。</p>
+      <div class="notice"><b>休館注意:</b> 大阪市立東洋陶磁美術館は2026年8月3日から改修工事のため休館中です。大阪くらしの今昔館は2026年9月1日から改修に伴う長期休館が予定されています。最新状況は各カードの「当日確認」から公式情報を確認してください。</div>
+    </section>
+
+    <section class="controls" aria-label="絞り込み">
+      <button class="filter active" data-city="all">すべて</button>
+      <button class="filter" data-city="大阪">大阪</button>
+      <button class="filter" data-city="京都">京都</button>
+      <button class="filter" data-category="美術館">美術館</button>
+      <button class="filter" data-category="博物館">博物館</button>
+      <span class="meta" id="meta">一次情報を読み込み中…</span>
+    </section>
+
+    <section class="section"><div class="grid" id="grid"></div></section>
+  </main>
+  <footer class="shell">データ正準: <a href="/travel/data/kansai-museums.json">kansai-museums.json</a> · 当日の開館、展示、料金、臨時休館は施設公式を正とします。</footer>
+
+  <script>
+    const grid = document.querySelector('#grid');
+    const meta = document.querySelector('#meta');
+    const buttons = [...document.querySelectorAll('.filter')];
+    let facilities = [];
+    let city = 'all';
+    let category = 'all';
+
+    const mapUrl = f => `https://www.google.com/maps/search/?api=1&query=${encodeURIComponent(`${f.name} ${f.city}`)}`;
+    const stateLabel = s => s === 'temporary-closure' ? '休館中' : s === 'active-with-announced-closure' ? '休館予定あり' : '運営中';
+
+    function render(){
+      const items = facilities.filter(f => (city === 'all' || f.city === city) && (category === 'all' || f.category === category));
+      meta.textContent = `${items.length}施設 / 確認日 2026-08-11`;
+      grid.innerHTML = items.map(f => `
+        <article class="card">
+          <div class="card-head"><div class="chips"><span class="chip ${f.category === '博物館' ? 'museum' : ''}">${f.category}</span><span class="chip">${f.city}</span>${f.operationalState !== 'active' ? `<span class="chip closed">${stateLabel(f.operationalState)}</span>` : ''}</div></div>
+          <h3>${f.name}</h3>
+          <div class="area">${f.area}</div>
+          <p class="desc">${f.note}</p>
+          <div class="themes">${f.themes.join(' · ')}</div>
+          ${f.statusNote ? `<div class="status"><b>注意:</b> ${f.statusNote}</div>` : ''}
+          <div class="actions">
+            <a href="${f.officialUrl}" target="_blank" rel="noreferrer">公式サイト</a>
+            <a href="${f.checkUrl}" target="_blank" rel="noreferrer">当日確認</a>
+            <a href="${mapUrl(f)}" target="_blank" rel="noreferrer">地図</a>
+          </div>
+        </article>`).join('');
+    }
+
+    buttons.forEach(btn => btn.addEventListener('click', () => {
+      const c = btn.dataset.city;
+      const k = btn.dataset.category;
+      if (c) { city = c; category = 'all'; }
+      if (k) { category = k; city = 'all'; }
+      buttons.forEach(b => b.classList.remove('active'));
+      btn.classList.add('active');
+      render();
+    }));
+
+    fetch('/travel/data/kansai-museums.json')
+      .then(r => { if(!r.ok) throw new Error(`HTTP ${r.status}`); return r.json(); })
+      .then(data => { facilities = data.facilities; render(); })
+      .catch(err => { meta.textContent = 'データ読込失敗'; grid.innerHTML = `<p>${err.message}</p>`; });
+  </script>
+</body>
+</html>
