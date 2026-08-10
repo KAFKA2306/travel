@@ -41,16 +41,19 @@ jobs:
           test -s dist/index.html
           test -s dist/planner/index.html
           test -s dist/destinations/index.html
+          test -s dist/kansai-museums/index.html
           test -s dist/official/index.html
           test -s dist/heat-escape-2026/index.html
           test -s dist/guides/index.html
           test -s dist/shenzhen/index.html
           test -s dist/sitemap/index.html
+          test -s dist/data/site-areas.json
           test -s dist/data/official-content.json
           test -s dist/data/official-content-expansion.json
           test -s dist/data/official-content-growth.json
           test -s dist/release.json
-          grep -q '旅行の判断を始める' dist/index.html
+          grep -q 'id="overview-map"' dist/index.html
+          grep -q 'AREA DIRECTORY' dist/destinations/index.html
           grep -q '旅程ワークスペース' dist/planner/index.html
           grep -q '公式コンテンツ・ネットワーク' dist/official/index.html
           grep -q 'official-content-growth.json' dist/official/index.html
