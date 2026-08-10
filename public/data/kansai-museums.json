@@ -133,12 +133,27 @@
       "name": "京都市京セラ美術館",
       "category": "美術館",
       "area": "岡崎",
-      "themes": ["近代京都美術", "日本画", "現代美術", "建築"],
+      "themes": ["近代京都美術", "現代美術", "建築", "YBA", "歌川国芳"],
       "officialUrl": "https://kyotocity-kyocera.museum/",
-      "checkUrl": "https://kyotocity-kyocera.museum/info",
+      "checkUrl": "https://kyotocity-kyocera.museum/exhibition/20260603-20260906",
       "publisher": "京都市京セラ美術館",
       "operationalState": "active",
-      "note": "近代以降の京都の美術を核に、企画展とコレクション展示を行う。"
+      "note": "2026年8月11日時点で「テート美術館 ― YBA & BEYOND 世界を変えた90s英国アート」（6月3日〜9月6日）と「浮世絵スーパークリエイター 歌川国芳展」（7月18日〜9月23日）を開催。刺激の強い現代美術、90年代英国カルチャー、国芳、建築までまとめて楽しみたい時の候補。",
+      "currentExhibitions": [
+        {
+          "title": "テート美術館 ― YBA & BEYOND 世界を変えた90s英国アート",
+          "startDate": "2026-06-03",
+          "endDate": "2026-09-06",
+          "officialUrl": "https://kyotocity-kyocera.museum/exhibition/20260603-20260906"
+        },
+        {
+          "title": "浮世絵スーパークリエイター 歌川国芳展",
+          "startDate": "2026-07-18",
+          "endDate": "2026-09-23",
+          "officialUrl": "https://kyotocity-kyocera.museum/"
+        }
+      ],
+      "decisionNote": "現代美術の刺激・複数展・建築体験を重視するならこちら。YBAは作品の背景理解を要求するため、好みが分かれやすい点に注意。"
     },
     {
       "id": "momak",
@@ -146,12 +161,21 @@
       "name": "京都国立近代美術館",
       "category": "美術館",
       "area": "岡崎",
-      "themes": ["近代美術", "現代美術", "工芸", "デザイン", "写真"],
+      "themes": ["近代美術", "現代美術", "工芸", "デザイン", "写真", "フォンタネージ"],
       "officialUrl": "https://www.momak.go.jp/",
-      "checkUrl": "https://www.momak.go.jp/",
+      "checkUrl": "https://www.momak.go.jp/Japanese/exhibitionarchive/2026/467.html",
       "publisher": "京都国立近代美術館",
       "operationalState": "active",
-      "note": "絵画・彫刻から工芸、デザイン、写真、映像まで扱う国立美術館。"
+      "note": "2026年8月11日時点で、日本イタリア国交樹立160周年・フォンタネージ来日150周年記念「フォンタネージ—イタリアの光・心の風景」を7月18日〜10月4日に開催。画家本人の風景画、日本での制作・教育、弟子への影響まで一つの物語として追いたい時の候補。",
+      "currentExhibitions": [
+        {
+          "title": "フォンタネージ—イタリアの光・心の風景",
+          "startDate": "2026-07-18",
+          "endDate": "2026-10-04",
+          "officialUrl": "https://www.momak.go.jp/Japanese/exhibitionarchive/2026/467.html"
+        }
+      ],
+      "decisionNote": "1館だけ選び、展示構成をじっくり追うならこちらを優先候補にする。一般料金は2,000円で、会期中に一部展示替えがある。"
     },
     {
       "id": "museum-of-kyoto",
