@@ -4,6 +4,7 @@
     { id: 'home', path: `${BASE}/`, label: 'ホーム' },
     { id: 'planner', path: `${BASE}/planner/`, label: '旅程編集' },
     { id: 'destinations', path: `${BASE}/destinations/`, label: '旅先図鑑' },
+    { id: 'kansai-museums', path: `${BASE}/kansai-museums/`, label: '大阪・京都ミュージアム' },
     { id: 'official', path: `${BASE}/official/`, label: '公式特集' },
     { id: 'heat-escape', path: `${BASE}/heat-escape-2026/`, label: '猛暑回避10案' },
     { id: 'guides', path: `${BASE}/guides/`, label: '当日情報' },
