@@ -1,5 +1,5 @@
 {
-  "generatedAt": "2026-08-10T23:33:50.848Z",
+  "generatedAt": "2026-08-10T23:39:48.825Z",
   "baseUrl": "https://kafka2306.github.io/travel",
   "results": [
     {
@@ -20,9 +20,7 @@
       "buttons": 1,
       "headings": 10,
       "brokenImages": [],
-      "pendingImages": [
-        "https://yamaguchi-tourism.jp/lsc/api/photo/?src=1700667"
-      ],
+      "pendingImages": [],
       "unlabeledButtons": 0,
       "unlabeledLinks": 0
     },
@@ -84,13 +82,14 @@
       "title": "公式コンテンツ・ネットワーク｜Wayweave",
       "width": 1440,
       "scrollWidth": 1440,
-      "height": 11588,
+      "height": 11472,
       "horizontalOverflow": false,
       "links": 191,
       "buttons": 7,
       "headings": 25,
       "brokenImages": [],
       "pendingImages": [
+        "https://yamaguchi-tourism.jp/lsc/api/photo/?src=1700667",
         "https://www.kanko-nobeyama.jp/wp/wp-content/themes/minamimakimura/img/home/slide02.jpg",
         "https://www.yamanashi-kankou.jp/special/fujisan/images/5th-tenbo_01.jpg",
         "https://s.wordpress.com/mshots/v1/https%3A%2F%2Fwww.shiretoko.asia%2F?w=1200",
@@ -224,7 +223,9 @@
       "buttons": 1,
       "headings": 10,
       "brokenImages": [],
-      "pendingImages": [],
+      "pendingImages": [
+        "https://aomori-tourism.com/lsc/upfile/spot/0000/0339/339_12_l.jpg"
+      ],
       "unlabeledButtons": 0,
       "unlabeledLinks": 0
     },
@@ -235,14 +236,12 @@
       "screenshot": "planner-mobile.png",
       "status": 200,
       "finalUrl": "https://kafka2306.github.io/travel/planner/",
-      "consoleErrors": [
-        "Failed to load resource: the server responded with a status of 404 ()"
-      ],
+      "consoleErrors": [],
       "pageErrors": [],
       "title": "旅程ワークスペース｜Wayweave",
       "width": 390,
       "scrollWidth": 390,
-      "height": 3884,
+      "height": 3879,
       "horizontalOverflow": false,
       "links": 14,
       "buttons": 35,
