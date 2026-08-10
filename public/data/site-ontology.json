@@ -1,8 +1,13 @@
 {
   "version": "2026-08-11",
   "baseUrl": "https://kafka2306.github.io/travel",
-  "principle": "The root is a decision portal. Itineraries, destinations, official content, routes and live operational information are separate but connected layers. Official content collections grow only through validated, non-duplicate regions backed by primary sources.",
+  "principle": "Geography first. The root shows the whole map, then area hubs, then plans or facilities, and live information last. New content must attach to an existing top-level section instead of creating another primary navigation item.",
+  "navigation": {
+    "primary": ["map", "areas", "plans", "live"],
+    "rule": "Primary navigation is fixed to four sections. Feature pages are children of an area or plan."
+  },
   "classes": [
+    { "id": "AreaHub", "label": "地域ハブ", "description": "複数の旅先、施設、旅程、当日情報を地理単位で束ねる入口。" },
     { "id": "Decision", "label": "判断", "description": "日数、予算、移動負荷、気象リスクを踏まえた選択単位。" },
     { "id": "TripPlan", "label": "旅程", "description": "出発地、日付、人数、交通、宿泊、撤退条件を持つ実行可能な計画。" },
     { "id": "Destination", "label": "旅先", "description": "訪問対象となる地域、景勝地、施設または交通拠点。" },
@@ -15,27 +20,28 @@
     { "id": "SiteView", "label": "画面", "description": "利用者の目的別に上記エンティティを組み合わせるUI。" }
   ],
   "relations": [
-    { "from": "SiteView", "predicate": "startsWith", "to": "Decision", "label": "ホームは最初の目的選択を提示する" },
+    { "from": "SiteView", "predicate": "startsWith", "to": "AreaHub", "label": "ホームは地図と地域ハブから始める" },
+    { "from": "AreaHub", "predicate": "contains", "to": "Destination", "label": "地域が旅先と施設を束ねる" },
+    { "from": "AreaHub", "predicate": "contains", "to": "TripPlan", "label": "地域が関連旅程を束ねる" },
     { "from": "Decision", "predicate": "selects", "to": "TripPlan", "label": "判断が旅程を選ぶ" },
     { "from": "TripPlan", "predicate": "targets", "to": "Destination", "label": "旅程が旅先を対象にする" },
     { "from": "TripPlan", "predicate": "uses", "to": "Route", "label": "旅程が経路を使う" },
     { "from": "TripPlan", "predicate": "supportedBy", "to": "EvidenceSource", "label": "旅程が根拠に支えられる" },
     { "from": "Destination", "predicate": "interpretedBy", "to": "OfficialContentCollection", "label": "旅先を公式の物語・地図・体験から理解する" },
     { "from": "OfficialContentCollection", "predicate": "organizedBy", "to": "LifecycleStage", "label": "公式コンテンツを旅行者の意思決定段階で再編集する" },
-    { "from": "OfficialContentCollection", "predicate": "publishedBy", "to": "EvidenceSource", "label": "各コンテンツの公式発信主体を記録する" },
     { "from": "Destination", "predicate": "describedBy", "to": "GuideHub", "label": "旅先が当日情報で補完される" },
     { "from": "Destination", "predicate": "depictedBy", "to": "MediaAsset", "label": "旅先が公式ビジュアルで表現される" },
     { "from": "MediaAsset", "predicate": "publishedBy", "to": "EvidenceSource", "label": "ビジュアルの配信主体を記録する" }
   ],
   "views": [
-    { "path": "/travel/", "id": "home", "label": "判断ポータル", "primaryClass": "Decision", "purpose": "旅を探す、比較する、編集する、公式コンテンツを読む、当日確認する、という次の行動を選ぶ。" },
-    { "path": "/travel/planner/", "id": "planner", "label": "旅程ワークスペース", "primaryClass": "TripPlan", "purpose": "保存済み旅程、地図、候補地、根拠を同じ編集画面で扱う。" },
-    { "path": "/travel/destinations/", "id": "destinations", "label": "旅先図鑑", "primaryClass": "Destination", "purpose": "公式ビジュアルから旅先を比較し、計画と公式コンテンツ群へ移動する。" },
-    { "path": "/travel/kansai-museums/", "id": "kansai-museums", "label": "大阪・京都 ミュージアム", "primaryClass": "Destination", "purpose": "大阪・京都14施設を公式一次情報、休館状態、テーマ、地図で比較する。" },
-    { "path": "/travel/official/", "id": "official", "label": "公式コンテンツ・ネットワーク", "primaryClass": "OfficialContentCollection", "purpose": "登録済みの全地域について、物語、解説、モデルコース、地図、ガイド、イベント、ライブ情報を旅行段階ごとに紹介する。件数は公式コンテンツデータから動的に算出する。" },
-    { "path": "/travel/heat-escape-2026/", "id": "heat-escape", "label": "猛暑回避10プラン", "primaryClass": "Decision", "purpose": "10候補を日数、交通、予約順、撤退条件で比較する。" },
-    { "path": "/travel/guides/", "id": "guides", "label": "当日情報", "primaryClass": "GuideHub", "purpose": "旅行当日に使う運行、時刻、営業、天気の公式ページへ接続する。" },
-    { "path": "/travel/shenzhen/", "id": "shenzhen", "label": "深圳 Route Lab", "primaryClass": "Route", "purpose": "国際・複合交通の経路候補と失敗条件を比較する。" },
-    { "path": "/travel/sitemap/", "id": "sitemap", "label": "サイト構造", "primaryClass": "SiteView", "purpose": "ページ、データ、エンティティ間の関係を可視化する。" }
+    { "path": "/travel/", "id": "map", "label": "全体地図", "primaryClass": "AreaHub", "level": 0, "purpose": "登録済み地域の位置関係を最初に見渡し、地域ハブへ移動する。" },
+    { "path": "/travel/destinations/", "id": "areas", "label": "エリア", "primaryClass": "AreaHub", "level": 1, "purpose": "地域と旅先を比較し、地域に紐づく施設・旅程へ移動する。" },
+    { "path": "/travel/planner/", "id": "plans", "label": "旅程", "primaryClass": "TripPlan", "level": 1, "purpose": "保存済み旅程、候補地、地図、根拠を同じ編集画面で扱う。" },
+    { "path": "/travel/guides/", "id": "live", "label": "当日情報", "primaryClass": "GuideHub", "level": 1, "purpose": "旅行直前・当日に使う運行、時刻、営業、天気の公式ページへ接続する。" },
+    { "path": "/travel/kansai-museums/", "id": "kansai-museums", "parentId": "areas", "label": "大阪・京都 ミュージアム", "primaryClass": "Destination", "level": 2, "purpose": "大阪・京都14施設を公式一次情報、休館状態、テーマ、地図で比較する。" },
+    { "path": "/travel/official/", "id": "official", "parentId": "areas", "label": "公式コンテンツ・ネットワーク", "primaryClass": "OfficialContentCollection", "level": 2, "purpose": "地域ごとの物語、解説、モデルコース、地図、ガイド、イベント、ライブ情報を旅行段階ごとに紹介する。" },
+    { "path": "/travel/heat-escape-2026/", "id": "heat-escape", "parentId": "plans", "label": "猛暑回避10プラン", "primaryClass": "Decision", "level": 2, "purpose": "10候補を日数、交通、予約順、撤退条件で比較する。" },
+    { "path": "/travel/shenzhen/", "id": "shenzhen", "parentId": "plans", "label": "深圳 Route Lab", "primaryClass": "Route", "level": 2, "purpose": "国際・複合交通の経路候補と失敗条件を比較する。" },
+    { "path": "/travel/sitemap/", "id": "sitemap", "parentId": "map", "label": "サイト構造", "primaryClass": "SiteView", "level": 2, "purpose": "ページ、データ、エンティティ間の関係を可視化する。" }
   ]
 }
