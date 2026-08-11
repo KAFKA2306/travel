@@ -21,6 +21,10 @@ const core = datasets.find(({ file }) => file.endsWith('official-content.json'))
 const replaceLegacyItem = (destinationId, expectedStage, expectedType, replacement) => {
   const destination = core.destinations.find((item) => item.id === destinationId)
   if (!destination) throw new Error(`legacy repair destination missing: ${destinationId}`)
+  const alreadyRepaired = destination.items.some(
+    (item) => JSON.stringify(item) === JSON.stringify(replacement),
+  )
+  if (alreadyRepaired) return
   const index = destination.items.findIndex(
     (item) => item.stage === expectedStage && item.type === expectedType,
   )
