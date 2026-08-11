@@ -1,0 +1,21 @@
+{
+  "schema": "travel-agent-api.v1",
+  "workspace_contract": "travel-agent-workspace.v1",
+  "default_visibility": "private",
+  "capabilities": [
+    "read:itinerary",
+    "write:itinerary",
+    "navigate:booking",
+    "publish:github",
+    "delete:itinerary",
+    "purchase:external"
+  ],
+  "side_effect_capabilities": ["publish:github", "delete:itinerary", "purchase:external"],
+  "side_effect_policy": "simulate_then_human_approval",
+  "external_execution": "not_implemented",
+  "candidate_evidence": {
+    "required": ["source_url", "checked_at"],
+    "optional_verified_only": ["price_if_verified", "opening_hours_if_verified"]
+  },
+  "audit_fields": ["event", "actor", "capability", "resource", "input_hash", "source_urls", "status", "at"]
+}
