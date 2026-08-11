@@ -1,0 +1,43 @@
+name: Agent workspace contract
+
+on:
+  pull_request:
+    paths:
+      - 'agent/**'
+      - 'tests/agent-workspace.test.mjs'
+      - 'docs/agent-workspace.md'
+      - 'public/api/v1/agent/workspace-contract.json'
+      - '.github/workflows/agent-workspace-contract.yml'
+  push:
+    branches: [main]
+    paths:
+      - 'agent/**'
+      - 'tests/agent-workspace.test.mjs'
+      - 'docs/agent-workspace.md'
+      - 'public/api/v1/agent/workspace-contract.json'
+      - '.github/workflows/agent-workspace-contract.yml'
+
+permissions:
+  contents: read
+
+jobs:
+  contract:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 22
+      - name: Syntax check
+        run: node --check agent/workspace.mjs
+      - name: Contract tests
+        run: node --test tests/agent-workspace.test.mjs
+      - name: Validate published JSON contracts
+        run: |
+          node -e "JSON.parse(require('fs').readFileSync('agent/blueprints/day-trip-no-car.json','utf8'))"
+          node -e "JSON.parse(require('fs').readFileSync('public/api/v1/agent/workspace-contract.json','utf8'))"
+      - name: No external execution primitive in contract module
+        run: |
+          ! grep -E 'fetch\(|child_process|exec\(|spawn\(' agent/workspace.mjs
+      - name: Clean checkout
+        run: test -z "$(git status --porcelain --untracked-files=all)"
