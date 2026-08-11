@@ -28,8 +28,6 @@ const replaceLegacyItem = (destinationId, expectedStage, expectedType, replaceme
   destination.items[index] = replacement
 }
 
-// Repair pre-existing lifecycle gaps with official primary-source entries instead of
-// weakening the five-stage validation contract.
 replaceLegacyItem('karuizawa', 'plan', 'brochure', {
   stage: 'experience',
   type: 'eco-tourism',
@@ -65,7 +63,11 @@ replaceLegacyItem('nobeyama', 'discover', 'regional', {
 writeJson('public/data/official-content.json', core)
 
 const all = datasets.flatMap(({ data }) => data.destinations)
-if (all.some((item) => item.id === candidate.id)) throw new Error(`duplicate region id: ${candidate.id}`)
+const existing = all.find((item) => item.id === candidate.id)
+if (existing && JSON.stringify(existing) !== JSON.stringify(candidate)) {
+  throw new Error(`region id collision with different content: ${candidate.id}`)
+}
+const newlyAdded = !existing
 if (!Array.isArray(candidate.items) || candidate.items.length !== 5) throw new Error('candidate must contain exactly five items')
 const candidateStages = candidate.items.map((item) => item.stage).sort()
 if (JSON.stringify(candidateStages) !== JSON.stringify([...stages].sort())) throw new Error('candidate must contain each lifecycle stage exactly once')
@@ -78,8 +80,10 @@ for (const item of candidate.items) {
 if (!candidate.officialUrl?.startsWith('https://')) throw new Error('officialUrl must use HTTPS')
 
 const growth = datasets.find(({ file }) => file.endsWith('official-content-growth.json')).data
-growth.destinations.push(candidate)
-growth.version = new Date().toISOString().slice(0, 10)
+if (newlyAdded) {
+  growth.destinations.push(candidate)
+  growth.version = new Date().toISOString().slice(0, 10)
+}
 writeJson('public/data/official-content-growth.json', growth)
 
 const merged = datasets.flatMap(({ file, data }) => file.endsWith('official-content-growth.json') ? growth.destinations : data.destinations)
@@ -95,20 +99,24 @@ for (const destination of merged) {
 const release = readJson('public/release.json')
 const baseCount = datasets[0].data.destinations.length
 const expansionCount = merged.length - baseCount
-release.release = `official-content-network-expanded-${new Date().toISOString().slice(0, 10)}-r${Number((release.release.match(/-r(\d+)$/) || [])[1] || 0) + 1}`
-release.publishedAt = new Date().toISOString()
-release.officialRegionCount = merged.length
-release.expansionRegionCount = expansionCount
-release.officialContentCoverage = merged.reduce((sum, destination) => sum + destination.items.length, 0)
-release.officialContentStages = stages.length
-release.latestAddedRegion = candidate.id
+if (newlyAdded) {
+  release.release = `official-content-network-expanded-${new Date().toISOString().slice(0, 10)}-r${Number((release.release.match(/-r(\d+)$/) || [])[1] || 0) + 1}`
+  release.publishedAt = new Date().toISOString()
+  release.officialRegionCount = merged.length
+  release.expansionRegionCount = expansionCount
+  release.officialContentCoverage = merged.reduce((sum, destination) => sum + destination.items.length, 0)
+  release.officialContentStages = stages.length
+  release.latestAddedRegion = candidate.id
+}
 writeJson('public/release.json', release)
 
 const ontology = readJson('public/data/site-ontology.json')
-ontology.version = new Date().toISOString().slice(0, 10)
-ontology.principle = 'The root is a decision portal. Itineraries, destinations, official content, routes and live operational information are separate but connected layers. Official content collections grow only through validated, non-duplicate regions backed by primary sources and complete lifecycle coverage.'
+if (newlyAdded) {
+  ontology.version = new Date().toISOString().slice(0, 10)
+  ontology.principle = 'The root is a decision portal. Itineraries, destinations, official content, routes and live operational information are separate but connected layers. Official content collections grow only through validated, non-duplicate regions backed by primary sources and complete lifecycle coverage.'
+}
 writeJson('public/data/site-ontology.json', ontology)
 
 if (release.officialRegionCount !== merged.length) throw new Error('release region count mismatch')
 if (release.officialContentCoverage !== merged.length * stages.length) throw new Error('release content count mismatch')
-console.log(`validated ${merged.length} regions / ${release.officialContentCoverage} official items`)
+console.log(`validated ${merged.length} regions / ${release.officialContentCoverage} official items${newlyAdded ? ' / candidate added' : ' / candidate already materialized'}`)
