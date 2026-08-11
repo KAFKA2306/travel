@@ -1,6 +1,6 @@
 # Wayweave UI audit
 
-Generated: 2026-08-11T04:56:12.039Z
+Generated: 2026-08-11T16:55:07.511Z
 
 Base URL: https://kafka2306.github.io/travel
 
@@ -9,7 +9,7 @@ Base URL: https://kafka2306.github.io/travel
 | home | desktop | 200 | PASS | 0 | 0 | 0 | [PNG](./home-desktop.png) |
 | planner | desktop | 200 | PASS | 0 | 0 | 0 | [PNG](./planner-desktop.png) |
 | destinations | desktop | 200 | PASS | 0 | 1 | 0 | [PNG](./destinations-desktop.png) |
-| official | desktop | 200 | PASS | 0 | 16 | 0 | [PNG](./official-desktop.png) |
+| official | desktop | 200 | PASS | 0 | 18 | 0 | [PNG](./official-desktop.png) |
 | heat-escape | desktop | 200 | PASS | 0 | 0 | 0 | [PNG](./heat-escape-desktop.png) |
 | guides | desktop | 200 | PASS | 0 | 0 | 0 | [PNG](./guides-desktop.png) |
 | shenzhen | desktop | 200 | PASS | 0 | 0 | 0 | [PNG](./shenzhen-desktop.png) |
@@ -17,7 +17,7 @@ Base URL: https://kafka2306.github.io/travel
 | home | mobile | 200 | PASS | 0 | 0 | 0 | [PNG](./home-mobile.png) |
 | planner | mobile | 200 | PASS | 0 | 0 | 0 | [PNG](./planner-mobile.png) |
 | destinations | mobile | 200 | PASS | 0 | 4 | 0 | [PNG](./destinations-mobile.png) |
-| official | mobile | 200 | PASS | 0 | 21 | 0 | [PNG](./official-mobile.png) |
+| official | mobile | 200 | PASS | 0 | 22 | 0 | [PNG](./official-mobile.png) |
 | heat-escape | mobile | 200 | PASS | 0 | 0 | 0 | [PNG](./heat-escape-mobile.png) |
 | guides | mobile | 200 | PASS | 0 | 0 | 0 | [PNG](./guides-mobile.png) |
 | shenzhen | mobile | 200 | PASS | 0 | 0 | 0 | [PNG](./shenzhen-mobile.png) |
