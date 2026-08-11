@@ -2,11 +2,31 @@
   "version": "2026-08-02",
   "principle": "Official content is organized by the traveler's decision stage, not by the publishing site's menu structure.",
   "stages": [
-    { "id": "discover", "label": "発見する", "description": "景観、文化、物語、映像から行く理由を見つける。" },
-    { "id": "understand", "label": "理解する", "description": "自然、歴史、地域の背景を知り、現地体験を深くする。" },
-    { "id": "plan", "label": "計画する", "description": "モデルコース、地図、パンフレット、交通で実行可能にする。" },
-    { "id": "experience", "label": "体験する", "description": "ガイド、見学、アクティビティ、イベントへ接続する。" },
-    { "id": "check", "label": "当日確認", "description": "運行、営業、ライブカメラ、現地情報、安全条件を確認する。" }
+    {
+      "id": "discover",
+      "label": "発見する",
+      "description": "景観、文化、物語、映像から行く理由を見つける。"
+    },
+    {
+      "id": "understand",
+      "label": "理解する",
+      "description": "自然、歴史、地域の背景を知り、現地体験を深くする。"
+    },
+    {
+      "id": "plan",
+      "label": "計画する",
+      "description": "モデルコース、地図、パンフレット、交通で実行可能にする。"
+    },
+    {
+      "id": "experience",
+      "label": "体験する",
+      "description": "ガイド、見学、アクティビティ、イベントへ接続する。"
+    },
+    {
+      "id": "check",
+      "label": "当日確認",
+      "description": "運行、営業、ライブカメラ、現地情報、安全条件を確認する。"
+    }
   ],
   "destinations": [
     {
@@ -14,11 +34,46 @@
       "name": "上高地",
       "summary": "景勝地の紹介だけでなく、自然保護、園路、装備、現況まで一つの体験として読む。",
       "items": [
-        { "stage": "discover", "type": "story", "title": "上高地を知る", "description": "特別名勝・特別天然記念物、歴史、動植物をたどる公式入口。", "url": "https://www.kamikochi.or.jp/learn/", "publisher": "上高地観光旅館組合" },
-        { "stage": "understand", "type": "rules", "title": "ルール・マナー", "description": "自然を守りながら歩くための五つの基本ルール。", "url": "https://www.kamikochi.or.jp/learn/rules/", "publisher": "上高地観光旅館組合" },
-        { "stage": "plan", "type": "map", "title": "上高地園路内マップ", "description": "スポット、施設、バス停、トイレの位置関係を確認する。", "url": "https://www.kamikochi.or.jp/learn/parkmap/", "publisher": "上高地観光旅館組合" },
-        { "stage": "experience", "type": "guide", "title": "ポケット散策マップ", "description": "現地で購入できる公式散策マップと掲載内容の案内。", "url": "https://www.kamikochi.or.jp/enjoy/walking_map/", "publisher": "上高地観光旅館組合" },
-        { "stage": "check", "type": "live", "title": "PARK Info・ライブカメラ", "description": "園路情報や上高地バスターミナルのライブ映像を確認する。", "url": "https://www.kamikochi.or.jp/news/category/park_info/", "publisher": "上高地観光旅館組合" }
+        {
+          "stage": "discover",
+          "type": "story",
+          "title": "上高地を知る",
+          "description": "特別名勝・特別天然記念物、歴史、動植物をたどる公式入口。",
+          "url": "https://www.kamikochi.or.jp/learn/",
+          "publisher": "上高地観光旅館組合"
+        },
+        {
+          "stage": "understand",
+          "type": "rules",
+          "title": "ルール・マナー",
+          "description": "自然を守りながら歩くための五つの基本ルール。",
+          "url": "https://www.kamikochi.or.jp/learn/rules/",
+          "publisher": "上高地観光旅館組合"
+        },
+        {
+          "stage": "plan",
+          "type": "map",
+          "title": "上高地園路内マップ",
+          "description": "スポット、施設、バス停、トイレの位置関係を確認する。",
+          "url": "https://www.kamikochi.or.jp/learn/parkmap/",
+          "publisher": "上高地観光旅館組合"
+        },
+        {
+          "stage": "experience",
+          "type": "guide",
+          "title": "ポケット散策マップ",
+          "description": "現地で購入できる公式散策マップと掲載内容の案内。",
+          "url": "https://www.kamikochi.or.jp/enjoy/walking_map/",
+          "publisher": "上高地観光旅館組合"
+        },
+        {
+          "stage": "check",
+          "type": "live",
+          "title": "PARK Info・ライブカメラ",
+          "description": "園路情報や上高地バスターミナルのライブ映像を確認する。",
+          "url": "https://www.kamikochi.or.jp/news/category/park_info/",
+          "publisher": "上高地観光旅館組合"
+        }
       ]
     },
     {
@@ -26,11 +81,46 @@
       "name": "軽井沢",
       "summary": "避暑地という一語から、自然、文学、建築、ウェルネス、歩く旅へ視点を広げる。",
       "items": [
-        { "stage": "discover", "type": "story", "title": "軽井沢のスポットと物語", "description": "自然、文学、歴史的建築を横断して軽井沢を読む。", "url": "https://karuizawa-kankokyokai.jp/spot/", "publisher": "軽井沢観光協会" },
-        { "stage": "understand", "type": "media", "title": "軽井沢フォトギャラリー", "description": "観光協会が管理するストックフォトと利用案内。", "url": "https://karuizawa-kankokyokai.jp/about_karuizawa/23064/", "publisher": "軽井沢観光協会" },
-        { "stage": "plan", "type": "course", "title": "滞在日数別モデルコース", "description": "日帰りから複数泊まで、エリアとテーマで旅程を組み立てる。", "url": "https://karuizawa-kankokyokai.jp/course/", "publisher": "軽井沢観光協会" },
-        { "stage": "plan", "type": "brochure", "title": "公式ガイド・観光マップ", "description": "公式ガイドブック、徒歩マップ、文化・ウェルネス資料を取得する。", "url": "https://karuizawa-kankokyokai.jp/download/", "publisher": "軽井沢観光協会" },
-        { "stage": "check", "type": "news", "title": "交通・自然・営業のお知らせ", "description": "交通情報、野生動物、施設情報など訪問前の更新を確認する。", "url": "https://karuizawa-kankokyokai.jp/information/", "publisher": "軽井沢観光協会" }
+        {
+          "stage": "discover",
+          "type": "story",
+          "title": "軽井沢のスポットと物語",
+          "description": "自然、文学、歴史的建築を横断して軽井沢を読む。",
+          "url": "https://karuizawa-kankokyokai.jp/spot/",
+          "publisher": "軽井沢観光協会"
+        },
+        {
+          "stage": "understand",
+          "type": "media",
+          "title": "軽井沢フォトギャラリー",
+          "description": "観光協会が管理するストックフォトと利用案内。",
+          "url": "https://karuizawa-kankokyokai.jp/about_karuizawa/23064/",
+          "publisher": "軽井沢観光協会"
+        },
+        {
+          "stage": "plan",
+          "type": "course",
+          "title": "滞在日数別モデルコース",
+          "description": "日帰りから複数泊まで、エリアとテーマで旅程を組み立てる。",
+          "url": "https://karuizawa-kankokyokai.jp/course/",
+          "publisher": "軽井沢観光協会"
+        },
+        {
+          "stage": "experience",
+          "type": "eco-tourism",
+          "title": "軽井沢エコツーリズム",
+          "description": "自然、歴史・文化、スポーツを切り口に、軽井沢の伝統と文化に触れる公式体験プログラムを選ぶ。",
+          "url": "https://karuizawa-kankokyokai.jp/eco_tourism/",
+          "publisher": "軽井沢観光協会"
+        },
+        {
+          "stage": "check",
+          "type": "news",
+          "title": "交通・自然・営業のお知らせ",
+          "description": "交通情報、野生動物、施設情報など訪問前の更新を確認する。",
+          "url": "https://karuizawa-kankokyokai.jp/information/",
+          "publisher": "軽井沢観光協会"
+        }
       ]
     },
     {
@@ -38,11 +128,46 @@
       "name": "秋芳洞・秋吉台",
       "summary": "洞窟見学から、地球科学、ジオガイド、カルスト台地、映像表現まで体験を拡張する。",
       "items": [
-        { "stage": "discover", "type": "spot", "title": "秋芳洞公式スポットガイド", "description": "洞内の見どころ、営業、アクセス、関連体験を確認する。", "url": "https://yamaguchi-tourism.jp/spot/detail_14475.html", "publisher": "山口県観光連盟" },
-        { "stage": "understand", "type": "media", "title": "秋芳洞公式動画", "description": "百枚皿や黄金柱など、洞窟空間を映像から理解する。", "url": "https://yamaguchi-tourism.jp/movie/detail_7.html", "publisher": "山口県観光連盟" },
-        { "stage": "plan", "type": "course", "title": "山口定番モデルコース", "description": "秋吉台・秋芳洞を県内の景勝地と組み合わせて計画する。", "url": "https://yamaguchi-tourism.jp/course/detail_2.html", "publisher": "山口県観光連盟" },
-        { "stage": "experience", "type": "guide", "title": "秋芳洞ジオツアー", "description": "認定ジオガイドと洞窟形成を学ぶ公式体験。", "url": "https://yamaguchi-tourism.jp/spot/detail_18980.html", "publisher": "山口県観光連盟" },
-        { "stage": "discover", "type": "photo", "title": "公式フォトダウンロード", "description": "観光宣伝利用条件が明記された秋芳洞の公式写真素材。", "url": "https://yamaguchi-tourism.jp/photo/detail_1700667.html", "publisher": "山口県観光連盟" }
+        {
+          "stage": "discover",
+          "type": "spot",
+          "title": "秋芳洞公式スポットガイド",
+          "description": "洞内の見どころ、営業、アクセス、関連体験を確認する。",
+          "url": "https://yamaguchi-tourism.jp/spot/detail_14475.html",
+          "publisher": "山口県観光連盟"
+        },
+        {
+          "stage": "understand",
+          "type": "media",
+          "title": "秋芳洞公式動画",
+          "description": "百枚皿や黄金柱など、洞窟空間を映像から理解する。",
+          "url": "https://yamaguchi-tourism.jp/movie/detail_7.html",
+          "publisher": "山口県観光連盟"
+        },
+        {
+          "stage": "plan",
+          "type": "course",
+          "title": "山口定番モデルコース",
+          "description": "秋吉台・秋芳洞を県内の景勝地と組み合わせて計画する。",
+          "url": "https://yamaguchi-tourism.jp/course/detail_2.html",
+          "publisher": "山口県観光連盟"
+        },
+        {
+          "stage": "experience",
+          "type": "guide",
+          "title": "秋芳洞ジオツアー",
+          "description": "認定ジオガイドと洞窟形成を学ぶ公式体験。",
+          "url": "https://yamaguchi-tourism.jp/spot/detail_18980.html",
+          "publisher": "山口県観光連盟"
+        },
+        {
+          "stage": "check",
+          "type": "live-operations",
+          "title": "秋芳洞 営業・アクセス情報",
+          "description": "受付時間、繁忙期の営業時間、休業日、アクセス、料金を訪問直前に公式案内で確認する。",
+          "url": "https://yamaguchi-tourism.jp/spot/detail_14475.html",
+          "publisher": "山口県観光連盟"
+        }
       ]
     },
     {
@@ -50,11 +175,46 @@
       "name": "美ヶ原高原",
       "summary": "絶景だけでなく、草原の保全、散策、星空、アート、松本との接続を一つの地域体験として見る。",
       "items": [
-        { "stage": "discover", "type": "story", "title": "美ヶ原高原公式案内", "description": "高原の見どころ、施設、散策マップ、季節情報を俯瞰する。", "url": "https://www.utsukushigaharakogen.jp/", "publisher": "美ヶ原高原観光協議会" },
-        { "stage": "understand", "type": "feature", "title": "自然・アート・サステナブルな休日", "description": "高原、アート、温泉、地域の持続可能性をつなぐ公式特集。", "url": "https://visitmatsumoto.com/article/cs_utsukushigahara", "publisher": "松本市公式観光サイト" },
-        { "stage": "plan", "type": "brochure", "title": "美ヶ原高原道案内マップ", "description": "松本市の公式パンフレット一覧から道案内資料を取得する。", "url": "https://visitmatsumoto.com/brochure/", "publisher": "松本市公式観光サイト" },
-        { "stage": "experience", "type": "media", "title": "タイムラプスの聖地", "description": "星空、雲海、朝夕の光を公式映像文化として楽しむ。", "url": "https://www.utsukushigaharakogen.jp/timelapse/index.html", "publisher": "美ヶ原高原観光協議会" },
-        { "stage": "check", "type": "transport", "title": "2026年路線バス・施設情報", "description": "松本・上田からのバス、営業期間、通行条件を確認する。", "url": "https://www.utsukushigaharakogen.jp/", "publisher": "美ヶ原高原観光協議会" }
+        {
+          "stage": "discover",
+          "type": "story",
+          "title": "美ヶ原高原公式案内",
+          "description": "高原の見どころ、施設、散策マップ、季節情報を俯瞰する。",
+          "url": "https://www.utsukushigaharakogen.jp/",
+          "publisher": "美ヶ原高原観光協議会"
+        },
+        {
+          "stage": "understand",
+          "type": "feature",
+          "title": "自然・アート・サステナブルな休日",
+          "description": "高原、アート、温泉、地域の持続可能性をつなぐ公式特集。",
+          "url": "https://visitmatsumoto.com/article/cs_utsukushigahara",
+          "publisher": "松本市公式観光サイト"
+        },
+        {
+          "stage": "plan",
+          "type": "brochure",
+          "title": "美ヶ原高原道案内マップ",
+          "description": "松本市の公式パンフレット一覧から道案内資料を取得する。",
+          "url": "https://visitmatsumoto.com/brochure/",
+          "publisher": "松本市公式観光サイト"
+        },
+        {
+          "stage": "experience",
+          "type": "media",
+          "title": "タイムラプスの聖地",
+          "description": "星空、雲海、朝夕の光を公式映像文化として楽しむ。",
+          "url": "https://www.utsukushigaharakogen.jp/timelapse/index.html",
+          "publisher": "美ヶ原高原観光協議会"
+        },
+        {
+          "stage": "check",
+          "type": "transport",
+          "title": "2026年路線バス・施設情報",
+          "description": "松本・上田からのバス、営業期間、通行条件を確認する。",
+          "url": "https://www.utsukushigaharakogen.jp/",
+          "publisher": "美ヶ原高原観光協議会"
+        }
       ]
     },
     {
@@ -62,11 +222,46 @@
       "name": "奥入瀬渓流",
       "summary": "名所の点描ではなく、水、森、苔、アート、十和田湖との連続したフィールドとして紹介する。",
       "items": [
-        { "stage": "discover", "type": "spot", "title": "奥入瀬渓流公式ガイド", "description": "渓流の見どころ、施設、交通、体験予約への入口。", "url": "https://aomori-tourism.com/spot/detail_339.html", "publisher": "青森県観光国際交流機構" },
-        { "stage": "understand", "type": "feature", "title": "水とアートのストーリー", "description": "奥入瀬の水・森と現代美術をつなぐ公式特集。", "url": "https://aomori-tourism.com/feature/detail_307.html", "publisher": "青森県観光国際交流機構" },
-        { "stage": "plan", "type": "course", "title": "奥入瀬と十和田湖の自然に癒される旅", "description": "渓流と湖を連続した旅程として組み立てる公式モデルコース。", "url": "https://aomori-tourism.com/itineraries/detail_62.html", "publisher": "青森県観光国際交流機構" },
-        { "stage": "experience", "type": "course", "title": "渓流を抜けるサイクリングコース", "description": "石ヶ戸、阿修羅の流れ、雲井の滝、銚子大滝を自転車でつなぐ。", "url": "https://aomori-tourism.com/itineraries/detail_73.html", "publisher": "青森県観光国際交流機構" },
-        { "stage": "plan", "type": "brochure", "title": "十和田湖・奥入瀬楽しみ方ガイド", "description": "青森県公式パンフレット集から現地ガイドを読む。", "url": "https://aomori-tourism.com/pamphlet/index.html", "publisher": "青森県観光国際交流機構" }
+        {
+          "stage": "discover",
+          "type": "spot",
+          "title": "奥入瀬渓流公式ガイド",
+          "description": "渓流の見どころ、施設、交通、体験予約への入口。",
+          "url": "https://aomori-tourism.com/spot/detail_339.html",
+          "publisher": "青森県観光国際交流機構"
+        },
+        {
+          "stage": "understand",
+          "type": "feature",
+          "title": "水とアートのストーリー",
+          "description": "奥入瀬の水・森と現代美術をつなぐ公式特集。",
+          "url": "https://aomori-tourism.com/feature/detail_307.html",
+          "publisher": "青森県観光国際交流機構"
+        },
+        {
+          "stage": "plan",
+          "type": "course",
+          "title": "奥入瀬と十和田湖の自然に癒される旅",
+          "description": "渓流と湖を連続した旅程として組み立てる公式モデルコース。",
+          "url": "https://aomori-tourism.com/itineraries/detail_62.html",
+          "publisher": "青森県観光国際交流機構"
+        },
+        {
+          "stage": "experience",
+          "type": "course",
+          "title": "渓流を抜けるサイクリングコース",
+          "description": "石ヶ戸、阿修羅の流れ、雲井の滝、銚子大滝を自転車でつなぐ。",
+          "url": "https://aomori-tourism.com/itineraries/detail_73.html",
+          "publisher": "青森県観光国際交流機構"
+        },
+        {
+          "stage": "check",
+          "type": "live-operations",
+          "title": "青森県観光のお知らせ",
+          "description": "道路・遊歩道の通行規制、交通、天候に伴う運用変更など、奥入瀬訪問前の更新を公式情報で確認する。",
+          "url": "https://aomori-tourism.com/topics/index.html",
+          "publisher": "青森県観光国際交流機構"
+        }
       ]
     },
     {
@@ -74,11 +269,46 @@
       "name": "奥日光",
       "summary": "滝と湿原だけでなく、国立公園、外交官文化、温泉、自然体験、リアルタイム情報を横断する。",
       "items": [
-        { "stage": "discover", "type": "feature", "title": "日光の夏・避暑地特集", "description": "奥日光を含む夏の自然、体験、食を公式特集から見る。", "url": "https://www.nikko-kankou.org/public/", "publisher": "日光市観光協会" },
-        { "stage": "understand", "type": "course", "title": "避暑地日光で過ごす休日", "description": "中禅寺湖畔の自然と外交官文化を組み合わせた公式コース。", "url": "https://www.nikko-kankou.org/courses/list?areaIds=1", "publisher": "日光市観光協会" },
-        { "stage": "plan", "type": "course", "title": "奥日光を含むモデルコース", "description": "公共交通、自然、温泉、滞在時間から公式コースを検索する。", "url": "https://www.nikko-kankou.org/courses", "publisher": "日光市観光協会" },
-        { "stage": "experience", "type": "spot", "title": "戦場ヶ原・奥日光スポット", "description": "自然体験と温泉を含む奥日光エリアの公式スポット入口。", "url": "https://www.nikko-kankou.org/spot/10", "publisher": "日光市観光協会" },
-        { "stage": "check", "type": "live", "title": "ライブカメラ・混雑・開花情報", "description": "現況、工事、開花、混雑を公式サイトから確認する。", "url": "https://www.nikko-kankou.org/public/", "publisher": "日光市観光協会" }
+        {
+          "stage": "discover",
+          "type": "feature",
+          "title": "日光の夏・避暑地特集",
+          "description": "奥日光を含む夏の自然、体験、食を公式特集から見る。",
+          "url": "https://www.nikko-kankou.org/public/",
+          "publisher": "日光市観光協会"
+        },
+        {
+          "stage": "understand",
+          "type": "course",
+          "title": "避暑地日光で過ごす休日",
+          "description": "中禅寺湖畔の自然と外交官文化を組み合わせた公式コース。",
+          "url": "https://www.nikko-kankou.org/courses/list?areaIds=1",
+          "publisher": "日光市観光協会"
+        },
+        {
+          "stage": "plan",
+          "type": "course",
+          "title": "奥日光を含むモデルコース",
+          "description": "公共交通、自然、温泉、滞在時間から公式コースを検索する。",
+          "url": "https://www.nikko-kankou.org/courses",
+          "publisher": "日光市観光協会"
+        },
+        {
+          "stage": "experience",
+          "type": "spot",
+          "title": "戦場ヶ原・奥日光スポット",
+          "description": "自然体験と温泉を含む奥日光エリアの公式スポット入口。",
+          "url": "https://www.nikko-kankou.org/spot/10",
+          "publisher": "日光市観光協会"
+        },
+        {
+          "stage": "check",
+          "type": "live",
+          "title": "ライブカメラ・混雑・開花情報",
+          "description": "現況、工事、開花、混雑を公式サイトから確認する。",
+          "url": "https://www.nikko-kankou.org/public/",
+          "publisher": "日光市観光協会"
+        }
       ]
     },
     {
@@ -86,11 +316,46 @@
       "name": "那須高原",
       "summary": "観光施設の集合ではなく、火山、温泉、森、保全活動、地域イベントを一つの高原文化として読む。",
       "items": [
-        { "stage": "discover", "type": "story", "title": "那須高原の魅力", "description": "自然、温泉、歴史、食を観光協会の公式案内から探す。", "url": "https://www.nasukogen.org/charm/", "publisher": "那須町観光協会" },
-        { "stage": "understand", "type": "map", "title": "公式観光マップ", "description": "温泉、自然、体験、宿泊施設の位置関係を地図で確認する。", "url": "https://www.nasukogen.org/spotsearch/map.php", "publisher": "那須町観光協会" },
-        { "stage": "plan", "type": "transport", "title": "那須高原アクセス", "description": "鉄道、路線バス、周遊交通の公式案内。", "url": "https://www.nasukogen.org/access/", "publisher": "那須町観光協会" },
-        { "stage": "experience", "type": "event", "title": "イベントカレンダー", "description": "自然観察、環境保全、食、スポーツなど地域の活動を探す。", "url": "https://www.nasukogen.org/calendar/", "publisher": "那須町観光協会" },
-        { "stage": "check", "type": "news", "title": "那須高原公式ブログ", "description": "季節の自然、開花、現地の出来事を観光協会から確認する。", "url": "https://www.nasukogen.org/blog/", "publisher": "那須町観光協会" }
+        {
+          "stage": "discover",
+          "type": "story",
+          "title": "那須高原の魅力",
+          "description": "自然、温泉、歴史、食を観光協会の公式案内から探す。",
+          "url": "https://www.nasukogen.org/charm/",
+          "publisher": "那須町観光協会"
+        },
+        {
+          "stage": "understand",
+          "type": "map",
+          "title": "公式観光マップ",
+          "description": "温泉、自然、体験、宿泊施設の位置関係を地図で確認する。",
+          "url": "https://www.nasukogen.org/spotsearch/map.php",
+          "publisher": "那須町観光協会"
+        },
+        {
+          "stage": "plan",
+          "type": "transport",
+          "title": "那須高原アクセス",
+          "description": "鉄道、路線バス、周遊交通の公式案内。",
+          "url": "https://www.nasukogen.org/access/",
+          "publisher": "那須町観光協会"
+        },
+        {
+          "stage": "experience",
+          "type": "event",
+          "title": "イベントカレンダー",
+          "description": "自然観察、環境保全、食、スポーツなど地域の活動を探す。",
+          "url": "https://www.nasukogen.org/calendar/",
+          "publisher": "那須町観光協会"
+        },
+        {
+          "stage": "check",
+          "type": "news",
+          "title": "那須高原公式ブログ",
+          "description": "季節の自然、開花、現地の出来事を観光協会から確認する。",
+          "url": "https://www.nasukogen.org/blog/",
+          "publisher": "那須町観光協会"
+        }
       ]
     },
     {
@@ -98,11 +363,46 @@
       "name": "霧ヶ峰",
       "summary": "展望地から、三大湿原、亜高山植物、グライダー文化、歩く装備へ視野を広げる。",
       "items": [
-        { "stage": "discover", "type": "story", "title": "霧ヶ峰とは", "description": "三大湿原、植物、地形、グライダー文化を知る公式解説。", "url": "https://kirigamine.suwakanko.jp/about/", "publisher": "諏訪観光協会" },
-        { "stage": "understand", "type": "experience", "title": "遊ぶ・過ごす", "description": "ハイキング、自然観察、グライダーなど高原の過ごし方を読む。", "url": "https://kirigamine.suwakanko.jp/stay-and-play/", "publisher": "諏訪観光協会" },
-        { "stage": "plan", "type": "brochure", "title": "霧ヶ峰散策・花めぐりマップ", "description": "諏訪市公式パンフレットから散策資料を確認する。", "url": "https://kirigamine.suwakanko.jp/2022/11/30/%E8%AB%8F%E8%A8%AA%E5%B8%82%E8%A6%B3%E5%85%89%E3%83%91%E3%83%B3%E3%83%95%E3%83%AC%E3%83%83%E3%83%88%E3%81%AE%E3%81%94%E6%A1%88%E5%86%85/", "publisher": "諏訪観光協会" },
-        { "stage": "experience", "type": "spot", "title": "霧ヶ峰のスポットと穴場", "description": "自然保護センター周辺や展望地点の公式紹介を探す。", "url": "https://kirigamine.suwakanko.jp/", "publisher": "諏訪観光協会" },
-        { "stage": "check", "type": "transport", "title": "季節バス・アクセス", "description": "上諏訪駅からの季節運行や現地施設への移動条件を確認する。", "url": "https://kirigamine.suwakanko.jp/access/", "publisher": "諏訪観光協会" }
+        {
+          "stage": "discover",
+          "type": "story",
+          "title": "霧ヶ峰とは",
+          "description": "三大湿原、植物、地形、グライダー文化を知る公式解説。",
+          "url": "https://kirigamine.suwakanko.jp/about/",
+          "publisher": "諏訪観光協会"
+        },
+        {
+          "stage": "understand",
+          "type": "experience",
+          "title": "遊ぶ・過ごす",
+          "description": "ハイキング、自然観察、グライダーなど高原の過ごし方を読む。",
+          "url": "https://kirigamine.suwakanko.jp/stay-and-play/",
+          "publisher": "諏訪観光協会"
+        },
+        {
+          "stage": "plan",
+          "type": "brochure",
+          "title": "霧ヶ峰散策・花めぐりマップ",
+          "description": "諏訪市公式パンフレットから散策資料を確認する。",
+          "url": "https://kirigamine.suwakanko.jp/2022/11/30/%E8%AB%8F%E8%A8%AA%E5%B8%82%E8%A6%B3%E5%85%89%E3%83%91%E3%83%B3%E3%83%95%E3%83%AC%E3%83%83%E3%83%88%E3%81%AE%E3%81%94%E6%A1%88%E5%86%85/",
+          "publisher": "諏訪観光協会"
+        },
+        {
+          "stage": "experience",
+          "type": "spot",
+          "title": "霧ヶ峰のスポットと穴場",
+          "description": "自然保護センター周辺や展望地点の公式紹介を探す。",
+          "url": "https://kirigamine.suwakanko.jp/",
+          "publisher": "諏訪観光協会"
+        },
+        {
+          "stage": "check",
+          "type": "transport",
+          "title": "季節バス・アクセス",
+          "description": "上諏訪駅からの季節運行や現地施設への移動条件を確認する。",
+          "url": "https://kirigamine.suwakanko.jp/access/",
+          "publisher": "諏訪観光協会"
+        }
       ]
     },
     {
@@ -110,11 +410,46 @@
       "name": "野辺山高原",
       "summary": "高原の涼しさから、電波天文学、巨大望遠鏡、研究公開、星空文化へ旅の意味を拡張する。",
       "items": [
-        { "stage": "discover", "type": "story", "title": "野辺山宇宙電波観測所", "description": "日本の電波天文学、45m望遠鏡、研究成果を知る公式入口。", "url": "https://www.nro.nao.ac.jp/", "publisher": "国立天文台 野辺山宇宙電波観測所" },
-        { "stage": "understand", "type": "media", "title": "公式オリジナルビデオ", "description": "望遠鏡、天文学、研究紹介、講演をオンラインで学ぶ。", "url": "https://www.nro.nao.ac.jp/visit/open2023/online/movie/", "publisher": "国立天文台 野辺山宇宙電波観測所" },
-        { "stage": "plan", "type": "visit", "title": "観測所の自由見学", "description": "見学時間、所要時間、アクセス、撮影・電波オフの注意を確認する。", "url": "https://www.nro.nao.ac.jp/visit/", "publisher": "国立天文台 野辺山宇宙電波観測所" },
-        { "stage": "experience", "type": "event", "title": "現地特別公開2026", "description": "アンテナ駆動、展示、研究者による解説を体験する年次公開。", "url": "https://www.nro.nao.ac.jp/event/openday/fy2026/onsite/", "publisher": "国立天文台 野辺山宇宙電波観測所" },
-        { "stage": "discover", "type": "regional", "title": "野辺山高原観光協会", "description": "高原、星空、農業、周辺観光を地域側の公式情報から探す。", "url": "https://www.kanko-nobeyama.jp/", "publisher": "南牧村観光協会" }
+        {
+          "stage": "discover",
+          "type": "story",
+          "title": "野辺山宇宙電波観測所",
+          "description": "日本の電波天文学、45m望遠鏡、研究成果を知る公式入口。",
+          "url": "https://www.nro.nao.ac.jp/",
+          "publisher": "国立天文台 野辺山宇宙電波観測所"
+        },
+        {
+          "stage": "understand",
+          "type": "media",
+          "title": "公式オリジナルビデオ",
+          "description": "望遠鏡、天文学、研究紹介、講演をオンラインで学ぶ。",
+          "url": "https://www.nro.nao.ac.jp/visit/open2023/online/movie/",
+          "publisher": "国立天文台 野辺山宇宙電波観測所"
+        },
+        {
+          "stage": "plan",
+          "type": "visit",
+          "title": "観測所の自由見学",
+          "description": "見学時間、所要時間、アクセス、撮影・電波オフの注意を確認する。",
+          "url": "https://www.nro.nao.ac.jp/visit/",
+          "publisher": "国立天文台 野辺山宇宙電波観測所"
+        },
+        {
+          "stage": "experience",
+          "type": "event",
+          "title": "現地特別公開2026",
+          "description": "アンテナ駆動、展示、研究者による解説を体験する年次公開。",
+          "url": "https://www.nro.nao.ac.jp/event/openday/fy2026/onsite/",
+          "publisher": "国立天文台 野辺山宇宙電波観測所"
+        },
+        {
+          "stage": "check",
+          "type": "live-operations",
+          "title": "野辺山宇宙電波観測所 見学情報",
+          "description": "自由見学の時間、気象警報時の休止、アクセス、電波機器の利用注意を訪問直前に公式案内で確認する。",
+          "url": "https://www.nro.nao.ac.jp/visit/",
+          "publisher": "国立天文台 野辺山宇宙電波観測所"
+        }
       ]
     },
     {
@@ -122,11 +457,46 @@
       "name": "富士山 五合目",
       "summary": "登頂の入口ではなく、自然博物館、信仰、地質、眺望、VR、保全を学ぶ中腹体験として紹介する。",
       "items": [
-        { "stage": "discover", "type": "media", "title": "富士山VR・ストリートビュー", "description": "登山道、樹海、構成資産を360度映像やストリートビューで体験する。", "url": "https://www.yamanashi-kankou.jp/fujisan/enjoy.html", "publisher": "やまなし観光推進機構" },
-        { "stage": "understand", "type": "guide", "title": "富士山五合目自然解説", "description": "動植物、景観、地形、地質を無料ガイドから学ぶ。", "url": "https://www.yamanashi-kankou.jp/fujisan/tanosimo/tanosimo001.html", "publisher": "やまなし観光推進機構" },
-        { "stage": "plan", "type": "course", "title": "富士山と自然を学ぶコース", "description": "河口湖駅、ビジターセンター、五合目をバスでつなぐ公式モデルコース。", "url": "https://www.yamanashi-kankou.jp/kokuritsukoen/jp/model/course2.html", "publisher": "やまなし観光推進機構" },
-        { "stage": "experience", "type": "trekking", "title": "五合目トレッキングコース", "description": "お中道、御庭、奥庭を歩き、山腹の眺望と自然を体験する。", "url": "https://www.yamanashi-kankou.jp/kokuritsukoen/jp/miryoku/hiking/course2.html", "publisher": "やまなし観光推進機構" },
-        { "stage": "check", "type": "live", "title": "今見える富士山ライブカメラ", "description": "出発前に複数方向から現在の富士山の見え方を確認する。", "url": "https://www.yamanashi-kankou.jp/heritage/fujisanwatcher/jp/live/index.html", "publisher": "やまなし観光推進機構" }
+        {
+          "stage": "discover",
+          "type": "media",
+          "title": "富士山VR・ストリートビュー",
+          "description": "登山道、樹海、構成資産を360度映像やストリートビューで体験する。",
+          "url": "https://www.yamanashi-kankou.jp/fujisan/enjoy.html",
+          "publisher": "やまなし観光推進機構"
+        },
+        {
+          "stage": "understand",
+          "type": "guide",
+          "title": "富士山五合目自然解説",
+          "description": "動植物、景観、地形、地質を無料ガイドから学ぶ。",
+          "url": "https://www.yamanashi-kankou.jp/fujisan/tanosimo/tanosimo001.html",
+          "publisher": "やまなし観光推進機構"
+        },
+        {
+          "stage": "plan",
+          "type": "course",
+          "title": "富士山と自然を学ぶコース",
+          "description": "河口湖駅、ビジターセンター、五合目をバスでつなぐ公式モデルコース。",
+          "url": "https://www.yamanashi-kankou.jp/kokuritsukoen/jp/model/course2.html",
+          "publisher": "やまなし観光推進機構"
+        },
+        {
+          "stage": "experience",
+          "type": "trekking",
+          "title": "五合目トレッキングコース",
+          "description": "お中道、御庭、奥庭を歩き、山腹の眺望と自然を体験する。",
+          "url": "https://www.yamanashi-kankou.jp/kokuritsukoen/jp/miryoku/hiking/course2.html",
+          "publisher": "やまなし観光推進機構"
+        },
+        {
+          "stage": "check",
+          "type": "live",
+          "title": "今見える富士山ライブカメラ",
+          "description": "出発前に複数方向から現在の富士山の見え方を確認する。",
+          "url": "https://www.yamanashi-kankou.jp/heritage/fujisanwatcher/jp/live/index.html",
+          "publisher": "やまなし観光推進機構"
+        }
       ]
     }
   ]
