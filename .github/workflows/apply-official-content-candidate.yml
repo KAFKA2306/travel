@@ -1,0 +1,62 @@
+name: Apply official content candidate
+
+on:
+  push:
+    branches:
+      - 'automation/add-*-final'
+    paths:
+      - 'automation/official-content-candidates/**'
+      - 'scripts/apply-official-content-candidate.mjs'
+      - '.github/workflows/apply-official-content-candidate.yml'
+  pull_request:
+    types: [opened, synchronize, reopened, closed]
+
+permissions:
+  contents: write
+
+jobs:
+  prepare-and-validate:
+    if: github.event_name == 'push' || (github.event_name == 'pull_request' && github.event.action != 'closed' && github.event.pull_request.head.repo.full_name == github.repository)
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          ref: ${{ github.event_name == 'pull_request' && github.event.pull_request.head.ref || github.ref_name }}
+          fetch-depth: 0
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 22
+          cache: npm
+      - run: npm ci
+      - name: Apply and validate candidate
+        shell: bash
+        run: |
+          set -o pipefail
+          log_file="$(mktemp)"
+          if node scripts/apply-official-content-candidate.mjs automation/official-content-candidates/tottori-sand-dunes.json 2>&1 | tee "$log_file"; then
+            exit 0
+          fi
+          message="$(tail -n 20 "$log_file" | tr '\n' ' ' | sed 's/%/%25/g; s/\r/%0D/g; s/\n/%0A/g')"
+          echo "::error title=Official content candidate validation failed::$message"
+          exit 1
+      - run: npm run typecheck
+      - run: npm run build
+      - name: Commit complete generated state
+        run: |
+          git config user.name github-actions[bot]
+          git config user.email 41898282+github-actions[bot]@users.noreply.github.com
+          git add public/data/official-content.json public/data/official-content-growth.json public/release.json public/data/site-ontology.json
+          git diff --cached --quiet && exit 0
+          git commit -m "data: add Tottori Sand Dunes official lifecycle"
+          git push origin HEAD:${{ github.event_name == 'pull_request' && github.event.pull_request.head.ref || github.ref_name }}
+
+  delete-merged-work-branch:
+    if: github.event_name == 'pull_request' && github.event.action == 'closed' && github.event.pull_request.merged == true && startsWith(github.event.pull_request.head.ref, 'automation/add-')
+    runs-on: ubuntu-latest
+    steps:
+      - name: Delete merged work branch
+        env:
+          GH_TOKEN: ${{ github.token }}
+          REPO: ${{ github.repository }}
+          BRANCH: ${{ github.event.pull_request.head.ref }}
+        run: gh api -X DELETE "repos/$REPO/git/refs/heads/$BRANCH"
