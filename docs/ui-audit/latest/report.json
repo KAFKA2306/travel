@@ -1,5 +1,5 @@
 {
-  "generatedAt": "2026-08-11T03:10:41.199Z",
+  "generatedAt": "2026-08-11T04:56:12.039Z",
   "baseUrl": "https://kafka2306.github.io/travel",
   "results": [
     {
@@ -65,7 +65,7 @@
       "headings": 18,
       "brokenImages": [],
       "pendingImages": [
-        "https://aomori-tourism.com/lsc/upfile/spot/0000/0339/339_12_l.jpg"
+        "https://yamaguchi-tourism.jp/lsc/api/photo/?src=1700667"
       ],
       "unlabeledButtons": 0,
       "unlabeledLinks": 0
@@ -82,14 +82,13 @@
       "title": "公式コンテンツ・ネットワーク｜Wayweave",
       "width": 1440,
       "scrollWidth": 1440,
-      "height": 11472,
+      "height": 11588,
       "horizontalOverflow": false,
       "links": 186,
       "buttons": 7,
       "headings": 25,
       "brokenImages": [],
       "pendingImages": [
-        "https://yamaguchi-tourism.jp/lsc/api/photo/?src=1700667",
         "https://www.kanko-nobeyama.jp/wp/wp-content/themes/minamimakimura/img/home/slide02.jpg",
         "https://www.yamanashi-kankou.jp/special/fujisan/images/5th-tenbo_01.jpg",
         "https://s.wordpress.com/mshots/v1/https%3A%2F%2Fwww.shiretoko.asia%2F?w=1200",
@@ -261,7 +260,6 @@
       "headings": 18,
       "brokenImages": [],
       "pendingImages": [
-        "https://yamaguchi-tourism.jp/lsc/api/photo/?src=1700667",
         "https://www.nasukogen.org/blog/%E3%82%B7%E3%83%AD%E3%83%A4%E3%82%B7%E3%82%AA.jpg",
         "https://kirigamine.suwakanko.jp/wp/wp-content/uploads/2024/07/449592483_504892615248488_6043512208052837239_n.jpg",
         "https://www.kanko-nobeyama.jp/wp/wp-content/themes/minamimakimura/img/home/slide02.jpg",
