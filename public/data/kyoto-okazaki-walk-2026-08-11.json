@@ -1,0 +1,134 @@
+{
+  "version": "2026-08-11",
+  "id": "kyoto-okazaki-walk-2026-08-11",
+  "title": "京都・蹴上〜岡崎 フィールド散歩ログ",
+  "date": "2026-08-11",
+  "status": "partial-confirmed",
+  "purpose": "実際に歩いた経路と、その場で確認した周辺コンテキストを、計画データと分離して再利用する。",
+  "evidencePolicy": {
+    "fieldObservation": "ユーザーが当日に明示した現在地、または当日共有写真で場所を確認できた地点だけを actualRoute に入れる。",
+    "externalFact": "交通・施設・イベントなど外部事実は公式一次情報URLを付与する。",
+    "nonVisitRule": "会話中に候補として出ただけの場所は訪問済みと推定しない。"
+  },
+  "actualRoute": [
+    {
+      "order": 1,
+      "name": "桂川駅",
+      "type": "station",
+      "evidenceType": "user-direct",
+      "note": "当日の出発側で現在地として確認。",
+      "officialSourceIds": ["jr-katsuragawa"]
+    },
+    {
+      "order": 2,
+      "name": "山科駅",
+      "type": "station",
+      "evidenceType": "user-direct",
+      "note": "当日の乗換地点として現在地を確認。",
+      "officialSourceIds": ["jr-yamashina", "kyoto-subway-yamashina"]
+    },
+    {
+      "order": 3,
+      "name": "蹴上インクライン",
+      "type": "walk",
+      "evidenceType": "user-photo",
+      "note": "当日共有写真でレール上の散策を確認。全長約582m、高低差約36mの旧傾斜鉄道で、現在はレールが形態保存され自由に歩ける。",
+      "officialSourceIds": ["biwako-canal-keage-incline"]
+    },
+    {
+      "order": 4,
+      "name": "京都府立図書館",
+      "type": "library",
+      "evidenceType": "user-direct",
+      "note": "岡崎エリアで当日の現在地として確認。公式所在地は京都市左京区岡崎成勝寺町。",
+      "officialSourceIds": ["kyoto-pref-library-access"]
+    }
+  ],
+  "confirmedTransitStructure": {
+    "sequence": ["桂川駅", "山科駅", "山科（地下鉄）", "蹴上", "岡崎"],
+    "note": "京都市営地下鉄東西線では山科 T07、御陵 T08、蹴上 T09 の順。",
+    "officialSourceIds": ["jr-katsuragawa", "jr-yamashina", "kyoto-subway-line", "kyoto-subway-yamashina", "kyoto-subway-keage"]
+  },
+  "sameDayLocalContext": [
+    {
+      "name": "Free! Series ORCHESTRA CONCERT 2026 ―Beyond the New Journey― 京都公演",
+      "relation": "岡崎エリアの周辺イベント",
+      "venue": "ロームシアター京都 メインホール",
+      "date": "2026-08-11",
+      "dayPerformance": "14:00開場 / 14:45開演",
+      "nightPerformance": "17:15開場 / 18:00開演",
+      "note": "当日、京都府立図書館周辺で見えたイベント来場者の増加を説明し得る公式開催情報。来場者属性や個々の人物については推定しない。",
+      "officialSourceIds": ["free-orchestra-2026"]
+    }
+  ],
+  "mentionedButNotConfirmedVisited": [
+    "南禅寺水路閣",
+    "京都市京セラ美術館",
+    "京都国立近代美術館",
+    "哲学の道",
+    "銀閣寺"
+  ],
+  "reuseNotes": [
+    "京都西側から岡崎で歩く日には、JRで山科へ回り、地下鉄東西線で蹴上から徒歩開始する経路を再検討候補にできる。",
+    "計画候補と実訪問を混同しないため、actualRoute と mentionedButNotConfirmedVisited を別管理する。",
+    "岡崎エリアはロームシアター京都の大型イベント開催日に人流が変わり得るため、当日イベント確認を旅程判断に組み込む。"
+  ],
+  "sources": [
+    {
+      "id": "jr-katsuragawa",
+      "publisher": "西日本旅客鉄道株式会社",
+      "title": "桂川駅 構内図",
+      "url": "https://eki.jr-odekake.net/premises?id=0610153",
+      "retrievedAt": "2026-08-11"
+    },
+    {
+      "id": "jr-yamashina",
+      "publisher": "西日本旅客鉄道株式会社",
+      "title": "山科駅 駅情報",
+      "url": "https://eki.jr-odekake.net/top?id=0610115",
+      "retrievedAt": "2026-08-11"
+    },
+    {
+      "id": "kyoto-subway-line",
+      "publisher": "京都市交通局",
+      "title": "京都市営地下鉄時刻表 東西線 駅一覧",
+      "url": "https://www2.city.kyoto.lg.jp/kotsu/tikadia/hyperdia/line01.htm",
+      "retrievedAt": "2026-08-11"
+    },
+    {
+      "id": "kyoto-subway-yamashina",
+      "publisher": "京都市交通局",
+      "title": "京都市営地下鉄 東西線 山科駅",
+      "url": "https://www2.city.kyoto.lg.jp/kotsu/tikadia/hyperdia/menu0129.htm",
+      "retrievedAt": "2026-08-11"
+    },
+    {
+      "id": "kyoto-subway-keage",
+      "publisher": "京都市交通局",
+      "title": "京都市営地下鉄 東西線 蹴上駅",
+      "url": "https://www2.city.kyoto.lg.jp/kotsu/tikadia/hyperdia/menu0131.htm",
+      "retrievedAt": "2026-08-11"
+    },
+    {
+      "id": "biwako-canal-keage-incline",
+      "publisher": "京都市上下水道局",
+      "title": "蹴上インクライン",
+      "url": "https://biwakososui.city.kyoto.lg.jp/place/detail/23",
+      "retrievedAt": "2026-08-11"
+    },
+    {
+      "id": "kyoto-pref-library-access",
+      "publisher": "京都府立図書館",
+      "title": "アクセス（交通案内）",
+      "url": "https://www.library.pref.kyoto.jp/guide/access",
+      "retrievedAt": "2026-08-11"
+    },
+    {
+      "id": "free-orchestra-2026",
+      "publisher": "『Free! Series Portal Site』",
+      "title": "Free! Series ORCHESTRA CONCERT 2026 ―Beyond the New Journey―",
+      "url": "https://iwatobi-sc.com/event/orchestra2026/",
+      "retrievedAt": "2026-08-11"
+    }
+  ]
+}
