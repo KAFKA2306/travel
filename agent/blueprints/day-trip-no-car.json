@@ -1,0 +1,16 @@
+{
+  "schema": "travel-blueprint.v1",
+  "id": "day-trip-no-car",
+  "title": "車なし日帰り",
+  "workspace_defaults": {
+    "visibility": "private",
+    "capabilities": ["read:itinerary", "write:itinerary", "navigate:booking"]
+  },
+  "constraints": {
+    "overnight_stays": 0,
+    "car_required": false,
+    "transport_modes": ["walk", "rail", "bus", "ferry"],
+    "candidate_evidence_required": ["source_url", "checked_at"],
+    "verified_fields_only": ["price_if_verified", "opening_hours_if_verified"]
+  }
+}
