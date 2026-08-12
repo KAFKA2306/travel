@@ -1,0 +1,26 @@
+name: Repository Ratchet
+
+on:
+  pull_request:
+  push:
+    branches: [main]
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+jobs:
+  verify:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v6
+      - uses: actions/setup-node@v6
+        with:
+          node-version: 24
+          cache: npm
+      - run: npm ci
+      - run: npm run verify:ratchet
+      - run: npm run typecheck
+      - run: npm run test:hotel-availability
+      - name: Verify clean checkout
+        run: test -z "$(git status --porcelain --untracked-files=all)"
