@@ -1,0 +1,66 @@
+name: Prompt Vault asset contract
+
+on:
+  pull_request:
+    paths:
+      - 'public/assets/kafka-signal/**'
+      - '.kafka-signal/pages-assets.lock.json'
+      - '.github/workflows/prompt-vault-asset-contract.yml'
+  workflow_run:
+    workflows: ['Deploy to GitHub Pages']
+    types: [completed]
+
+permissions:
+  contents: read
+
+jobs:
+  verify:
+    if: github.event_name == 'pull_request' || github.event.workflow_run.conclusion == 'success'
+    runs-on: ubuntu-latest
+    timeout-minutes: 20
+    steps:
+      - name: Checkout exact revision
+        uses: actions/checkout@v4
+        with:
+          ref: ${{ github.event_name == 'workflow_run' && github.event.workflow_run.head_sha || github.sha }}
+      - name: Setup Node
+        uses: actions/setup-node@v4
+        with:
+          node-version: 22
+          cache: npm
+      - name: Install
+        run: npm ci
+      - name: Build
+        env:
+          VITE_GOOGLE_MAPS_API_KEY: ${{ secrets.GOOGLE_MAPS_API_KEY }}
+        run: npm run build
+      - name: Verify vendored asset and lock
+        run: |
+          python - <<'PY'
+          import hashlib
+          import json
+          from pathlib import Path
+
+          lock = json.loads(Path('.kafka-signal/pages-assets.lock.json').read_text())
+          assert lock['schema_version'] == '1.0.0'
+          assert lock['canonical_repository'] == 'KAFKA2306/prompt-vault'
+          assert lock['consumer_repository'] == 'KAFKA2306/travel'
+          assert lock['canonical_commit'] == '90111f8953dd2a45aca2da7053bfdeef57459b41'
+          rows = [row for row in lock['assets'] if row['id'] == 'travel-basic']
+          assert len(rows) == 1
+          row = rows[0]
+          expected = '8c45dfb3c32aa5d2991b9d3b9d710b66722f0ef10fb62a0b5dea2582f36ea383'
+          assert row['source_sha256'] == expected
+          assert row['destination_sha256'] == expected
+          for path in [Path(row['destination']), Path('dist/assets/kafka-signal/travel-basic-illustration.webp')]:
+              assert path.is_file() and path.stat().st_size > 0, path
+              actual = hashlib.sha256(path.read_bytes()).hexdigest()
+              assert actual == expected, (path, actual)
+          PY
+      - name: Verify deployed Pages asset
+        if: github.event_name == 'workflow_run'
+        run: |
+          curl --fail --silent --show-error --location --retry 8 --retry-delay 5 \
+            https://kafka2306.github.io/travel/assets/kafka-signal/travel-basic-illustration.webp \
+            --output /tmp/travel-basic-illustration.webp
+          echo '8c45dfb3c32aa5d2991b9d3b9d710b66722f0ef10fb62a0b5dea2582f36ea383  /tmp/travel-basic-illustration.webp' | sha256sum -c -

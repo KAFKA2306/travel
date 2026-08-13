@@ -1,0 +1,17 @@
+{
+  "schema_version": "1.0.0",
+  "release": "kafka-signal-v1.0.0",
+  "canonical_repository": "KAFKA2306/prompt-vault",
+  "canonical_commit": "90111f8953dd2a45aca2da7053bfdeef57459b41",
+  "consumer_repository": "KAFKA2306/travel",
+  "assets": [
+    {
+      "collection": "site-basics",
+      "id": "travel-basic",
+      "source": "assets/site-basics/travel-basic-illustration.webp",
+      "destination": "public/assets/kafka-signal/travel-basic-illustration.webp",
+      "source_sha256": "8c45dfb3c32aa5d2991b9d3b9d710b66722f0ef10fb62a0b5dea2582f36ea383",
+      "destination_sha256": "8c45dfb3c32aa5d2991b9d3b9d710b66722f0ef10fb62a0b5dea2582f36ea383"
+    }
+  ]
+}
