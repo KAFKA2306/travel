@@ -67,6 +67,12 @@ function primaryRouteUrl(context: TripContext) {
   return `https://www.google.com/maps/dir/?${params.toString()}`
 }
 
+function directionsDestination(selectedPlace: string, context: TripContext) {
+  if (context === 'sado' && selectedPlace === '両津港') return FUTATSUGAME
+  if (context === 'arima' && /三ノ宮駅|三宮駅/.test(selectedPlace)) return ARIMA_STATION
+  return withTripContext(selectedPlace, context)
+}
+
 export default function GoogleMapsDock({ tripId, selectedPlace }: GoogleMapsDockProps) {
   const apiKey = import.meta.env.VITE_GOOGLE_MAPS_API_KEY?.trim()
   const tripContext = contextFromTripId(tripId)
@@ -89,12 +95,7 @@ export default function GoogleMapsDock({ tripId, selectedPlace }: GoogleMapsDock
 
     if (viewMode === 'directions') {
       params.set('origin', tripContext === 'arima' ? SANNOMIYA_STATION : RYOTSU_PORT)
-      params.set(
-        'destination',
-        tripContext === 'sado' && selectedPlace === '両津港'
-          ? FUTATSUGAME
-          : withTripContext(selectedPlace, tripContext),
-      )
+      params.set('destination', directionsDestination(selectedPlace, tripContext))
       params.set('mode', 'transit')
       params.set('units', 'metric')
       return `https://www.google.com/maps/embed/v1/directions?${params.toString()}`
