@@ -44,6 +44,25 @@ const settlePage = async (page) => {
   });
 };
 
+const verifyArimaDirections = async (page) => {
+  await page.getByLabel('保存済みの旅程モデルを選択').selectOption('arima-onsen-2026');
+  await page.getByRole('button', { name: /三ノ宮駅・三宮駅/ }).first().click();
+  await page.getByRole('button', { name: 'Google Mapsを開く' }).click();
+  await page.getByRole('button', { name: /三宮から/ }).click();
+
+  const src = await page.locator('.google-maps-frame iframe').getAttribute('src');
+  if (!src) throw new Error('Arima directions iframe was not rendered');
+
+  const url = new URL(src);
+  const origin = url.searchParams.get('origin');
+  const destination = url.searchParams.get('destination');
+  if (!origin || !destination) throw new Error('Arima directions URL is missing origin or destination');
+  if (origin === destination) throw new Error('Arima directions collapsed to the same origin and destination');
+  if (!destination.includes('有馬温泉駅')) throw new Error('Arima directions from Sannomiya must target Arima Onsen Station');
+
+  return { arimaDirectionsDistinct: true, arimaDestinationVerified: true };
+};
+
 for (const [viewportName, viewport] of viewports) {
   const context = await browser.newContext({
     viewport,
@@ -63,11 +82,13 @@ for (const [viewportName, viewport] of viewports) {
 
     const url = `${baseUrl}${route}`;
     let response = null;
+    let journeyChecks = {};
     try {
       response = await page.goto(url, { waitUntil: 'domcontentloaded', timeout: 30_000 });
       await settlePage(page);
+      if (name === 'home') journeyChecks = await verifyArimaDirections(page);
     } catch (error) {
-      pageErrors.push(`navigation: ${error instanceof Error ? error.message : String(error)}`);
+      pageErrors.push(`navigation or journey: ${error instanceof Error ? error.message : String(error)}`);
     }
 
     const metrics = await page.evaluate(() => {
@@ -119,6 +140,7 @@ for (const [viewportName, viewport] of viewports) {
       finalUrl: page.url(),
       consoleErrors,
       pageErrors,
+      journeyChecks,
       ...metrics,
     });
     await page.close();
@@ -142,7 +164,7 @@ const failures = results.filter((item) =>
   || item.unlabeledLinks
   || (item.status && item.status >= 400),
 );
-const markdown = `# Wayweave UI audit\n\nGenerated: ${generatedAt}\n\nBase URL: ${baseUrl}\n\n| Page | Viewport | HTTP | Horizontal overflow | Broken images | Pending images | Runtime errors | Screenshot |\n|---|---|---:|---|---:|---:|---:|---|\n${rows}\n\n## Result\n\n${failures.length ? `Detected ${failures.length} audit failures. See report.json.` : 'All automated screenshot checks passed.'}\n`;
+const markdown = `# Wayweave UI audit\n\nGenerated: ${generatedAt}\n\nBase URL: ${baseUrl}\n\n| Page | Viewport | HTTP | Horizontal overflow | Broken images | Pending images | Runtime errors | Screenshot |\n|---|---|---:|---|---:|---:|---:|---|\n${rows}\n\n## Result\n\n${failures.length ? `Detected ${failures.length} audit failures. See report.json.` : 'All automated screenshot checks passed, including the Arima primary-directions journey.'}\n`;
 await writeFile(path.join(outputDir, 'README.md'), markdown);
 
 if (failures.length) {
