@@ -71,10 +71,31 @@ const verifyPlannerJourney = async (page) => {
   await page.getByRole('button', { name: 'Google Mapsを開く' }).click();
   await page.getByRole('button', { name: '三宮から', exact: true }).click();
 
-  const src = await page.locator('.google-maps-frame iframe').getAttribute('src');
-  if (!src) throw new Error('Arima directions iframe was not rendered');
+  const mapFrame = page.locator('.google-maps-frame iframe');
+  const embedAvailable = await mapFrame.count() > 0;
+  let mapsApiKeyFallbackVerified = false;
+  if (embedAvailable) {
+    const embedSrc = await mapFrame.getAttribute('src');
+    if (!embedSrc) throw new Error('Arima directions iframe is missing src');
+    const embedUrl = new URL(embedSrc);
+    if (!embedUrl.pathname.endsWith('/directions')) {
+      throw new Error('Arima Google Maps iframe did not switch to directions mode');
+    }
+  } else {
+    const fallback = page.locator('.google-maps-key-state');
+    if (!await fallback.isVisible()) {
+      throw new Error('Google Maps iframe and API-key fallback are both missing');
+    }
+    if (!await fallback.getByText('Google Maps APIキーを設定してください', { exact: true }).isVisible()) {
+      throw new Error('Google Maps API-key fallback message is missing');
+    }
+    mapsApiKeyFallbackVerified = true;
+  }
 
-  const url = new URL(src);
+  const primaryHref = await page.getByRole('link', { name: '主要区間', exact: true }).getAttribute('href');
+  if (!primaryHref) throw new Error('Arima primary directions link is missing');
+
+  const url = new URL(primaryHref);
   const origin = url.searchParams.get('origin');
   const destination = url.searchParams.get('destination');
   if (!origin || !destination) throw new Error('Arima directions URL is missing origin or destination');
@@ -84,6 +105,8 @@ const verifyPlannerJourney = async (page) => {
   return {
     itineraryDayFilterVerified: true,
     allDaysRestoreVerified: true,
+    mapsEmbedAvailable: embedAvailable,
+    mapsApiKeyFallbackVerified,
     arimaDirectionsDistinct: true,
     arimaDestinationVerified: true,
   };
