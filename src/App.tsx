@@ -83,6 +83,7 @@ function App() {
   const [selectedPlaceId, setSelectedPlaceId] = useState('futatsugame-hotel')
   const [sourcesOpen, setSourcesOpen] = useState(false)
   const [menuOpen, setMenuOpen] = useState(false)
+  const [selectedDay, setSelectedDay] = useState<'all' | 1 | 2 | 3>('all')
 
   const selectedTrip = tripCatalog.find((trip) => trip.id === selectedTripId) ?? tripCatalog[0]
   const isArimaBudgetTrip = selectedTripId === 'arima-onsen-2026'
@@ -90,6 +91,9 @@ function App() {
     ? { transport: '鉄道・日帰り移動', theme: '予算・温泉・街歩き', note: '有馬六彩2連泊を外し、三宮2泊＋金の湯800円へ変更' }
     : { transport: 'バス・送迎', theme: '海・星・温泉', note: '8月の相川は平年最高 29.3°C。海風と夜の開放感を重視' }
   const activeItinerary = isArimaBudgetTrip ? arimaItinerary : itinerary
+  const visibleItinerary = selectedDay === 'all'
+    ? activeItinerary
+    : activeItinerary.filter((item) => item.day === selectedDay)
   const railInsight = isArimaBudgetTrip
     ? '宿泊と温泉を分離し、三宮で2連泊。有馬六彩は高価格帯の比較候補として残します。'
     : '二ツ亀から相川へは、両津での乗換が旅程を決めます。'
@@ -106,6 +110,7 @@ function App() {
 
   const selectTrip = (tripId: string) => {
     setSelectedTripId(tripId)
+    setSelectedDay('all')
     const firstPlace = places.find((place) => isPlaceInTrip(place, tripId))
     if (firstPlace) setSelectedPlaceId(firstPlace.id)
   }
@@ -257,11 +262,22 @@ function App() {
                 <div><p className="eyebrow">ITINERARY</p><h2>実行できる旅程</h2></div>
                 <span className="feasible-badge"><Check size={13} />接続可能</span>
               </div>
-              <div className="day-tabs"><button className="active">すべて</button><button>DAY 1</button><button>DAY 2</button><button>DAY 3</button></div>
+              <div className="day-tabs" aria-label="表示する日">
+                {(['all', 1, 2, 3] as const).map((day) => (
+                  <button
+                    key={day}
+                    className={selectedDay === day ? 'active' : ''}
+                    onClick={() => setSelectedDay(day)}
+                    aria-pressed={selectedDay === day}
+                  >
+                    {day === 'all' ? 'すべて' : `DAY ${day}`}
+                  </button>
+                ))}
+              </div>
               <div className="timeline">
-                {activeItinerary.map((item, index) => {
+                {visibleItinerary.map((item, index) => {
                   const Icon = modeIcons[item.mode]
-                  const dayChanged = index === 0 || activeItinerary[index - 1].day !== item.day
+                  const dayChanged = index === 0 || visibleItinerary[index - 1].day !== item.day
                   return (
                     <div key={item.id}>
                       {dayChanged && <div className="day-marker"><span>DAY {item.day}</span><small>{item.day === 1 ? '8月12日（水）' : item.day === 2 ? '8月13日（木）' : '8月14日（金）'}</small></div>}

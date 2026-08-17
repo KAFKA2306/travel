@@ -44,8 +44,29 @@ const settlePage = async (page) => {
   });
 };
 
-const verifyArimaDirections = async (page) => {
+const verifyPlannerJourney = async (page) => {
   await page.getByLabel('保存済みの旅程モデルを選択').selectOption('arima-onsen-2026');
+
+  const day2Button = page.getByRole('button', { name: 'DAY 2' });
+  await day2Button.click();
+  if (await day2Button.getAttribute('aria-pressed') !== 'true') {
+    throw new Error('DAY 2 filter did not expose its selected state');
+  }
+  if (await page.locator('.timeline .timeline-item').count() !== 5) {
+    throw new Error('DAY 2 filter did not reduce the Arima itinerary to five items');
+  }
+  if (await page.locator('.timeline .day-marker').count() !== 1) {
+    throw new Error('DAY 2 filter rendered an unexpected number of day markers');
+  }
+  if (!await page.locator('.timeline .day-marker').getByText('DAY 2', { exact: true }).isVisible()) {
+    throw new Error('DAY 2 filter did not render the DAY 2 marker');
+  }
+
+  await page.getByRole('button', { name: 'すべて' }).click();
+  if (await page.locator('.timeline .timeline-item').count() !== 10) {
+    throw new Error('All-days filter did not restore the complete Arima itinerary');
+  }
+
   await page.getByRole('button', { name: /三ノ宮駅・三宮駅/ }).first().click();
   await page.getByRole('button', { name: 'Google Mapsを開く' }).click();
   await page.getByRole('button', { name: /三宮から/ }).click();
@@ -60,7 +81,12 @@ const verifyArimaDirections = async (page) => {
   if (origin === destination) throw new Error('Arima directions collapsed to the same origin and destination');
   if (!destination.includes('有馬温泉駅')) throw new Error('Arima directions from Sannomiya must target Arima Onsen Station');
 
-  return { arimaDirectionsDistinct: true, arimaDestinationVerified: true };
+  return {
+    itineraryDayFilterVerified: true,
+    allDaysRestoreVerified: true,
+    arimaDirectionsDistinct: true,
+    arimaDestinationVerified: true,
+  };
 };
 
 for (const [viewportName, viewport] of viewports) {
@@ -86,7 +112,7 @@ for (const [viewportName, viewport] of viewports) {
     try {
       response = await page.goto(url, { waitUntil: 'domcontentloaded', timeout: 30_000 });
       await settlePage(page);
-      if (name === 'home') journeyChecks = await verifyArimaDirections(page);
+      if (name === 'planner') journeyChecks = await verifyPlannerJourney(page);
     } catch (error) {
       pageErrors.push(`navigation or journey: ${error instanceof Error ? error.message : String(error)}`);
     }
@@ -164,7 +190,7 @@ const failures = results.filter((item) =>
   || item.unlabeledLinks
   || (item.status && item.status >= 400),
 );
-const markdown = `# Wayweave UI audit\n\nGenerated: ${generatedAt}\n\nBase URL: ${baseUrl}\n\n| Page | Viewport | HTTP | Horizontal overflow | Broken images | Pending images | Runtime errors | Screenshot |\n|---|---|---:|---|---:|---:|---:|---|\n${rows}\n\n## Result\n\n${failures.length ? `Detected ${failures.length} audit failures. See report.json.` : 'All automated screenshot checks passed, including the Arima primary-directions journey.'}\n`;
+const markdown = `# Wayweave UI audit\n\nGenerated: ${generatedAt}\n\nBase URL: ${baseUrl}\n\n| Page | Viewport | HTTP | Horizontal overflow | Broken images | Pending images | Runtime errors | Screenshot |\n|---|---|---:|---|---:|---:|---:|---|\n${rows}\n\n## Result\n\n${failures.length ? `Detected ${failures.length} audit failures. See report.json.` : 'All automated screenshot checks passed, including the Planner day filter and Arima primary-directions journey.'}\n`;
 await writeFile(path.join(outputDir, 'README.md'), markdown);
 
 if (failures.length) {
