@@ -1,5 +1,9 @@
 # Wayweave — 旅行先の発見・比較・行程編集・公式確認を分ける旅行知識プロダクト
 
+[![CI](https://github.com/KAFKA2306/travel/actions/workflows/ci.yml/badge.svg)](https://github.com/KAFKA2306/travel/actions/workflows/ci.yml)
+[![Deploy to GitHub Pages](https://github.com/KAFKA2306/travel/actions/workflows/deploy-pages.yml/badge.svg)](https://github.com/KAFKA2306/travel/actions/workflows/deploy-pages.yml)
+[![Validate travel decision entry](https://github.com/KAFKA2306/travel/actions/workflows/uiux-decision-entry.yml/badge.svg)](https://github.com/KAFKA2306/travel/actions/workflows/uiux-decision-entry.yml)
+
 **旅行で最初に決めるべきなのは、行き先ではない。「次に何を決める必要があるか」だ。**
 
 旅行先を探しているのか、候補を比較したいのか、保存済み行程を編集したいのか、交通や入域条件の最新公式情報を確認したいのか。Wayweaveは、この異なる意思決定を先に分けてから、適切な画面へ案内します。
