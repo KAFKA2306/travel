@@ -47,7 +47,7 @@ const settlePage = async (page) => {
 const verifyPlannerJourney = async (page) => {
   await page.getByLabel('保存済みの旅程モデルを選択').selectOption('arima-onsen-2026');
 
-  const day2Button = page.getByRole('button', { name: 'DAY 2' });
+  const day2Button = page.getByRole('button', { name: 'DAY 2', exact: true });
   await day2Button.click();
   if (await day2Button.getAttribute('aria-pressed') !== 'true') {
     throw new Error('DAY 2 filter did not expose its selected state');
