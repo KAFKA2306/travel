@@ -1,5 +1,5 @@
 {
-  "generatedAt": "2026-08-17T09:16:12.778Z",
+  "generatedAt": "2026-08-17T11:12:53.363Z",
   "baseUrl": "https://kafka2306.github.io/travel",
   "results": [
     {
@@ -34,7 +34,7 @@
       "finalUrl": "https://kafka2306.github.io/travel/planner/",
       "consoleErrors": [],
       "pageErrors": [
-        "navigation or journey: locator.click: Error: strict mode violation: getByRole('button', { name: 'DAY 2' }) resolved to 6 elements:\n    1) <button type=\"button\" aria-pressed=\"false\" class=\"route-stop accent-lilac\">…</button> aka getByRole('button', { name: '03 DAY 2 · 08:30' })\n    2) <button type=\"button\" aria-pressed=\"false\" class=\"route-stop accent-apricot\">…</button> aka getByRole('button', { name: '04 DAY 2 · 10:00' })\n    3) <button type=\"button\" aria-pressed=\"false\" class=\"route-stop accent-rose\">…</button> aka getByRole('button', { name: '05 DAY 2 · 13:00' })\n    4) <button type=\"button\" aria-pressed=\"false\" class=\"route-stop accent-lilac\">…</button> aka getByRole('button', { name: '06 DAY 2 · 16:30' })\n    5) <button type=\"button\" aria-pressed=\"true\" class=\"route-stop accent-blue\">…</button> aka getByRole('button', { name: '07 DAY 2 · 18:00 神戸三宮 東急REI' })\n    6) <button class=\"\" aria-pressed=\"false\">DAY 2</button> aka getByRole('button', { name: 'DAY 2', exact: true })\n\nCall log:\n  - waiting for getByRole('button', { name: 'DAY 2' })\n"
+        "navigation or journey: locator.click: Error: strict mode violation: getByRole('button', { name: /三宮から/ }) resolved to 2 elements:\n    1) <button class=\"place-card \">…</button> aka getByRole('button', { name: '日帰り温泉の玄関口 有馬温泉駅 神戸電鉄・有馬線 三宮から公共交通で移動する日帰り側の基点。大阪直通高速バスも公式運行される。 バス 鉄道 徒歩 2' })\n    2) <button class=\"\" type=\"button\" aria-pressed=\"false\">…</button> aka getByRole('button', { name: '三宮から', exact: true })\n\nCall log:\n  - waiting for getByRole('button', { name: /三宮から/ })\n"
       ],
       "journeyChecks": {},
       "title": "旅程ワークスペース｜Wayweave",
@@ -42,8 +42,8 @@
       "scrollWidth": 1440,
       "height": 2443,
       "horizontalOverflow": false,
-      "links": 9,
-      "buttons": 39,
+      "links": 13,
+      "buttons": 41,
       "headings": 3,
       "brokenImages": [],
       "pendingImages": [],
@@ -70,7 +70,8 @@
       "headings": 18,
       "brokenImages": [],
       "pendingImages": [
-        "https://aomori-tourism.com/lsc/upfile/spot/0000/0339/339_12_l.jpg"
+        "https://aomori-tourism.com/lsc/upfile/spot/0000/0339/339_12_l.jpg",
+        "https://www.nasukogen.org/blog/%E3%82%B7%E3%83%AD%E3%83%A4%E3%82%B7%E3%82%AA.jpg"
       ],
       "unlabeledButtons": 0,
       "unlabeledLinks": 0
@@ -88,7 +89,7 @@
       "title": "公式コンテンツ・ネットワーク｜Wayweave",
       "width": 1440,
       "scrollWidth": 1440,
-      "height": 11920,
+      "height": 11803,
       "horizontalOverflow": false,
       "links": 193,
       "buttons": 7,
@@ -96,6 +97,7 @@
       "brokenImages": [],
       "pendingImages": [
         "https://yamaguchi-tourism.jp/lsc/api/photo/?src=1700667",
+        "https://www.nasukogen.org/blog/%E3%82%B7%E3%83%AD%E3%83%A4%E3%82%B7%E3%82%AA.jpg",
         "https://www.kanko-nobeyama.jp/wp/wp-content/themes/minamimakimura/img/home/slide02.jpg",
         "https://www.yamanashi-kankou.jp/special/fujisan/images/5th-tenbo_01.jpg",
         "https://s.wordpress.com/mshots/v1/https%3A%2F%2Fwww.shiretoko.asia%2F?w=1200",
@@ -241,7 +243,7 @@
       "finalUrl": "https://kafka2306.github.io/travel/planner/",
       "consoleErrors": [],
       "pageErrors": [
-        "navigation or journey: locator.click: Error: strict mode violation: getByRole('button', { name: 'DAY 2' }) resolved to 6 elements:\n    1) <button type=\"button\" aria-pressed=\"false\" class=\"route-stop accent-lilac\">…</button> aka getByRole('button', { name: '03 DAY 2 · 08:30' })\n    2) <button type=\"button\" aria-pressed=\"false\" class=\"route-stop accent-apricot\">…</button> aka getByRole('button', { name: '04 DAY 2 · 10:00' })\n    3) <button type=\"button\" aria-pressed=\"false\" class=\"route-stop accent-rose\">…</button> aka getByRole('button', { name: '05 DAY 2 · 13:00' })\n    4) <button type=\"button\" aria-pressed=\"false\" class=\"route-stop accent-lilac\">…</button> aka getByRole('button', { name: '06 DAY 2 · 16:30' })\n    5) <button type=\"button\" aria-pressed=\"true\" class=\"route-stop accent-blue\">…</button> aka getByRole('button', { name: '07 DAY 2 · 18:00 神戸三宮 東急REI' })\n    6) <button class=\"\" aria-pressed=\"false\">DAY 2</button> aka getByRole('button', { name: 'DAY 2', exact: true })\n\nCall log:\n  - waiting for getByRole('button', { name: 'DAY 2' })\n"
+        "navigation or journey: locator.click: Error: strict mode violation: getByRole('button', { name: /三宮から/ }) resolved to 2 elements:\n    1) <button class=\"place-card \">…</button> aka getByRole('button', { name: '日帰り温泉の玄関口 有馬温泉駅 神戸電鉄・有馬線 三宮から公共交通で移動する日帰り側の基点。大阪直通高速バスも公式運行される。 バス 鉄道 徒歩 2' })\n    2) <button class=\"\" type=\"button\" aria-pressed=\"false\">…</button> aka getByRole('button', { name: '三宮から', exact: true })\n\nCall log:\n  - waiting for getByRole('button', { name: /三宮から/ })\n"
       ],
       "journeyChecks": {},
       "title": "旅程ワークスペース｜Wayweave",
@@ -249,8 +251,8 @@
       "scrollWidth": 390,
       "height": 4276,
       "horizontalOverflow": false,
-      "links": 9,
-      "buttons": 39,
+      "links": 13,
+      "buttons": 41,
       "headings": 3,
       "brokenImages": [],
       "pendingImages": [],
