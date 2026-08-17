@@ -69,7 +69,7 @@ const verifyPlannerJourney = async (page) => {
 
   await page.getByRole('button', { name: /三ノ宮駅・三宮駅/ }).first().click();
   await page.getByRole('button', { name: 'Google Mapsを開く' }).click();
-  await page.getByRole('button', { name: /三宮から/ }).click();
+  await page.getByRole('button', { name: '三宮から', exact: true }).click();
 
   const src = await page.locator('.google-maps-frame iframe').getAttribute('src');
   if (!src) throw new Error('Arima directions iframe was not rendered');
