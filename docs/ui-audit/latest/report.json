@@ -1,5 +1,5 @@
 {
-  "generatedAt": "2026-08-17T03:16:37.132Z",
+  "generatedAt": "2026-08-17T09:16:12.778Z",
   "baseUrl": "https://kafka2306.github.io/travel",
   "results": [
     {
@@ -10,9 +10,7 @@
       "status": 200,
       "finalUrl": "https://kafka2306.github.io/travel/",
       "consoleErrors": [],
-      "pageErrors": [
-        "navigation or journey: locator.selectOption: Timeout 30000ms exceeded.\nCall log:\n  - waiting for getByLabel('保存済みの旅程モデルを選択')\n"
-      ],
+      "pageErrors": [],
       "journeyChecks": {},
       "title": "Wayweave｜地図から旅を見渡す",
       "width": 1440,
@@ -35,15 +33,17 @@
       "status": 200,
       "finalUrl": "https://kafka2306.github.io/travel/planner/",
       "consoleErrors": [],
-      "pageErrors": [],
+      "pageErrors": [
+        "navigation or journey: locator.click: Error: strict mode violation: getByRole('button', { name: 'DAY 2' }) resolved to 6 elements:\n    1) <button type=\"button\" aria-pressed=\"false\" class=\"route-stop accent-lilac\">…</button> aka getByRole('button', { name: '03 DAY 2 · 08:30' })\n    2) <button type=\"button\" aria-pressed=\"false\" class=\"route-stop accent-apricot\">…</button> aka getByRole('button', { name: '04 DAY 2 · 10:00' })\n    3) <button type=\"button\" aria-pressed=\"false\" class=\"route-stop accent-rose\">…</button> aka getByRole('button', { name: '05 DAY 2 · 13:00' })\n    4) <button type=\"button\" aria-pressed=\"false\" class=\"route-stop accent-lilac\">…</button> aka getByRole('button', { name: '06 DAY 2 · 16:30' })\n    5) <button type=\"button\" aria-pressed=\"true\" class=\"route-stop accent-blue\">…</button> aka getByRole('button', { name: '07 DAY 2 · 18:00 神戸三宮 東急REI' })\n    6) <button class=\"\" aria-pressed=\"false\">DAY 2</button> aka getByRole('button', { name: 'DAY 2', exact: true })\n\nCall log:\n  - waiting for getByRole('button', { name: 'DAY 2' })\n"
+      ],
       "journeyChecks": {},
       "title": "旅程ワークスペース｜Wayweave",
       "width": 1440,
       "scrollWidth": 1440,
-      "height": 2208,
+      "height": 2443,
       "horizontalOverflow": false,
       "links": 9,
-      "buttons": 35,
+      "buttons": 39,
       "headings": 3,
       "brokenImages": [],
       "pendingImages": [],
@@ -217,9 +217,7 @@
       "status": 200,
       "finalUrl": "https://kafka2306.github.io/travel/",
       "consoleErrors": [],
-      "pageErrors": [
-        "navigation or journey: locator.selectOption: Timeout 30000ms exceeded.\nCall log:\n  - waiting for getByLabel('保存済みの旅程モデルを選択')\n"
-      ],
+      "pageErrors": [],
       "journeyChecks": {},
       "title": "Wayweave｜地図から旅を見渡す",
       "width": 390,
@@ -242,15 +240,17 @@
       "status": 200,
       "finalUrl": "https://kafka2306.github.io/travel/planner/",
       "consoleErrors": [],
-      "pageErrors": [],
+      "pageErrors": [
+        "navigation or journey: locator.click: Error: strict mode violation: getByRole('button', { name: 'DAY 2' }) resolved to 6 elements:\n    1) <button type=\"button\" aria-pressed=\"false\" class=\"route-stop accent-lilac\">…</button> aka getByRole('button', { name: '03 DAY 2 · 08:30' })\n    2) <button type=\"button\" aria-pressed=\"false\" class=\"route-stop accent-apricot\">…</button> aka getByRole('button', { name: '04 DAY 2 · 10:00' })\n    3) <button type=\"button\" aria-pressed=\"false\" class=\"route-stop accent-rose\">…</button> aka getByRole('button', { name: '05 DAY 2 · 13:00' })\n    4) <button type=\"button\" aria-pressed=\"false\" class=\"route-stop accent-lilac\">…</button> aka getByRole('button', { name: '06 DAY 2 · 16:30' })\n    5) <button type=\"button\" aria-pressed=\"true\" class=\"route-stop accent-blue\">…</button> aka getByRole('button', { name: '07 DAY 2 · 18:00 神戸三宮 東急REI' })\n    6) <button class=\"\" aria-pressed=\"false\">DAY 2</button> aka getByRole('button', { name: 'DAY 2', exact: true })\n\nCall log:\n  - waiting for getByRole('button', { name: 'DAY 2' })\n"
+      ],
       "journeyChecks": {},
       "title": "旅程ワークスペース｜Wayweave",
       "width": 390,
       "scrollWidth": 390,
-      "height": 3879,
+      "height": 4276,
       "horizontalOverflow": false,
       "links": 9,
-      "buttons": 35,
+      "buttons": 39,
       "headings": 3,
       "brokenImages": [],
       "pendingImages": [],
