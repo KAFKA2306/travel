@@ -9,7 +9,8 @@
     "preview": "vite preview",
     "typecheck": "tsc -b --pretty false",
     "build:hotel-availability": "node scripts/build-hotel-availability.mjs",
-    "test:hotel-availability": "node --test tests/hotel-availability.test.mjs"
+    "test:hotel-availability": "node --test tests/hotel-availability.test.mjs",
+    "test:destinations": "node --test tests/destinations.test.mjs"
   },
   "dependencies": {
     "@vitejs/plugin-react": "latest",

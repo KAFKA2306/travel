@@ -4,22 +4,34 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <meta name="theme-color" content="#fbfaf7" />
-  <meta name="description" content="大阪・京都、佐渡、神戸・有馬、日本の避暑候補、深圳を地域ハブから選ぶWayweaveエリア一覧" />
-  <title>エリア｜Wayweave</title>
+  <meta name="description" content="海・川・森・島などの感覚から旅行候補を探し、玄関口・必要日数・移動の大枠まで具体化するWayweave Destination atlas" />
+  <title>行きたい感覚から探す｜Wayweave</title>
   <link rel="stylesheet" href="/travel/site-shell.css" />
   <style>
-    :root{--bg:#fbfaf7;--ink:#243653;--muted:#68758b;--line:rgba(67,87,119,.15);--blue-soft:#e9f1fc;--mint-soft:#eaf7f0;--rose-soft:#fcecf0;--apricot-soft:#fff2e3;--lavender-soft:#f0ecfa;--shadow:0 18px 50px rgba(76,91,125,.09);font-family:Inter,"Noto Sans JP","Hiragino Sans","Yu Gothic",sans-serif}*{box-sizing:border-box}html,body{max-width:100%;overflow-x:hidden}body{margin:0;color:var(--ink);background:radial-gradient(circle at 8% 0%,rgba(143,181,236,.2),transparent 31rem),var(--bg)}a{color:inherit}.shell{width:min(1180px,calc(100% - 28px));margin:auto}.hero{padding:52px 0 24px}.eyebrow{margin:0 0 11px;color:#5c76a2;font-size:11px;font-weight:950;letter-spacing:.14em}h1{margin:0;font-size:clamp(44px,7vw,76px);line-height:1;letter-spacing:-.06em}h1 em{font-style:normal;color:#648fc9}.lead{max-width:760px;margin:18px 0 0;color:var(--muted);font-size:14px;line-height:1.85}.section{padding:23px 0}.section-head{display:flex;justify-content:space-between;gap:18px;align-items:end;margin-bottom:14px}.section-head h2{margin:0;font-size:29px}.section-head p{max-width:620px;margin:0;color:var(--muted);font-size:11px;line-height:1.7}.area-grid{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:12px}.area-card{display:flex;flex-direction:column;min-height:230px;padding:20px;border:1px solid var(--line);border-radius:20px;background:#fff;box-shadow:var(--shadow)}.area-card:nth-child(1){background:var(--blue-soft)}.area-card:nth-child(2){background:var(--mint-soft)}.area-card:nth-child(3){background:var(--apricot-soft)}.area-card:nth-child(4){background:var(--rose-soft)}.area-card:nth-child(5){background:var(--lavender-soft)}.area-card small{color:#5c76a2;font-size:9px;font-weight:950;letter-spacing:.1em}.area-card h2{margin:10px 0 0;font-size:23px}.area-card p{margin:8px 0 0;color:var(--muted);font-size:11px;line-height:1.7}.links{display:flex;gap:7px;flex-wrap:wrap;margin-top:auto;padding-top:16px}.links a{padding:9px 10px;border:1px solid var(--line);border-radius:10px;background:rgba(255,255,255,.9);font-size:9px;font-weight:900;text-decoration:none}.links a:first-child{background:var(--ink);border-color:var(--ink);color:#fff}.secondary-note{padding:15px 17px;border:1px solid var(--line);border-radius:16px;background:#fff;color:var(--muted);font-size:11px;line-height:1.7}.toolbar{display:flex;justify-content:space-between;gap:12px;align-items:center;margin:15px 0}.filters{display:flex;gap:7px;flex-wrap:wrap}.filter{padding:8px 11px;border:1px solid var(--line);border-radius:999px;background:#fff;color:var(--ink);font:850 10px inherit;cursor:pointer}.filter.active{background:var(--ink);color:#fff}.count{color:var(--muted);font-size:10px}.destination-grid{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:14px}.destination{overflow:hidden;border:1px solid var(--line);border-radius:20px;background:#fff;box-shadow:var(--shadow)}.visual{display:block;position:relative;aspect-ratio:16/8;overflow:hidden;background:linear-gradient(135deg,var(--blue-soft),var(--mint-soft))}.visual img{width:100%;height:100%;object-fit:cover}.visual span{position:absolute;left:12px;top:12px;padding:6px 9px;border-radius:999px;background:rgba(255,255,255,.92);font-size:9px;font-weight:950}.body{padding:17px}.body h3{margin:0;font-size:21px}.body p{margin:8px 0 0;color:var(--muted);font-size:10px;line-height:1.65}.body .links{padding-top:13px}.fallback{display:grid;place-items:center;height:100%;padding:20px;color:#5b75a0;text-align:center;font-size:10px;font-weight:900}footer{display:flex;justify-content:space-between;gap:14px;padding:25px 0 36px;border-top:1px solid var(--line);color:var(--muted);font-size:10px}@media(max-width:900px){.area-grid{grid-template-columns:1fr 1fr}.destination-grid{grid-template-columns:1fr}}@media(max-width:600px){.shell{width:min(100% - 20px,1180px)}.hero{padding-top:38px}h1{font-size:48px}.section-head,.toolbar,footer{align-items:flex-start;flex-direction:column}.area-grid{grid-template-columns:1fr}}
+    :root{--bg:#fbfaf7;--ink:#243653;--muted:#68758b;--line:rgba(67,87,119,.15);--blue-soft:#e9f1fc;--mint-soft:#eaf7f0;--rose-soft:#fcecf0;--apricot-soft:#fff2e3;--lavender-soft:#f0ecfa;--shadow:0 18px 50px rgba(76,91,125,.09);font-family:Inter,"Noto Sans JP","Hiragino Sans","Yu Gothic",sans-serif}*{box-sizing:border-box}html,body{max-width:100%;overflow-x:hidden}body{margin:0;color:var(--ink);background:radial-gradient(circle at 8% 0%,rgba(143,181,236,.2),transparent 31rem),var(--bg)}a{color:inherit}.shell{width:min(1180px,calc(100% - 28px));margin:auto}.hero{padding:52px 0 24px}.eyebrow{margin:0 0 11px;color:#5c76a2;font-size:11px;font-weight:950;letter-spacing:.14em}h1{margin:0;font-size:clamp(44px,7vw,76px);line-height:1;letter-spacing:-.06em}h1 em{font-style:normal;color:#648fc9}.lead{max-width:780px;margin:18px 0 0;color:var(--muted);font-size:14px;line-height:1.85}.section{padding:23px 0}.section-head{display:flex;justify-content:space-between;gap:18px;align-items:end;margin-bottom:14px}.section-head h2{margin:0;font-size:29px}.section-head p{max-width:640px;margin:0;color:var(--muted);font-size:11px;line-height:1.7}.area-grid{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:12px}.area-card{display:flex;flex-direction:column;min-height:220px;padding:20px;border:1px solid var(--line);border-radius:20px;background:#fff;box-shadow:var(--shadow)}.area-card:nth-child(1){background:var(--blue-soft)}.area-card:nth-child(2){background:var(--mint-soft)}.area-card:nth-child(3){background:var(--apricot-soft)}.area-card:nth-child(4){background:var(--rose-soft)}.area-card:nth-child(5){background:var(--lavender-soft)}.area-card small{color:#5c76a2;font-size:9px;font-weight:950;letter-spacing:.1em}.area-card h2{margin:10px 0 0;font-size:23px}.area-card p{margin:8px 0 0;color:var(--muted);font-size:11px;line-height:1.7}.links{display:flex;gap:7px;flex-wrap:wrap;margin-top:auto;padding-top:16px}.links a{padding:9px 10px;border:1px solid var(--line);border-radius:10px;background:rgba(255,255,255,.9);font-size:9px;font-weight:900;text-decoration:none}.links a:first-child{background:var(--ink);border-color:var(--ink);color:#fff}.secondary-note{padding:15px 17px;border:1px solid var(--line);border-radius:16px;background:#fff;color:var(--muted);font-size:11px;line-height:1.7}.toolbar{display:flex;justify-content:space-between;gap:12px;align-items:center;margin:15px 0}.filters{display:flex;gap:7px;flex-wrap:wrap}.filter{padding:8px 11px;border:1px solid var(--line);border-radius:999px;background:#fff;color:var(--ink);font:850 10px inherit;cursor:pointer}.filter.active{background:var(--ink);color:#fff}.count{color:var(--muted);font-size:10px}.destination-grid{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:14px}.destination{overflow:hidden;border:1px solid var(--line);border-radius:20px;background:#fff;box-shadow:var(--shadow)}.visual{display:block;position:relative;aspect-ratio:16/8;overflow:hidden;background:linear-gradient(135deg,var(--blue-soft),var(--mint-soft));text-decoration:none}.visual img{width:100%;height:100%;object-fit:cover}.visual span{position:absolute;left:12px;top:12px;padding:6px 9px;border-radius:999px;background:rgba(255,255,255,.94);font-size:9px;font-weight:950}.fallback{display:grid;place-items:center;height:100%;padding:20px;color:#5b75a0;text-align:center;font-size:11px;font-weight:900}.body{padding:18px}.topline{display:flex;justify-content:space-between;gap:10px;align-items:start}.body h3{margin:0;font-size:22px}.place{color:#5c76a2;font-size:9px;font-weight:900;letter-spacing:.05em}.experience{margin:10px 0 0;color:var(--ink);font-size:12px;line-height:1.75}.facts{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:8px;margin:14px 0 0}.fact{padding:10px;border:1px solid var(--line);border-radius:12px;background:#fbfcfe}.fact small{display:block;color:var(--muted);font-size:8px;font-weight:900;letter-spacing:.08em}.fact strong{display:block;margin-top:4px;font-size:10px;line-height:1.45}.route{margin:12px 0 0;color:var(--muted);font-size:10px;line-height:1.65}.tags{display:flex;gap:5px;flex-wrap:wrap;margin-top:12px}.tag{padding:5px 7px;border-radius:999px;background:#eef3f9;color:#526a8f;font-size:8px;font-weight:850}.decision{display:flex;gap:6px;flex-wrap:wrap;margin-top:14px;padding-top:12px;border-top:1px solid var(--line)}.decision button{padding:8px 9px;border:1px solid var(--line);border-radius:10px;background:#fff;color:var(--ink);font:850 9px inherit;cursor:pointer}.decision button.active{background:var(--blue-soft);border-color:#9db9de}.decision-status{align-self:center;color:var(--muted);font-size:8px}.body .links{padding-top:13px}.body .links a.secondary{background:#fff;color:var(--ink)}footer{display:flex;justify-content:space-between;gap:14px;padding:25px 0 36px;border-top:1px solid var(--line);color:var(--muted);font-size:10px}@media(max-width:900px){.area-grid{grid-template-columns:1fr 1fr}.destination-grid{grid-template-columns:1fr}}@media(max-width:600px){.shell{width:min(100% - 20px,1180px)}.hero{padding-top:38px}h1{font-size:48px}.section-head,.toolbar,footer{align-items:flex-start;flex-direction:column}.area-grid{grid-template-columns:1fr}.facts{grid-template-columns:1fr}}
   </style>
 </head>
 <body>
   <main id="ww-main" class="shell">
-    <section class="hero"><p class="eyebrow">AREA DIRECTORY</p><h1>地域を選んで、<br><em>中へ降りる。</em></h1><p class="lead">ここでは施設や写真をいきなり大量表示しません。まず大阪・京都、佐渡、神戸・有馬、日本の避暑候補、深圳という地域ハブから選びます。</p></section>
+    <section class="hero">
+      <p class="eyebrow">DESTINATION DISCOVERY</p>
+      <h1>行きたい場所より、<br><em>感じたい時間から。</em></h1>
+      <p class="lead">青い海、静かな川、森の匂い、涼しい風。まず写真や映像を見て想像し、気になった候補だけ「どこへ着くか」「最低何日か」「そこからどう動くか」まで具体化します。計画しただけで終わっても、それは正規の使い方です。</p>
+    </section>
 
-    <section class="section" aria-labelledby="area-heading"><div class="section-head"><h2 id="area-heading">登録エリア</h2><p>新しいコンテンツはこの地域ハブのいずれかに紐づけます。単独のトップページとして増殖させません。</p></div><div class="area-grid" id="areas"><p>地域データを読み込んでいます。</p></div></section>
+    <section class="section" aria-labelledby="area-heading">
+      <div class="section-head"><h2 id="area-heading">登録エリア</h2><p>既存の地域ハブも残します。地域から探したい時はこちら、感覚から横断して探したい時は下のDestination discoveryを使います。</p></div>
+      <div class="area-grid" id="areas"><p>地域データを読み込んでいます。</p></div>
+    </section>
 
-    <section class="section" aria-labelledby="detail-heading"><div class="section-head"><h2 id="detail-heading">個別候補を見る</h2><p>地域を決めたあとに使う詳細レイヤーです。現在は日本の避暑10候補を写真付きで比較できます。</p></div><div class="secondary-note">写真・ランキング・詳細リンクは全体構造の入口ではなく、地域選択後の比較材料として扱います。</div><div class="toolbar"><div class="filters" id="filters"></div><span class="count" id="count">読込中</span></div><div class="destination-grid" id="destinations"></div></section>
+    <section class="section" aria-labelledby="detail-heading">
+      <div class="section-head"><h2 id="detail-heading">感じたい時間から探す</h2><p>雰囲気 → 公式写真・動画 → 玄関口 → 最低日数 → 移動の大枠 → 詳細計画、の順で読みます。</p></div>
+      <div class="secondary-note">航空便・時刻表・運賃・入国条件は変動します。ここでは旅の骨格だけを比較し、予約・出発前は必ず公式情報へhandoffします。</div>
+      <div class="toolbar"><div class="filters" id="filters" aria-label="旅行候補フィルター"></div><span class="count" id="count">読込中</span></div>
+      <div class="destination-grid" id="destinations"></div>
+    </section>
 
-    <footer><span><b>wayweave</b> · 地域ハブ → 個別候補</span><span><a href="/travel/">全体地図へ戻る</a></span></footer>
+    <footer><span><b>wayweave</b> · 想像 → 興味 → 具体化 → 行く / 保存 / 今回は行かない</span><span><a href="/travel/">全体地図へ戻る</a></span></footer>
   </main>
   <script>
     const esc=(v)=>String(v??'').replaceAll('&','&amp;').replaceAll('<','&lt;').replaceAll('>','&gt;').replaceAll('"','&quot;').replaceAll("'",'&#039;');
@@ -27,11 +39,45 @@
     const destinationNode=document.getElementById('destinations');
     const filters=document.getElementById('filters');
     const count=document.getElementById('count');
+    const storageKey='wayweave.destination-decisions.v1';
     let catalog=[];let media={};let active='all';
-    const filterDefs=[['all','すべて'],['日帰り','日帰り'],['1泊2日','1泊2日'],['2泊3日','2泊3日'],['中部','中部'],['関東','関東'],['東北','東北'],['中国','中国']];
+    let decisions=(()=>{try{return JSON.parse(localStorage.getItem(storageKey)||'{}')}catch{return {}}})();
+    const filterDefs=[
+      ['all','すべて'],['海','海'],['川','川'],['森','森'],['高原','高原'],['島','島'],['涼しい','涼しい'],
+      ['国内','国内'],['海外','海外'],['public','公共交通'],['daytrip','日帰り'],['1-2nights','1–2泊'],['3plus','3泊以上']
+    ];
+    const decisionLabels={saved:'保存済み',compare:'比較中',skip:'今回は行かない'};
 
     const renderAreas=(areas)=>{areaNode.innerHTML=areas.map(area=>`<article class="area-card"><small>${esc(area.country)} · AREA HUB</small><h2>${esc(area.label)}</h2><p>${esc(area.summary)}</p><div class="links">${area.links.map((link,index)=>`<a href="${esc(link.path)}">${esc(link.label)}${index===0?' →':''}</a>`).join('')}</div></article>`).join('')};
-    const renderDestinations=()=>{const visible=catalog.filter(d=>active==='all'||d.duration===active||d.region===active);count.textContent=`${visible.length}件`;destinationNode.innerHTML=visible.map(d=>{const record=media[d.id]||{};const image=record.imageUrl||d.overrideImageUrl||'';const source=record.sourceUrl||d.mediaPage||d.officialUrl;return `<article class="destination"><a class="visual" href="${esc(source)}" target="_blank" rel="noreferrer"><span>RANK ${d.rank}</span>${image?`<img src="${esc(image)}" alt="${esc(d.name)}の公式ビジュアル" loading="lazy" decoding="async" referrerpolicy="no-referrer">`:'<div class="fallback">公式ページで写真を確認</div>'}</a><div class="body"><h3>${esc(d.name)}</h3><p>${esc(d.routeSummary)}</p><div class="links"><a href="${esc(d.planUrl)}">具体計画 →</a><a href="${esc(d.officialUrl)}" target="_blank" rel="noreferrer">公式観光</a></div></div></article>`}).join('')};
+    const matches=(d)=>{
+      if(active==='all')return true;
+      if(['国内','海外'].includes(active))return d.scope===active;
+      if(active==='涼しい')return d.climate==='涼しい';
+      if(active==='public')return d.publicTransportFriendly===true;
+      if(['daytrip','1-2nights','3plus'].includes(active))return d.tripLength===active;
+      return (d.experienceTags||[]).includes(active);
+    };
+    const setDecision=(id,state)=>{decisions[id]=decisions[id]===state?null:state;if(!decisions[id])delete decisions[id];localStorage.setItem(storageKey,JSON.stringify(decisions));renderDestinations()};
+    const renderDestinations=()=>{
+      const visible=catalog.filter(matches);count.textContent=`${visible.length}件 / ${catalog.length}件`;
+      destinationNode.innerHTML=visible.map(d=>{
+        const record=media[d.id]||{};const image=record.imageUrl||d.overrideImageUrl||'';const source=record.sourceUrl||d.mediaPage||d.officialUrl;const state=decisions[d.id]||'';
+        const detailLabel=d.planUrl==='/travel/planner/'?'Plannerで組む →':'具体計画 →';
+        return `<article class="destination" data-id="${esc(d.id)}">
+          <a class="visual" href="${esc(source)}" target="_blank" rel="noreferrer"><span>${esc(d.scope)} · ${esc(d.climate)}</span>${image?`<img src="${esc(image)}" alt="${esc(d.name)}の公式ビジュアル" loading="lazy" decoding="async" referrerpolicy="no-referrer">`:'<div class="fallback">公式写真・映像を見る →</div>'}</a>
+          <div class="body">
+            <div class="topline"><div><h3>${esc(d.name)}</h3><div class="place">${esc(d.country)}${d.prefecture?` · ${esc(d.prefecture)}`:''}${d.region?` · ${esc(d.region)}`:''}</div></div></div>
+            <p class="experience">${esc(d.experienceSummary)}</p>
+            <div class="facts"><div class="fact"><small>GATEWAY</small><strong>${esc(d.gateway)}</strong></div><div class="fact"><small>MINIMUM STAY</small><strong>${esc(d.duration)}</strong></div><div class="fact"><small>BEST FOR</small><strong>${esc(d.bestFor)}</strong></div><div class="fact"><small>LOCAL MOBILITY</small><strong>${d.publicTransportFriendly?'公共交通で組みやすい':'現地移動を要確認'}</strong></div></div>
+            <p class="route">${esc(d.routeSummary)}</p>
+            <div class="tags">${(d.experienceTags||[]).map(tag=>`<span class="tag">${esc(tag)}</span>`).join('')}</div>
+            <div class="decision" aria-label="${esc(d.name)}の検討状態"><button type="button" data-state="saved" class="${state==='saved'?'active':''}">保存</button><button type="button" data-state="compare" class="${state==='compare'?'active':''}">比較</button><button type="button" data-state="skip" class="${state==='skip'?'active':''}">今回は行かない</button><span class="decision-status">${state?esc(decisionLabels[state]):'未選択'}</span></div>
+            <div class="links"><a href="${esc(d.planUrl)}">${detailLabel}</a><a class="secondary" href="${esc(d.officialUrl)}" target="_blank" rel="noreferrer">公式情報</a></div>
+          </div>
+        </article>`
+      }).join('');
+      destinationNode.querySelectorAll('.decision button').forEach(button=>button.addEventListener('click',()=>{const card=button.closest('.destination');setDecision(card.dataset.id,button.dataset.state)}));
+    };
     filterDefs.forEach(([id,label])=>{const b=document.createElement('button');b.type='button';b.className=`filter${id==='all'?' active':''}`;b.textContent=label;b.addEventListener('click',()=>{active=id;document.querySelectorAll('.filter').forEach(x=>x.classList.remove('active'));b.classList.add('active');renderDestinations()});filters.appendChild(b)});
     Promise.all([
       fetch('/travel/data/site-areas.json',{cache:'no-cache'}).then(r=>r.json()),
