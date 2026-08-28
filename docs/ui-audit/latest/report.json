@@ -1,5 +1,5 @@
 {
-  "generatedAt": "2026-08-28T10:42:58.712Z",
+  "generatedAt": "2026-08-28T10:50:13.840Z",
   "baseUrl": "https://kafka2306.github.io/travel",
   "results": [
     {
@@ -75,7 +75,9 @@
       "headings": 23,
       "brokenImages": [],
       "pendingImages": [
+        "https://karuizawa-kankokyokai.jp/wordpress/wp-content/uploads/2023/05/2305_karuizawa_web_OGP_0501_5.jpg",
         "https://yamaguchi-tourism.jp/lsc/api/photo/?src=1700667",
+        "https://www.nikko-kankou.org/storage/post_picture/%5B640_640%5D_20231018141930_10-1.jpg",
         "https://www.kanko-nobeyama.jp/wp/wp-content/themes/minamimakimura/img/home/slide02.jpg",
         "https://www.yamanashi-kankou.jp/special/fujisan/images/5th-tenbo_01.jpg"
       ],
@@ -95,14 +97,15 @@
       "title": "公式コンテンツ・ネットワーク｜Wayweave",
       "width": 1440,
       "scrollWidth": 1440,
-      "height": 11920,
+      "height": 12036,
       "horizontalOverflow": false,
       "links": 194,
       "buttons": 7,
       "headings": 26,
       "brokenImages": [],
       "pendingImages": [
-        "https://yamaguchi-tourism.jp/lsc/api/photo/?src=1700667",
+        "https://karuizawa-kankokyokai.jp/wordpress/wp-content/uploads/2023/05/2305_karuizawa_web_OGP_0501_5.jpg",
+        "https://www.nikko-kankou.org/storage/post_picture/%5B640_640%5D_20231018141930_10-1.jpg",
         "https://www.kanko-nobeyama.jp/wp/wp-content/themes/minamimakimura/img/home/slide02.jpg",
         "https://www.yamanashi-kankou.jp/special/fujisan/images/5th-tenbo_01.jpg",
         "https://s.wordpress.com/mshots/v1/https%3A%2F%2Fwww.shiretoko.asia%2F?w=1200",
@@ -312,6 +315,7 @@
       "headings": 23,
       "brokenImages": [],
       "pendingImages": [
+        "https://karuizawa-kankokyokai.jp/wordpress/wp-content/uploads/2023/05/2305_karuizawa_web_OGP_0501_5.jpg",
         "https://yamaguchi-tourism.jp/lsc/api/photo/?src=1700667",
         "https://visitmatsumoto.com/lsc/api/photo/?src=233",
         "https://aomori-tourism.com/lsc/upfile/spot/0000/0339/339_12_l.jpg",
@@ -344,6 +348,7 @@
       "headings": 26,
       "brokenImages": [],
       "pendingImages": [
+        "https://karuizawa-kankokyokai.jp/wordpress/wp-content/uploads/2023/05/2305_karuizawa_web_OGP_0501_5.jpg",
         "https://visitmatsumoto.com/lsc/api/photo/?src=233",
         "https://aomori-tourism.com/lsc/upfile/spot/0000/0339/339_12_l.jpg",
         "https://www.nikko-kankou.org/storage/post_picture/%5B640_640%5D_20231018141930_10-1.jpg",
