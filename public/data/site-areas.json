@@ -1,5 +1,5 @@
 {
-  "version": "2026-08-11",
+  "version": "2026-08-28",
   "principle": "Top-level navigation is stable. New content is attached to an area or plan and must not create a new primary navigation item.",
   "areas": [
     {
@@ -12,6 +12,19 @@
       "primaryPath": "/travel/kansai-museums/",
       "links": [
         { "label": "美術館・博物館", "path": "/travel/kansai-museums/" },
+        { "label": "当日情報", "path": "/travel/guides/" }
+      ]
+    },
+    {
+      "id": "kyushu-ferry-2026",
+      "label": "九州・さんふらわあ",
+      "country": "日本",
+      "lat": 32.55,
+      "lng": 131.0,
+      "summary": "大阪から夜のフェリーで別府・志布志へ。温泉、桜島、霧島、紅葉を三連休で比べる2026年秋の旅。",
+      "primaryPath": "/travel/kyushu-ferry-2026/",
+      "links": [
+        { "label": "秋の3旅を比較", "path": "/travel/kyushu-ferry-2026/" },
         { "label": "当日情報", "path": "/travel/guides/" }
       ]
     },
