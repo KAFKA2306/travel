@@ -33,15 +33,31 @@ const settlePage = async (page) => {
   await page.evaluate(async () => {
     const timeout = (ms) => new Promise((resolve) => setTimeout(resolve, ms));
     if (document.fonts?.ready) await Promise.race([document.fonts.ready, timeout(3_000)]);
+
+    const step = Math.max(Math.floor(window.innerHeight * 0.8), 500);
+    let y = 0;
+    for (let index = 0; index < 100; index += 1) {
+      const maxY = Math.max(document.documentElement.scrollHeight - window.innerHeight, 0);
+      if (y >= maxY) {
+        window.scrollTo(0, maxY);
+        break;
+      }
+      y = Math.min(y + step, maxY);
+      window.scrollTo(0, y);
+      await timeout(120);
+    }
+    await timeout(300);
+
     const pending = [...document.images].filter((image) => !image.complete);
     await Promise.race([
       Promise.allSettled(pending.map((image) => new Promise((resolve) => {
         image.addEventListener('load', resolve, { once: true });
         image.addEventListener('error', resolve, { once: true });
       }))),
-      timeout(6_000),
+      timeout(8_000),
     ]);
     window.scrollTo(0, 0);
+    await timeout(200);
   });
 };
 
