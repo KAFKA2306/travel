@@ -1,6 +1,6 @@
 # Wayweave UI audit
 
-Generated: 2026-08-28T23:21:43.805Z
+Generated: 2026-08-29T04:19:06.552Z
 
 Base URL: https://kafka2306.github.io/travel
 
@@ -9,9 +9,10 @@ Base URL: https://kafka2306.github.io/travel
 | home | desktop | 200 | PASS | 0 | 0 | 0 | [PNG](./home-desktop.png) |
 | planner | desktop | 200 | PASS | 0 | 0 | 0 | [PNG](./planner-desktop.png) |
 | destinations | desktop | 200 | PASS | 0 | 1 | 0 | [PNG](./destinations-desktop.png) |
-| official | desktop | 200 | PASS | 0 | 1 | 0 | [PNG](./official-desktop.png) |
+| official | desktop | 200 | PASS | 0 | 0 | 0 | [PNG](./official-desktop.png) |
 | heat-escape | desktop | 200 | PASS | 0 | 0 | 0 | [PNG](./heat-escape-desktop.png) |
 | kyushu-ferry | desktop | 200 | PASS | 0 | 0 | 0 | [PNG](./kyushu-ferry-desktop.png) |
+| aso | desktop | 200 | PASS | 0 | 0 | 0 | [PNG](./aso-desktop.png) |
 | guides | desktop | 200 | PASS | 0 | 0 | 0 | [PNG](./guides-desktop.png) |
 | shenzhen | desktop | 200 | PASS | 0 | 0 | 0 | [PNG](./shenzhen-desktop.png) |
 | sitemap | desktop | 200 | PASS | 0 | 0 | 0 | [PNG](./sitemap-desktop.png) |
@@ -21,6 +22,7 @@ Base URL: https://kafka2306.github.io/travel
 | official | mobile | 200 | PASS | 0 | 0 | 0 | [PNG](./official-mobile.png) |
 | heat-escape | mobile | 200 | PASS | 0 | 0 | 0 | [PNG](./heat-escape-mobile.png) |
 | kyushu-ferry | mobile | 200 | PASS | 0 | 0 | 0 | [PNG](./kyushu-ferry-mobile.png) |
+| aso | mobile | 200 | PASS | 0 | 0 | 0 | [PNG](./aso-mobile.png) |
 | guides | mobile | 200 | PASS | 0 | 0 | 0 | [PNG](./guides-mobile.png) |
 | shenzhen | mobile | 200 | PASS | 0 | 0 | 0 | [PNG](./shenzhen-mobile.png) |
 | sitemap | mobile | 200 | PASS | 0 | 0 | 0 | [PNG](./sitemap-mobile.png) |
