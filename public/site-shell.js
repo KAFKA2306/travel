@@ -14,6 +14,8 @@
     { id: 'kansai-museums', path: `${BASE}/kansai-museums/`, label: '大阪・京都ミュージアム', parentId: 'areas' },
     { id: 'official', path: `${BASE}/official/`, label: '公式特集', parentId: 'areas' },
     { id: 'heat-escape', path: `${BASE}/heat-escape-2026/`, label: '猛暑回避10案', parentId: 'plans' },
+    { id: 'kyushu-ferry', path: `${BASE}/kyushu-ferry-2026/`, label: '九州・さんふらわあ', parentId: 'plans' },
+    { id: 'aso', path: `${BASE}/aso-2026/`, label: '阿蘇 Route Guide', parentId: 'plans' },
     { id: 'shenzhen', path: `${BASE}/shenzhen/`, label: '深圳 Route Lab', parentId: 'plans' },
     { id: 'sitemap', path: `${BASE}/sitemap/`, label: 'サイト構造', parentId: 'map' },
   ];
@@ -84,10 +86,16 @@
     const context = document.createElement('div');
     context.className = 'ww-context';
     const pageIsPrimary = !activePage.parentId;
+    const related = activePage.id === 'kyushu-ferry'
+      ? { path: `${BASE}/aso-2026/`, label: '阿蘇 Route Guide' }
+      : activePage.id === 'aso'
+        ? { path: `${BASE}/kyushu-ferry-2026/`, label: '九州・さんふらわあ' }
+        : null;
     const parts = [
       `<a href="${BASE}/">地図</a>`,
       ...(activePrimary.id !== 'map' ? [`<span>›</span><a href="${activePrimary.path}">${escapeHtml(activePrimary.label)}</a>`] : []),
       ...(!pageIsPrimary ? [`<span>›</span><strong>${escapeHtml(activePage.label)}</strong>`] : []),
+      ...(related ? [`<span>·</span><a href="${related.path}">${escapeHtml(related.label)}</a>`] : []),
     ];
     context.innerHTML = parts.join('');
     global.insertAdjacentElement('afterend', context);
