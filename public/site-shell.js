@@ -86,10 +86,16 @@
     const context = document.createElement('div');
     context.className = 'ww-context';
     const pageIsPrimary = !activePage.parentId;
+    const related = activePage.id === 'kyushu-ferry'
+      ? { path: `${BASE}/aso-2026/`, label: '阿蘇 Route Guide' }
+      : activePage.id === 'aso'
+        ? { path: `${BASE}/kyushu-ferry-2026/`, label: '九州・さんふらわあ' }
+        : null;
     const parts = [
       `<a href="${BASE}/">地図</a>`,
       ...(activePrimary.id !== 'map' ? [`<span>›</span><a href="${activePrimary.path}">${escapeHtml(activePrimary.label)}</a>`] : []),
       ...(!pageIsPrimary ? [`<span>›</span><strong>${escapeHtml(activePage.label)}</strong>`] : []),
+      ...(related ? [`<span>·</span><a href="${related.path}">${escapeHtml(related.label)}</a>`] : []),
     ];
     context.innerHTML = parts.join('');
     global.insertAdjacentElement('afterend', context);
