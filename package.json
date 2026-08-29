@@ -8,6 +8,7 @@
     "build": "tsc -b && vite build",
     "preview": "vite preview",
     "typecheck": "tsc -b --pretty false",
+    "test:agent-entrypoint": "node scripts/validate-agent-entrypoint.mjs",
     "build:hotel-availability": "node scripts/build-hotel-availability.mjs",
     "test:hotel-availability": "node --test tests/hotel-availability.test.mjs",
     "test:destinations": "node --test tests/destinations.test.mjs"
