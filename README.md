@@ -1,3 +1,5 @@
+https://kafka2306.github.io/travel/
+
 # Wayweave — 旅行先の発見・比較・行程編集・公式確認を分ける旅行知識プロダクト
 
 [![CI](https://github.com/KAFKA2306/travel/actions/workflows/ci.yml/badge.svg)](https://github.com/KAFKA2306/travel/actions/workflows/ci.yml)
