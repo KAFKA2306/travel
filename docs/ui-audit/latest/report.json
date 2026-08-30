@@ -1,5 +1,5 @@
 {
-  "generatedAt": "2026-08-29T05:32:17.914Z",
+  "generatedAt": "2026-08-30T22:45:14.158Z",
   "baseUrl": "https://kafka2306.github.io/travel",
   "results": [
     {
@@ -75,7 +75,8 @@
       "headings": 23,
       "brokenImages": [],
       "pendingImages": [
-        "https://yamaguchi-tourism.jp/lsc/api/photo/?src=1700667"
+        "https://yamaguchi-tourism.jp/lsc/api/photo/?src=1700667",
+        "https://www.nasukogen.org/blog/%E3%82%B7%E3%83%AD%E3%83%A4%E3%82%B7%E3%82%AA.jpg"
       ],
       "unlabeledButtons": 0,
       "unlabeledLinks": 0
@@ -93,13 +94,15 @@
       "title": "公式コンテンツ・ネットワーク｜Wayweave",
       "width": 1440,
       "scrollWidth": 1440,
-      "height": 12184,
+      "height": 12002,
       "horizontalOverflow": false,
       "links": 194,
       "buttons": 7,
       "headings": 26,
       "brokenImages": [],
-      "pendingImages": [],
+      "pendingImages": [
+        "https://www.nasukogen.org/blog/%E3%82%B7%E3%83%AD%E3%83%A4%E3%82%B7%E3%82%AA.jpg"
+      ],
       "unlabeledButtons": 0,
       "unlabeledLinks": 0
     },
@@ -156,10 +159,7 @@
       "screenshot": "aso-desktop.png",
       "status": 200,
       "finalUrl": "https://kafka2306.github.io/travel/aso-2026/",
-      "consoleErrors": [
-        "Permissions policy violation: compute-pressure is not allowed in this document.",
-        "Permissions policy violation: compute-pressure is not allowed in this document."
-      ],
+      "consoleErrors": [],
       "pageErrors": [],
       "journeyChecks": {},
       "title": "熊本から、火山の真ん中へ。｜Wayweave",
@@ -316,7 +316,9 @@
       "buttons": 56,
       "headings": 23,
       "brokenImages": [],
-      "pendingImages": [],
+      "pendingImages": [
+        "https://www.nasukogen.org/blog/%E3%82%B7%E3%83%AD%E3%83%A4%E3%82%B7%E3%82%AA.jpg"
+      ],
       "unlabeledButtons": 0,
       "unlabeledLinks": 0
     },
@@ -333,13 +335,15 @@
       "title": "公式コンテンツ・ネットワーク｜Wayweave",
       "width": 390,
       "scrollWidth": 390,
-      "height": 33831,
+      "height": 33683,
       "horizontalOverflow": false,
       "links": 194,
       "buttons": 7,
       "headings": 26,
       "brokenImages": [],
-      "pendingImages": [],
+      "pendingImages": [
+        "https://www.nasukogen.org/blog/%E3%82%B7%E3%83%AD%E3%83%A4%E3%82%B7%E3%82%AA.jpg"
+      ],
       "unlabeledButtons": 0,
       "unlabeledLinks": 0
     },
