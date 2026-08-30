@@ -23,6 +23,7 @@ jobs:
       - run: npm run typecheck
       - run: npm run test:hotel-availability
       - run: npm run test:destinations
+      - run: npm run test:kyushu-recovery-discount
       - run: npm run build
       - name: Verify clean checkout
         run: test -z "$(git status --porcelain --untracked-files=all)"
