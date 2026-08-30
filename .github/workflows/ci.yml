@@ -19,6 +19,8 @@ jobs:
           node-version: 24
           cache: npm
       - run: npm ci
+      - name: Verify README canonical production URL
+        run: test "$(head -n 1 README.md)" = "https://kafka2306.github.io/travel/"
       - run: npm run test:agent-entrypoint
       - run: npm run typecheck
       - run: npm run test:hotel-availability
