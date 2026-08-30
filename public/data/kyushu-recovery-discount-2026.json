@@ -1,0 +1,36 @@
+{
+  "program_name": "九州ふっこう応援割",
+  "publisher": "観光庁",
+  "official_source_url": "https://www.mlit.go.jp/kankocho/topics04_00093.html",
+  "source_last_updated": "2026-08-28",
+  "checked_at": "2026-08-31",
+  "eligible_stay_start": "2026-10-01",
+  "booking_start": null,
+  "eligible_stay_end": null,
+  "participating_sellers": null,
+  "unverified_fields": [
+    "booking_start",
+    "eligible_stay_end",
+    "participating_sellers"
+  ],
+  "eligible_prefectures": [
+    {"prefecture": "福岡県", "discount_rate": 0.5},
+    {"prefecture": "佐賀県", "discount_rate": 0.5},
+    {"prefecture": "長崎県", "discount_rate": 0.5},
+    {"prefecture": "熊本県", "discount_rate": 0.6},
+    {"prefecture": "大分県", "discount_rate": 0.5},
+    {"prefecture": "宮崎県", "discount_rate": 0.5},
+    {"prefecture": "鹿児島県", "discount_rate": 0.6}
+  ],
+  "discount_caps_yen": {
+    "lodging_only": 20000,
+    "transport_with_lodging_1_night": 20000,
+    "transport_with_lodging_2_or_more_nights": 30000,
+    "multi_prefecture_2_or_more_prefectures": 35000
+  },
+  "eligibility_notes": [
+    "九州地方における1泊以上の旅行・宿泊商品が対象。",
+    "具体的な予約開始日と割引対象期間は各県が設定する。",
+    "フェリーや宿を個別に予約しただけで交通付宿泊旅行商品または周遊型旅行商品に該当するとは扱わない。"
+  ]
+}

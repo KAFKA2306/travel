@@ -11,7 +11,8 @@
     "test:agent-entrypoint": "node scripts/validate-agent-entrypoint.mjs",
     "build:hotel-availability": "node scripts/build-hotel-availability.mjs",
     "test:hotel-availability": "node --test tests/hotel-availability.test.mjs",
-    "test:destinations": "node --test tests/destinations.test.mjs"
+    "test:destinations": "node --test tests/destinations.test.mjs",
+    "test:kyushu-recovery-discount": "node --test tests/kyushu-recovery-discount.test.mjs"
   },
   "dependencies": {
     "@vitejs/plugin-react": "latest",
