@@ -72,8 +72,12 @@ test('商船三井さんふらわあの実在商品と応援割対象可否を�
 
 test('九州横断案は現行交通と対象日確認状態を分離する', () => {
   assert.equal(crossing.trip_plan_issue, 45);
+  assert.equal(crossing.checked_at, '2026-09-01');
   assert.equal(crossing.current_bus_timetable.revision_date, '2025-10-01');
   assert.equal(crossing.current_bus_timetable.target_date_validity_confirmed, false);
+  assert.equal(crossing.current_bus_timetable.temporary_disruption_until, '2026-08-31');
+  assert.equal(crossing.current_bus_timetable.full_service_resume_effective_from, '2026-09-01');
+  assert.equal(crossing.current_bus_timetable.full_service_resumed_as_of_checked_at, true);
   assert.equal(crossing.current_bus_timetable.aso_dwell_minutes, 295);
   assert.equal(crossing.current_bus_timetable.minimum_required_aso_dwell_minutes, 180);
   assert.equal(crossing.current_bus_timetable.meets_minimum_dwell_on_current_timetable, true);
