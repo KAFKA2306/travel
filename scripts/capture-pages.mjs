@@ -141,9 +141,16 @@ for (const [viewportName, viewport] of viewports) {
   for (const [name, route] of pages) {
     const page = await context.newPage();
     const consoleErrors = [];
+    const thirdPartyConsoleWarnings = [];
     const pageErrors = [];
     page.on('console', (message) => {
-      if (message.type() === 'error') consoleErrors.push(message.text());
+      if (message.type() !== 'error') return;
+      const text = message.text();
+      if (name === 'kyushu-ferry' && text === 'Permissions policy violation: compute-pressure is not allowed in this document.') {
+        thirdPartyConsoleWarnings.push(text);
+        return;
+      }
+      consoleErrors.push(text);
     });
     page.on('pageerror', (error) => pageErrors.push(error.message));
 
@@ -206,6 +213,7 @@ for (const [viewportName, viewport] of viewports) {
       status: response?.status() ?? null,
       finalUrl: page.url(),
       consoleErrors,
+      thirdPartyConsoleWarnings,
       pageErrors,
       journeyChecks,
       ...metrics,
