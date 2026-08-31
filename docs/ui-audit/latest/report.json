@@ -1,5 +1,5 @@
 {
-  "generatedAt": "2026-08-31T07:46:15.100Z",
+  "generatedAt": "2026-08-31T09:45:51.613Z",
   "baseUrl": "https://kafka2306.github.io/travel",
   "results": [
     {
@@ -78,7 +78,7 @@
       "headings": 23,
       "brokenImages": [],
       "pendingImages": [
-        "https://yamaguchi-tourism.jp/lsc/api/photo/?src=1700667"
+        "https://aomori-tourism.com/lsc/upfile/spot/0000/0339/339_12_l.jpg"
       ],
       "unlabeledButtons": 0,
       "unlabeledLinks": 0
@@ -97,7 +97,7 @@
       "title": "公式コンテンツ・ネットワーク｜Wayweave",
       "width": 1440,
       "scrollWidth": 1440,
-      "height": 12102,
+      "height": 12052,
       "horizontalOverflow": false,
       "links": 194,
       "buttons": 7,
@@ -344,7 +344,7 @@
       "title": "公式コンテンツ・ネットワーク｜Wayweave",
       "width": 390,
       "scrollWidth": 390,
-      "height": 34029,
+      "height": 34095,
       "horizontalOverflow": false,
       "links": 194,
       "buttons": 7,
