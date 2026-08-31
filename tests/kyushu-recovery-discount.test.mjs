@@ -179,6 +179,19 @@ test('11月23日さんふらわあは休日例外を適用した予約開始日�
     D: 22700,
   });
 
+  assert.deepEqual(reservation.published_web_discount_2026_oct_dec, {
+    discount_rate: 0.05,
+    eligible_periods: ['A', 'B'],
+    published_discounted_base_fares_yen: {
+      A: 14620,
+      B: 16910,
+      C: null,
+      D: null,
+    },
+    calculation_rule: '旅客基準運賃にWEB割引を適用し、その後に客室等級差額を加算する',
+    target_date_applicable: null,
+  });
+
   const roomSurcharges = reservation.published_room_surcharges_yen_2026_oct_dec;
   assert.deepEqual(roomSurcharges['プライベートベッド'], {
     A: 0,
