@@ -1,6 +1,6 @@
 # Wayweave UI audit
 
-Generated: 2026-08-30T23:42:47.529Z
+Generated: 2026-08-31T00:44:09.713Z
 
 Base URL: https://kafka2306.github.io/travel
 
@@ -18,7 +18,7 @@ Base URL: https://kafka2306.github.io/travel
 | sitemap | desktop | 200 | PASS | 0 | 0 | 0 | [PNG](./sitemap-desktop.png) |
 | home | mobile | 200 | PASS | 0 | 0 | 0 | [PNG](./home-mobile.png) |
 | planner | mobile | 200 | PASS | 0 | 0 | 0 | [PNG](./planner-mobile.png) |
-| destinations | mobile | 200 | PASS | 0 | 1 | 0 | [PNG](./destinations-mobile.png) |
+| destinations | mobile | 200 | PASS | 0 | 0 | 0 | [PNG](./destinations-mobile.png) |
 | official | mobile | 200 | PASS | 0 | 0 | 0 | [PNG](./official-mobile.png) |
 | heat-escape | mobile | 200 | PASS | 0 | 0 | 0 | [PNG](./heat-escape-mobile.png) |
 | kyushu-ferry | mobile | 200 | PASS | 0 | 0 | 0 | [PNG](./kyushu-ferry-mobile.png) |
