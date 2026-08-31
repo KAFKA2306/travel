@@ -1,6 +1,6 @@
 # Wayweave UI audit
 
-Generated: 2026-08-31T00:44:09.713Z
+Generated: 2026-08-31T01:47:27.079Z
 
 Base URL: https://kafka2306.github.io/travel
 
@@ -11,7 +11,7 @@ Base URL: https://kafka2306.github.io/travel
 | destinations | desktop | 200 | PASS | 0 | 1 | 0 | [PNG](./destinations-desktop.png) |
 | official | desktop | 200 | PASS | 0 | 0 | 0 | [PNG](./official-desktop.png) |
 | heat-escape | desktop | 200 | PASS | 0 | 0 | 0 | [PNG](./heat-escape-desktop.png) |
-| kyushu-ferry | desktop | 200 | PASS | 0 | 0 | 0 | [PNG](./kyushu-ferry-desktop.png) |
+| kyushu-ferry | desktop | 200 | PASS | 0 | 0 | 1 | [PNG](./kyushu-ferry-desktop.png) |
 | aso | desktop | 200 | PASS | 0 | 0 | 0 | [PNG](./aso-desktop.png) |
 | guides | desktop | 200 | PASS | 0 | 0 | 0 | [PNG](./guides-desktop.png) |
 | shenzhen | desktop | 200 | PASS | 0 | 0 | 0 | [PNG](./shenzhen-desktop.png) |
@@ -29,4 +29,4 @@ Base URL: https://kafka2306.github.io/travel
 
 ## Result
 
-All automated screenshot checks passed, including the Planner day filter and Arima primary-directions journey.
+Detected 1 audit failures. See report.json.
