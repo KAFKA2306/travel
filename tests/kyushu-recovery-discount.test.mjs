@@ -140,9 +140,13 @@ test('九州横断案は現行交通と対象日確認状態を分離する', ()
   assert.equal(crossing.current_ferry_timetable.walk_on_check_in_deadline, '17:45');
 });
 
-test('11月23日さんふらわあは予約受付期間に入った事実と未確認の空席・実料金を分離する', () => {
+test('11月23日さんふらわあは休日例外を適用した予約開始日時と未確認の空席・実料金を分離する', () => {
   const reservation = crossing.current_ferry_timetable.reservation;
-  assert.equal(reservation.booking_open_at, '2026-08-23T09:00:00+09:00');
+  assert.equal(
+    reservation.booking_rule,
+    '乗船予定日の3か月前の同日午前9時より受付。予約開始日が日曜・祭日及び当社休業日の場合は翌営業日',
+  );
+  assert.equal(reservation.booking_open_at, '2026-08-24T09:00:00+09:00');
   assert.equal(reservation.booking_open, true);
   assert.equal(reservation.booking_url, 'https://booking.ferry-sunflower.co.jp/web/yoyaku/');
   assert.equal(reservation.availability, null);
