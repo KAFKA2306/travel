@@ -56,18 +56,36 @@ test('商船三井さんふらわあの実在商品と応援割対象可否を�
   assert.equal(announcement.sales_start, null);
   assert.equal(announcement.details_after_prefectural_announcements, true);
 
-  const [product] = announcement.published_travel_products;
-  assert.equal(product.product_name, '界 別府に泊まる「ドラマティック船旅湯治プラン」4日間');
-  assert.equal(product.set_period_start, '2026-10-01');
-  assert.equal(product.set_period_end, '2027-03-29');
-  assert.equal(product.adult_price_yen_standard_room_3_person_min, 93000);
-  assert.equal(product.adult_price_yen_standard_room_3_person_max, 106000);
-  assert.equal(product.web_application_discount_yen_per_person, 500);
-  assert.equal(product.target_departure_date_for_comparison, '2026-11-20');
-  assert.equal(product.target_date_within_published_set_period, true);
-  assert.equal(product.target_date_availability, null);
-  assert.equal(product.target_date_exact_price_yen, null);
-  assert.equal(product.recovery_discount_eligible, null);
+  const [beppuProduct, unzenBeppuProduct] = announcement.published_travel_products;
+  assert.equal(beppuProduct.product_name, '界 別府に泊まる「ドラマティック船旅湯治プラン」4日間');
+  assert.equal(beppuProduct.set_period_start, '2026-10-01');
+  assert.equal(beppuProduct.set_period_end, '2027-03-29');
+  assert.equal(beppuProduct.adult_price_yen_standard_room_3_person_min, 93000);
+  assert.equal(beppuProduct.adult_price_yen_standard_room_3_person_max, 106000);
+  assert.equal(beppuProduct.web_application_discount_yen_per_person, 500);
+  assert.equal(beppuProduct.target_departure_date_for_comparison, '2026-11-20');
+  assert.equal(beppuProduct.target_date_within_published_set_period, true);
+  assert.equal(beppuProduct.target_date_availability, null);
+  assert.equal(beppuProduct.target_date_exact_price_yen, null);
+  assert.equal(beppuProduct.recovery_discount_eligible, null);
+
+  assert.equal(unzenBeppuProduct.product_name, '界 雲仙・界 別府を巡る九州絶景旅 5日間');
+  assert.equal(unzenBeppuProduct.set_period_start, '2026-10-01');
+  assert.equal(unzenBeppuProduct.set_period_end, '2027-03-28');
+  assert.deepEqual(unzenBeppuProduct.lodging_prefectures, ['長崎県', '大分県']);
+  assert.equal(unzenBeppuProduct.hotel_nights, 2);
+  assert.deepEqual(unzenBeppuProduct.adult_base_price_yen_by_occupancy, {
+    '3_person_room': 128000,
+    '2_person_room': 151000,
+    '1_person_room': 209000,
+  });
+  assert.equal(unzenBeppuProduct.web_application_discount_yen_per_person, 500);
+  assert.equal(unzenBeppuProduct.target_departure_date_for_comparison, '2026-11-20');
+  assert.equal(unzenBeppuProduct.target_date_within_published_set_period, true);
+  assert.equal(unzenBeppuProduct.target_date_excluded, false);
+  assert.equal(unzenBeppuProduct.target_date_availability, null);
+  assert.equal(unzenBeppuProduct.target_date_exact_price_yen, null);
+  assert.equal(unzenBeppuProduct.recovery_discount_eligible, null);
 });
 
 test('九州横断案は現行交通と対象日確認状態を分離する', () => {
