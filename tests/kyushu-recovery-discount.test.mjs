@@ -47,7 +47,7 @@ test('未発表項目を推測値で埋めない', () => {
   ]);
 });
 
-test('九州横断案は現行時刻表と対象日未確認を分離する', () => {
+test('九州横断案は現行交通と対象日確認状態を分離する', () => {
   assert.equal(crossing.trip_plan_issue, 45);
   assert.equal(crossing.current_bus_timetable.revision_date, '2025-10-01');
   assert.equal(crossing.current_bus_timetable.target_date_validity_confirmed, false);
@@ -69,8 +69,29 @@ test('九州横断案は現行時刻表と対象日未確認を分離する', ()
       arrival: '15:00',
       service: '7号',
     },
+    {
+      from: '黒川温泉',
+      to: '由布院駅前バスセンター',
+      departure: '11:15',
+      arrival: '12:48',
+      service: '3号',
+    },
   ]);
-  assert.equal(crossing.current_ferry_timetable.target_date_operating_schedule_confirmed, false);
-  assert.equal(crossing.current_ferry_timetable.candidate_departure.departure, '18:45');
-  assert.equal(crossing.current_ferry_timetable.candidate_departure.arrival_next_day, '06:35');
+
+  assert.equal(crossing.current_yufurin_timetable.revision_date, '2026-03-14');
+  assert.equal(crossing.current_yufurin_timetable.target_date_validity_confirmed, false);
+  assert.deepEqual(crossing.current_yufurin_timetable.candidate_segment, {
+    from: '由布院駅前バスセンター',
+    to: '別府駅前',
+    departure: '14:25',
+    arrival: '15:31',
+    service: '観光快速 ゆふりん',
+  });
+  assert.equal(crossing.current_yufurin_timetable.beppu_station_arrival_minutes_before_ferry_check_in_deadline, 134);
+  assert.equal(crossing.current_yufurin_timetable.last_mile_to_ferry_terminal.target_date_timetable_confirmed, false);
+
+  assert.equal(crossing.current_ferry_timetable.target_date_operating_schedule_confirmed, true);
+  assert.equal(crossing.current_ferry_timetable.departure.departure, '18:45');
+  assert.equal(crossing.current_ferry_timetable.departure.arrival_next_day, '06:35');
+  assert.equal(crossing.current_ferry_timetable.walk_on_check_in_deadline, '17:45');
 });
