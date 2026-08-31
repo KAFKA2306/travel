@@ -82,6 +82,8 @@ test('霧島の現行公共交通は運行日を区別し、対象日を推測�
 
   assert.equal(airport.nearest_bus_stop, '硫黄谷');
   assert.equal(airport.current_operator_timetable_weekday_only, true);
+  assert.equal(airport.current_operator_timetable_revision_date, null);
+  assert.match(airport.current_operator_timetable_revision_note, /PDF下部は2025\.4\.1/);
   assert.equal(airport.target_date_public_transport_timetable_confirmed, false);
 });
 
