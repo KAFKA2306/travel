@@ -1,5 +1,5 @@
 {
-  "generatedAt": "2026-08-31T15:00:04.803Z",
+  "generatedAt": "2026-08-31T16:50:50.576Z",
   "baseUrl": "https://kafka2306.github.io/travel",
   "results": [
     {
@@ -78,7 +78,8 @@
       "headings": 23,
       "brokenImages": [],
       "pendingImages": [
-        "https://yamaguchi-tourism.jp/lsc/api/photo/?src=1700667"
+        "https://yamaguchi-tourism.jp/lsc/api/photo/?src=1700667",
+        "https://www.nasukogen.org/blog/%E3%82%B7%E3%83%AD%E3%83%A4%E3%82%B7%E3%82%AA.jpg"
       ],
       "unlabeledButtons": 0,
       "unlabeledLinks": 0
@@ -97,13 +98,15 @@
       "title": "公式コンテンツ・ネットワーク｜Wayweave",
       "width": 1440,
       "scrollWidth": 1440,
-      "height": 12036,
+      "height": 11936,
       "horizontalOverflow": false,
       "links": 194,
       "buttons": 7,
       "headings": 26,
       "brokenImages": [],
-      "pendingImages": [],
+      "pendingImages": [
+        "https://www.nasukogen.org/blog/%E3%82%B7%E3%83%AD%E3%83%A4%E3%82%B7%E3%82%AA.jpg"
+      ],
       "unlabeledButtons": 0,
       "unlabeledLinks": 0
     },
@@ -139,9 +142,7 @@
       "status": 200,
       "finalUrl": "https://kafka2306.github.io/travel/kyushu-ferry-2026/",
       "consoleErrors": [],
-      "thirdPartyConsoleWarnings": [
-        "Permissions policy violation: compute-pressure is not allowed in this document."
-      ],
+      "thirdPartyConsoleWarnings": [],
       "pageErrors": [],
       "journeyChecks": {},
       "title": "夜の大阪から、朝の九州へ。｜Wayweave",
@@ -352,7 +353,9 @@
       "buttons": 56,
       "headings": 23,
       "brokenImages": [],
-      "pendingImages": [],
+      "pendingImages": [
+        "https://www.nasukogen.org/blog/%E3%82%B7%E3%83%AD%E3%83%A4%E3%82%B7%E3%82%AA.jpg"
+      ],
       "unlabeledButtons": 0,
       "unlabeledLinks": 0
     },
@@ -370,13 +373,15 @@
       "title": "公式コンテンツ・ネットワーク｜Wayweave",
       "width": 390,
       "scrollWidth": 390,
-      "height": 34293,
+      "height": 33815,
       "horizontalOverflow": false,
       "links": 194,
       "buttons": 7,
       "headings": 26,
       "brokenImages": [],
-      "pendingImages": [],
+      "pendingImages": [
+        "https://www.nasukogen.org/blog/%E3%82%B7%E3%83%AD%E3%83%A4%E3%82%B7%E3%82%AA.jpg"
+      ],
       "unlabeledButtons": 0,
       "unlabeledLinks": 0
     },
