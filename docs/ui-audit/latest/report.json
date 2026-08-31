@@ -1,5 +1,5 @@
 {
-  "generatedAt": "2026-08-31T13:49:06.446Z",
+  "generatedAt": "2026-08-31T13:57:24.606Z",
   "baseUrl": "https://kafka2306.github.io/travel",
   "results": [
     {
@@ -78,7 +78,9 @@
       "headings": 23,
       "brokenImages": [],
       "pendingImages": [
-        "https://aomori-tourism.com/lsc/upfile/spot/0000/0339/339_12_l.jpg"
+        "https://karuizawa-kankokyokai.jp/wordpress/wp-content/uploads/2023/05/2305_karuizawa_web_OGP_0501_5.jpg",
+        "https://yamaguchi-tourism.jp/lsc/api/photo/?src=1700667",
+        "https://www.nikko-kankou.org/storage/post_picture/%5B640_640%5D_20231018141930_10-1.jpg"
       ],
       "unlabeledButtons": 0,
       "unlabeledLinks": 0
@@ -103,7 +105,10 @@
       "buttons": 7,
       "headings": 26,
       "brokenImages": [],
-      "pendingImages": [],
+      "pendingImages": [
+        "https://karuizawa-kankokyokai.jp/wordpress/wp-content/uploads/2023/05/2305_karuizawa_web_OGP_0501_5.jpg",
+        "https://www.nikko-kankou.org/storage/post_picture/%5B640_640%5D_20231018141930_10-1.jpg"
+      ],
       "unlabeledButtons": 0,
       "unlabeledLinks": 0
     },
@@ -186,9 +191,7 @@
       "screenshot": "aso-desktop.png",
       "status": 200,
       "finalUrl": "https://kafka2306.github.io/travel/aso-2026/",
-      "consoleErrors": [
-        "Permissions policy violation: compute-pressure is not allowed in this document."
-      ],
+      "consoleErrors": [],
       "thirdPartyConsoleWarnings": [],
       "pageErrors": [],
       "journeyChecks": {},
@@ -352,7 +355,10 @@
       "buttons": 56,
       "headings": 23,
       "brokenImages": [],
-      "pendingImages": [],
+      "pendingImages": [
+        "https://karuizawa-kankokyokai.jp/wordpress/wp-content/uploads/2023/05/2305_karuizawa_web_OGP_0501_5.jpg",
+        "https://www.nikko-kankou.org/storage/post_picture/%5B640_640%5D_20231018141930_10-1.jpg"
+      ],
       "unlabeledButtons": 0,
       "unlabeledLinks": 0
     },
@@ -376,7 +382,10 @@
       "buttons": 7,
       "headings": 26,
       "brokenImages": [],
-      "pendingImages": [],
+      "pendingImages": [
+        "https://karuizawa-kankokyokai.jp/wordpress/wp-content/uploads/2023/05/2305_karuizawa_web_OGP_0501_5.jpg",
+        "https://www.nikko-kankou.org/storage/post_picture/%5B640_640%5D_20231018141930_10-1.jpg"
+      ],
       "unlabeledButtons": 0,
       "unlabeledLinks": 0
     },
