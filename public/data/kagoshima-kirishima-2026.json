@@ -203,7 +203,8 @@
       "nearest_bus_stop": "硫黄谷",
       "hotel_pickup_from_bus_stop": "硫黄谷バス停の無料直通電話でホテルへ連絡し、送迎車で約1分",
       "current_operator_timetable_url": "https://www.iwasaki-corp.com/kagoshima_kotsu/wp-content/uploads/sites/8/2025/05/837_260401.pdf",
-      "current_operator_timetable_revision_date": "2026-04-01",
+      "current_operator_timetable_revision_date": null,
+      "current_operator_timetable_revision_note": "ファイル名は837_260401.pdfだが、PDF下部は2025.4.1表記。改正日を単一値として確定しない。",
       "current_operator_timetable_weekday_only": true,
       "target_date_public_transport_timetable_confirmed": false,
       "verification_state": "OFFICIAL_ACCESS_STRUCTURE_TARGET_DATE_RECHECK_REQUIRED"
@@ -219,31 +220,11 @@
     "decision_rule": "大阪発の往復交通 + シェラトン鹿児島1泊 + 霧島ホテル1泊が同一の対象商品として正式販売された場合に限り、交通付2泊以上の上限を適用する。別予約の合算値には適用しない。"
   },
   "booking_decisions": [
-    {
-      "priority": 1,
-      "item": "鹿児島県の予約開始日・対象販売事業者・対象商品",
-      "state": "UNVERIFIED"
-    },
-    {
-      "priority": 2,
-      "item": "往復交通 + シェラトン鹿児島 + 霧島ホテルの2泊対象商品",
-      "state": "UNVERIFIED"
-    },
-    {
-      "priority": 3,
-      "item": "10/10午前〜昼前に鹿児島へ到着する便の総額",
-      "state": "PARTIALLY_VERIFIED_SCHEDULE_ONLY"
-    },
-    {
-      "priority": 4,
-      "item": "シェラトン鹿児島の桜島ビュー確約室の実額",
-      "state": "UNVERIFIED"
-    },
-    {
-      "priority": 5,
-      "item": "10/11鹿児島市→霧島神宮→硫黄谷、10/12硫黄谷→空港の対象日公共交通",
-      "state": "UNVERIFIED_TARGET_DATE"
-    }
+    {"priority": 1, "item": "鹿児島県の予約開始日・対象販売事業者・対象商品", "state": "UNVERIFIED"},
+    {"priority": 2, "item": "往復交通 + シェラトン鹿児島 + 霧島ホテルの2泊対象商品", "state": "UNVERIFIED"},
+    {"priority": 3, "item": "10/10午前〜昼前に鹿児島へ到着する便の総額", "state": "PARTIALLY_VERIFIED_SCHEDULE_ONLY"},
+    {"priority": 4, "item": "シェラトン鹿児島の桜島ビュー確約室の実額", "state": "UNVERIFIED"},
+    {"priority": 5, "item": "10/11鹿児島市→霧島神宮→硫黄谷、10/12硫黄谷→空港の対象日公共交通", "state": "UNVERIFIED_TARGET_DATE"}
   ],
   "sources": [
     {"label": "観光庁 九州ふっこう応援割", "url": "https://www.mlit.go.jp/kankocho/topics04_00093.html", "authority": "PRIMARY"},
