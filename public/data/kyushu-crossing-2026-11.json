@@ -18,6 +18,11 @@
       "subject": "熊本⇔阿蘇・湯布院・別府 九州横断バス 時刻・運賃"
     },
     {
+      "publisher": "産交バス",
+      "url": "https://www.sankobus.jp/bus/oudan/reserve/",
+      "subject": "熊本⇔阿蘇・湯布院・別府 九州横断バス 予約受付期間・予約方法"
+    },
+    {
       "publisher": "亀の井バス",
       "url": "https://kamenoibus.com/archive/uploads/2026/03/yufurin.pdf",
       "subject": "観光快速 ゆふりん 2026年3月14日現在時刻表"
@@ -83,7 +88,27 @@
     ],
     "aso_dwell_minutes": 295,
     "minimum_required_aso_dwell_minutes": 180,
-    "meets_minimum_dwell_on_current_timetable": true
+    "meets_minimum_dwell_on_current_timetable": true,
+    "reservation": {
+      "official_url": "https://www.sankobus.jp/bus/oudan/reserve/",
+      "booking_rule": "乗車日の2ヶ月前から前日まで予約可能",
+      "online_booking_service": "発車オーライネット",
+      "target_segment_reservation_eligibility_confirmed": false,
+      "target_dates": [
+        {
+          "travel_date": "2026-11-21",
+          "booking_opens_on": "2026-09-21",
+          "booking_open_as_of_checked_at": false,
+          "availability": null
+        },
+        {
+          "travel_date": "2026-11-22",
+          "booking_opens_on": "2026-09-22",
+          "booking_open_as_of_checked_at": false,
+          "availability": null
+        }
+      ]
+    }
   },
   "current_yufurin_timetable": {
     "revision_date": "2026-03-14",
@@ -285,17 +310,19 @@
   },
   "unverified": [
     "産交バスの現行時刻表が2026-11-21と2026-11-22にも同一内容で有効であること",
+    "産交バスの候補区間が予約可能区間であること",
+    "2026-09-21・22の予約開始後に対象便の座席在庫があり予約成立すること",
     "観光快速ゆふりんの2026年3月14日現在時刻表が2026-11-23にも同一内容で有効であること",
     "亀の井バス26番・26A番または20番の2026年3月14日現在時刻表が2026-11-23にも同一内容で有効であること",
     "2026-11-23別府発便の客室別実在庫",
     "2026-11-23別府発便の運賃期間区分と客室別実料金",
-    "各バス区間の実在庫と予約成立",
     "熊本から阿蘇までの観光当日の運行障害",
     "阿蘇観光中の火山規制と天候"
   ],
   "notes": [
     "現行時刻表では熊本駅前07:23発から阿蘇駅前09:14着、阿蘇駅前14:09発から黒川温泉15:00着を組み合わせると、阿蘇で4時間55分確保できる。",
     "現行の九州横断バスでは黒川温泉11:15発から由布院駅前バスセンター12:48着が成立する。",
+    "産交バスの九州横断バスは乗車日の2ヶ月前から前日まで予約できる。11月21日分は9月21日、11月22日分は9月22日から予約期間に入る。2026年8月31日時点では対象日の予約期間外で、対象区間が予約可能区間かも未確認のため空席はnullのまま保持する。",
     "現行の観光快速ゆふりん土日祝時刻表では由布院駅前バスセンター14:25発から別府駅前15:31着が成立する。",
     "現行の亀の井バス土日祝時刻表では、別府駅前15:58発の26番・26A番がさんふらわあターミナル別府前16:10着となり、ゆふりん到着後27分の乗換時間と徒歩客17:45手続き目安まで95分の余裕を確保できる。16:32発の20番でも16:44着となる。",
     "商船三井さんふらわあの2026年11月公式運航表で11月23日の別府発便が設定され、通常の月曜日ダイヤ18:45発・翌06:35着を確認した。",

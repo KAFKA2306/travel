@@ -101,6 +101,26 @@ test('九州横断案は現行交通と対象日確認状態を分離する', ()
     },
   ]);
 
+  const busReservation = crossing.current_bus_timetable.reservation;
+  assert.equal(busReservation.official_url, 'https://www.sankobus.jp/bus/oudan/reserve/');
+  assert.equal(busReservation.booking_rule, '乗車日の2ヶ月前から前日まで予約可能');
+  assert.equal(busReservation.online_booking_service, '発車オーライネット');
+  assert.equal(busReservation.target_segment_reservation_eligibility_confirmed, false);
+  assert.deepEqual(busReservation.target_dates, [
+    {
+      travel_date: '2026-11-21',
+      booking_opens_on: '2026-09-21',
+      booking_open_as_of_checked_at: false,
+      availability: null,
+    },
+    {
+      travel_date: '2026-11-22',
+      booking_opens_on: '2026-09-22',
+      booking_open_as_of_checked_at: false,
+      availability: null,
+    },
+  ]);
+
   assert.equal(crossing.current_yufurin_timetable.revision_date, '2026-03-14');
   assert.equal(crossing.current_yufurin_timetable.target_date_validity_confirmed, false);
   assert.deepEqual(crossing.current_yufurin_timetable.candidate_segment, {
