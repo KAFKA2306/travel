@@ -28,9 +28,20 @@
     "transport_with_lodging_2_or_more_nights": 30000,
     "multi_prefecture_2_or_more_prefectures": 35000
   },
+  "seller_announcements": [
+    {
+      "seller": "商船三井さんふらわあ",
+      "announcement_url": "https://www.ferry-sunflower.co.jp/travel/news/003057.html",
+      "announced_at": "2026-08-31",
+      "eligible_products": null,
+      "sales_start": null,
+      "details_after_prefectural_announcements": true
+    }
+  ],
   "eligibility_notes": [
     "九州地方における1泊以上の旅行・宿泊商品が対象。",
     "具体的な予約開始日と割引対象期間は各県が設定する。",
-    "フェリーや宿を個別に予約しただけで交通付宿泊旅行商品または周遊型旅行商品に該当するとは扱わない。"
+    "フェリーや宿を個別に予約しただけで交通付宿泊旅行商品または周遊型旅行商品に該当するとは扱わない。",
+    "商船三井さんふらわあは2026年8月31日に制度の取扱い案内を公開したが、対象商品と販売・受付開始時期は未発表である。"
   ]
 }

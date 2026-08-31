@@ -47,6 +47,19 @@ test('未発表項目を推測値で埋めない', () => {
   ]);
 });
 
+test('商船三井さんふらわあの取扱い案内と未発表商品を分離する', () => {
+  assert.deepEqual(data.seller_announcements, [
+    {
+      seller: '商船三井さんふらわあ',
+      announcement_url: 'https://www.ferry-sunflower.co.jp/travel/news/003057.html',
+      announced_at: '2026-08-31',
+      eligible_products: null,
+      sales_start: null,
+      details_after_prefectural_announcements: true,
+    },
+  ]);
+});
+
 test('九州横断案は現行交通と対象日確認状態を分離する', () => {
   assert.equal(crossing.trip_plan_issue, 45);
   assert.equal(crossing.current_bus_timetable.revision_date, '2025-10-01');
