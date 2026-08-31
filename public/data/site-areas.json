@@ -1,5 +1,5 @@
 {
-  "version": "2026-08-28",
+  "version": "2026-08-31",
   "principle": "Top-level navigation is stable. New content is attached to an area or plan and must not create a new primary navigation item.",
   "areas": [
     {
@@ -17,14 +17,15 @@
     },
     {
       "id": "kyushu-ferry-2026",
-      "label": "九州・さんふらわあ",
+      "label": "九州・2026秋",
       "country": "日本",
       "lat": 32.55,
       "lng": 131.0,
-      "summary": "大阪から夜のフェリーで別府・志布志へ。温泉、桜島、霧島、紅葉を三連休で比べる2026年秋の旅。",
+      "summary": "大阪から九州へ。さんふらわあの船旅と、鹿児島・桜島・霧島を三連休だけで回る航空2泊3日を比較する。",
       "primaryPath": "/travel/kyushu-ferry-2026/",
       "links": [
-        { "label": "秋の3旅を比較", "path": "/travel/kyushu-ferry-2026/" },
+        { "label": "秋の船旅を比較", "path": "/travel/kyushu-ferry-2026/" },
+        { "label": "鹿児島2泊3日・航空", "path": "/travel/kyushu-ferry-2026/kagoshima-air/" },
         { "label": "当日情報", "path": "/travel/guides/" }
       ]
     },
