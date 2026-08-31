@@ -1,0 +1,76 @@
+{
+  "trip_plan_issue": 45,
+  "checked_at": "2026-08-31",
+  "target_start_date": "2026-11-20",
+  "target_end_date": "2026-11-24",
+  "route": [
+    "熊本",
+    "阿蘇",
+    "黒川温泉",
+    "由布院",
+    "別府",
+    "大阪"
+  ],
+  "primary_sources": [
+    {
+      "publisher": "産交バス",
+      "url": "https://www.sankobus.jp/bus/oudan/jikoku/",
+      "subject": "熊本⇔阿蘇・湯布院・別府 九州横断バス 時刻・運賃"
+    },
+    {
+      "publisher": "商船三井さんふらわあ",
+      "url": "https://www.ferry-sunflower.co.jp/route/osaka-beppu/time/",
+      "subject": "大阪⇔別府航路 航路・時刻表"
+    }
+  ],
+  "current_bus_timetable": {
+    "revision_date": "2025-10-01",
+    "target_date_validity_confirmed": false,
+    "temporary_disruption_until": "2026-08-31",
+    "full_service_resume_announced_for": "2026-09-01",
+    "candidate_segments": [
+      {
+        "from": "熊本駅前",
+        "to": "阿蘇駅前",
+        "departure": "07:23",
+        "arrival": "09:14",
+        "service": "1号"
+      },
+      {
+        "from": "阿蘇駅前",
+        "to": "黒川温泉",
+        "departure": "14:09",
+        "arrival": "15:00",
+        "service": "7号"
+      }
+    ],
+    "aso_dwell_minutes": 295,
+    "minimum_required_aso_dwell_minutes": 180,
+    "meets_minimum_dwell_on_current_timetable": true
+  },
+  "current_ferry_timetable": {
+    "target_departure_date": "2026-11-23",
+    "target_departure_weekday": "月曜日",
+    "target_date_operating_schedule_confirmed": false,
+    "weekday_rule": "日曜日から木曜日",
+    "candidate_departure": {
+      "from": "別府",
+      "to": "大阪",
+      "departure": "18:45",
+      "arrival_next_day": "06:35"
+    },
+    "walk_on_check_in_minutes_before_departure": 60
+  },
+  "unverified": [
+    "産交バスの現行時刻表が2026-11-21にも同一内容で有効であること",
+    "2026-11-23の別府発大阪行きが通常の月曜日時刻どおり運航すること",
+    "各区間の実在庫と予約成立",
+    "熊本から阿蘇までの観光当日の運行障害",
+    "阿蘇観光中の火山規制と天候"
+  ],
+  "notes": [
+    "現行時刻表では熊本駅前07:23発から阿蘇駅前09:14着、阿蘇駅前14:09発から黒川温泉15:00着を組み合わせると、阿蘇で4時間55分確保できる。",
+    "対象日まで時刻表が変わらないとは扱わず、2026年11月の有効ダイヤを予約時に再確認する。",
+    "フェリーは通常の曜日別時刻から候補時刻を保持するが、対象日の運航スケジュール確認前は確定値にしない。"
+  ]
+}
