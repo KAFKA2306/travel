@@ -101,7 +101,28 @@ test('九州横断案は現行交通と対象日確認状態を分離する', ()
     service: '観光快速 ゆふりん',
   });
   assert.equal(crossing.current_yufurin_timetable.beppu_station_arrival_minutes_before_ferry_check_in_deadline, 134);
-  assert.equal(crossing.current_yufurin_timetable.last_mile_to_ferry_terminal.target_date_timetable_confirmed, false);
+
+  const lastMile = crossing.current_yufurin_timetable.last_mile_to_ferry_terminal;
+  assert.equal(lastMile.current_timetable_revision_date, '2026-03-14');
+  assert.equal(lastMile.target_date_timetable_confirmed, false);
+  assert.deepEqual(lastMile.preferred_current_connection, {
+    from: '別府駅前⑤のりば',
+    to: 'さんふらわあターミナル別府前',
+    departure: '15:58',
+    arrival: '16:10',
+    service: '26番・26A番 内廻り循環線',
+    transfer_minutes_after_yufurin: 27,
+    minutes_before_ferry_check_in_deadline: 95,
+  });
+  assert.deepEqual(lastMile.later_current_connection, {
+    from: '別府駅前⑤のりば',
+    to: 'さんふらわあターミナル別府前',
+    departure: '16:32',
+    arrival: '16:44',
+    service: '20番 別府大学経由鉄輪線',
+    transfer_minutes_after_yufurin: 61,
+    minutes_before_ferry_check_in_deadline: 61,
+  });
 
   assert.equal(crossing.current_ferry_timetable.target_date_operating_schedule_confirmed, true);
   assert.equal(crossing.current_ferry_timetable.departure.departure, '18:45');
