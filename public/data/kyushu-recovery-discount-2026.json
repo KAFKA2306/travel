@@ -3,7 +3,7 @@
   "publisher": "観光庁",
   "official_source_url": "https://www.mlit.go.jp/kankocho/topics04_00093.html",
   "source_last_updated": "2026-08-28",
-  "checked_at": "2026-08-31",
+  "checked_at": "2026-09-01",
   "eligible_stay_start": "2026-10-01",
   "booking_start": null,
   "eligible_stay_end": null,
@@ -66,6 +66,49 @@
           "target_date_availability": null,
           "target_date_exact_price_yen": null,
           "recovery_discount_eligible": null
+        },
+        {
+          "product_name": "界 雲仙・界 別府を巡る九州絶景旅 5日間",
+          "product_url": "https://www.ferry-sunflower.co.jp/travel/002692.html",
+          "brochure_url": "https://www.ferry-sunflower.co.jp/travel/A26.10.KAIaro.QR.pdf",
+          "set_period_start": "2026-10-01",
+          "set_period_end": "2027-03-28",
+          "excluded_departure_periods": [
+            "2026-10-08/2026-10-10",
+            "2026-11-17",
+            "2026-12-01",
+            "2026-12-22/2027-01-04",
+            "2027-01-06/2027-01-24",
+            "2027-02-28/2027-03-04",
+            "2027-03-08/2027-03-09"
+          ],
+          "lodging_prefectures": [
+            "長崎県",
+            "大分県"
+          ],
+          "hotel_nights": 2,
+          "adult_base_price_yen_by_occupancy": {
+            "3_person_room": 128000,
+            "2_person_room": 151000,
+            "1_person_room": 209000
+          },
+          "web_application_discount_yen_per_person": 500,
+          "included": [
+            "大阪と別府の往復フェリー運賃",
+            "往復乗用車航送代金",
+            "往復船内の夕食と朝食",
+            "往路船室内のお菓子",
+            "界 雲仙1泊の夕食と朝食",
+            "界 別府1泊の夕食と朝食",
+            "現地ホテルのプラン特典",
+            "サービス料と諸税"
+          ],
+          "target_departure_date_for_comparison": "2026-11-20",
+          "target_date_within_published_set_period": true,
+          "target_date_excluded": false,
+          "target_date_availability": null,
+          "target_date_exact_price_yen": null,
+          "recovery_discount_eligible": null
         }
       ]
     }
@@ -75,6 +118,7 @@
     "具体的な予約開始日と割引対象期間は各県が設定する。",
     "フェリーや宿を個別に予約しただけで交通付宿泊旅行商品または周遊型旅行商品に該当するとは扱わない。",
     "商船三井さんふらわあは2026年8月31日に制度の取扱い案内を公開したが、対象商品と販売・受付開始時期は未発表である。",
-    "商船三井さんふらわあは2026年10月以降の実在する交通付宿泊商品と公式価格帯を既に販売案内しているが、それらが九州ふっこう応援割の対象商品かは未発表である。"
+    "商船三井さんふらわあは2026年10月以降の実在する交通付宿泊商品と公式価格帯を既に販売案内しているが、それらが九州ふっこう応援割の対象商品かは未発表である。",
+    "界 雲仙・界 別府を巡る九州絶景旅は長崎県と大分県に各1泊する実在商品だが、九州ふっこう応援割の周遊型旅行商品として正式に指定されるかは未発表である。"
   ]
 }
