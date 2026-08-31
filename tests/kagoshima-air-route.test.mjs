@@ -67,6 +67,24 @@ test('航空便は安さと観光時間を分離しSkyscanner attributionを保�
   assert.equal(Object.hasOwn(morning[0], 'total_flight_price_yen'), false);
 });
 
+test('霧島の現行公共交通は運行日を区別し、対象日を推測で確定しない', () => {
+  const access = trip.local_transport.kagoshima_to_kirishima;
+  const airport = trip.local_transport.kirishima_hotel_to_airport;
+
+  assert.equal(access.current_timetable_revision_date, '2026-04-01');
+  assert.equal(access.target_travel_date, '2026-10-11');
+  assert.equal(access.current_sunday_structure.access_bus_daily_connection.departure, '16:10');
+  assert.equal(access.current_sunday_structure.access_bus_daily_connection.via, '霧島神宮 16:21');
+  assert.equal(access.current_sunday_structure.access_bus_daily_connection.arrival, '16:36');
+  assert.equal(access.current_sunday_structure.one_day_ticket_yen, 1500);
+  assert.match(access.current_sunday_structure.weekday_only_route_excluded_on_target_weekday, /平日運行/);
+  assert.equal(access.target_date_timetable_confirmed, false);
+
+  assert.equal(airport.nearest_bus_stop, '硫黄谷');
+  assert.equal(airport.current_operator_timetable_weekday_only, true);
+  assert.equal(airport.target_date_public_transport_timetable_confirmed, false);
+});
+
 test('対象日公共交通と割引商品を未確認のまま保持する', () => {
   assert.equal(trip.local_transport.sakurajima_ferry.target_date_timetable_confirmed, false);
   assert.equal(trip.local_transport.kagoshima_to_kirishima.target_date_timetable_confirmed, false);
