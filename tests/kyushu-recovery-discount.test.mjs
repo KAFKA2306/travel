@@ -158,4 +158,36 @@ test('11月23日さんふらわあは休日例外を適用した予約開始日�
     C: 20700,
     D: 22700,
   });
+
+  const roomSurcharges = reservation.published_room_surcharges_yen_2026_oct_dec;
+  assert.deepEqual(roomSurcharges['プライベートベッド'], {
+    A: 0,
+    B: 0,
+    C: 0,
+    D: 0,
+  });
+  assert.deepEqual(roomSurcharges['スタンダードシングル'], {
+    A: 4000,
+    B: 4000,
+    C: 6000,
+    D: 6000,
+  });
+  assert.deepEqual(roomSurcharges['スーペリアツイン'], {
+    A: 7000,
+    B: 7000,
+    C: 11000,
+    D: 11000,
+  });
+  assert.deepEqual(roomSurcharges['デラックス'], {
+    A: 12000,
+    B: 12000,
+    C: 17000,
+    D: 17000,
+  });
+  assert.deepEqual(roomSurcharges['スイート'], {
+    A: 17000,
+    B: 17000,
+    C: 23000,
+    D: 23000,
+  });
 });
