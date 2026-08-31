@@ -11,6 +11,7 @@ const pages = [
   ['official', '/official/'],
   ['heat-escape', '/heat-escape-2026/'],
   ['kyushu-ferry', '/kyushu-ferry-2026/'],
+  ['kagoshima-air', '/kyushu-ferry-2026/kagoshima-air/'],
   ['aso', '/aso-2026/'],
   ['guides', '/guides/'],
   ['shenzhen', '/shenzhen/'],

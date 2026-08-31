@@ -1,0 +1,231 @@
+{
+  "trip_plan_issue": 61,
+  "title": "2026年10月三連休 大阪→鹿児島・桜島→霧島",
+  "status": "ROUTE_CONFIRMED_BOOKING_UNVERIFIED",
+  "checked_at": "2026-08-31",
+  "party": {
+    "adults": 2,
+    "rooms": 1
+  },
+  "travel_window": {
+    "start": "2026-10-10",
+    "end": "2026-10-12",
+    "paid_leave_days": 0
+  },
+  "route": [
+    {
+      "date": "2026-10-10",
+      "from": "大阪",
+      "via": ["鹿児島空港", "鹿児島市", "桜島・錦江湾"],
+      "to": "シェラトン鹿児島",
+      "focus": "桜島・錦江湾と市内滞在"
+    },
+    {
+      "date": "2026-10-11",
+      "from": "鹿児島市",
+      "via": ["霧島神宮"],
+      "to": "硫黄谷温泉 霧島ホテル",
+      "focus": "森・霧島神宮・温泉"
+    },
+    {
+      "date": "2026-10-12",
+      "from": "硫黄谷温泉 霧島ホテル",
+      "via": ["鹿児島空港"],
+      "to": "大阪",
+      "focus": "朝風呂後に鹿児島市へ戻らず空港へ直行"
+    }
+  ],
+  "hotels": [
+    {
+      "id": "sheraton-kagoshima",
+      "name": "シェラトン鹿児島",
+      "stay_date": "2026-10-10",
+      "official_url": "https://www.marriott.com/ja/hotels/kojsi-sheraton-kagoshima/overview/",
+      "priority_condition": "桜島ビューを優先。最安室と桜島ビュー確約室を分けて比較する。",
+      "verified_facilities": ["桜島ビューの客室・ラウンジ", "天然温泉", "足湯", "サウナ", "鹿児島中央駅との無料シャトル"],
+      "observed_offer": {
+        "seller": "JTB",
+        "source_url": "https://www.jtb.co.jp/kokunai-hotel/htl/8608071/",
+        "observed_at": "2026-08-31",
+        "stay_date": "2026-10-10",
+        "party_adults": 2,
+        "rooms": 1,
+        "minimum_room_price_yen": 51600,
+        "displayed_maximum_room_price_yen": 217800,
+        "remaining_rooms_at_minimum_context": 3,
+        "mutable": true,
+        "verification_state": "VERIFIED_AT_2026_08_31",
+        "notes": "三連休初日の対象日カレンダーで観測。部屋タイプ・プラン・在庫で変動し、桜島ビュー確約価格ではない。"
+      }
+    },
+    {
+      "id": "kirishima-hotel",
+      "name": "硫黄谷温泉 霧島ホテル",
+      "stay_date": "2026-10-11",
+      "official_url": "https://www.kirishima-hotel.jp/",
+      "access_url": "https://www.kirishima-hotel.jp/access/",
+      "verified_access": ["鹿児島空港から車で約30分", "硫黄谷バス停から宿への送迎案内あり"],
+      "observed_offer": {
+        "seller": "JTB",
+        "source_url": "https://www.jtb.co.jp/kokunai-hotel/htl/8604002/",
+        "observed_at": "2026-08-31",
+        "stay_date": "2026-10-11",
+        "party_adults": 2,
+        "rooms": 1,
+        "minimum_room_price_yen": 37840,
+        "displayed_maximum_room_price_yen": 39600,
+        "mutable": true,
+        "verification_state": "VERIFIED_AT_2026_08_31",
+        "notes": "対象日カレンダーで観測した価格帯の一例。食事・客室・在庫条件は予約時に再取得する。"
+      }
+    }
+  ],
+  "observed_cost_floor": {
+    "hotel_total_for_two_yen": 89440,
+    "hotel_per_person_yen": 44720,
+    "cheapest_observed_roundtrip_flight_per_person_yen": 25320,
+    "separate_booking_floor_per_person_before_local_transport_yen": 70040,
+    "state": "CALCULATED_FROM_MUTABLE_OBSERVATIONS",
+    "bookable_as_single_product": false,
+    "recovery_discount_eligible": null,
+    "notes": "別々の販売主体の観測値を比較用に合算しただけで、単一の予約商品ではない。九州ふっこう応援割の対象価格として使用しない。"
+  },
+  "flights": {
+    "route": "OSA-KOJ-OSA",
+    "outbound_date": "2026-10-10",
+    "inbound_date": "2026-10-12",
+    "skyscanner": {
+      "observed_at": "2026-08-31",
+      "attribution_url": "https://skyscanner.net/g/referrals/v1/flights/home?mediaPartnerId=2850210&utm_term=skyscanner_chatgpt_app_data",
+      "verification_state": "VERIFIED_AT_2026_08_31",
+      "observed_itineraries": [
+        {
+          "outbound": "伊丹 19:55 → 鹿児島 21:15",
+          "inbound": "鹿児島 07:25 → 伊丹 08:35",
+          "roundtrip_yen_per_person": 25320,
+          "sightseeing_fit": "LOW",
+          "reason": "初日と最終日の観光時間をほぼ失う"
+        },
+        {
+          "outbound": "伊丹 17:05 → 鹿児島 18:25",
+          "inbound": "鹿児島 07:25 → 伊丹 08:35",
+          "roundtrip_yen_per_person": 26695,
+          "sightseeing_fit": "LOW"
+        },
+        {
+          "outbound": "神戸 15:25 → 鹿児島 16:35",
+          "inbound": "鹿児島 09:00 → 神戸 10:10",
+          "roundtrip_yen_per_person": 28762,
+          "sightseeing_fit": "LOW"
+        },
+        {
+          "outbound": "神戸 15:25 → 鹿児島 16:35",
+          "inbound": "鹿児島 20:15 → 神戸 21:25",
+          "roundtrip_yen_per_person": 39870,
+          "sightseeing_fit": "MEDIUM",
+          "reason": "最終日は使えるが初日の桜島時間が短い"
+        }
+      ]
+    },
+    "jtb_exact_date_schedule": {
+      "seller": "JTB",
+      "source_url": "https://www.jtb.co.jp/kokunai_air/a/kagoshima/?backdate=20261011&deparea=27&godate=20261010&tycode=godate_1010",
+      "observed_at": "2026-08-31",
+      "verification_state": "VERIFIED_AT_2026_08_31",
+      "morning_outbound_options": [
+        {"flight": "JAL2401", "from": "伊丹", "departure": "07:05", "arrival": "08:20", "relative_package_supplement_yen": 16900},
+        {"flight": "JAL2405", "from": "伊丹", "departure": "09:20", "arrival": "10:35", "relative_package_supplement_yen": 26100},
+        {"flight": "JAL2407", "from": "伊丹", "departure": "11:05", "arrival": "12:15", "relative_package_supplement_yen": 22400}
+      ],
+      "notes": "金額はJTB画面で選択中のパッケージ基準に対する便差額であり、航空券単体総額ではない。午前到着便の存在確認に使用する。"
+    }
+  },
+  "transport_packages": [
+    {
+      "type": "shinkansen_plus_sheraton_1_night",
+      "seller": "JTB",
+      "travel_dates": ["2026-10-10", "2026-10-11"],
+      "source_url": "https://www.jtb.co.jp/kokunai_jr/h/8608071/plan/?area=A11&backdate=20261011&checkindate=20261010&deparea=27&godate=20261010&room=1&staynight=1&suggestkeyword=%E4%B9%9D%E5%B7%9E&trainassign=m2a0c0d0&traveldays=2&tycode=godate_1010",
+      "observed_at": "2026-08-31",
+      "price_yen_per_person": 66500,
+      "verification_state": "VERIFIED_AT_2026_08_31",
+      "recovery_discount_eligible": null,
+      "notes": "新大阪⇔鹿児島中央 + シェラトン鹿児島1泊の対象日実在商品。#61の2泊ルートそのものではない。"
+    },
+    {
+      "type": "air_plus_sheraton_1_night_reference",
+      "seller": "JAL",
+      "travel_dates": ["2026-10-13", "2026-10-14"],
+      "source_url": "https://www.jal.co.jp/jp/ja/dom/area/kyushu/kagoshima/",
+      "observed_at": "2026-08-31",
+      "price_yen_per_person": 33900,
+      "verification_state": "VERIFIED_REFERENCE_ONLY",
+      "recovery_discount_eligible": null,
+      "notes": "大阪発・シェラトン鹿児島1泊の掲載例。10/10三連休価格ではないため対象日価格として使わない。SNSの約3.5万円という通常価格の参考アンカー。"
+    }
+  ],
+  "local_transport": {
+    "sakurajima_ferry": {
+      "official_url": "https://www.city.kagoshima.lg.jp/sakurajima-ferry/koro-jikoku/timetable.html",
+      "crossing_minutes_approx": 15,
+      "target_date_timetable_confirmed": false,
+      "verification_state": "OFFICIAL_CURRENT_STRUCTURE_TARGET_DATE_RECHECK_REQUIRED"
+    },
+    "kagoshima_to_kirishima": {
+      "official_reference_url": "https://www.kagoshima-kankou.com/guide/10113",
+      "target_date_timetable_confirmed": false,
+      "verification_state": "UNVERIFIED_TARGET_DATE"
+    },
+    "kirishima_hotel_to_airport": {
+      "official_url": "https://www.kirishima-hotel.jp/access/",
+      "airport_drive_minutes_approx": 30,
+      "target_date_public_transport_timetable_confirmed": false,
+      "verification_state": "OFFICIAL_ACCESS_STRUCTURE_TARGET_DATE_RECHECK_REQUIRED"
+    }
+  },
+  "recovery_discount": {
+    "canonical_data_path": "/travel/data/kyushu-recovery-discount-2026.json",
+    "eligible_two_night_product": null,
+    "participating_seller_for_this_route": null,
+    "booking_start_for_kagoshima": null,
+    "discounted_bookable_price_yen": null,
+    "verification_state": "UNVERIFIED",
+    "decision_rule": "大阪発の往復交通 + シェラトン鹿児島1泊 + 霧島ホテル1泊が同一の対象商品として正式販売された場合に限り、交通付2泊以上の上限を適用する。別予約の合算値には適用しない。"
+  },
+  "booking_decisions": [
+    {
+      "priority": 1,
+      "item": "鹿児島県の予約開始日・対象販売事業者・対象商品",
+      "state": "UNVERIFIED"
+    },
+    {
+      "priority": 2,
+      "item": "往復交通 + シェラトン鹿児島 + 霧島ホテルの2泊対象商品",
+      "state": "UNVERIFIED"
+    },
+    {
+      "priority": 3,
+      "item": "10/10午前〜昼前に鹿児島へ到着する便の総額",
+      "state": "PARTIALLY_VERIFIED_SCHEDULE_ONLY"
+    },
+    {
+      "priority": 4,
+      "item": "シェラトン鹿児島の桜島ビュー確約室の実額",
+      "state": "UNVERIFIED"
+    },
+    {
+      "priority": 5,
+      "item": "10/11鹿児島市→霧島神宮→硫黄谷、10/12硫黄谷→空港の対象日公共交通",
+      "state": "UNVERIFIED_TARGET_DATE"
+    }
+  ],
+  "sources": [
+    {"label": "観光庁 九州ふっこう応援割", "url": "https://www.mlit.go.jp/kankocho/topics04_00093.html", "authority": "PRIMARY"},
+    {"label": "JTB 九州ふっこう応援割 FAQ", "url": "https://faq.jtb.co.jp/faqs/w10054/", "authority": "SELLER"},
+    {"label": "シェラトン鹿児島 公式", "url": "https://www.marriott.com/ja/hotels/kojsi-sheraton-kagoshima/overview/", "authority": "PRIMARY"},
+    {"label": "霧島ホテル 公式", "url": "https://www.kirishima-hotel.jp/", "authority": "PRIMARY"},
+    {"label": "霧島ホテル アクセス", "url": "https://www.kirishima-hotel.jp/access/", "authority": "PRIMARY"},
+    {"label": "鹿児島市 桜島フェリー", "url": "https://www.city.kagoshima.lg.jp/sakurajima-ferry/koro-jikoku/timetable.html", "authority": "PRIMARY"},
+    {"label": "鹿児島県観光サイト 霧島神宮", "url": "https://www.kagoshima-kankou.com/guide/10113", "authority": "PRIMARY"}
+  ]
+}
