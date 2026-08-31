@@ -1,5 +1,5 @@
 {
-  "generatedAt": "2026-08-31T12:53:26.781Z",
+  "generatedAt": "2026-08-31T13:49:06.446Z",
   "baseUrl": "https://kafka2306.github.io/travel",
   "results": [
     {
@@ -78,9 +78,7 @@
       "headings": 23,
       "brokenImages": [],
       "pendingImages": [
-        "https://karuizawa-kankokyokai.jp/wordpress/wp-content/uploads/2023/05/2305_karuizawa_web_OGP_0501_5.jpg",
-        "https://yamaguchi-tourism.jp/lsc/api/photo/?src=1700667",
-        "https://www.nikko-kankou.org/storage/post_picture/%5B640_640%5D_20231018141930_10-1.jpg"
+        "https://aomori-tourism.com/lsc/upfile/spot/0000/0339/339_12_l.jpg"
       ],
       "unlabeledButtons": 0,
       "unlabeledLinks": 0
@@ -99,16 +97,13 @@
       "title": "公式コンテンツ・ネットワーク｜Wayweave",
       "width": 1440,
       "scrollWidth": 1440,
-      "height": 12085,
+      "height": 12052,
       "horizontalOverflow": false,
       "links": 194,
       "buttons": 7,
       "headings": 26,
       "brokenImages": [],
-      "pendingImages": [
-        "https://karuizawa-kankokyokai.jp/wordpress/wp-content/uploads/2023/05/2305_karuizawa_web_OGP_0501_5.jpg",
-        "https://www.nikko-kankou.org/storage/post_picture/%5B640_640%5D_20231018141930_10-1.jpg"
-      ],
+      "pendingImages": [],
       "unlabeledButtons": 0,
       "unlabeledLinks": 0
     },
@@ -191,7 +186,9 @@
       "screenshot": "aso-desktop.png",
       "status": 200,
       "finalUrl": "https://kafka2306.github.io/travel/aso-2026/",
-      "consoleErrors": [],
+      "consoleErrors": [
+        "Permissions policy violation: compute-pressure is not allowed in this document."
+      ],
       "thirdPartyConsoleWarnings": [],
       "pageErrors": [],
       "journeyChecks": {},
@@ -355,11 +352,7 @@
       "buttons": 56,
       "headings": 23,
       "brokenImages": [],
-      "pendingImages": [
-        "https://karuizawa-kankokyokai.jp/wordpress/wp-content/uploads/2023/05/2305_karuizawa_web_OGP_0501_5.jpg",
-        "https://yamaguchi-tourism.jp/lsc/api/photo/?src=1700667",
-        "https://www.nikko-kankou.org/storage/post_picture/%5B640_640%5D_20231018141930_10-1.jpg"
-      ],
+      "pendingImages": [],
       "unlabeledButtons": 0,
       "unlabeledLinks": 0
     },
@@ -377,16 +370,13 @@
       "title": "公式コンテンツ・ネットワーク｜Wayweave",
       "width": 390,
       "scrollWidth": 390,
-      "height": 33963,
+      "height": 34161,
       "horizontalOverflow": false,
       "links": 194,
       "buttons": 7,
       "headings": 26,
       "brokenImages": [],
-      "pendingImages": [
-        "https://karuizawa-kankokyokai.jp/wordpress/wp-content/uploads/2023/05/2305_karuizawa_web_OGP_0501_5.jpg",
-        "https://www.nikko-kankou.org/storage/post_picture/%5B640_640%5D_20231018141930_10-1.jpg"
-      ],
+      "pendingImages": [],
       "unlabeledButtons": 0,
       "unlabeledLinks": 0
     },
