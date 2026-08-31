@@ -21,6 +21,9 @@ const viewports = [
   ['desktop', { width: 1440, height: 1000 }],
   ['mobile', { width: 390, height: 844 }],
 ];
+const knownThirdPartyConsoleWarnings = new Set([
+  'Permissions policy violation: compute-pressure is not allowed in this document.',
+]);
 
 await rm(outputDir, { recursive: true, force: true });
 await mkdir(outputDir, { recursive: true });
@@ -147,7 +150,7 @@ for (const [viewportName, viewport] of viewports) {
     page.on('console', (message) => {
       if (message.type() !== 'error') return;
       const text = message.text();
-      if (name === 'kyushu-ferry' && text === 'Permissions policy violation: compute-pressure is not allowed in this document.') {
+      if (knownThirdPartyConsoleWarnings.has(text)) {
         thirdPartyConsoleWarnings.push(text);
         return;
       }
