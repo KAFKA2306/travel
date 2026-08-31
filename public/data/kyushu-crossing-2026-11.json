@@ -18,9 +18,19 @@
       "subject": "熊本⇔阿蘇・湯布院・別府 九州横断バス 時刻・運賃"
     },
     {
+      "publisher": "亀の井バス",
+      "url": "https://kamenoibus.com/archive/uploads/2026/03/yufurin.pdf",
+      "subject": "観光快速 ゆふりん 2026年3月14日現在時刻表"
+    },
+    {
+      "publisher": "亀の井バス",
+      "url": "https://kamenoibus.com/scheduled_howto/",
+      "subject": "由布院駅前バスセンター・別府駅から主な観光地への行き方"
+    },
+    {
       "publisher": "商船三井さんふらわあ",
-      "url": "https://www.ferry-sunflower.co.jp/route/osaka-beppu/time/",
-      "subject": "大阪⇔別府航路 航路・時刻表"
+      "url": "https://www.ferry-sunflower.co.jp/route/doc/schedule202611_2.pdf?v=260728",
+      "subject": "2026年11月 大阪-別府航路 運航スケジュール"
     }
   ],
   "current_bus_timetable": {
@@ -42,35 +52,68 @@
         "departure": "14:09",
         "arrival": "15:00",
         "service": "7号"
+      },
+      {
+        "from": "黒川温泉",
+        "to": "由布院駅前バスセンター",
+        "departure": "11:15",
+        "arrival": "12:48",
+        "service": "3号"
       }
     ],
     "aso_dwell_minutes": 295,
     "minimum_required_aso_dwell_minutes": 180,
     "meets_minimum_dwell_on_current_timetable": true
   },
+  "current_yufurin_timetable": {
+    "revision_date": "2026-03-14",
+    "target_departure_date": "2026-11-23",
+    "target_departure_is_holiday": true,
+    "target_date_validity_confirmed": false,
+    "candidate_segment": {
+      "from": "由布院駅前バスセンター",
+      "to": "別府駅前",
+      "departure": "14:25",
+      "arrival": "15:31",
+      "service": "観光快速 ゆふりん"
+    },
+    "beppu_station_arrival_minutes_before_ferry_check_in_deadline": 134,
+    "last_mile_to_ferry_terminal": {
+      "official_route_numbers": [
+        "20番",
+        "26番",
+        "26A番"
+      ],
+      "target_date_timetable_confirmed": false
+    }
+  },
   "current_ferry_timetable": {
     "target_departure_date": "2026-11-23",
     "target_departure_weekday": "月曜日",
-    "target_date_operating_schedule_confirmed": false,
-    "weekday_rule": "日曜日から木曜日",
-    "candidate_departure": {
+    "target_date_operating_schedule_confirmed": true,
+    "monthly_schedule_url": "https://www.ferry-sunflower.co.jp/route/doc/schedule202611_2.pdf?v=260728",
+    "departure": {
       "from": "別府",
       "to": "大阪",
       "departure": "18:45",
       "arrival_next_day": "06:35"
     },
-    "walk_on_check_in_minutes_before_departure": 60
+    "walk_on_check_in_minutes_before_departure": 60,
+    "walk_on_check_in_deadline": "17:45"
   },
   "unverified": [
-    "産交バスの現行時刻表が2026-11-21にも同一内容で有効であること",
-    "2026-11-23の別府発大阪行きが通常の月曜日時刻どおり運航すること",
+    "産交バスの現行時刻表が2026-11-21と2026-11-22にも同一内容で有効であること",
+    "観光快速ゆふりんの2026年3月14日現在時刻表が2026-11-23にも同一内容で有効であること",
+    "2026-11-23に別府駅前からさんふらわあターミナル別府前へ余裕を持って接続できる実ダイヤ",
     "各区間の実在庫と予約成立",
     "熊本から阿蘇までの観光当日の運行障害",
     "阿蘇観光中の火山規制と天候"
   ],
   "notes": [
     "現行時刻表では熊本駅前07:23発から阿蘇駅前09:14着、阿蘇駅前14:09発から黒川温泉15:00着を組み合わせると、阿蘇で4時間55分確保できる。",
-    "対象日まで時刻表が変わらないとは扱わず、2026年11月の有効ダイヤを予約時に再確認する。",
-    "フェリーは通常の曜日別時刻から候補時刻を保持するが、対象日の運航スケジュール確認前は確定値にしない。"
+    "現行の九州横断バスでは黒川温泉11:15発から由布院駅前バスセンター12:48着が成立する。",
+    "現行の観光快速ゆふりん土日祝時刻表では由布院駅前バスセンター14:25発から別府駅前15:31着が成立し、フェリー徒歩客の17:45手続き目安まで2時間14分ある。ただし別府駅前から港までの対象日実ダイヤは未確認。",
+    "商船三井さんふらわあの2026年11月公式運航表で11月23日の別府発便が設定され、通常の月曜日ダイヤ18:45発・翌06:35着を確認した。",
+    "バス時刻表は対象日まで変わらないとは扱わず、予約時と出発48時間前に公式情報を再確認する。"
   ]
 }
