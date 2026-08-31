@@ -1,5 +1,5 @@
 {
-  "generatedAt": "2026-08-31T13:57:24.606Z",
+  "generatedAt": "2026-08-31T15:00:04.803Z",
   "baseUrl": "https://kafka2306.github.io/travel",
   "results": [
     {
@@ -78,9 +78,7 @@
       "headings": 23,
       "brokenImages": [],
       "pendingImages": [
-        "https://karuizawa-kankokyokai.jp/wordpress/wp-content/uploads/2023/05/2305_karuizawa_web_OGP_0501_5.jpg",
-        "https://yamaguchi-tourism.jp/lsc/api/photo/?src=1700667",
-        "https://www.nikko-kankou.org/storage/post_picture/%5B640_640%5D_20231018141930_10-1.jpg"
+        "https://yamaguchi-tourism.jp/lsc/api/photo/?src=1700667"
       ],
       "unlabeledButtons": 0,
       "unlabeledLinks": 0
@@ -99,16 +97,13 @@
       "title": "公式コンテンツ・ネットワーク｜Wayweave",
       "width": 1440,
       "scrollWidth": 1440,
-      "height": 12052,
+      "height": 12036,
       "horizontalOverflow": false,
       "links": 194,
       "buttons": 7,
       "headings": 26,
       "brokenImages": [],
-      "pendingImages": [
-        "https://karuizawa-kankokyokai.jp/wordpress/wp-content/uploads/2023/05/2305_karuizawa_web_OGP_0501_5.jpg",
-        "https://www.nikko-kankou.org/storage/post_picture/%5B640_640%5D_20231018141930_10-1.jpg"
-      ],
+      "pendingImages": [],
       "unlabeledButtons": 0,
       "unlabeledLinks": 0
     },
@@ -144,7 +139,9 @@
       "status": 200,
       "finalUrl": "https://kafka2306.github.io/travel/kyushu-ferry-2026/",
       "consoleErrors": [],
-      "thirdPartyConsoleWarnings": [],
+      "thirdPartyConsoleWarnings": [
+        "Permissions policy violation: compute-pressure is not allowed in this document."
+      ],
       "pageErrors": [],
       "journeyChecks": {},
       "title": "夜の大阪から、朝の九州へ。｜Wayweave",
@@ -174,9 +171,9 @@
       "title": "三連休だけで、桜島から霧島へ。｜Wayweave",
       "width": 1440,
       "scrollWidth": 1440,
-      "height": 4340,
+      "height": 4410,
       "horizontalOverflow": false,
-      "links": 23,
+      "links": 25,
       "buttons": 1,
       "headings": 15,
       "brokenImages": [],
@@ -355,10 +352,7 @@
       "buttons": 56,
       "headings": 23,
       "brokenImages": [],
-      "pendingImages": [
-        "https://karuizawa-kankokyokai.jp/wordpress/wp-content/uploads/2023/05/2305_karuizawa_web_OGP_0501_5.jpg",
-        "https://www.nikko-kankou.org/storage/post_picture/%5B640_640%5D_20231018141930_10-1.jpg"
-      ],
+      "pendingImages": [],
       "unlabeledButtons": 0,
       "unlabeledLinks": 0
     },
@@ -376,16 +370,13 @@
       "title": "公式コンテンツ・ネットワーク｜Wayweave",
       "width": 390,
       "scrollWidth": 390,
-      "height": 34161,
+      "height": 34293,
       "horizontalOverflow": false,
       "links": 194,
       "buttons": 7,
       "headings": 26,
       "brokenImages": [],
-      "pendingImages": [
-        "https://karuizawa-kankokyokai.jp/wordpress/wp-content/uploads/2023/05/2305_karuizawa_web_OGP_0501_5.jpg",
-        "https://www.nikko-kankou.org/storage/post_picture/%5B640_640%5D_20231018141930_10-1.jpg"
-      ],
+      "pendingImages": [],
       "unlabeledButtons": 0,
       "unlabeledLinks": 0
     },
@@ -451,9 +442,9 @@
       "title": "三連休だけで、桜島から霧島へ。｜Wayweave",
       "width": 390,
       "scrollWidth": 390,
-      "height": 6224,
+      "height": 6379,
       "horizontalOverflow": false,
-      "links": 23,
+      "links": 25,
       "buttons": 1,
       "headings": 15,
       "brokenImages": [],
