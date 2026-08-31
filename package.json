@@ -12,7 +12,7 @@
     "build:hotel-availability": "node scripts/build-hotel-availability.mjs",
     "test:hotel-availability": "node --test tests/hotel-availability.test.mjs",
     "test:destinations": "node --test tests/destinations.test.mjs",
-    "test:kyushu-recovery-discount": "node --test tests/kyushu-recovery-discount.test.mjs"
+    "test:kyushu-recovery-discount": "node --test tests/kyushu-recovery-discount.test.mjs tests/kagoshima-air-route.test.mjs"
   },
   "dependencies": {
     "@vitejs/plugin-react": "latest",
