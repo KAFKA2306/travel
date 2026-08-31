@@ -1,5 +1,5 @@
 {
-  "generatedAt": "2026-08-31T05:45:31.891Z",
+  "generatedAt": "2026-08-31T06:48:19.483Z",
   "baseUrl": "https://kafka2306.github.io/travel",
   "results": [
     {
@@ -78,9 +78,7 @@
       "headings": 23,
       "brokenImages": [],
       "pendingImages": [
-        "https://karuizawa-kankokyokai.jp/wordpress/wp-content/uploads/2023/05/2305_karuizawa_web_OGP_0501_5.jpg",
-        "https://yamaguchi-tourism.jp/lsc/api/photo/?src=1700667",
-        "https://www.nikko-kankou.org/storage/post_picture/%5B640_640%5D_20231018141930_10-1.jpg"
+        "https://aomori-tourism.com/lsc/upfile/spot/0000/0339/339_12_l.jpg"
       ],
       "unlabeledButtons": 0,
       "unlabeledLinks": 0
@@ -99,16 +97,13 @@
       "title": "公式コンテンツ・ネットワーク｜Wayweave",
       "width": 1440,
       "scrollWidth": 1440,
-      "height": 12151,
+      "height": 12184,
       "horizontalOverflow": false,
       "links": 194,
       "buttons": 7,
       "headings": 26,
       "brokenImages": [],
-      "pendingImages": [
-        "https://karuizawa-kankokyokai.jp/wordpress/wp-content/uploads/2023/05/2305_karuizawa_web_OGP_0501_5.jpg",
-        "https://www.nikko-kankou.org/storage/post_picture/%5B640_640%5D_20231018141930_10-1.jpg"
-      ],
+      "pendingImages": [],
       "unlabeledButtons": 0,
       "unlabeledLinks": 0
     },
@@ -331,11 +326,7 @@
       "buttons": 56,
       "headings": 23,
       "brokenImages": [],
-      "pendingImages": [
-        "https://karuizawa-kankokyokai.jp/wordpress/wp-content/uploads/2023/05/2305_karuizawa_web_OGP_0501_5.jpg",
-        "https://yamaguchi-tourism.jp/lsc/api/photo/?src=1700667",
-        "https://www.nikko-kankou.org/storage/post_picture/%5B640_640%5D_20231018141930_10-1.jpg"
-      ],
+      "pendingImages": [],
       "unlabeledButtons": 0,
       "unlabeledLinks": 0
     },
@@ -353,16 +344,13 @@
       "title": "公式コンテンツ・ネットワーク｜Wayweave",
       "width": 390,
       "scrollWidth": 390,
-      "height": 33699,
+      "height": 33501,
       "horizontalOverflow": false,
       "links": 194,
       "buttons": 7,
       "headings": 26,
       "brokenImages": [],
-      "pendingImages": [
-        "https://karuizawa-kankokyokai.jp/wordpress/wp-content/uploads/2023/05/2305_karuizawa_web_OGP_0501_5.jpg",
-        "https://www.nikko-kankou.org/storage/post_picture/%5B640_640%5D_20231018141930_10-1.jpg"
-      ],
+      "pendingImages": [],
       "unlabeledButtons": 0,
       "unlabeledLinks": 0
     },
