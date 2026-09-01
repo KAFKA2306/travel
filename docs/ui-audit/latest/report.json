@@ -1,5 +1,5 @@
 {
-  "generatedAt": "2026-09-01T02:54:46.247Z",
+  "generatedAt": "2026-09-01T03:45:05.503Z",
   "baseUrl": "https://kafka2306.github.io/travel",
   "results": [
     {
@@ -97,13 +97,15 @@
       "title": "公式コンテンツ・ネットワーク｜Wayweave",
       "width": 1440,
       "scrollWidth": 1440,
-      "height": 12135,
+      "height": 12085,
       "horizontalOverflow": false,
       "links": 194,
       "buttons": 7,
       "headings": 26,
       "brokenImages": [],
-      "pendingImages": [],
+      "pendingImages": [
+        "https://yamaguchi-tourism.jp/lsc/api/photo/?src=1700667"
+      ],
       "unlabeledButtons": 0,
       "unlabeledLinks": 0
     },
@@ -169,9 +171,9 @@
       "title": "三連休だけで、桜島から霧島へ。｜Wayweave",
       "width": 1440,
       "scrollWidth": 1440,
-      "height": 4480,
+      "height": 4550,
       "horizontalOverflow": false,
-      "links": 27,
+      "links": 29,
       "buttons": 1,
       "headings": 15,
       "brokenImages": [],
@@ -368,7 +370,7 @@
       "title": "公式コンテンツ・ネットワーク｜Wayweave",
       "width": 390,
       "scrollWidth": 390,
-      "height": 33765,
+      "height": 33963,
       "horizontalOverflow": false,
       "links": 194,
       "buttons": 7,
@@ -440,9 +442,9 @@
       "title": "三連休だけで、桜島から霧島へ。｜Wayweave",
       "width": 390,
       "scrollWidth": 390,
-      "height": 6504,
+      "height": 6644,
       "horizontalOverflow": false,
-      "links": 27,
+      "links": 29,
       "buttons": 1,
       "headings": 15,
       "brokenImages": [],
