@@ -109,6 +109,33 @@
           "target_date_availability": null,
           "target_date_exact_price_yen": null,
           "recovery_discount_eligible": null
+        },
+        {
+          "product_name": "九州への船旅 A セレクトプラン",
+          "product_url": "https://www.ferry-sunflower.co.jp/travel/001085.html",
+          "set_period_start": "2026-04-01",
+          "set_period_end": "2027-03-29",
+          "excluded_boarding_periods": [
+            "2026-04-24/2026-05-06",
+            "2026-08-07/2026-08-16",
+            "2026-12-25/2027-01-04"
+          ],
+          "minimum_participants_adults": 1,
+          "trip_length_days_min": 4,
+          "trip_length_days_max": 14,
+          "hotel_nights_min": 1,
+          "return_boarding_can_be_extended_to_day": 13,
+          "included": [
+            "往復フェリー運賃",
+            "現地ホテル宿泊費",
+            "サービス料と諸税"
+          ],
+          "target_departure_date_for_comparison": "2026-11-20",
+          "target_date_within_published_set_period": true,
+          "target_date_excluded": false,
+          "target_date_availability": null,
+          "target_date_exact_price_yen": null,
+          "recovery_discount_eligible": null
         }
       ]
     }
@@ -119,6 +146,7 @@
     "フェリーや宿を個別に予約しただけで交通付宿泊旅行商品または周遊型旅行商品に該当するとは扱わない。",
     "商船三井さんふらわあは2026年8月31日に制度の取扱い案内を公開したが、対象商品と販売・受付開始時期は未発表である。",
     "商船三井さんふらわあは2026年10月以降の実在する交通付宿泊商品と公式価格帯を既に販売案内しているが、それらが九州ふっこう応援割の対象商品かは未発表である。",
-    "界 雲仙・界 別府を巡る九州絶景旅は長崎県と大分県に各1泊する実在商品だが、九州ふっこう応援割の周遊型旅行商品として正式に指定されるかは未発表である。"
+    "界 雲仙・界 別府を巡る九州絶景旅は長崎県と大分県に各1泊する実在商品だが、九州ふっこう応援割の周遊型旅行商品として正式に指定されるかは未発表である。",
+    "九州への船旅 A セレクトプランは往復フェリーと九州での1泊以上の宿泊を一つの旅行商品として販売しているが、九州ふっこう応援割の対象商品として正式に指定されるかは未発表である。"
   ]
 }
