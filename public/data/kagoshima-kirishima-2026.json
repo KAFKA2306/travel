@@ -161,7 +161,7 @@
       "price_yen_per_person": 33900,
       "verification_state": "VERIFIED_REFERENCE_ONLY",
       "recovery_discount_eligible": null,
-      "notes": "大阪発・シェラトン鹿児島1泊の掲載例。10/10三連休価格ではないため対象日価格として使わない。SNSの約3.5万円という通常価格の参考アンカー。"
+      "notes": "大阪発・シェラトン鹿児島1泊の掲載例。10/10三連休価格ではないため、#61の実価格には使わない。SNSの約3.5万円という通常価格の参考アンカー。"
     }
   ],
   "local_transport": {
@@ -173,11 +173,45 @@
     },
     "kagoshima_to_kirishima": {
       "official_reference_url": "https://www.city-kirishima.jp/kirikan/kanko/bus/kirishimajingubus.html",
+      "current_bus_timetable_url": "https://www.iwasaki-corp.com/kagoshima_kotsu/wp-content/uploads/sites/8/2025/05/835_260401.pdf",
       "current_timetable_revision_date": "2026-04-01",
       "target_travel_date": "2026-10-11",
-      "target_date_timetable_confirmed": false,
+      "target_date_timetable_confirmed": true,
+      "jr_target_date_connection": {
+        "official_url": "https://www.jrkyushu-timetable.jp/sp/2608/0006/00066401.html?d=20260812&t=2900702",
+        "train": "きりしま 10号",
+        "train_number": "6010M",
+        "operation": "毎日運転",
+        "from": "鹿児島中央",
+        "departure": "11:50",
+        "to": "霧島神宮",
+        "arrival": "12:40",
+        "target_date": "2026-10-11",
+        "target_date_in_operation_calendar": true,
+        "verification_state": "VERIFIED_TARGET_DATE"
+      },
+      "sunday_stopover_plan": {
+        "station_to_shrine": {
+          "from": "霧島神宮駅",
+          "departure": "12:56",
+          "to": "霧島神宮",
+          "arrival": "13:09",
+          "operation": "毎日"
+        },
+        "shrine_sightseeing_minutes": 145,
+        "shrine_to_hotel": {
+          "from": "霧島神宮",
+          "departure": "15:34",
+          "via": ["丸尾温泉 15:50"],
+          "to": "硫黄谷",
+          "arrival": "15:54",
+          "operation": "毎日"
+        },
+        "one_day_ticket_yen": 1500,
+        "verification_state": "VERIFIED_CURRENT_OFFICIAL_TIMETABLE"
+      },
       "current_sunday_structure": {
-        "route": "鹿児島中央→霧島神宮駅はJR日豊本線、霧島神宮駅→霧島神宮→丸尾は霧島神宮アクセスバスを利用する",
+        "route": "鹿児島中央→霧島神宮駅はJR日豊本線、霧島神宮駅→霧島神宮→硫黄谷は鹿児島交通を利用する",
         "access_bus_daily_connection": {
           "from": "霧島神宮駅",
           "departure": "16:10",
@@ -192,10 +226,9 @@
           "to": "丸尾②",
           "arrival": "08:01"
         },
-        "one_day_ticket_yen": 1500,
-        "weekday_only_route_excluded_on_target_weekday": "国分・霧島神宮駅・霧島神宮・丸尾・霧島いわさきホテルを結ぶ鹿児島交通の別時刻表は平日運行のため、日曜日の2026-10-11候補には使わない"
+        "one_day_ticket_yen": 1500
       },
-      "verification_state": "UNVERIFIED_TARGET_DATE"
+      "verification_state": "VERIFIED_TARGET_DATE_JR_AND_CURRENT_OFFICIAL_BUS_TIMETABLE"
     },
     "kirishima_hotel_to_airport": {
       "official_url": "https://www.kirishima-hotel.jp/access/",
@@ -254,7 +287,7 @@
     {
       "priority": 5,
       "item": "10/11鹿児島市→霧島神宮→硫黄谷、10/12硫黄谷→空港の対象日公共交通",
-      "state": "PARTIALLY_VERIFIED_10_12_DIRECT_BUS"
+      "state": "VERIFIED_CURRENT_OFFICIAL_TIMETABLE"
     }
   ],
   "sources": [
@@ -265,6 +298,8 @@
     {"label": "霧島ホテル アクセス", "url": "https://www.kirishima-hotel.jp/access/", "authority": "PRIMARY"},
     {"label": "鹿児島市 桜島フェリー", "url": "https://www.city.kagoshima.lg.jp/sakurajima-ferry/koro-jikoku/timetable.html", "authority": "PRIMARY"},
     {"label": "霧島市 霧島神宮アクセスバス", "url": "https://www.city-kirishima.jp/kirikan/kanko/bus/kirishimajingubus.html", "authority": "PRIMARY"},
+    {"label": "鹿児島交通 霧島いわさきホテル～霧島神宮～国分 時刻表", "url": "https://www.iwasaki-corp.com/kagoshima_kotsu/wp-content/uploads/sites/8/2025/05/835_260401.pdf", "authority": "PRIMARY"},
+    {"label": "JR九州 きりしま10号 列車詳細", "url": "https://www.jrkyushu-timetable.jp/sp/2608/0006/00066401.html?d=20260812&t=2900702", "authority": "PRIMARY"},
     {"label": "鹿児島交通 空港バス時刻表", "url": "https://www.iwasaki-corp.com/kagoshima_kotsu/airport-bus/airport/", "authority": "PRIMARY"},
     {"label": "鹿児島交通 鹿児島空港～霧島いわさきホテル 時刻表", "url": "https://www.iwasaki-corp.com/kagoshima_kotsu/wp-content/uploads/sites/8/2025/10/dadd05ab6760363869cac14e19023b6b.pdf", "authority": "PRIMARY"},
     {"label": "内閣府 国民の祝日について", "url": "https://www8.cao.go.jp/chosei/shukujitsu/gaiyou.html", "authority": "PRIMARY"},
