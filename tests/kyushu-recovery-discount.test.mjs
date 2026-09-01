@@ -12,8 +12,8 @@ const crossing = JSON.parse(
 test('九州ふっこう応援割の観光庁公表条件を保持する', () => {
   assert.equal(data.program_name, '九州ふっこう応援割');
   assert.equal(data.publisher, '観光庁');
-  assert.equal(data.official_source_url, 'https://www.mlit.go.jp/kankocho/topics04_00093.html');
-  assert.equal(data.source_last_updated, '2026-08-28');
+  assert.equal(data.official_source_url, 'https://www.mlit.go.jp/kankocho/page13_00002.html');
+  assert.equal(data.source_last_updated, '2026-09-01');
   assert.equal(data.eligible_stay_start, '2026-10-01');
 
   const rates = Object.fromEntries(
