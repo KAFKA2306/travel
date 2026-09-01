@@ -54,6 +54,16 @@
     },
     {
       "publisher": "商船三井さんふらわあ",
+      "url": "https://www.ferry-sunflower.co.jp/cmn/inc/calendar-beppu.html",
+      "subject": "大阪-別府航路 運賃カレンダー"
+    },
+    {
+      "publisher": "商船三井さんふらわあ",
+      "url": "https://booking.ferry-sunflower.co.jp/web/yoyaku/Reserve0020/Index",
+      "subject": "インターネット予約 Q&A 予約受付期間・支払期限・取消手数料"
+    },
+    {
+      "publisher": "商船三井さんふらわあ",
       "url": "https://www.ferry-sunflower.co.jp/reservation/",
       "subject": "予約開始日"
     }
@@ -170,6 +180,34 @@
       "booking_open_at": "2026-08-24T09:00:00+09:00",
       "booking_open": true,
       "booking_url": "https://booking.ferry-sunflower.co.jp/web/yoyaku/",
+      "fare_calendar_url": "https://www.ferry-sunflower.co.jp/cmn/inc/calendar-beppu.html",
+      "internet_booking_closes": "乗船日当日12時",
+      "payment": {
+        "web_booking_requires_advance_payment": true,
+        "normal_deadline": "予約登録日を含めて7日以内",
+        "deadline_within_7_days_of_departure": "予約完了画面または予約完了メールで確認"
+      },
+      "cancellation": {
+        "internet_cancellation_available_until": "出航前まで",
+        "fees": [
+          {
+            "period": "出港7日前まで",
+            "fee": "予約1件につき200円"
+          },
+          {
+            "period": "出港6日前から2日前まで",
+            "fee": "運賃の10%"
+          },
+          {
+            "period": "出港前日から出港時間まで",
+            "fee": "運賃の30%"
+          },
+          {
+            "period": "出港後",
+            "fee": "運賃の100%"
+          }
+        ]
+      },
       "availability": null,
       "target_date_fare_period": null,
       "target_date_exact_fare_yen": null,
@@ -343,7 +381,8 @@
     "現行の観光快速ゆふりん土日祝時刻表では由布院駅前バスセンター14:25発から別府駅前15:31着が成立する。",
     "現行の亀の井バス土日祝時刻表では、別府駅前15:58発の26番・26A番がさんふらわあターミナル別府前16:10着となり、ゆふりん到着後27分の乗換時間と徒歩客17:45手続き目安まで95分の余裕を確保できる。16:32発の20番でも16:44着となる。",
     "商船三井さんふらわあの2026年11月公式運航表で11月23日の別府発便が設定され、通常の月曜日ダイヤ18:45発・翌06:35着を確認した。",
-    "商船三井さんふらわあは乗船予定日の3か月前の同日午前9時から予約を受け付けるが、予約開始日が日曜・祭日及び当社休業日の場合は翌営業日となる。2026年8月23日は日曜日のため、11月23日便の予約開始は8月24日9時。空席と対象日の運賃期間区分は予約画面で未確認のためnullのまま保持する。",
+    "商船三井さんふらわあは乗船予定日の3か月前の同日午前9時から予約を受け付け、インターネット予約は乗船日当日12時まで受け付ける。2026年8月23日は日曜日のため、11月23日便の予約開始は8月24日9時。空席と対象日の運賃期間区分は予約画面で未確認のためnullのまま保持する。",
+    "インターネット予約は事前決済で、通常の支払期限は予約登録日を含めて7日以内。支払後の取消手数料は出港7日前まで200円/予約、6～2日前10%、前日～出港時刻30%、出港後100%。",
     "2026年10～12月の大阪-別府航路は、客室等級ごとの追加料金に加え、A・B期間のWEB割引は旅客基準運賃を5%割引した後に等級差額を加算する。対象日のA～D期間が未確認のため、11月23日への適用可否はnullのまま保持する。",
     "バス時刻表は対象日まで変わらないとは扱わず、予約時と出発48時間前に公式情報を再確認する。"
   ]
