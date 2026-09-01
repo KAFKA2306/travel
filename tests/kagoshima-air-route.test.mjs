@@ -82,7 +82,13 @@ test('霧島の現行公共交通は運行日を区別し、対象日を推測�
 
   assert.equal(airport.nearest_bus_stop, '硫黄谷');
   assert.equal(airport.current_operator_timetable_weekday_only, true);
+  assert.equal(airport.target_travel_date, '2026-10-12');
+  assert.equal(airport.target_date_is_national_holiday, true);
+  assert.equal(airport.direct_bus_available_on_target_date, false);
+  assert.match(airport.direct_bus_unavailability_reason, /スポーツの日/);
+  assert.equal(airport.alternative_public_transport, null);
   assert.equal(airport.target_date_public_transport_timetable_confirmed, false);
+  assert.equal(airport.verification_state, 'DIRECT_BUS_UNAVAILABLE_ALTERNATIVE_UNVERIFIED');
 });
 
 test('対象日公共交通と割引商品を未確認のまま保持する', () => {
