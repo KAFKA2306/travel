@@ -67,18 +67,34 @@ test('航空便は安さと観光時間を分離しSkyscanner attributionを保�
   assert.equal(Object.hasOwn(morning[0], 'total_flight_price_yen'), false);
 });
 
-test('霧島の現行公共交通は運行日を区別し、休日の空港直行便を正しく保持する', () => {
+test('10月11日はJR九州と毎日運行バスで霧島神宮に145分立ち寄れる', () => {
   const access = trip.local_transport.kagoshima_to_kirishima;
-  const airport = trip.local_transport.kirishima_hotel_to_airport;
+  const jr = access.jr_target_date_connection;
+  const stopover = access.sunday_stopover_plan;
 
   assert.equal(access.current_timetable_revision_date, '2026-04-01');
   assert.equal(access.target_travel_date, '2026-10-11');
-  assert.equal(access.current_sunday_structure.access_bus_daily_connection.departure, '16:10');
-  assert.equal(access.current_sunday_structure.access_bus_daily_connection.via, '霧島神宮 16:21');
-  assert.equal(access.current_sunday_structure.access_bus_daily_connection.arrival, '16:36');
-  assert.equal(access.current_sunday_structure.one_day_ticket_yen, 1500);
-  assert.match(access.current_sunday_structure.weekday_only_route_excluded_on_target_weekday, /平日運行/);
-  assert.equal(access.target_date_timetable_confirmed, false);
+  assert.equal(access.target_date_timetable_confirmed, true);
+
+  assert.equal(jr.train, 'きりしま 10号');
+  assert.equal(jr.train_number, '6010M');
+  assert.equal(jr.operation, '毎日運転');
+  assert.equal(jr.departure, '11:50');
+  assert.equal(jr.arrival, '12:40');
+  assert.equal(jr.target_date_in_operation_calendar, true);
+
+  assert.equal(stopover.station_to_shrine.departure, '12:56');
+  assert.equal(stopover.station_to_shrine.arrival, '13:09');
+  assert.equal(stopover.station_to_shrine.operation, '毎日');
+  assert.equal(stopover.shrine_sightseeing_minutes, 145);
+  assert.equal(stopover.shrine_to_hotel.departure, '15:34');
+  assert.equal(stopover.shrine_to_hotel.arrival, '15:54');
+  assert.equal(stopover.shrine_to_hotel.operation, '毎日');
+  assert.equal(stopover.one_day_ticket_yen, 1500);
+});
+
+test('休日の霧島ホテル→鹿児島空港直行便を保持する', () => {
+  const airport = trip.local_transport.kirishima_hotel_to_airport;
 
   assert.equal(airport.nearest_bus_stop, '硫黄谷');
   assert.equal(airport.target_travel_date, '2026-10-12');
@@ -99,9 +115,9 @@ test('霧島の現行公共交通は運行日を区別し、休日の空港直�
   assert.equal(airport.verification_state, 'VERIFIED_CURRENT_OFFICIAL_TIMETABLE');
 });
 
-test('対象日公共交通と割引商品を未確認のまま保持する', () => {
+test('未確認項目だけを未確認のまま保持する', () => {
   assert.equal(trip.local_transport.sakurajima_ferry.target_date_timetable_confirmed, false);
-  assert.equal(trip.local_transport.kagoshima_to_kirishima.target_date_timetable_confirmed, false);
+  assert.equal(trip.local_transport.kagoshima_to_kirishima.target_date_timetable_confirmed, true);
   assert.equal(trip.local_transport.kirishima_hotel_to_airport.target_date_public_transport_timetable_confirmed, true);
   assert.equal(trip.recovery_discount.booking_start_for_kagoshima, null);
 });
