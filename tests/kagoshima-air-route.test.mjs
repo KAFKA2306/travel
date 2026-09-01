@@ -67,7 +67,7 @@ test('航空便は安さと観光時間を分離しSkyscanner attributionを保�
   assert.equal(Object.hasOwn(morning[0], 'total_flight_price_yen'), false);
 });
 
-test('霧島の現行公共交通は運行日を区別し、対象日を推測で確定しない', () => {
+test('霧島の現行公共交通は運行日を区別し、休日の空港直行便を正しく保持する', () => {
   const access = trip.local_transport.kagoshima_to_kirishima;
   const airport = trip.local_transport.kirishima_hotel_to_airport;
 
@@ -81,19 +81,27 @@ test('霧島の現行公共交通は運行日を区別し、対象日を推測�
   assert.equal(access.target_date_timetable_confirmed, false);
 
   assert.equal(airport.nearest_bus_stop, '硫黄谷');
-  assert.equal(airport.current_operator_timetable_weekday_only, true);
   assert.equal(airport.target_travel_date, '2026-10-12');
   assert.equal(airport.target_date_is_national_holiday, true);
-  assert.equal(airport.direct_bus_available_on_target_date, false);
-  assert.match(airport.direct_bus_unavailability_reason, /スポーツの日/);
-  assert.equal(airport.alternative_public_transport, null);
-  assert.equal(airport.target_date_public_transport_timetable_confirmed, false);
-  assert.equal(airport.verification_state, 'DIRECT_BUS_UNAVAILABLE_ALTERNATIVE_UNVERIFIED');
+  assert.equal(airport.direct_bus_available_on_target_date, true);
+  assert.equal(airport.holiday_operating_options.length, 2);
+  assert.deepEqual(airport.holiday_operating_options[0], {
+    from: '硫黄谷',
+    departure: '11:23',
+    to: '鹿児島空港',
+    arrival: '12:02',
+    fare_yen: 710,
+  });
+  assert.equal(airport.holiday_operating_options[1].departure, '14:23');
+  assert.equal(airport.holiday_operating_options[1].arrival, '15:02');
+  assert.equal(airport.weekday_only_earlier_options.length, 2);
+  assert.equal(airport.target_date_public_transport_timetable_confirmed, true);
+  assert.equal(airport.verification_state, 'VERIFIED_CURRENT_OFFICIAL_TIMETABLE');
 });
 
 test('対象日公共交通と割引商品を未確認のまま保持する', () => {
   assert.equal(trip.local_transport.sakurajima_ferry.target_date_timetable_confirmed, false);
   assert.equal(trip.local_transport.kagoshima_to_kirishima.target_date_timetable_confirmed, false);
-  assert.equal(trip.local_transport.kirishima_hotel_to_airport.target_date_public_transport_timetable_confirmed, false);
+  assert.equal(trip.local_transport.kirishima_hotel_to_airport.target_date_public_transport_timetable_confirmed, true);
   assert.equal(trip.recovery_discount.booking_start_for_kagoshima, null);
 });

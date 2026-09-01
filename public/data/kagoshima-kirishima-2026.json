@@ -203,15 +203,22 @@
       "airport_drive_minutes_approx": 30,
       "nearest_bus_stop": "硫黄谷",
       "hotel_pickup_from_bus_stop": "硫黄谷バス停の無料直通電話でホテルへ連絡し、送迎車で約1分",
-      "current_operator_timetable_url": "https://www.iwasaki-corp.com/kagoshima_kotsu/wp-content/uploads/sites/8/2025/05/837_260401.pdf",
-      "current_operator_timetable_weekday_only": true,
+      "current_operator_timetable_url": "https://www.iwasaki-corp.com/kagoshima_kotsu/wp-content/uploads/sites/8/2025/10/dadd05ab6760363869cac14e19023b6b.pdf",
+      "timetable_document_revision_date": "2023-06-01",
+      "operator_page_current_label": "霧島～空港線 2025/10/1改定",
       "target_travel_date": "2026-10-12",
       "target_date_is_national_holiday": true,
-      "direct_bus_available_on_target_date": false,
-      "direct_bus_unavailability_reason": "鹿児島交通の公式時刻表では霧島いわさきホテル・硫黄谷から鹿児島空港へ向かう直通系統は平日運行で、2026年10月12日はスポーツの日のため運行対象外。",
-      "alternative_public_transport": null,
-      "target_date_public_transport_timetable_confirmed": false,
-      "verification_state": "DIRECT_BUS_UNAVAILABLE_ALTERNATIVE_UNVERIFIED"
+      "direct_bus_available_on_target_date": true,
+      "holiday_operating_options": [
+        {"from": "硫黄谷", "departure": "11:23", "to": "鹿児島空港", "arrival": "12:02", "fare_yen": 710},
+        {"from": "硫黄谷", "departure": "14:23", "to": "鹿児島空港", "arrival": "15:02", "fare_yen": 710}
+      ],
+      "weekday_only_earlier_options": [
+        {"from": "硫黄谷", "departure": "08:23", "to": "鹿児島空港", "arrival": "09:02"},
+        {"from": "硫黄谷", "departure": "09:53", "to": "鹿児島空港", "arrival": "10:32"}
+      ],
+      "target_date_public_transport_timetable_confirmed": true,
+      "verification_state": "VERIFIED_CURRENT_OFFICIAL_TIMETABLE"
     }
   },
   "recovery_discount": {
@@ -247,7 +254,7 @@
     {
       "priority": 5,
       "item": "10/11鹿児島市→霧島神宮→硫黄谷、10/12硫黄谷→空港の対象日公共交通",
-      "state": "PARTIALLY_VERIFIED_DIRECT_BUS_UNAVAILABLE"
+      "state": "PARTIALLY_VERIFIED_10_12_DIRECT_BUS"
     }
   ],
   "sources": [
@@ -259,7 +266,7 @@
     {"label": "鹿児島市 桜島フェリー", "url": "https://www.city.kagoshima.lg.jp/sakurajima-ferry/koro-jikoku/timetable.html", "authority": "PRIMARY"},
     {"label": "霧島市 霧島神宮アクセスバス", "url": "https://www.city-kirishima.jp/kirikan/kanko/bus/kirishimajingubus.html", "authority": "PRIMARY"},
     {"label": "鹿児島交通 空港バス時刻表", "url": "https://www.iwasaki-corp.com/kagoshima_kotsu/airport-bus/airport/", "authority": "PRIMARY"},
-    {"label": "鹿児島交通 霧島いわさきホテル・丸尾・霧島温泉駅・鹿児島空港 時刻表", "url": "https://www.iwasaki-corp.com/kagoshima_kotsu/wp-content/uploads/sites/8/2025/05/837_260401.pdf", "authority": "PRIMARY"},
+    {"label": "鹿児島交通 鹿児島空港～霧島いわさきホテル 時刻表", "url": "https://www.iwasaki-corp.com/kagoshima_kotsu/wp-content/uploads/sites/8/2025/10/dadd05ab6760363869cac14e19023b6b.pdf", "authority": "PRIMARY"},
     {"label": "内閣府 国民の祝日について", "url": "https://www8.cao.go.jp/chosei/shukujitsu/gaiyou.html", "authority": "PRIMARY"},
     {"label": "鹿児島県観光サイト 霧島神宮", "url": "https://www.kagoshima-kankou.com/guide/10113", "authority": "PRIMARY"}
   ]
