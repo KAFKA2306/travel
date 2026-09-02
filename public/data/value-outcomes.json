@@ -1,0 +1,14 @@
+{
+  "schema_version": 1,
+  "measurement_start": "2026-09-02",
+  "historical_period_before_measurement_start": "UNMEASURED",
+  "currency": "JPY",
+  "rules": {
+    "direct_savings_yen": "同一の意思決定について、証拠付きの比較対象額から証拠付きの実支払額を引いた値だけを記録する。片方が未確認ならnull。",
+    "time_saved_minutes": "同種作業について実測した従来所要時間と今回所要時間が両方ある場合だけ差を記録する。推定時間は記録しない。",
+    "external_revenue_yen": "実際に受領した外部収益だけを記録する。見込額は記録しない。",
+    "reuse_count": "既存の正準データまたは分析結果を、新しい意思決定で実際に再利用した回数を記録する。",
+    "unverified": "根拠が不足する値は0でなくnullまたはUNVERIFIEDとして扱う。"
+  },
+  "events": []
+}
