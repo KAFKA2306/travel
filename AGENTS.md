@@ -37,6 +37,7 @@
 | 全体navigation | `public/site-shell.js` |
 | planner | `src/` と `planner/index.html` |
 | destination / official data | `public/data/*.json` |
+| 価値創出の実測 | `public/data/value-outcomes.json` |
 | 概念・identity | `docs/ontology.md` |
 | production UI監査 | `scripts/capture-pages.mjs` |
 | CI | `.github/workflows/ci.yml` |
@@ -55,6 +56,7 @@
 - mutableな事実を `AGENTS.md` に複製しない。ここには経路と規則だけを書く。
 - 新しい手入力データを既存 `Trip / Route / Evidence / public/data` と二重正本にしない。
 - 新しいtop-level navigationを安易に増やさない。既存の地図 / エリア / 旅程 / 当日情報に所属させる。
+- 価値創出は `public/data/value-outcomes.json` に実測値だけを記録する。直接費用削減、時間削減、外部収益、再利用回数を測り、比較対象または実績の根拠がなければ0や推定値で埋めない。
 
 ## 5. 変更の最小手順
 
