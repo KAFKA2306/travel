@@ -1,5 +1,5 @@
 {
-  "generatedAt": "2026-09-01T11:46:58.325Z",
+  "generatedAt": "2026-09-02T03:39:58.892Z",
   "baseUrl": "https://kafka2306.github.io/travel",
   "results": [
     {
@@ -78,6 +78,7 @@
       "headings": 23,
       "brokenImages": [],
       "pendingImages": [
+        "https://karuizawa-kankokyokai.jp/wordpress/wp-content/uploads/2023/05/2305_karuizawa_web_OGP_0501_5.jpg",
         "https://yamaguchi-tourism.jp/lsc/api/photo/?src=1700667"
       ],
       "unlabeledButtons": 0,
@@ -97,13 +98,15 @@
       "title": "公式コンテンツ・ネットワーク｜Wayweave",
       "width": 1440,
       "scrollWidth": 1440,
-      "height": 12085,
+      "height": 12168,
       "horizontalOverflow": false,
       "links": 194,
       "buttons": 7,
       "headings": 26,
       "brokenImages": [],
-      "pendingImages": [],
+      "pendingImages": [
+        "https://karuizawa-kankokyokai.jp/wordpress/wp-content/uploads/2023/05/2305_karuizawa_web_OGP_0501_5.jpg"
+      ],
       "unlabeledButtons": 0,
       "unlabeledLinks": 0
     },
@@ -350,7 +353,10 @@
       "buttons": 56,
       "headings": 23,
       "brokenImages": [],
-      "pendingImages": [],
+      "pendingImages": [
+        "https://karuizawa-kankokyokai.jp/wordpress/wp-content/uploads/2023/05/2305_karuizawa_web_OGP_0501_5.jpg",
+        "https://yamaguchi-tourism.jp/lsc/api/photo/?src=1700667"
+      ],
       "unlabeledButtons": 0,
       "unlabeledLinks": 0
     },
@@ -368,13 +374,15 @@
       "title": "公式コンテンツ・ネットワーク｜Wayweave",
       "width": 390,
       "scrollWidth": 390,
-      "height": 33963,
+      "height": 33699,
       "horizontalOverflow": false,
       "links": 194,
       "buttons": 7,
       "headings": 26,
       "brokenImages": [],
-      "pendingImages": [],
+      "pendingImages": [
+        "https://karuizawa-kankokyokai.jp/wordpress/wp-content/uploads/2023/05/2305_karuizawa_web_OGP_0501_5.jpg"
+      ],
       "unlabeledButtons": 0,
       "unlabeledLinks": 0
     },
