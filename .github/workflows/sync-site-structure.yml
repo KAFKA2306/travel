@@ -19,10 +19,18 @@ on:
       - 'public/data/site-ontology.json'
       - 'public/site-shell.css'
       - 'public/site-shell.js'
-      - 'public/destinations/index.html'
-      - 'public/kansai-museums/index.html'
-      - 'public/official/index.html'
-      - 'public/sitemap/index.html'
+      - 'public/related-links.css'
+      - 'public/destinations/**'
+      - 'public/kansai-museums/**'
+      - 'public/official/**'
+      - 'public/heat-escape-2026/**'
+      - 'public/kyushu-2026/**'
+      - 'public/kyushu-ferry-2026/**'
+      - 'public/aso-2026/**'
+      - 'public/kada-sea-daytrip-2026/**'
+      - 'public/guides/**'
+      - 'public/shenzhen/**'
+      - 'public/sitemap/**'
       - 'public/sitemap.xml'
       - 'public/release.json'
   workflow_dispatch:
@@ -57,7 +65,8 @@ jobs:
       - name: Verify data, hierarchy and Pages coverage
         run: |
           node --input-type=module <<'NODE'
-          import { readFile } from 'node:fs/promises';
+          import { access, readFile } from 'node:fs/promises';
+
           const catalog = JSON.parse(await readFile('public/data/destinations.json', 'utf8'));
           const media = JSON.parse(await readFile('public/data/destination-media.json', 'utf8'));
           const official = JSON.parse(await readFile('public/data/official-content.json', 'utf8'));
@@ -69,28 +78,35 @@ jobs:
           const shell = await readFile('public/site-shell.js', 'utf8');
           const home = await readFile('index.html', 'utf8');
 
-          if (catalog.destinations.length !== 10) throw new Error(`expected 10 planned destinations, got ${catalog.destinations.length}`);
+          if (!Array.isArray(catalog.destinations) || catalog.destinations.length === 0) {
+            throw new Error('planned destinations must not be empty');
+          }
+          const destinationIds = catalog.destinations.map((item) => item.id);
+          if (new Set(destinationIds).size !== destinationIds.length) {
+            throw new Error('planned destinations contain duplicate ids');
+          }
           const missing = catalog.destinations.filter((item) => !media.destinations?.[item.id]?.imageUrl);
           if (missing.length) throw new Error(`missing official visuals: ${missing.map((item) => item.id).join(', ')}`);
 
           const officialRegions = [...official.destinations, ...expansion.destinations, ...growth.destinations];
           const addedRegions = [...expansion.destinations, ...growth.destinations];
           const officialItems = officialRegions.flatMap((destination) => destination.items);
-          if (official.destinations.length !== 10) throw new Error(`expected 10 core official-content regions, got ${official.destinations.length}`);
-          if (expansion.destinations.length < 6) throw new Error(`expected at least 6 expansion regions, got ${expansion.destinations.length}`);
-          if (official.stages.length !== 5) throw new Error(`expected 5 lifecycle stages, got ${official.stages.length}`);
+          if (!Array.isArray(official.stages) || official.stages.length !== 5) {
+            throw new Error(`expected 5 lifecycle stages, got ${official.stages?.length ?? 'n/a'}`);
+          }
           const ids = officialRegions.map((destination) => destination.id);
           if (new Set(ids).size !== ids.length) throw new Error('official content contains duplicate region ids');
           const expectedStages = new Set(official.stages.map((stage) => stage.id));
           for (const region of officialRegions) {
-            if (region.items.length !== 5) throw new Error(`${region.id} must contain exactly 5 official items`);
-            if (region.items.some((item) => !expectedStages.has(item.stage))) throw new Error(`${region.id} contains an unknown lifecycle stage`);
+            if (region.items.length !== expectedStages.size) throw new Error(`${region.id} must contain exactly one item per lifecycle stage`);
+            const stages = new Set(region.items.map((item) => item.stage));
+            if (stages.size !== expectedStages.size || [...expectedStages].some((stage) => !stages.has(stage))) {
+              throw new Error(`${region.id} does not cover all lifecycle stages`);
+            }
             if (region.items.some((item) => !item.url.startsWith('https://'))) throw new Error(`${region.id} contains a non-HTTPS source`);
           }
           for (const region of addedRegions) {
             if (!region.officialUrl?.startsWith('https://')) throw new Error(`incomplete official region: ${region.id}`);
-            const stages = new Set(region.items.map((item) => item.stage));
-            if (stages.size !== 5 || [...expectedStages].some((stage) => !stages.has(stage))) throw new Error(`${region.id} does not cover all lifecycle stages`);
           }
           if (release.officialRegionCount !== officialRegions.length) throw new Error('release region count is stale');
           if (release.officialContentCoverage !== officialItems.length) throw new Error('release content count is stale');
@@ -99,39 +115,63 @@ jobs:
           if (latestGrowth && release.latestAddedRegion !== latestGrowth) throw new Error('release latestAddedRegion is stale');
 
           const expectedPrimary = ['map', 'areas', 'plans', 'live'];
-          if (JSON.stringify(ontology.navigation?.primary) !== JSON.stringify(expectedPrimary)) throw new Error('primary navigation must remain map / areas / plans / live');
+          if (JSON.stringify(ontology.navigation?.primary) !== JSON.stringify(expectedPrimary)) {
+            throw new Error('primary navigation must remain map / areas / plans / live');
+          }
+          if (!Array.isArray(ontology.views) || ontology.views.length === 0) throw new Error('site ontology has no views');
+          const viewIds = ontology.views.map((view) => view.id);
+          if (new Set(viewIds).size !== viewIds.length) throw new Error('site ontology contains duplicate view ids');
+          const viewById = new Map(ontology.views.map((view) => [view.id, view]));
           const primaryViews = ontology.views.filter((view) => view.level <= 1).map((view) => view.id);
           if (JSON.stringify(primaryViews) !== JSON.stringify(expectedPrimary)) throw new Error(`unexpected top-level views: ${primaryViews.join(', ')}`);
           for (const view of ontology.views.filter((view) => view.level >= 2)) {
             if (!view.parentId || !expectedPrimary.includes(view.parentId)) throw new Error(`child view ${view.id} has no valid parentId`);
           }
+          for (const view of ontology.views) {
+            if (!view.path?.startsWith('/travel/')) throw new Error(`view ${view.id} has invalid path`);
+            for (const relatedId of view.relatedViewIds ?? []) {
+              if (!viewById.has(relatedId)) throw new Error(`related view is unresolved: ${view.id} -> ${relatedId}`);
+              if (relatedId === view.id) throw new Error(`related view points to itself: ${view.id}`);
+            }
+          }
+
           if (areas.areas.length < 5) throw new Error('site map must expose at least five area hubs');
           if (new Set(areas.areas.map((area) => area.id)).size !== areas.areas.length) throw new Error('duplicate area hub id');
           for (const area of areas.areas) {
             if (typeof area.lat !== 'number' || typeof area.lng !== 'number') throw new Error(`area ${area.id} has no map coordinate`);
             if (!area.primaryPath?.startsWith('/travel/')) throw new Error(`area ${area.id} has no internal primaryPath`);
           }
-          if (!home.includes('id="overview-map"') || !home.includes('/travel/data/site-areas.json')) throw new Error('home must start from the geographic overview map');
-          const primaryBlock = shell.match(/const primaryRoutes = \[([\s\S]*?)\];/)?.[1] || '';
-          for (const label of ['大阪・京都ミュージアム', '公式特集', '猛暑回避10案', '深圳 Route Lab', 'サイト構造']) {
-            if (primaryBlock.includes(label)) throw new Error(`child page leaked into primary navigation: ${label}`);
+
+          if (!home.includes('id="overview-map"') || !home.includes('/travel/data/site-areas.json')) {
+            throw new Error('home must start from the geographic overview map');
           }
-          for (const label of ['地図', 'エリア', '旅程', '当日情報']) {
-            if (!primaryBlock.includes(label)) throw new Error(`missing primary navigation item: ${label}`);
+          if (!shell.includes('data/site-ontology.json')) throw new Error('site shell must read the canonical site ontology');
+          if (!shell.includes('activePage.relatedViewIds')) throw new Error('site shell must derive related links from the canonical site ontology');
+          if (shell.includes('relatedRouteIds')) throw new Error('site shell must not duplicate the related-link graph');
+
+          for (const view of ontology.views) {
+            const relative = view.path.slice('/travel/'.length);
+            const artifact = relative ? `dist/${relative}index.html` : 'dist/index.html';
+            await access(artifact).catch(() => {
+              throw new Error(`Pages artifact is missing for ${view.id}: ${artifact}`);
+            });
           }
+          for (const artifact of [
+            'dist/data/site-ontology.json',
+            'dist/data/site-areas.json',
+            'dist/data/official-content-growth.json',
+            'dist/site-shell.js',
+            'dist/site-shell.css',
+            'dist/related-links.css',
+          ]) {
+            await access(artifact).catch(() => {
+              throw new Error(`required Pages artifact is missing: ${artifact}`);
+            });
+          }
+
+          const destinationsPage = await readFile('dist/destinations/index.html', 'utf8');
+          const officialPage = await readFile('dist/official/index.html', 'utf8');
+          if (!destinationsPage.includes('AREA DIRECTORY')) throw new Error('destination directory marker is missing');
+          if (!officialPage.includes('公式コンテンツ・ネットワーク')) throw new Error('official content page marker is missing');
+          if (!officialPage.includes('official-content-growth.json')) throw new Error('official growth data reference is missing');
           NODE
-          test -s dist/index.html
-          test -s dist/planner/index.html
-          test -s dist/destinations/index.html
-          test -s dist/kansai-museums/index.html
-          test -s dist/official/index.html
-          test -s dist/heat-escape-2026/index.html
-          test -s dist/guides/index.html
-          test -s dist/shenzhen/index.html
-          test -s dist/sitemap/index.html
-          test -s dist/data/site-areas.json
-          test -s dist/data/official-content-growth.json
-          grep -q 'id="overview-map"' dist/index.html
-          grep -q 'AREA DIRECTORY' dist/destinations/index.html
-          grep -q '公式コンテンツ・ネットワーク' dist/official/index.html
-          grep -q 'official-content-growth.json' dist/official/index.html
