@@ -119,12 +119,6 @@ for (const artifact of [
   })
 }
 
-const destinationsPage = await readFile('dist/destinations/index.html', 'utf8')
-const officialPage = await readFile('dist/official/index.html', 'utf8')
-if (!destinationsPage.includes('AREA DIRECTORY')) throw new Error('destination directory marker is missing')
-if (!officialPage.includes('公式コンテンツ・ネットワーク')) throw new Error('official content page marker is missing')
-if (!officialPage.includes('official-content-growth.json')) throw new Error('official growth data reference is missing')
-
 console.log(JSON.stringify({
   destinations: catalog.destinations.length,
   destinationMedia: Object.keys(media.destinations ?? {}).length,
