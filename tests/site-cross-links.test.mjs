@@ -9,8 +9,11 @@ const relatedCss = await readFile(new URL('../public/related-links.css', import.
 
 const byId = new Map(ontology.views.map((view) => [view.id, view]))
 
-test('サイト構造の関連リンクは存在するviewだけを参照する', () => {
+test('サイト構造のprimaryと関連リンクは存在するviewだけを参照する', () => {
   assert.equal(byId.size, ontology.views.length)
+  for (const primaryId of ontology.navigation.primary) {
+    assert.ok(byId.has(primaryId), `primary route ${primaryId} is unresolved`)
+  }
   for (const view of ontology.views) {
     for (const relatedId of view.relatedViewIds ?? []) {
       assert.ok(byId.has(relatedId), `${view.id} -> ${relatedId} is unresolved`)
@@ -22,20 +25,28 @@ test('サイト構造の関連リンクは存在するviewだけを参照する'
 test('九州横断・阿蘇・フェリーは相互に往復できる', () => {
   const cluster = ['kyushu-roadtrip', 'aso', 'kyushu-ferry']
   for (const source of cluster) {
-    const related = new Set(byId.get(source).relatedViewIds)
+    const view = byId.get(source)
+    assert.ok(view, `${source} must exist`)
+    const related = new Set(view.relatedViewIds)
     for (const target of cluster) {
       if (target !== source) assert.ok(related.has(target), `${source} must link to ${target}`)
     }
   }
 })
 
-test('共通shellは現行の主要feature pageを認識する', () => {
-  for (const path of ['/kyushu-2026/', '/aso-2026/', '/kyushu-ferry-2026/', '/kada-sea-daytrip-2026/']) {
-    assert.match(shell, new RegExp(path.replaceAll('/', '\\/')))
-  }
-  assert.match(shell, /relatedRouteIds/)
+test('共通shellはsite-ontology.jsonからナビと関連リンクを生成する', () => {
+  assert.match(shell, /data\/site-ontology\.json/)
+  assert.match(shell, /activePage\.relatedViewIds/)
   assert.match(shell, /related-links\.css/)
+  assert.doesNotMatch(shell, /relatedRouteIds/)
+  assert.match(shell, /related route is unresolved/)
   assert.match(relatedCss, /\.ww-related/)
+})
+
+test('現行feature pageはサイト構造JSONへ登録されている', () => {
+  for (const path of ['/travel/kyushu-2026/', '/travel/aso-2026/', '/travel/kyushu-ferry-2026/', '/travel/kada-sea-daytrip-2026/']) {
+    assert.ok(ontology.views.some((view) => view.path === path), `${path} is missing from site ontology`)
+  }
 })
 
 test('九州ロードトリップはWayweave共通ナビへ接続する', () => {
