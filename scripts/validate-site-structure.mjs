@@ -17,12 +17,13 @@ if (!Array.isArray(catalog.destinations) || catalog.destinations.length === 0) {
   throw new Error('planned destinations must not be empty')
 }
 const destinationIds = catalog.destinations.map((item) => item.id)
-if (new Set(destinationIds).size !== destinationIds.length) {
+const destinationIdSet = new Set(destinationIds)
+if (destinationIdSet.size !== destinationIds.length) {
   throw new Error('planned destinations contain duplicate ids')
 }
-const missingMedia = catalog.destinations.filter((item) => !media.destinations?.[item.id]?.imageUrl)
-if (missingMedia.length) {
-  throw new Error(`missing official visuals: ${missingMedia.map((item) => item.id).join(', ')}`)
+for (const [id, item] of Object.entries(media.destinations ?? {})) {
+  if (!destinationIdSet.has(id)) throw new Error(`orphan destination media: ${id}`)
+  if (item.imageUrl && !item.imageUrl.startsWith('https://')) throw new Error(`destination media must use HTTPS: ${id}`)
 }
 
 const officialRegions = [...official.destinations, ...expansion.destinations, ...growth.destinations]
@@ -126,6 +127,7 @@ if (!officialPage.includes('official-content-growth.json')) throw new Error('off
 
 console.log(JSON.stringify({
   destinations: catalog.destinations.length,
+  destinationMedia: Object.keys(media.destinations ?? {}).length,
   officialRegions: officialRegions.length,
   views: ontology.views.length,
   relatedEdges: ontology.views.reduce((sum, view) => sum + (view.relatedViewIds?.length ?? 0), 0),
