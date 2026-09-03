@@ -3,19 +3,6 @@ const app = document.querySelector('#app')
 
 const maxDayDistance = 250
 
-const typeLabel = {
-  world_heritage: 'WH',
-  scenic: 'VIEW',
-  ferry: 'SEA',
-  car: 'DRIVE',
-  stay: 'STAY',
-  culture: 'CULT',
-  city: 'CITY',
-  walk: 'WALK',
-  flight: 'AIR',
-  arrival: 'ARR',
-}
-
 function escapeHtml(value) {
   return String(value)
     .replaceAll('&', '&amp;')
@@ -177,7 +164,7 @@ function render(data) {
           <ul class="status-list">${sourceRows}</ul>
         </div>
       </div>
-      <p class="data-note">DATA: ${escapeHtml(DATA_URL)} · checked ${escapeHtml(data.checked_at)} · 距離は ${escapeHtml(data.distance.status)}。正準JSON以外のfixture / fallbackは使用していません。</p>
+      <p class="data-note">DATA: ${escapeHtml(DATA_URL)} · checked ${escapeHtml(data.checked_at)} · 距離は ${escapeHtml(data.distance.status)}。正準JSON以外の代替データは使用していません。</p>
     </section>`
 }
 
