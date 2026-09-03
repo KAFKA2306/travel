@@ -1,5 +1,5 @@
 {
-  "generatedAt": "2026-09-03T13:46:40.149Z",
+  "generatedAt": "2026-09-03T13:56:57.501Z",
   "baseUrl": "https://kafka2306.github.io/travel",
   "results": [
     {
@@ -78,8 +78,7 @@
       "headings": 23,
       "brokenImages": [],
       "pendingImages": [
-        "https://yamaguchi-tourism.jp/lsc/api/photo/?src=1700667",
-        "https://www.nasukogen.org/blog/%E3%82%B7%E3%83%AD%E3%83%A4%E3%82%B7%E3%82%AA.jpg"
+        "https://yamaguchi-tourism.jp/lsc/api/photo/?src=1700667"
       ],
       "unlabeledButtons": 0,
       "unlabeledLinks": 0
@@ -98,15 +97,13 @@
       "title": "公式コンテンツ・ネットワーク｜Wayweave",
       "width": 1440,
       "scrollWidth": 1440,
-      "height": 12058,
+      "height": 12175,
       "horizontalOverflow": false,
       "links": 197,
       "buttons": 7,
       "headings": 26,
       "brokenImages": [],
-      "pendingImages": [
-        "https://www.nasukogen.org/blog/%E3%82%B7%E3%83%AD%E3%83%A4%E3%82%B7%E3%82%AA.jpg"
-      ],
+      "pendingImages": [],
       "unlabeledButtons": 0,
       "unlabeledLinks": 0
     },
@@ -353,9 +350,7 @@
       "buttons": 56,
       "headings": 23,
       "brokenImages": [],
-      "pendingImages": [
-        "https://www.nasukogen.org/blog/%E3%82%B7%E3%83%AD%E3%83%A4%E3%82%B7%E3%82%AA.jpg"
-      ],
+      "pendingImages": [],
       "unlabeledButtons": 0,
       "unlabeledLinks": 0
     },
@@ -373,15 +368,13 @@
       "title": "公式コンテンツ・ネットワーク｜Wayweave",
       "width": 390,
       "scrollWidth": 390,
-      "height": 33677,
+      "height": 33759,
       "horizontalOverflow": false,
       "links": 197,
       "buttons": 7,
       "headings": 26,
       "brokenImages": [],
-      "pendingImages": [
-        "https://www.nasukogen.org/blog/%E3%82%B7%E3%83%AD%E3%83%A4%E3%82%B7%E3%82%AA.jpg"
-      ],
+      "pendingImages": [],
       "unlabeledButtons": 0,
       "unlabeledLinks": 0
     },
