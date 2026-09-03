@@ -6,6 +6,7 @@ const ontology = JSON.parse(await readFile(new URL('../public/data/site-ontology
 const shell = await readFile(new URL('../public/site-shell.js', import.meta.url), 'utf8')
 const kyushu = await readFile(new URL('../public/kyushu-2026/index.html', import.meta.url), 'utf8')
 const relatedCss = await readFile(new URL('../public/related-links.css', import.meta.url), 'utf8')
+const candidateWorkflow = await readFile(new URL('../.github/workflows/apply-official-content-candidate.yml', import.meta.url), 'utf8')
 
 const byId = new Map(ontology.views.map((view) => [view.id, view]))
 
@@ -53,4 +54,9 @@ test('九州ロードトリップはWayweave共通ナビへ接続する', () => 
   assert.match(kyushu, /\/travel\/site-shell\.css/)
   assert.match(kyushu, /\/travel\/site-shell\.js/)
   assert.match(kyushu, /https:\/\/kafka2306\.github\.io\/travel\/kyushu-2026\//)
+})
+
+test('公式候補workflowはautomation branch以外のPRを書き換えない', () => {
+  assert.match(candidateWorkflow, /startsWith\(github\.event\.pull_request\.head\.ref, 'automation\/add-'\)/)
+  assert.match(candidateWorkflow, /git push origin HEAD:/)
 })
