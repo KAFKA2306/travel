@@ -1,389 +1,177 @@
 {
   "trip_plan_issue": 45,
-  "checked_at": "2026-09-01",
+  "checked_at": "2026-09-03",
   "target_start_date": "2026-11-20",
   "target_end_date": "2026-11-24",
+  "title": "熊本・天草・阿蘇・大分 世界遺産ロードトリップ",
+  "summary": "阿蘇くまもと空港でレンタカーを借り、熊本県内の世界文化遺産3構成資産と阿蘇を巡り、由布院・別府へ一方向に抜けてさんふらわあで大阪へ戻る。",
+  "travel_mode": "rental_car_one_way",
   "route": [
-    "熊本",
-    "阿蘇",
+    "阿蘇くまもと空港",
+    "万田坑",
+    "三角西港",
+    "天草",
+    "天草の﨑津集落",
     "黒川温泉",
+    "大観峰",
+    "阿蘇神社",
+    "草千里ヶ浜",
     "由布院",
     "別府",
     "大阪"
   ],
-  "primary_sources": [
+  "rental_car": {
+    "pickup": "阿蘇くまもと空港",
+    "return": "別府駅周辺",
+    "one_way": true,
+    "exact_vehicle_and_fee_confirmed": false
+  },
+  "distance": {
+    "unit": "km",
+    "total_estimate_min": 621,
+    "total_estimate_max": 671,
+    "status": "PLANNED_ESTIMATE",
+    "note": "観光地内・別府市内の寄り道を含む計画値。予約時に利用する経路検索の実走行距離で更新する。"
+  },
+  "world_heritage": [
     {
-      "publisher": "産交バス",
-      "url": "https://www.sankobus.jp/bus/oudan/jikoku/",
-      "subject": "熊本⇔阿蘇・湯布院・別府 九州横断バス 時刻・運賃"
+      "id": "manda-pit",
+      "name": "万田坑",
+      "property": "明治日本の産業革命遺産 製鉄・製鋼、造船、石炭産業",
+      "city": "熊本県荒尾市",
+      "planned_date": "2026-11-20",
+      "official_url": "https://www.city.arao.lg.jp/kurashi/shisetsu/mandakou/"
     },
     {
-      "publisher": "産交バス",
-      "url": "https://www.sankobus.jp/bus/oudan/reserve/",
-      "subject": "熊本⇔阿蘇・湯布院・別府 九州横断バス 予約受付期間・予約方法"
+      "id": "misumi-west-port",
+      "name": "三角西港",
+      "property": "明治日本の産業革命遺産 製鉄・製鋼、造船、石炭産業",
+      "city": "熊本県宇城市",
+      "planned_date": "2026-11-20",
+      "official_url": "https://www.city.uki.kumamoto.jp/nishiko/"
     },
     {
-      "publisher": "亀の井バス",
-      "url": "https://kamenoibus.com/archive/uploads/2026/03/yufurin.pdf",
-      "subject": "観光快速 ゆふりん 2026年3月14日現在時刻表"
-    },
-    {
-      "publisher": "亀の井バス",
-      "url": "https://kamenoibus.com/scheduled_howto/",
-      "subject": "由布院駅前バスセンター・別府駅から主な観光地への行き方"
-    },
-    {
-      "publisher": "亀の井バス",
-      "url": "https://kamenoibus.com/scheduled_tt/pdf/202603/26e.pdf",
-      "subject": "26番・26A番 内廻り循環線 土日祝時刻表 2026年3月14日現在"
-    },
-    {
-      "publisher": "亀の井バス",
-      "url": "https://kamenoibus.com/scheduled_tt/pdf/202603/20e.pdf",
-      "subject": "20番 別府大学経由鉄輪線 土日祝時刻表 2026年3月14日現在"
-    },
-    {
-      "publisher": "商船三井さんふらわあ",
-      "url": "https://www.ferry-sunflower.co.jp/route/doc/schedule202611_2.pdf?v=260728",
-      "subject": "2026年11月 大阪-別府航路 運航スケジュール"
-    },
-    {
-      "publisher": "商船三井さんふらわあ",
-      "url": "https://www.ferry-sunflower.co.jp/route/osaka-beppu/fee/",
-      "subject": "大阪-別府航路 2026年10-12月運賃・等級差額・WEB割引"
-    },
-    {
-      "publisher": "商船三井さんふらわあ",
-      "url": "https://www.ferry-sunflower.co.jp/cmn/inc/calendar-beppu.html",
-      "subject": "大阪-別府航路 運賃カレンダー"
-    },
-    {
-      "publisher": "商船三井さんふらわあ",
-      "url": "https://booking.ferry-sunflower.co.jp/web/yoyaku/Reserve0020/Index",
-      "subject": "インターネット予約 Q&A 予約受付期間・支払期限・取消手数料"
-    },
-    {
-      "publisher": "商船三井さんふらわあ",
-      "url": "https://www.ferry-sunflower.co.jp/reservation/",
-      "subject": "予約開始日"
+      "id": "sakitsu-village",
+      "name": "天草の﨑津集落",
+      "property": "長崎と天草地方の潜伏キリシタン関連遺産",
+      "city": "熊本県天草市",
+      "planned_date": "2026-11-21",
+      "official_url": "https://www.city.amakusa.kumamoto.jp/sakitsu-sekai/"
     }
   ],
-  "current_bus_timetable": {
-    "revision_date": "2025-10-01",
-    "target_date_validity_confirmed": false,
-    "temporary_disruption_until": "2026-08-31",
-    "full_service_resume_effective_from": "2026-09-01",
-    "full_service_resumed_as_of_checked_at": true,
-    "candidate_segments": [
-      {
-        "from": "熊本駅前",
-        "to": "阿蘇駅前",
-        "departure": "07:23",
-        "arrival": "09:14",
-        "service": "1号"
-      },
-      {
-        "from": "阿蘇駅前",
-        "to": "黒川温泉",
-        "departure": "14:09",
-        "arrival": "15:00",
-        "service": "7号"
-      },
-      {
-        "from": "黒川温泉",
-        "to": "由布院駅前バスセンター",
-        "departure": "11:15",
-        "arrival": "12:48",
-        "service": "3号"
-      }
-    ],
-    "aso_dwell_minutes": 295,
-    "minimum_required_aso_dwell_minutes": 180,
-    "meets_minimum_dwell_on_current_timetable": true,
-    "reservation": {
-      "official_url": "https://www.sankobus.jp/bus/oudan/reserve/",
-      "booking_rule": "乗車日の2ヶ月前から前日まで予約可能",
-      "online_booking_service": "発車オーライネット",
-      "target_segment_reservation_eligibility_confirmed": false,
-      "target_dates": [
-        {
-          "travel_date": "2026-11-21",
-          "booking_opens_on": "2026-09-21",
-          "booking_open_as_of_checked_at": false,
-          "availability": null
-        },
-        {
-          "travel_date": "2026-11-22",
-          "booking_opens_on": "2026-09-22",
-          "booking_open_as_of_checked_at": false,
-          "availability": null
-        }
+  "days": [
+    {
+      "day": 1,
+      "date": "2026-11-20",
+      "label": "世界遺産を北から西へ",
+      "overnight": "天草",
+      "distance_estimate_min": 208,
+      "distance_estimate_max": 218,
+      "stops": [
+        { "time": "AM", "name": "伊丹 → 熊本", "type": "flight", "status": "UNVERIFIED_TIMETABLE" },
+        { "time": "09:00", "name": "阿蘇くまもと空港 レンタカー出発", "type": "car", "status": "PLANNED" },
+        { "time": "10:20", "name": "万田坑", "type": "world_heritage", "status": "PLANNED" },
+        { "time": "13:15", "name": "三角西港", "type": "world_heritage", "status": "PLANNED" },
+        { "time": "16:00", "name": "天草泊", "type": "stay", "status": "PLANNED" }
+      ]
+    },
+    {
+      "day": 2,
+      "date": "2026-11-21",
+      "label": "﨑津から黒川温泉へ",
+      "overnight": "黒川温泉",
+      "distance_estimate_min": 229,
+      "distance_estimate_max": 249,
+      "stops": [
+        { "time": "08:00", "name": "天草の宿を出発", "type": "car", "status": "PLANNED" },
+        { "time": "09:00", "name": "天草の﨑津集落", "type": "world_heritage", "status": "PLANNED" },
+        { "time": "10:30", "name": "﨑津を出発", "type": "car", "status": "PLANNED" },
+        { "time": "15:30–16:00", "name": "黒川温泉", "type": "stay", "status": "PLANNED" }
+      ]
+    },
+    {
+      "day": 3,
+      "date": "2026-11-22",
+      "label": "阿蘇を横断する日",
+      "overnight": "由布院",
+      "distance_estimate_min": 135,
+      "distance_estimate_max": 145,
+      "stops": [
+        { "time": "08:30", "name": "黒川温泉を出発", "type": "car", "status": "PLANNED" },
+        { "time": "09:10", "name": "大観峰", "type": "scenic", "status": "PLANNED" },
+        { "time": "10:30", "name": "阿蘇神社", "type": "culture", "status": "PLANNED" },
+        { "time": "13:00", "name": "草千里ヶ浜", "type": "scenic", "status": "PLANNED" },
+        { "time": "15:00", "name": "由布院へ出発", "type": "car", "status": "PLANNED" },
+        { "time": "17:00", "name": "由布院", "type": "stay", "status": "PLANNED" }
+      ]
+    },
+    {
+      "day": 4,
+      "date": "2026-11-23",
+      "label": "由布院・別府・フェリー",
+      "overnight": "さんふらわあ船中泊",
+      "distance_estimate_min": 45,
+      "distance_estimate_max": 65,
+      "stops": [
+        { "time": "08:00–10:30", "name": "由布院散策", "type": "walk", "status": "PLANNED" },
+        { "time": "10:30", "name": "由布院を出発", "type": "car", "status": "PLANNED" },
+        { "time": "11:00", "name": "別府", "type": "city", "status": "PLANNED" },
+        { "time": "15:00–15:30", "name": "レンタカー返却", "type": "car", "status": "PLANNED" },
+        { "time": "18:45", "name": "別府 → 大阪 さんふらわあ", "type": "ferry", "status": "CONFIRMED_SCHEDULE" }
+      ]
+    },
+    {
+      "day": 5,
+      "date": "2026-11-24",
+      "label": "大阪到着",
+      "overnight": null,
+      "distance_estimate_min": 0,
+      "distance_estimate_max": 0,
+      "stops": [
+        { "time": "06:35", "name": "大阪着", "type": "arrival", "status": "CONFIRMED_SCHEDULE" }
       ]
     }
-  },
-  "current_yufurin_timetable": {
-    "revision_date": "2026-03-14",
-    "target_departure_date": "2026-11-23",
-    "target_departure_is_holiday": true,
-    "target_date_validity_confirmed": false,
-    "candidate_segment": {
-      "from": "由布院駅前バスセンター",
-      "to": "別府駅前",
-      "departure": "14:25",
-      "arrival": "15:31",
-      "service": "観光快速 ゆふりん"
-    },
-    "beppu_station_arrival_minutes_before_ferry_check_in_deadline": 134,
-    "last_mile_to_ferry_terminal": {
-      "official_route_numbers": [
-        "20番",
-        "26番",
-        "26A番"
-      ],
-      "current_timetable_revision_date": "2026-03-14",
-      "target_date_timetable_confirmed": false,
-      "preferred_current_connection": {
-        "from": "別府駅前⑤のりば",
-        "to": "さんふらわあターミナル別府前",
-        "departure": "15:58",
-        "arrival": "16:10",
-        "service": "26番・26A番 内廻り循環線",
-        "transfer_minutes_after_yufurin": 27,
-        "minutes_before_ferry_check_in_deadline": 95
-      },
-      "later_current_connection": {
-        "from": "別府駅前⑤のりば",
-        "to": "さんふらわあターミナル別府前",
-        "departure": "16:32",
-        "arrival": "16:44",
-        "service": "20番 別府大学経由鉄輪線",
-        "transfer_minutes_after_yufurin": 61,
-        "minutes_before_ferry_check_in_deadline": 61
-      }
-    }
-  },
-  "current_ferry_timetable": {
-    "target_departure_date": "2026-11-23",
-    "target_departure_weekday": "月曜日",
-    "target_date_operating_schedule_confirmed": true,
-    "monthly_schedule_url": "https://www.ferry-sunflower.co.jp/route/doc/schedule202611_2.pdf?v=260728",
-    "departure": {
-      "from": "別府",
-      "to": "大阪",
-      "departure": "18:45",
-      "arrival_next_day": "06:35"
-    },
-    "walk_on_check_in_minutes_before_departure": 60,
-    "walk_on_check_in_deadline": "17:45",
-    "reservation": {
-      "booking_rule": "乗船予定日の3か月前の同日午前9時より受付。予約開始日が日曜・祭日及び当社休業日の場合は翌営業日",
-      "booking_open_at": "2026-08-24T09:00:00+09:00",
-      "booking_open": true,
-      "booking_url": "https://booking.ferry-sunflower.co.jp/web/yoyaku/",
-      "fare_calendar_url": "https://www.ferry-sunflower.co.jp/cmn/inc/calendar-beppu.html",
-      "internet_booking_closes": "乗船日当日12時",
-      "payment": {
-        "web_booking_requires_advance_payment": true,
-        "normal_deadline": "予約登録日を含めて7日以内",
-        "deadline_within_7_days_of_departure": "予約完了画面または予約完了メールで確認"
-      },
-      "cancellation": {
-        "internet_cancellation_available_until": "出航前まで",
-        "fees": [
-          {
-            "period": "出港7日前まで",
-            "fee": "予約1件につき200円"
-          },
-          {
-            "period": "出港6日前から2日前まで",
-            "fee": "運賃の10%"
-          },
-          {
-            "period": "出港前日から出港時間まで",
-            "fee": "運賃の30%"
-          },
-          {
-            "period": "出港後",
-            "fee": "運賃の100%"
-          }
-        ]
-      },
-      "availability": null,
-      "target_date_fare_period": null,
-      "target_date_exact_fare_yen": null,
-      "published_base_fares_yen_2026_oct_dec": {
-        "A": 15390,
-        "B": 17800,
-        "C": 20700,
-        "D": 22700
-      },
-      "published_web_discount_2026_oct_dec": {
-        "discount_rate": 0.05,
-        "eligible_periods": [
-          "A",
-          "B"
-        ],
-        "published_discounted_base_fares_yen": {
-          "A": 14620,
-          "B": 16910,
-          "C": null,
-          "D": null
-        },
-        "calculation_rule": "旅客基準運賃にWEB割引を適用し、その後に客室等級差額を加算する",
-        "target_date_applicable": null
-      },
-      "published_room_surcharges_yen_2026_oct_dec": {
-        "スイート和洋室 コネクト（個別）": {
-          "A": 18000,
-          "B": 18000,
-          "C": 24000,
-          "D": 24000
-        },
-        "スイート": {
-          "A": 17000,
-          "B": 17000,
-          "C": 23000,
-          "D": 23000
-        },
-        "スイートバリアフリー": {
-          "A": 17000,
-          "B": 17000,
-          "C": 23000,
-          "D": 23000
-        },
-        "コネクティング スイート（結合）": {
-          "A": 16000,
-          "B": 16000,
-          "C": 22000,
-          "D": 22000
-        },
-        "セミスイート": {
-          "A": 14000,
-          "B": 14000,
-          "C": 20000,
-          "D": 20000
-        },
-        "セミスイートコネクト（個別）": {
-          "A": 14000,
-          "B": 14000,
-          "C": 20000,
-          "D": 20000
-        },
-        "デラックス和室": {
-          "A": 13000,
-          "B": 13000,
-          "C": 18000,
-          "D": 18000
-        },
-        "デラックス": {
-          "A": 12000,
-          "B": 12000,
-          "C": 17000,
-          "D": 17000
-        },
-        "デラックスウィズペットルーム": {
-          "A": 12000,
-          "B": 12000,
-          "C": 17000,
-          "D": 17000
-        },
-        "デラックスコネクト（個別）": {
-          "A": 12000,
-          "B": 12000,
-          "C": 17000,
-          "D": 17000
-        },
-        "コネクティング デラックス（結合）": {
-          "A": 11000,
-          "B": 11000,
-          "C": 15000,
-          "D": 15000
-        },
-        "セミデラックス和室 コネクト（個別）": {
-          "A": 10000,
-          "B": 10000,
-          "C": 13000,
-          "D": 13000
-        },
-        "スーペリアツイン": {
-          "A": 7000,
-          "B": 7000,
-          "C": 11000,
-          "D": 11000
-        },
-        "スーペリアシングル": {
-          "A": 8000,
-          "B": 8000,
-          "C": 11000,
-          "D": 11000
-        },
-        "スタンダードシングル": {
-          "A": 4000,
-          "B": 4000,
-          "C": 6000,
-          "D": 6000
-        },
-        "プライベートシングルツイン": {
-          "A": 3000,
-          "B": 3000,
-          "C": 5000,
-          "D": 5000
-        },
-        "プライベートシングル": {
-          "A": 3000,
-          "B": 3000,
-          "C": 5000,
-          "D": 5000
-        },
-        "プライベートツイン": {
-          "A": 3000,
-          "B": 3000,
-          "C": 5000,
-          "D": 5000
-        },
-        "プライベートベッド グループ": {
-          "A": 3000,
-          "B": 3000,
-          "C": 5000,
-          "D": 5000
-        },
-        "グループ和室 （3/4名定員）": {
-          "A": 3000,
-          "B": 3000,
-          "C": 5000,
-          "D": 5000
-        },
-        "プライベートベッド": {
-          "A": 0,
-          "B": 0,
-          "C": 0,
-          "D": 0
-        }
-      }
-    }
-  },
-  "unverified": [
-    "産交バスの現行時刻表が2026-11-21と2026-11-22にも同一内容で有効であること",
-    "産交バスの候補区間が予約可能区間であること",
-    "2026-09-21・22の予約開始後に対象便の座席在庫があり予約成立すること",
-    "観光快速ゆふりんの2026年3月14日現在時刻表が2026-11-23にも同一内容で有効であること",
-    "亀の井バス26番・26A番または20番の2026年3月14日現在時刻表が2026-11-23にも同一内容で有効であること",
-    "2026-11-23別府発便の客室別実在庫",
-    "2026-11-23別府発便の運賃期間区分と客室別実料金",
-    "熊本から阿蘇までの観光当日の運行障害",
-    "阿蘇観光中の火山規制と天候"
   ],
-  "notes": [
-    "現行時刻表では熊本駅前07:23発から阿蘇駅前09:14着、阿蘇駅前14:09発から黒川温泉15:00着を組み合わせると、阿蘇で4時間55分確保できる。",
-    "現行の九州横断バスでは黒川温泉11:15発から由布院駅前バスセンター12:48着が成立する。",
-    "産交バス公式案内では熊本地震の影響による一部運休は2026年8月31日までで、9月1日から全便運行を再開する。2026年9月1日時点ではこの一時運休期間は終了したものとして扱うが、2026年11月の対象日ダイヤ有効性は未確認のまま保持する。",
-    "産交バスの九州横断バスは乗車日の2ヶ月前から前日まで予約できる。11月21日分は9月21日、11月22日分は9月22日から予約期間に入る。2026年9月1日時点では対象日の予約期間外で、対象区間が予約可能区間かも未確認のため空席はnullのまま保持する。",
-    "現行の観光快速ゆふりん土日祝時刻表では由布院駅前バスセンター14:25発から別府駅前15:31着が成立する。",
-    "現行の亀の井バス土日祝時刻表では、別府駅前15:58発の26番・26A番がさんふらわあターミナル別府前16:10着となり、ゆふりん到着後27分の乗換時間と徒歩客17:45手続き目安まで95分の余裕を確保できる。16:32発の20番でも16:44着となる。",
-    "商船三井さんふらわあの2026年11月公式運航表で11月23日の別府発便が設定され、通常の月曜日ダイヤ18:45発・翌06:35着を確認した。",
-    "商船三井さんふらわあは乗船予定日の3か月前の同日午前9時から予約を受け付け、インターネット予約は乗船日当日12時まで受け付ける。2026年8月23日は日曜日のため、11月23日便の予約開始は8月24日9時。空席と対象日の運賃期間区分は予約画面で未確認のためnullのまま保持する。",
-    "インターネット予約は事前決済で、通常の支払期限は予約登録日を含めて7日以内。支払後の取消手数料は出港7日前まで200円/予約、6～2日前10%、前日～出港時刻30%、出港後100%。",
-    "2026年10～12月の大阪-別府航路は、客室等級ごとの追加料金に加え、A・B期間のWEB割引は旅客基準運賃を5%割引した後に等級差額を加算する。対象日のA～D期間が未確認のため、11月23日への適用可否はnullのまま保持する。",
-    "バス時刻表は対象日まで変わらないとは扱わず、予約時と出発48時間前に公式情報を再確認する。"
-  ]
+  "ferry": {
+    "operator": "商船三井さんふらわあ",
+    "route": "別府 → 大阪",
+    "departure": "2026-11-23T18:45:00+09:00",
+    "arrival": "2026-11-24T06:35:00+09:00",
+    "schedule_confirmed": true,
+    "official_url": "https://www.ferry-sunflower.co.jp/route/osaka-beppu/time/"
+  },
+  "primary_sources": [
+    {
+      "publisher": "荒尾市",
+      "subject": "万田坑",
+      "url": "https://www.city.arao.lg.jp/kurashi/shisetsu/mandakou/"
+    },
+    {
+      "publisher": "宇城市",
+      "subject": "世界文化遺産 三角西港",
+      "url": "https://www.city.uki.kumamoto.jp/nishiko/"
+    },
+    {
+      "publisher": "天草市",
+      "subject": "世界文化遺産 天草の﨑津集落",
+      "url": "https://www.city.amakusa.kumamoto.jp/sakitsu-sekai/"
+    },
+    {
+      "publisher": "UNESCO World Heritage Centre",
+      "subject": "Hidden Christian Sites in the Nagasaki Region",
+      "url": "https://whc.unesco.org/en/list/1495"
+    },
+    {
+      "publisher": "商船三井さんふらわあ",
+      "subject": "大阪-別府航路 時刻表",
+      "url": "https://www.ferry-sunflower.co.jp/route/osaka-beppu/time/"
+    }
+  ],
+  "verification": {
+    "flight": "UNVERIFIED",
+    "rental_car_exact_vehicle_and_one_way_fee": "UNVERIFIED",
+    "exact_driving_distance": "UNVERIFIED",
+    "aso_volcanic_access": "RECHECK_BEFORE_DEPARTURE",
+    "ferry_schedule": "CONFIRMED"
+  }
 }
