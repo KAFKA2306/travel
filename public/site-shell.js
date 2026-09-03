@@ -1,6 +1,7 @@
 (() => {
   const BASE = '/travel';
   const STRUCTURE_URL = `${BASE}/data/site-ontology.json`;
+  const KYUSHU_STATUS_URL = `${BASE}/data/kyushu-crossing-2026-11.json`;
 
   const relatedStyles = document.createElement('link');
   relatedStyles.rel = 'stylesheet';
@@ -16,6 +17,40 @@
 
   const currentPath = location.pathname.endsWith('/') ? location.pathname : `${location.pathname}/`;
   const mobileQuery = window.matchMedia('(max-width: 760px)');
+  const legacyAsoAlert = currentPath.startsWith(`${BASE}/aso-2026/`) ? document.querySelector('.alert') : null;
+
+  if (legacyAsoAlert) {
+    legacyAsoAlert.innerHTML = '<div>STATUS CHECK<br><b>最新状態を確認中</b></div><div>保存済みの古い火山状態を CURRENT として表示しません。公式情報を読み込んでいます。</div>';
+  }
+
+  async function refreshAsoAlert(activePage) {
+    if (activePage.id !== 'aso' || !legacyAsoAlert) return;
+    try {
+      const response = await fetch(KYUSHU_STATUS_URL, { cache: 'no-store' });
+      if (!response.ok) throw new Error(`kyushu status HTTP ${response.status}`);
+      const data = await response.json();
+      const status = data.live_status?.volcano;
+      const validUntil = status?.valid_until ? new Date(status.valid_until).getTime() : 0;
+      const fresh = status?.status === 'VERIFIED' && validUntil > Date.now();
+
+      if (!fresh) {
+        legacyAsoAlert.innerHTML = `
+          <div>STATUS · STALE<br><b>再確認が必要</b></div>
+          <div>保存済みの火山情報は有効期限を超えています。古い値を CURRENT として表示しません。 <a href="${escapeHtml(status?.source_url || 'https://www.jma.go.jp/bosai/volcano/')}" target="_blank" rel="noopener">気象庁の最新情報</a>を確認してください。</div>`;
+        return;
+      }
+
+      const checked = new Intl.DateTimeFormat('ja-JP', {
+        month: 'numeric', day: 'numeric', hour: '2-digit', minute: '2-digit', timeZone: 'Asia/Tokyo',
+      }).format(new Date(status.checked_at));
+      legacyAsoAlert.innerHTML = `
+        <div>CHECKED · ${escapeHtml(checked)}<br><b>${escapeHtml(status.label)}</b></div>
+        <div>${escapeHtml(status.summary)} <a href="${escapeHtml(status.source_url)}" target="_blank" rel="noopener">気象庁</a> / <a href="${escapeHtml(status.local_source_url)}" target="_blank" rel="noopener">阿蘇市</a>。有効期限を超えた場合は自動的に再確認表示へ切り替えます。</div>`;
+    } catch (error) {
+      console.error('Aso live status load failed', error);
+      legacyAsoAlert.innerHTML = '<div>STATUS · ERROR<br><b>再確認が必要</b></div><div>最新状態を取得できません。古い値には戻しません。 <a href="https://www.jma.go.jp/bosai/volcano/" target="_blank" rel="noopener">気象庁の火山情報</a>を確認してください。</div>';
+    }
+  }
 
   async function loadStructure() {
     const response = await fetch(STRUCTURE_URL, { cache: 'no-cache' });
@@ -47,6 +82,7 @@
     if (!activePrimary) throw new Error(`primary parent is unresolved: ${activePage.parentId || activePage.id}`);
 
     document.body.classList.add(`ww-route-${activePage.id}`);
+    void refreshAsoAlert(activePage);
 
     const navLabel = (route) => route.id === 'map' ? '地図' : route.label;
     const global = document.createElement('div');
