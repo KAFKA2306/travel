@@ -1,5 +1,9 @@
 (() => {
   const BASE = '/travel';
+  const relatedStyles = document.createElement('link');
+  relatedStyles.rel = 'stylesheet';
+  relatedStyles.href = `${BASE}/related-links.css`;
+  document.head.append(relatedStyles);
 
   // Primary navigation is intentionally fixed. New content must belong to one
   // of these sections instead of creating another top-level navigation item.
