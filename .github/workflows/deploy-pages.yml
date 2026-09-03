@@ -47,6 +47,9 @@ jobs:
           test -s dist/guides/index.html
           test -s dist/shenzhen/index.html
           test -s dist/sitemap/index.html
+          test -s dist/kyushu-2026/index.html
+          test -s dist/kyushu-2026/app.js
+          test -s dist/kyushu-2026/styles.css
           test -s dist/data/site-areas.json
           test -s dist/data/official-content.json
           test -s dist/data/official-content-expansion.json
@@ -59,6 +62,8 @@ jobs:
           grep -q '旅程ワークスペース' dist/planner/index.html
           grep -q '公式コンテンツ・ネットワーク' dist/official/index.html
           grep -q 'official-content-growth.json' dist/official/index.html
+          grep -q 'KYUSHU 2026' dist/kyushu-2026/index.html
+          grep -q '../data/kyushu-crossing-2026-11.json' dist/kyushu-2026/app.js
           node --input-type=module <<'NODE'
           import { readFile } from 'node:fs/promises';
           const content = JSON.parse(await readFile('dist/data/official-content.json', 'utf8'));
@@ -140,6 +145,11 @@ jobs:
               --output "$published"
             cmp "$source" "$published"
           done
+
+      - name: Verify Kyushu roadtrip runtime
+        env:
+          SITE_URL: https://kafka2306.github.io/travel
+        run: node scripts/verify-kyushu-page.mjs
 
       - name: Capture desktop and mobile screenshots
         id: capture
