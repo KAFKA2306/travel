@@ -23,11 +23,19 @@ try {
     throw new Error(`Kyushu page returned HTTP ${response?.status() ?? 'n/a'}`)
   }
 
+  await page.getByText(/PREP \/ DAY PREVIEW|TODAY|TRIP RECORD/).first().waitFor({ state: 'visible', timeout: 15_000 })
+  await page.getByText('NEXT', { exact: true }).waitFor({ state: 'visible', timeout: 10_000 })
+  await page.getByText('DEADLINE', { exact: true }).waitFor({ state: 'visible', timeout: 10_000 })
+  await page.getByText('PLAN B', { exact: true }).waitFor({ state: 'visible', timeout: 10_000 })
+  await page.getByText(/NAVIGATE · ナビ開始/).waitFor({ state: 'visible', timeout: 10_000 })
   await page.getByRole('heading', { name: /熊本から別府へ/ }).waitFor({ state: 'visible', timeout: 15_000 })
   await page.getByText('621–671', { exact: true }).waitFor({ state: 'visible', timeout: 10_000 })
   await page.getByText('万田坑', { exact: true }).first().waitFor({ state: 'visible', timeout: 10_000 })
   await page.getByText('三角西港', { exact: true }).first().waitFor({ state: 'visible', timeout: 10_000 })
   await page.getByText('天草の﨑津集落', { exact: true }).first().waitFor({ state: 'visible', timeout: 10_000 })
+
+  await page.getByRole('tab', { name: /DAY 4/ }).click()
+  await page.getByText(/17:45 乗船手続き完了/).waitFor({ state: 'visible', timeout: 10_000 })
 
   const related = page.getByRole('navigation', { name: '関連ページ' })
   await related.waitFor({ state: 'visible', timeout: 10_000 })
@@ -48,12 +56,30 @@ try {
     throw new Error(`runtime errors: ${JSON.stringify({ consoleErrors, pageErrors })}`)
   }
 
+  const asoPage = await context.newPage()
+  const asoErrors = []
+  asoPage.on('console', (message) => {
+    if (message.type() === 'error') asoErrors.push(message.text())
+  })
+  const asoResponse = await asoPage.goto(`${baseUrl}/aso-2026/`, { waitUntil: 'domcontentloaded', timeout: 30_000 })
+  if (!asoResponse || asoResponse.status() >= 400) throw new Error(`Aso page returned HTTP ${asoResponse?.status() ?? 'n/a'}`)
+  const alert = asoPage.locator('.alert')
+  await alert.waitFor({ state: 'visible', timeout: 15_000 })
+  await asoPage.waitForTimeout(500)
+  const alertText = await alert.innerText()
+  if (alertText.includes('噴火警戒レベル3')) throw new Error(`legacy Aso CURRENT survived: ${alertText}`)
+  if (!/噴火警戒レベル2|再確認が必要/.test(alertText)) throw new Error(`Aso freshness state is unclear: ${alertText}`)
+  if (asoErrors.length) throw new Error(`Aso runtime errors: ${JSON.stringify(asoErrors)}`)
+  await asoPage.close()
+
   console.log(JSON.stringify({
     url,
     http: response.status(),
     ...metrics,
     worldHeritageCards: 3,
     relatedLinksVerified: 4,
+    executionFlowVerified: ['NEXT', 'NAVIGATE', 'DEADLINE', 'PLAN B'],
+    asoLegacyCurrentRemoved: true,
   }, null, 2))
 } finally {
   await context.close()

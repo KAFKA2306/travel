@@ -1,6 +1,7 @@
 {
   "trip_plan_issue": 45,
-  "checked_at": "2026-09-03",
+  "execution_issue": 82,
+  "checked_at": "2026-09-03T23:06:00+09:00",
   "target_start_date": "2026-11-20",
   "target_end_date": "2026-11-24",
   "title": "熊本・天草・阿蘇・大分 世界遺産ロードトリップ",
@@ -24,7 +25,9 @@
     "pickup": "阿蘇くまもと空港",
     "return": "別府駅周辺",
     "one_way": true,
-    "exact_vehicle_and_fee_confirmed": false
+    "exact_vehicle_and_fee_confirmed": false,
+    "status": "UNVERIFIED",
+    "next_action": "営業所・車種・県外乗捨料金・返却締切を予約実データで確定する"
   },
   "distance": {
     "unit": "km",
@@ -33,6 +36,36 @@
     "status": "PLANNED_ESTIMATE",
     "note": "観光地内・別府市内の寄り道を含む計画値。予約時に利用する経路検索の実走行距離で更新する。"
   },
+  "live_status": {
+    "freshness_policy_hours": 24,
+    "volcano": {
+      "status": "VERIFIED",
+      "label": "噴火警戒レベル2（火口周辺規制）",
+      "summary": "阿蘇山上広場まで通行可能。中岳火口見学はできない。中岳第一火口から概ね1kmでは噴石・火砕流等に警戒する。",
+      "checked_at": "2026-09-03T23:06:00+09:00",
+      "valid_until": "2026-09-04T23:06:00+09:00",
+      "source_url": "https://www.jma.go.jp/jma/press/2609/01b/asosan_20260901.html",
+      "local_source_url": "https://www.city.aso.kumamoto.jp/2026/09/01/%E9%98%BF%E8%98%87%E7%81%AB%E5%B1%B1%E6%83%85%E5%A0%B1%E3%81%AB%E3%81%A4%E3%81%84%E3%81%A6/"
+    },
+    "weather": {
+      "status": "UNVERIFIED",
+      "checked_at": null,
+      "valid_until": null,
+      "source_url": "https://www.jma.go.jp/bosai/forecast/"
+    },
+    "road": {
+      "status": "UNVERIFIED",
+      "checked_at": null,
+      "valid_until": null,
+      "source_url": "https://www.jartic.or.jp/"
+    },
+    "ferry_operation": {
+      "status": "RECHECK_BEFORE_DEPARTURE",
+      "checked_at": null,
+      "valid_until": null,
+      "source_url": "https://www.ferry-sunflower.co.jp/"
+    }
+  },
   "world_heritage": [
     {
       "id": "manda-pit",
@@ -40,7 +73,14 @@
       "property": "明治日本の産業革命遺産 製鉄・製鋼、造船、石炭産業",
       "city": "熊本県荒尾市",
       "planned_date": "2026-11-20",
-      "official_url": "https://www.city.arao.lg.jp/kurashi/shisetsu/mandakou/"
+      "official_url": "https://www.city.arao.lg.jp/kurashi/shisetsu/mandakou/page3244.html",
+      "opening_hours": "09:30–17:00",
+      "last_entry": "16:30",
+      "visit_minutes": 60,
+      "parking": "普通車72台",
+      "parking_status": "VERIFIED",
+      "fee": "大人・大学生410円",
+      "operations_checked_at": "2026-09-03"
     },
     {
       "id": "misumi-west-port",
@@ -48,7 +88,14 @@
       "property": "明治日本の産業革命遺産 製鉄・製鋼、造船、石炭産業",
       "city": "熊本県宇城市",
       "planned_date": "2026-11-20",
-      "official_url": "https://www.city.uki.kumamoto.jp/nishiko/"
+      "official_url": "https://ukitrip.city.uki.kumamoto.jp/sashiyori/785/",
+      "opening_hours": "公園内24時間 / 龍驤館09:00–17:00",
+      "last_entry": null,
+      "visit_minutes": 75,
+      "parking": "無料 約80台",
+      "parking_status": "VERIFIED",
+      "fee": "公園内無料 / 龍驤館 大人200円",
+      "operations_checked_at": "2026-09-03"
     },
     {
       "id": "sakitsu-village",
@@ -56,7 +103,14 @@
       "property": "長崎と天草地方の潜伏キリシタン関連遺産",
       "city": "熊本県天草市",
       "planned_date": "2026-11-21",
-      "official_url": "https://www.city.amakusa.kumamoto.jp/sakitsu-sekai/"
+      "official_url": "https://www.city.amakusa.kumamoto.jp/kiji00312/index.html",
+      "opening_hours": "ガイダンスセンター09:00–17:30",
+      "last_entry": null,
+      "visit_minutes": 90,
+      "parking": "﨑津集落ガイダンスセンター駐車場を利用。集落内の観光駐車場へ進入しない。",
+      "parking_status": "VERIFIED",
+      "fee": "集落散策無料",
+      "operations_checked_at": "2026-09-03"
     }
   ],
   "days": [
@@ -67,12 +121,20 @@
       "overnight": "天草",
       "distance_estimate_min": 208,
       "distance_estimate_max": 218,
+      "execution": {
+        "start": "阿蘇くまもと空港",
+        "next": "万田坑",
+        "planned_start": "09:00",
+        "next_arrival": "10:20",
+        "hard_deadline": "14:30 三角西港を出発",
+        "plan_b": "万田坑出発が11:45を超えたら三角西港の滞在を短縮し、天草到着を優先する。"
+      },
       "stops": [
-        { "time": "AM", "name": "伊丹 → 熊本", "type": "flight", "status": "UNVERIFIED_TIMETABLE" },
-        { "time": "09:00", "name": "阿蘇くまもと空港 レンタカー出発", "type": "car", "status": "PLANNED" },
-        { "time": "10:20", "name": "万田坑", "type": "world_heritage", "status": "PLANNED" },
-        { "time": "13:15", "name": "三角西港", "type": "world_heritage", "status": "PLANNED" },
-        { "time": "16:00", "name": "天草泊", "type": "stay", "status": "PLANNED" }
+        { "time": "AM", "name": "伊丹 → 熊本", "type": "flight", "status": "UNVERIFIED_TIMETABLE", "navigation_url": null },
+        { "time": "09:00", "name": "阿蘇くまもと空港 レンタカー出発", "type": "car", "status": "PLANNED", "navigation_url": "https://www.google.com/maps/dir/?api=1&destination=%E4%B8%87%E7%94%B0%E5%9D%91" },
+        { "time": "10:20–11:30", "name": "万田坑", "type": "world_heritage", "status": "PLANNED", "navigation_url": "https://www.google.com/maps/dir/?api=1&destination=%E4%B8%87%E7%94%B0%E5%9D%91", "operations_ref": "manda-pit" },
+        { "time": "13:15–14:30", "name": "三角西港", "type": "world_heritage", "status": "PLANNED", "navigation_url": "https://www.google.com/maps/dir/?api=1&destination=%E4%B8%89%E8%A7%92%E8%A5%BF%E6%B8%AF", "operations_ref": "misumi-west-port" },
+        { "time": "16:00", "name": "天草泊", "type": "stay", "status": "UNVERIFIED_BOOKING", "navigation_url": null }
       ]
     },
     {
@@ -82,11 +144,19 @@
       "overnight": "黒川温泉",
       "distance_estimate_min": 229,
       "distance_estimate_max": 249,
+      "execution": {
+        "start": "天草",
+        "next": "天草の﨑津集落",
+        "planned_start": "08:00",
+        "next_arrival": "09:00",
+        "hard_deadline": "11:00 﨑津を出発",
+        "plan_b": "﨑津出発が11:00を超えたら途中寄り道を追加せず、黒川温泉チェックインを優先する。"
+      },
       "stops": [
-        { "time": "08:00", "name": "天草の宿を出発", "type": "car", "status": "PLANNED" },
-        { "time": "09:00", "name": "天草の﨑津集落", "type": "world_heritage", "status": "PLANNED" },
-        { "time": "10:30", "name": "﨑津を出発", "type": "car", "status": "PLANNED" },
-        { "time": "15:30–16:00", "name": "黒川温泉", "type": "stay", "status": "PLANNED" }
+        { "time": "08:00", "name": "天草の宿を出発", "type": "car", "status": "PLANNED", "navigation_url": "https://www.google.com/maps/dir/?api=1&destination=%E5%B4%8E%E6%B4%A5%E9%9B%86%E8%90%BD%E3%82%AC%E3%82%A4%E3%83%80%E3%83%B3%E3%82%B9%E3%82%BB%E3%83%B3%E3%82%BF%E3%83%BC" },
+        { "time": "09:00–10:30", "name": "天草の﨑津集落", "type": "world_heritage", "status": "PLANNED", "navigation_url": "https://www.google.com/maps/dir/?api=1&destination=%E5%B4%8E%E6%B4%A5%E9%9B%86%E8%90%BD%E3%82%AC%E3%82%A4%E3%83%80%E3%83%B3%E3%82%B9%E3%82%BB%E3%83%B3%E3%82%BF%E3%83%BC", "operations_ref": "sakitsu-village" },
+        { "time": "10:30", "name": "﨑津を出発", "type": "car", "status": "PLANNED", "navigation_url": "https://www.google.com/maps/dir/?api=1&destination=%E9%BB%92%E5%B7%9D%E6%B8%A9%E6%B3%89" },
+        { "time": "15:30–16:00", "name": "黒川温泉", "type": "stay", "status": "UNVERIFIED_BOOKING", "navigation_url": null }
       ]
     },
     {
@@ -96,13 +166,21 @@
       "overnight": "由布院",
       "distance_estimate_min": 135,
       "distance_estimate_max": 145,
+      "execution": {
+        "start": "黒川温泉",
+        "next": "大観峰",
+        "planned_start": "08:30",
+        "next_arrival": "09:10",
+        "hard_deadline": "15:00 草千里を出発",
+        "plan_b": "阿蘇山上が規制・悪天候なら火口方面を追加せず、大観峰・阿蘇神社・草千里の安全に入れる地点だけで構成する。"
+      },
       "stops": [
-        { "time": "08:30", "name": "黒川温泉を出発", "type": "car", "status": "PLANNED" },
-        { "time": "09:10", "name": "大観峰", "type": "scenic", "status": "PLANNED" },
-        { "time": "10:30", "name": "阿蘇神社", "type": "culture", "status": "PLANNED" },
-        { "time": "13:00", "name": "草千里ヶ浜", "type": "scenic", "status": "PLANNED" },
-        { "time": "15:00", "name": "由布院へ出発", "type": "car", "status": "PLANNED" },
-        { "time": "17:00", "name": "由布院", "type": "stay", "status": "PLANNED" }
+        { "time": "08:30", "name": "黒川温泉を出発", "type": "car", "status": "PLANNED", "navigation_url": "https://www.google.com/maps/dir/?api=1&destination=%E5%A4%A7%E8%A6%B3%E5%B3%B0" },
+        { "time": "09:10–10:00", "name": "大観峰", "type": "scenic", "status": "PLANNED", "navigation_url": "https://www.google.com/maps/dir/?api=1&destination=%E5%A4%A7%E8%A6%B3%E5%B3%B0", "official_url": "https://www.asocity-kanko.jp/spot/daikanbou/" },
+        { "time": "10:30–11:15", "name": "阿蘇神社", "type": "culture", "status": "PLANNED", "navigation_url": "https://www.google.com/maps/dir/?api=1&destination=%E9%98%BF%E8%98%87%E7%A5%9E%E7%A4%BE", "parking": "第1・第2駐車場は24時間利用可能。普通車は入庫後30分無料、以降60分ごと100円。", "parking_status": "VERIFIED" },
+        { "time": "13:00–14:30", "name": "草千里ヶ浜", "type": "scenic", "status": "PLANNED", "navigation_url": "https://www.google.com/maps/dir/?api=1&destination=%E8%8D%89%E5%8D%83%E9%87%8C%E3%83%B6%E6%B5%9C", "official_url": "https://www.asocity-kanko.jp/spot/kusasenri/" },
+        { "time": "15:00", "name": "由布院へ出発", "type": "car", "status": "PLANNED", "navigation_url": "https://www.google.com/maps/dir/?api=1&destination=%E7%94%B1%E5%B8%83%E9%99%A2" },
+        { "time": "17:00", "name": "由布院", "type": "stay", "status": "UNVERIFIED_BOOKING", "navigation_url": null }
       ]
     },
     {
@@ -112,12 +190,22 @@
       "overnight": "さんふらわあ船中泊",
       "distance_estimate_min": 45,
       "distance_estimate_max": 65,
+      "execution": {
+        "start": "由布院",
+        "next": "別府",
+        "planned_start": "10:30",
+        "next_arrival": "11:00",
+        "hard_deadline": "17:45 乗船手続き完了（徒歩客・通常期の公式締切）",
+        "plan_b": "15:30までにレンタカー返却できない見込みなら別府観光を打ち切る。フェリー運休時は代替帰阪経路を当日情報から確認する。"
+      },
       "stops": [
-        { "time": "08:00–10:30", "name": "由布院散策", "type": "walk", "status": "PLANNED" },
-        { "time": "10:30", "name": "由布院を出発", "type": "car", "status": "PLANNED" },
-        { "time": "11:00", "name": "別府", "type": "city", "status": "PLANNED" },
-        { "time": "15:00–15:30", "name": "レンタカー返却", "type": "car", "status": "PLANNED" },
-        { "time": "18:45", "name": "別府 → 大阪 さんふらわあ", "type": "ferry", "status": "CONFIRMED_SCHEDULE" }
+        { "time": "08:00–10:30", "name": "由布院散策", "type": "walk", "status": "PLANNED", "navigation_url": null },
+        { "time": "10:30", "name": "由布院を出発", "type": "car", "status": "PLANNED", "navigation_url": "https://www.google.com/maps/dir/?api=1&destination=%E5%88%A5%E5%BA%9C%E9%A7%85" },
+        { "time": "11:00", "name": "別府", "type": "city", "status": "PLANNED", "navigation_url": null },
+        { "time": "15:00–15:30", "name": "レンタカー返却", "type": "car", "status": "UNVERIFIED_LOCATION", "navigation_url": null },
+        { "time": "16:15", "name": "さんふらわあ受付開始", "type": "ferry", "status": "CONFIRMED_SCHEDULE", "navigation_url": "https://www.google.com/maps/dir/?api=1&destination=%E3%81%95%E3%82%93%E3%81%B5%E3%82%89%E3%82%8F%E3%81%82%E3%82%BF%E3%83%BC%E3%83%9F%E3%83%8A%E3%83%AB%E5%88%A5%E5%BA%9C" },
+        { "time": "17:45", "name": "徒歩客の乗船手続き締切 / 乗船開始", "type": "deadline", "status": "CONFIRMED_SCHEDULE", "navigation_url": null },
+        { "time": "18:45", "name": "別府 → 大阪 さんふらわあ", "type": "ferry", "status": "CONFIRMED_SCHEDULE", "navigation_url": null }
       ]
     },
     {
@@ -127,51 +215,55 @@
       "overnight": null,
       "distance_estimate_min": 0,
       "distance_estimate_max": 0,
+      "execution": {
+        "start": "さんふらわあ",
+        "next": "大阪",
+        "planned_start": null,
+        "next_arrival": "06:35",
+        "hard_deadline": null,
+        "plan_b": "到着遅延時は当日の交通接続を再確認する。"
+      },
       "stops": [
-        { "time": "06:35", "name": "大阪着", "type": "arrival", "status": "CONFIRMED_SCHEDULE" }
+        { "time": "06:35", "name": "大阪着", "type": "arrival", "status": "CONFIRMED_SCHEDULE", "navigation_url": null }
       ]
     }
   ],
   "ferry": {
     "operator": "商船三井さんふらわあ",
     "route": "別府 → 大阪",
+    "terminal": "さんふらわあターミナル（別府）",
+    "terminal_address": "〒874-0918 別府市汐見町944-2",
     "departure": "2026-11-23T18:45:00+09:00",
     "arrival": "2026-11-24T06:35:00+09:00",
+    "checkin_start": "16:15",
+    "boarding_start": "17:45",
+    "walk_on_checkin_deadline": "17:45",
     "schedule_confirmed": true,
-    "official_url": "https://www.ferry-sunflower.co.jp/route/osaka-beppu/time/"
+    "booking_status": "UNVERIFIED",
+    "official_url": "https://www.ferry-sunflower.co.jp/route/osaka-beppu/time/",
+    "terminal_url": "https://www.ferry-sunflower.co.jp/route/osaka-beppu/boarding/"
   },
+  "stays": [
+    { "date": "2026-11-20", "area": "天草", "hotel": null, "status": "UNVERIFIED" },
+    { "date": "2026-11-21", "area": "黒川温泉", "hotel": null, "status": "UNVERIFIED" },
+    { "date": "2026-11-22", "area": "由布院", "hotel": null, "status": "UNVERIFIED" }
+  ],
   "primary_sources": [
-    {
-      "publisher": "荒尾市",
-      "subject": "万田坑",
-      "url": "https://www.city.arao.lg.jp/kurashi/shisetsu/mandakou/"
-    },
-    {
-      "publisher": "宇城市",
-      "subject": "世界文化遺産 三角西港",
-      "url": "https://www.city.uki.kumamoto.jp/nishiko/"
-    },
-    {
-      "publisher": "天草市",
-      "subject": "世界文化遺産 天草の﨑津集落",
-      "url": "https://www.city.amakusa.kumamoto.jp/sakitsu-sekai/"
-    },
-    {
-      "publisher": "UNESCO World Heritage Centre",
-      "subject": "Hidden Christian Sites in the Nagasaki Region",
-      "url": "https://whc.unesco.org/en/list/1495"
-    },
-    {
-      "publisher": "商船三井さんふらわあ",
-      "subject": "大阪-別府航路 時刻表",
-      "url": "https://www.ferry-sunflower.co.jp/route/osaka-beppu/time/"
-    }
+    { "publisher": "気象庁", "subject": "阿蘇山 噴火警戒レベル2への引下げ", "url": "https://www.jma.go.jp/jma/press/2609/01b/asosan_20260901.html" },
+    { "publisher": "阿蘇市", "subject": "阿蘇火山情報", "url": "https://www.city.aso.kumamoto.jp/2026/09/01/%E9%98%BF%E8%98%87%E7%81%AB%E5%B1%B1%E6%83%85%E5%A0%B1%E3%81%AB%E3%81%A4%E3%81%84%E3%81%A6/" },
+    { "publisher": "荒尾市", "subject": "万田坑", "url": "https://www.city.arao.lg.jp/kurashi/shisetsu/mandakou/page3244.html" },
+    { "publisher": "宇城市", "subject": "世界文化遺産 三角西港", "url": "https://ukitrip.city.uki.kumamoto.jp/sashiyori/785/" },
+    { "publisher": "天草市", "subject": "天草の﨑津集落 見学マナー", "url": "https://www.city.amakusa.kumamoto.jp/kiji00312/index.html" },
+    { "publisher": "UNESCO World Heritage Centre", "subject": "Hidden Christian Sites in the Nagasaki Region", "url": "https://whc.unesco.org/en/list/1495" },
+    { "publisher": "商船三井さんふらわあ", "subject": "大阪-別府航路 時刻・手続き", "url": "https://www.ferry-sunflower.co.jp/route/osaka-beppu/time/" }
   ],
   "verification": {
     "flight": "UNVERIFIED",
     "rental_car_exact_vehicle_and_one_way_fee": "UNVERIFIED",
     "exact_driving_distance": "UNVERIFIED",
-    "aso_volcanic_access": "RECHECK_BEFORE_DEPARTURE",
-    "ferry_schedule": "CONFIRMED"
+    "stays": "UNVERIFIED",
+    "aso_volcanic_access": "VERIFIED_2026-09-03",
+    "ferry_schedule": "CONFIRMED",
+    "ferry_booking": "UNVERIFIED"
   }
 }
