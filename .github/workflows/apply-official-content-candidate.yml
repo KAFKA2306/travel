@@ -16,7 +16,7 @@ permissions:
 
 jobs:
   prepare-and-validate:
-    if: github.event_name == 'push' || (github.event_name == 'pull_request' && github.event.action != 'closed' && github.event.pull_request.head.repo.full_name == github.repository)
+    if: github.event_name == 'push' || (github.event_name == 'pull_request' && github.event.action != 'closed' && github.event.pull_request.head.repo.full_name == github.repository && startsWith(github.event.pull_request.head.ref, 'automation/add-'))
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v4

@@ -29,6 +29,12 @@ try {
   await page.getByText('三角西港', { exact: true }).first().waitFor({ state: 'visible', timeout: 10_000 })
   await page.getByText('天草の﨑津集落', { exact: true }).first().waitFor({ state: 'visible', timeout: 10_000 })
 
+  const related = page.getByRole('navigation', { name: '関連ページ' })
+  await related.waitFor({ state: 'visible', timeout: 10_000 })
+  for (const label of ['阿蘇 Route Guide', '九州・さんふらわあ', '当日情報', 'エリア']) {
+    await related.getByRole('link', { name: new RegExp(label) }).waitFor({ state: 'visible', timeout: 10_000 })
+  }
+
   const metrics = await page.evaluate(() => ({
     width: document.documentElement.clientWidth,
     scrollWidth: document.documentElement.scrollWidth,
@@ -42,7 +48,13 @@ try {
     throw new Error(`runtime errors: ${JSON.stringify({ consoleErrors, pageErrors })}`)
   }
 
-  console.log(JSON.stringify({ url, http: response.status(), ...metrics, worldHeritageCards: 3 }, null, 2))
+  console.log(JSON.stringify({
+    url,
+    http: response.status(),
+    ...metrics,
+    worldHeritageCards: 3,
+    relatedLinksVerified: 4,
+  }, null, 2))
 } finally {
   await context.close()
   await browser.close()

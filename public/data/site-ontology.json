@@ -1,5 +1,5 @@
 {
-  "version": "2026-08-11",
+  "version": "2026-09-03",
   "baseUrl": "https://kafka2306.github.io/travel",
   "principle": "The root is a decision portal. Itineraries, destinations, official content, routes and live operational information are separate but connected layers. Official content collections grow only through validated, non-duplicate regions backed by primary sources and complete lifecycle coverage.",
   "navigation": {
@@ -9,7 +9,7 @@
       "plans",
       "live"
     ],
-    "rule": "Primary navigation is fixed to four sections. Feature pages are children of an area or plan."
+    "rule": "Primary navigation is fixed to four sections. Feature pages are children of an area or plan. Related views link laterally without adding top-level navigation."
   },
   "classes": [
     {
@@ -140,6 +140,12 @@
       "predicate": "publishedBy",
       "to": "EvidenceSource",
       "label": "ビジュアルの配信主体を記録する"
+    },
+    {
+      "from": "SiteView",
+      "predicate": "relatedTo",
+      "to": "SiteView",
+      "label": "同じ旅行判断に必要な画面を相互リンクする"
     }
   ],
   "views": [
@@ -182,7 +188,12 @@
       "label": "大阪・京都 ミュージアム",
       "primaryClass": "Destination",
       "level": 2,
-      "purpose": "大阪・京都14施設を公式一次情報、休館状態、テーマ、地図で比較する。"
+      "purpose": "大阪・京都14施設を公式一次情報、休館状態、テーマ、地図で比較する。",
+      "relatedViewIds": [
+        "areas",
+        "official",
+        "live"
+      ]
     },
     {
       "path": "/travel/official/",
@@ -191,7 +202,12 @@
       "label": "公式コンテンツ・ネットワーク",
       "primaryClass": "OfficialContentCollection",
       "level": 2,
-      "purpose": "地域ごとの物語、解説、モデルコース、地図、ガイド、イベント、ライブ情報を旅行段階ごとに紹介する。"
+      "purpose": "地域ごとの物語、解説、モデルコース、地図、ガイド、イベント、ライブ情報を旅行段階ごとに紹介する。",
+      "relatedViewIds": [
+        "areas",
+        "live",
+        "sitemap"
+      ]
     },
     {
       "path": "/travel/heat-escape-2026/",
@@ -200,7 +216,69 @@
       "label": "猛暑回避10プラン",
       "primaryClass": "Decision",
       "level": 2,
-      "purpose": "10候補を日数、交通、予約順、撤退条件で比較する。"
+      "purpose": "10候補を日数、交通、予約順、撤退条件で比較する。",
+      "relatedViewIds": [
+        "areas",
+        "live",
+        "kada-sea-daytrip"
+      ]
+    },
+    {
+      "path": "/travel/kyushu-2026/",
+      "id": "kyushu-roadtrip",
+      "parentId": "plans",
+      "label": "九州世界遺産ロードトリップ",
+      "primaryClass": "TripPlan",
+      "level": 2,
+      "purpose": "熊本・天草・阿蘇・大分をレンタカーで一方向に横断し、世界文化遺産3構成資産と日別走行負荷を確認する。",
+      "relatedViewIds": [
+        "aso",
+        "kyushu-ferry",
+        "live",
+        "areas"
+      ]
+    },
+    {
+      "path": "/travel/kyushu-ferry-2026/",
+      "id": "kyushu-ferry",
+      "parentId": "plans",
+      "label": "九州・さんふらわあ",
+      "primaryClass": "Route",
+      "level": 2,
+      "purpose": "大阪と九州を結ぶフェリーを軸に、別府・鹿児島方面の旅行案と公式情報を比較する。",
+      "relatedViewIds": [
+        "kyushu-roadtrip",
+        "aso",
+        "live"
+      ]
+    },
+    {
+      "path": "/travel/aso-2026/",
+      "id": "aso",
+      "parentId": "plans",
+      "label": "阿蘇 Route Guide",
+      "primaryClass": "Destination",
+      "level": 2,
+      "purpose": "阿蘇の公式動画・写真・火山規制・見どころを横断旅程と接続する。",
+      "relatedViewIds": [
+        "kyushu-roadtrip",
+        "kyushu-ferry",
+        "live"
+      ]
+    },
+    {
+      "path": "/travel/kada-sea-daytrip-2026/",
+      "id": "kada-sea-daytrip",
+      "parentId": "plans",
+      "label": "加太 海の日帰り",
+      "primaryClass": "TripPlan",
+      "level": 2,
+      "purpose": "大阪から海へ短時間で移動する日帰り旅行案を確認する。",
+      "relatedViewIds": [
+        "heat-escape",
+        "areas",
+        "live"
+      ]
     },
     {
       "path": "/travel/shenzhen/",
@@ -209,7 +287,12 @@
       "label": "深圳 Route Lab",
       "primaryClass": "Route",
       "level": 2,
-      "purpose": "国際・複合交通の経路候補と失敗条件を比較する。"
+      "purpose": "国際・複合交通の経路候補と失敗条件を比較する。",
+      "relatedViewIds": [
+        "areas",
+        "live",
+        "sitemap"
+      ]
     },
     {
       "path": "/travel/sitemap/",
@@ -218,7 +301,12 @@
       "label": "サイト構造",
       "primaryClass": "SiteView",
       "level": 2,
-      "purpose": "ページ、データ、エンティティ間の関係を可視化する。"
+      "purpose": "ページ、データ、エンティティ間の関係を可視化する。",
+      "relatedViewIds": [
+        "areas",
+        "plans",
+        "live"
+      ]
     }
   ]
 }
