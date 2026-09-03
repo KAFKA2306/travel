@@ -61,8 +61,9 @@ test('阿蘇火山情報は有効期限を持ち、古いCURRENTへの復帰を�
   assert.match(volcano.source_url, /jma\.go\.jp/)
   assert.match(volcano.local_source_url, /city\.aso\.kumamoto\.jp/)
   assert.match(shell, /KYUSHU_STATUS_URL/)
+  assert.match(shell, /STATUS · STALE/)
+  assert.match(shell, /有効期限を超えています/)
   assert.match(shell, /古い値には戻しません/)
-  assert.match(shell, /情報が古い/)
 })
 
 test('フェリーは出港時刻ではなく手続き締切まで保持する', () => {
