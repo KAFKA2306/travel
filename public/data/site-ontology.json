@@ -3,50 +3,310 @@
   "baseUrl": "https://kafka2306.github.io/travel",
   "principle": "The root is a decision portal. Itineraries, destinations, official content, routes and live operational information are separate but connected layers. Official content collections grow only through validated, non-duplicate regions backed by primary sources and complete lifecycle coverage.",
   "navigation": {
-    "primary": ["map", "areas", "plans", "live"],
+    "primary": [
+      "map",
+      "areas",
+      "plans",
+      "live"
+    ],
     "rule": "Primary navigation is fixed to four sections. Feature pages are children of an area or plan. Related views link laterally without adding top-level navigation."
   },
   "classes": [
-    {"id":"AreaHub","label":"地域ハブ","description":"複数の旅先、施設、旅程、当日情報を地理単位で束ねる入口。"},
-    {"id":"Decision","label":"判断","description":"日数、予算、移動負荷、気象リスクを踏まえた選択単位。"},
-    {"id":"TripPlan","label":"旅程","description":"出発地、日付、人数、交通、宿泊、撤退条件を持つ実行可能な計画。"},
-    {"id":"Destination","label":"旅先","description":"訪問対象となる地域、景勝地、施設または交通拠点。"},
-    {"id":"OfficialContentCollection","label":"公式コンテンツ群","description":"地域の物語、解説、モデルコース、地図、ガイド、イベント、ライブ情報を一次発信主体ごとに束ねた集合。"},
-    {"id":"LifecycleStage","label":"旅行段階","description":"発見、理解、計画、体験、当日確認という旅行者の意思決定段階。"},
-    {"id":"Route","label":"経路","description":"出発地から旅先までをつなぐ交通手段と接続条件。"},
-    {"id":"GuideHub","label":"当日情報","description":"運行、営業、予約、天気など訪問直前・当日に使う一次情報への入口。"},
-    {"id":"EvidenceSource","label":"根拠","description":"旅程、解説、時刻、料金、営業、アクセスを支える公式情報。"},
-    {"id":"MediaAsset","label":"公式ビジュアル","description":"公式サイト、公式フォトライブラリー、公式チャンネルが配信する画像またはプレビュー。"},
-    {"id":"SiteView","label":"画面","description":"利用者の目的別に上記エンティティを組み合わせるUI。"}
+    {
+      "id": "AreaHub",
+      "label": "地域ハブ",
+      "description": "複数の旅先、施設、旅程、当日情報を地理単位で束ねる入口。"
+    },
+    {
+      "id": "Decision",
+      "label": "判断",
+      "description": "日数、予算、移動負荷、気象リスクを踏まえた選択単位。"
+    },
+    {
+      "id": "TripPlan",
+      "label": "旅程",
+      "description": "出発地、日付、人数、交通、宿泊、撤退条件を持つ実行可能な計画。"
+    },
+    {
+      "id": "Destination",
+      "label": "旅先",
+      "description": "訪問対象となる地域、景勝地、施設または交通拠点。"
+    },
+    {
+      "id": "OfficialContentCollection",
+      "label": "公式コンテンツ群",
+      "description": "地域の物語、解説、モデルコース、地図、ガイド、イベント、ライブ情報を一次発信主体ごとに束ねた集合。"
+    },
+    {
+      "id": "LifecycleStage",
+      "label": "旅行段階",
+      "description": "発見、理解、計画、体験、当日確認という旅行者の意思決定段階。"
+    },
+    {
+      "id": "Route",
+      "label": "経路",
+      "description": "出発地から旅先までをつなぐ交通手段と接続条件。"
+    },
+    {
+      "id": "GuideHub",
+      "label": "当日情報",
+      "description": "運行、営業、予約、天気など訪問直前・当日に使う一次情報への入口。"
+    },
+    {
+      "id": "EvidenceSource",
+      "label": "根拠",
+      "description": "旅程、解説、時刻、料金、営業、アクセスを支える公式情報。"
+    },
+    {
+      "id": "MediaAsset",
+      "label": "公式ビジュアル",
+      "description": "公式サイト、公式フォトライブラリー、公式チャンネルが配信する画像またはプレビュー。"
+    },
+    {
+      "id": "SiteView",
+      "label": "画面",
+      "description": "利用者の目的別に上記エンティティを組み合わせるUI。"
+    }
   ],
   "relations": [
-    {"from":"SiteView","predicate":"startsWith","to":"AreaHub","label":"ホームは地図と地域ハブから始める"},
-    {"from":"AreaHub","predicate":"contains","to":"Destination","label":"地域が旅先と施設を束ねる"},
-    {"from":"AreaHub","predicate":"contains","to":"TripPlan","label":"地域が関連旅程を束ねる"},
-    {"from":"Decision","predicate":"selects","to":"TripPlan","label":"判断が旅程を選ぶ"},
-    {"from":"TripPlan","predicate":"targets","to":"Destination","label":"旅程が旅先を対象にする"},
-    {"from":"TripPlan","predicate":"uses","to":"Route","label":"旅程が経路を使う"},
-    {"from":"TripPlan","predicate":"supportedBy","to":"EvidenceSource","label":"旅程が根拠に支えられる"},
-    {"from":"Destination","predicate":"interpretedBy","to":"OfficialContentCollection","label":"旅先を公式の物語・地図・体験から理解する"},
-    {"from":"OfficialContentCollection","predicate":"organizedBy","to":"LifecycleStage","label":"公式コンテンツを旅行者の意思決定段階で再編集する"},
-    {"from":"Destination","predicate":"describedBy","to":"GuideHub","label":"旅先が当日情報で補完される"},
-    {"from":"Destination","predicate":"depictedBy","to":"MediaAsset","label":"旅先が公式ビジュアルで表現される"},
-    {"from":"MediaAsset","predicate":"publishedBy","to":"EvidenceSource","label":"ビジュアルの配信主体を記録する"},
-    {"from":"SiteView","predicate":"relatedTo","to":"SiteView","label":"同じ旅行判断に必要な画面を相互リンクする"}
+    {
+      "from": "SiteView",
+      "predicate": "startsWith",
+      "to": "AreaHub",
+      "label": "ホームは地図と地域ハブから始める"
+    },
+    {
+      "from": "AreaHub",
+      "predicate": "contains",
+      "to": "Destination",
+      "label": "地域が旅先と施設を束ねる"
+    },
+    {
+      "from": "AreaHub",
+      "predicate": "contains",
+      "to": "TripPlan",
+      "label": "地域が関連旅程を束ねる"
+    },
+    {
+      "from": "Decision",
+      "predicate": "selects",
+      "to": "TripPlan",
+      "label": "判断が旅程を選ぶ"
+    },
+    {
+      "from": "TripPlan",
+      "predicate": "targets",
+      "to": "Destination",
+      "label": "旅程が旅先を対象にする"
+    },
+    {
+      "from": "TripPlan",
+      "predicate": "uses",
+      "to": "Route",
+      "label": "旅程が経路を使う"
+    },
+    {
+      "from": "TripPlan",
+      "predicate": "supportedBy",
+      "to": "EvidenceSource",
+      "label": "旅程が根拠に支えられる"
+    },
+    {
+      "from": "Destination",
+      "predicate": "interpretedBy",
+      "to": "OfficialContentCollection",
+      "label": "旅先を公式の物語・地図・体験から理解する"
+    },
+    {
+      "from": "OfficialContentCollection",
+      "predicate": "organizedBy",
+      "to": "LifecycleStage",
+      "label": "公式コンテンツを旅行者の意思決定段階で再編集する"
+    },
+    {
+      "from": "Destination",
+      "predicate": "describedBy",
+      "to": "GuideHub",
+      "label": "旅先が当日情報で補完される"
+    },
+    {
+      "from": "Destination",
+      "predicate": "depictedBy",
+      "to": "MediaAsset",
+      "label": "旅先が公式ビジュアルで表現される"
+    },
+    {
+      "from": "MediaAsset",
+      "predicate": "publishedBy",
+      "to": "EvidenceSource",
+      "label": "ビジュアルの配信主体を記録する"
+    },
+    {
+      "from": "SiteView",
+      "predicate": "relatedTo",
+      "to": "SiteView",
+      "label": "同じ旅行判断に必要な画面を相互リンクする"
+    }
   ],
   "views": [
-    {"path":"/travel/","id":"map","label":"全体地図","primaryClass":"AreaHub","level":0,"purpose":"登録済み地域の位置関係を最初に見渡し、地域ハブへ移動する。"},
-    {"path":"/travel/destinations/","id":"areas","label":"エリア","primaryClass":"AreaHub","level":1,"purpose":"地域と旅先を比較し、地域に紐づく施設・旅程へ移動する。"},
-    {"path":"/travel/planner/","id":"plans","label":"旅程","primaryClass":"TripPlan","level":1,"purpose":"保存済み旅程、候補地、地図、根拠を同じ編集画面で扱う。"},
-    {"path":"/travel/guides/","id":"live","label":"当日情報","primaryClass":"GuideHub","level":1,"purpose":"旅行直前・当日に使う運行、時刻、営業、天気の公式ページへ接続する。"},
-    {"path":"/travel/kansai-museums/","id":"kansai-museums","parentId":"areas","label":"大阪・京都 ミュージアム","primaryClass":"Destination","level":2,"purpose":"大阪・京都14施設を公式一次情報、休館状態、テーマ、地図で比較する。","relatedViewIds":["areas","official","live"]},
-    {"path":"/travel/official/","id":"official","parentId":"areas","label":"公式コンテンツ・ネットワーク","primaryClass":"OfficialContentCollection","level":2,"purpose":"地域ごとの物語、解説、モデルコース、地図、ガイド、イベント、ライブ情報を旅行段階ごとに紹介する。","relatedViewIds":["areas","live","sitemap"]},
-    {"path":"/travel/heat-escape-2026/","id":"heat-escape","parentId":"plans","label":"猛暑回避10プラン","primaryClass":"Decision","level":2,"purpose":"10候補を日数、交通、予約順、撤退条件で比較する。","relatedViewIds":["areas","live","kada-sea-daytrip"]},
-    {"path":"/travel/kyushu-2026/","id":"kyushu-roadtrip","parentId":"plans","label":"九州世界遺産ロードトリップ","primaryClass":"TripPlan","level":2,"purpose":"熊本・天草・阿蘇・大分をレンタカーで一方向に横断し、世界文化遺産3構成資産と日別走行負荷を確認する。","relatedViewIds":["aso","kyushu-ferry","live","areas"]},
-    {"path":"/travel/kyushu-ferry-2026/","id":"kyushu-ferry","parentId":"plans","label":"九州・さんふらわあ","primaryClass":"Route","level":2,"purpose":"大阪と九州を結ぶフェリーを軸に、別府・鹿児島方面の旅行案と公式情報を比較する。","relatedViewIds":["kyushu-roadtrip","aso","live"]},
-    {"path":"/travel/aso-2026/","id":"aso","parentId":"plans","label":"阿蘇 Route Guide","primaryClass":"Destination","level":2,"purpose":"阿蘇の公式動画・写真・火山規制・見どころを横断旅程と接続する。","relatedViewIds":["kyushu-roadtrip","kyushu-ferry","live"]},
-    {"path":"/travel/kada-sea-daytrip-2026/","id":"kada-sea-daytrip","parentId":"plans","label":"加太 海の日帰り","primaryClass":"TripPlan","level":2,"purpose":"大阪から海へ短時間で移動する日帰り旅行案を確認する。","relatedViewIds":["heat-escape","areas","live"]},
-    {"path":"/travel/shenzhen/","id":"shenzhen","parentId":"plans","label":"深圳 Route Lab","primaryClass":"Route","level":2,"purpose":"国際・複合交通の経路候補と失敗条件を比較する。","relatedViewIds":["areas","live","sitemap"]},
-    {"path":"/travel/sitemap/","id":"sitemap","parentId":"map","label":"サイト構造","primaryClass":"SiteView","level":2,"purpose":"ページ、データ、エンティティ間の関係を可視化する。","relatedViewIds":["areas","plans","live"]}
+    {
+      "path": "/travel/",
+      "id": "map",
+      "label": "全体地図",
+      "primaryClass": "AreaHub",
+      "level": 0,
+      "purpose": "登録済み地域の位置関係を最初に見渡し、地域ハブへ移動する。"
+    },
+    {
+      "path": "/travel/destinations/",
+      "id": "areas",
+      "label": "エリア",
+      "primaryClass": "AreaHub",
+      "level": 1,
+      "purpose": "地域と旅先を比較し、地域に紐づく施設・旅程へ移動する。"
+    },
+    {
+      "path": "/travel/planner/",
+      "id": "plans",
+      "label": "旅程",
+      "primaryClass": "TripPlan",
+      "level": 1,
+      "purpose": "保存済み旅程、候補地、地図、根拠を同じ編集画面で扱う。"
+    },
+    {
+      "path": "/travel/guides/",
+      "id": "live",
+      "label": "当日情報",
+      "primaryClass": "GuideHub",
+      "level": 1,
+      "purpose": "旅行直前・当日に使う運行、時刻、営業、天気の公式ページへ接続する。"
+    },
+    {
+      "path": "/travel/kansai-museums/",
+      "id": "kansai-museums",
+      "parentId": "areas",
+      "label": "大阪・京都 ミュージアム",
+      "primaryClass": "Destination",
+      "level": 2,
+      "purpose": "大阪・京都14施設を公式一次情報、休館状態、テーマ、地図で比較する。",
+      "relatedViewIds": [
+        "areas",
+        "official",
+        "live"
+      ]
+    },
+    {
+      "path": "/travel/official/",
+      "id": "official",
+      "parentId": "areas",
+      "label": "公式コンテンツ・ネットワーク",
+      "primaryClass": "OfficialContentCollection",
+      "level": 2,
+      "purpose": "地域ごとの物語、解説、モデルコース、地図、ガイド、イベント、ライブ情報を旅行段階ごとに紹介する。",
+      "relatedViewIds": [
+        "areas",
+        "live",
+        "sitemap"
+      ]
+    },
+    {
+      "path": "/travel/heat-escape-2026/",
+      "id": "heat-escape",
+      "parentId": "plans",
+      "label": "猛暑回避10プラン",
+      "primaryClass": "Decision",
+      "level": 2,
+      "purpose": "10候補を日数、交通、予約順、撤退条件で比較する。",
+      "relatedViewIds": [
+        "areas",
+        "live",
+        "kada-sea-daytrip"
+      ]
+    },
+    {
+      "path": "/travel/kyushu-2026/",
+      "id": "kyushu-roadtrip",
+      "parentId": "plans",
+      "label": "九州世界遺産ロードトリップ",
+      "primaryClass": "TripPlan",
+      "level": 2,
+      "purpose": "熊本・天草・阿蘇・大分をレンタカーで一方向に横断し、世界文化遺産3構成資産と日別走行負荷を確認する。",
+      "relatedViewIds": [
+        "aso",
+        "kyushu-ferry",
+        "live",
+        "areas"
+      ]
+    },
+    {
+      "path": "/travel/kyushu-ferry-2026/",
+      "id": "kyushu-ferry",
+      "parentId": "plans",
+      "label": "九州・さんふらわあ",
+      "primaryClass": "Route",
+      "level": 2,
+      "purpose": "大阪と九州を結ぶフェリーを軸に、別府・鹿児島方面の旅行案と公式情報を比較する。",
+      "relatedViewIds": [
+        "kyushu-roadtrip",
+        "aso",
+        "live"
+      ]
+    },
+    {
+      "path": "/travel/aso-2026/",
+      "id": "aso",
+      "parentId": "plans",
+      "label": "阿蘇 Route Guide",
+      "primaryClass": "Destination",
+      "level": 2,
+      "purpose": "阿蘇の公式動画・写真・火山規制・見どころを横断旅程と接続する。",
+      "relatedViewIds": [
+        "kyushu-roadtrip",
+        "kyushu-ferry",
+        "live"
+      ]
+    },
+    {
+      "path": "/travel/kada-sea-daytrip-2026/",
+      "id": "kada-sea-daytrip",
+      "parentId": "plans",
+      "label": "加太 海の日帰り",
+      "primaryClass": "TripPlan",
+      "level": 2,
+      "purpose": "大阪から海へ短時間で移動する日帰り旅行案を確認する。",
+      "relatedViewIds": [
+        "heat-escape",
+        "areas",
+        "live"
+      ]
+    },
+    {
+      "path": "/travel/shenzhen/",
+      "id": "shenzhen",
+      "parentId": "plans",
+      "label": "深圳 Route Lab",
+      "primaryClass": "Route",
+      "level": 2,
+      "purpose": "国際・複合交通の経路候補と失敗条件を比較する。",
+      "relatedViewIds": [
+        "areas",
+        "live",
+        "sitemap"
+      ]
+    },
+    {
+      "path": "/travel/sitemap/",
+      "id": "sitemap",
+      "parentId": "map",
+      "label": "サイト構造",
+      "primaryClass": "SiteView",
+      "level": 2,
+      "purpose": "ページ、データ、エンティティ間の関係を可視化する。",
+      "relatedViewIds": [
+        "areas",
+        "plans",
+        "live"
+      ]
+    }
   ]
 }
