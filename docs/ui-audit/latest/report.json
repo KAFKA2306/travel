@@ -1,5 +1,5 @@
 {
-  "generatedAt": "2026-09-03T13:56:57.501Z",
+  "generatedAt": "2026-09-03T14:31:58.885Z",
   "baseUrl": "https://kafka2306.github.io/travel",
   "results": [
     {
@@ -97,7 +97,7 @@
       "title": "公式コンテンツ・ネットワーク｜Wayweave",
       "width": 1440,
       "scrollWidth": 1440,
-      "height": 12175,
+      "height": 12142,
       "horizontalOverflow": false,
       "links": 197,
       "buttons": 7,
@@ -193,9 +193,9 @@
       "title": "熊本から、火山の真ん中へ。｜Wayweave",
       "width": 1440,
       "scrollWidth": 1440,
-      "height": 4086,
+      "height": 4117,
       "horizontalOverflow": false,
-      "links": 39,
+      "links": 40,
       "buttons": 1,
       "headings": 18,
       "brokenImages": [],
@@ -350,7 +350,9 @@
       "buttons": 56,
       "headings": 23,
       "brokenImages": [],
-      "pendingImages": [],
+      "pendingImages": [
+        "https://yamaguchi-tourism.jp/lsc/api/photo/?src=1700667"
+      ],
       "unlabeledButtons": 0,
       "unlabeledLinks": 0
     },
@@ -368,7 +370,7 @@
       "title": "公式コンテンツ・ネットワーク｜Wayweave",
       "width": 390,
       "scrollWidth": 390,
-      "height": 33759,
+      "height": 33891,
       "horizontalOverflow": false,
       "links": 197,
       "buttons": 7,
@@ -466,7 +468,7 @@
       "scrollWidth": 390,
       "height": 6745,
       "horizontalOverflow": false,
-      "links": 39,
+      "links": 40,
       "buttons": 1,
       "headings": 18,
       "brokenImages": [],
