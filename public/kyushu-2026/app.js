@@ -6,7 +6,7 @@ let selectedDayNumber = null
 let tripData = null
 
 function escapeHtml(value) {
-  return String(value)
+  return String(value ?? '')
     .replaceAll('&', '&amp;')
     .replaceAll('<', '&lt;')
     .replaceAll('>', '&gt;')
@@ -71,16 +71,22 @@ function freshness(status) {
   return { fresh, label: fresh ? 'CURRENT' : '情報が古い' }
 }
 
+function bookingBadge(status) {
+  if (status === 'BOOKED' || status === 'CONFIRMED') return '予約済み'
+  if (status === 'UNBOOKED') return '未予約'
+  return status || '未確認'
+}
+
 function renderExecution(data) {
   const day = data.days.find((item) => item.day === selectedDayNumber) || data.days[0]
   const phase = tripPhase(data)
   const volcanoFreshness = freshness(data.live_status?.volcano)
   const nextNav = day.stops.find((stop) => stop.navigation_url)?.navigation_url
   const unresolved = [
-    data.verification.flight === 'UNVERIFIED' ? '航空便' : null,
-    data.verification.rental_car_exact_vehicle_and_one_way_fee === 'UNVERIFIED' ? 'レンタカー' : null,
-    data.verification.stays === 'UNVERIFIED' ? '宿3泊' : null,
-    data.verification.ferry_booking === 'UNVERIFIED' ? 'フェリー予約' : null,
+    data.flight?.booking_status !== 'BOOKED' ? '航空便予約' : null,
+    data.rental_car?.booking_status !== 'BOOKED' || !data.rental_car?.exact_vehicle_and_fee_confirmed ? 'レンタカー予約・総額' : null,
+    data.stays?.some((stay) => stay.booking_status !== 'BOOKED') ? '宿3泊予約' : null,
+    data.ferry?.booking_status !== 'BOOKED' ? 'フェリー客室予約' : null,
   ].filter(Boolean)
 
   return `
@@ -132,7 +138,7 @@ function renderExecution(data) {
         </article>
       </div>
 
-      ${unresolved.length ? `<div class="unresolved-strip"><b>予約前に未確定:</b> ${unresolved.map(escapeHtml).join(' / ')}。確定していない値は旅行実行情報として扱いません。</div>` : ''}
+      ${unresolved.length ? `<div class="unresolved-strip"><b>予約前に未確定:</b> ${unresolved.map(escapeHtml).join(' / ')}。候補や時刻が確認済みでも、予約完了とは扱いません。</div>` : ''}
 
       <div class="day-runbook">
         <div class="section-head compact"><h2>この日の時系列</h2><p>ナビできる地点はその場から開けます。</p></div>
@@ -153,6 +159,7 @@ function render(data) {
   if (selectedDayNumber == null) selectedDayNumber = initialDay(data)
   const heritageNames = new Set(data.world_heritage.map((item) => item.name))
   const drivingDays = data.days.filter((day) => day.distance_estimate_max > 0)
+
   const routeNodes = data.route.map((name, index) => {
     const cssClass = routeClass(name, heritageNames)
     return `
@@ -201,10 +208,62 @@ function render(data) {
       <a href="${escapeHtml(item.official_url)}" target="_blank" rel="noreferrer">公式情報を開く ↗</a>
     </article>`).join('')
 
+  const flightCard = `
+    <article class="heritage-card">
+      <span class="heritage-index">FLIGHT · ${escapeHtml(bookingBadge(data.flight.booking_status))}</span>
+      <h3>${escapeHtml(data.flight.flight_number)} ${escapeHtml(data.flight.origin.iata)} → ${escapeHtml(data.flight.destination.iata)}</h3>
+      <p>${escapeHtml(formatDate(data.flight.date))} · ${escapeHtml(data.flight.departure)}発 → ${escapeHtml(data.flight.arrival)}着<br>時刻表確認済み / 運賃と予約は未確定</p>
+      <a href="${escapeHtml(data.flight.official_url)}" target="_blank" rel="noreferrer">JAL公式時刻表 ↗</a>
+    </article>`
+
+  const rentalCard = `
+    <article class="heritage-card">
+      <span class="heritage-index">RENTAL · ${escapeHtml(bookingBadge(data.rental_car.booking_status))}</span>
+      <h3>${escapeHtml(data.rental_car.provider)}</h3>
+      <p><b>受取</b> ${escapeHtml(data.rental_car.pickup.office)} · ${escapeHtml(data.rental_car.pickup.planned_time)}<br>${escapeHtml(data.rental_car.pickup.address)} · ${escapeHtml(data.rental_car.pickup.phone)}</p>
+      <div class="heritage-ops">
+        <span>受取営業 ${escapeHtml(data.rental_car.pickup.hours)}</span>
+        <span>返却 ${escapeHtml(data.rental_car.return.office)} · ${escapeHtml(data.rental_car.return.planned_time)}</span>
+        <span>返却営業 ${escapeHtml(data.rental_car.return.hours_on_2026_11_23)}</span>
+        <span>${escapeHtml(data.rental_car.return.terminal_access)}</span>
+        <span>乗捨: ${escapeHtml(data.rental_car.one_way_fee_rule)} / 正確な総額は未確定</span>
+      </div>
+      <a href="${escapeHtml(data.rental_car.return.official_url)}" target="_blank" rel="noreferrer">返却営業所 ↗</a>
+    </article>`
+
+  const stayCards = data.stays.map((stay, index) => `
+    <article class="heritage-card">
+      <span class="heritage-index">STAY ${index + 1} · ${escapeHtml(bookingBadge(stay.booking_status))}</span>
+      <h3>${escapeHtml(stay.hotel)}</h3>
+      <p>${escapeHtml(formatDate(stay.date))} · ${escapeHtml(stay.area)}<br>${escapeHtml(stay.address)} · ${escapeHtml(stay.phone)}</p>
+      <div class="heritage-ops">
+        <span>CHECK-IN ${escapeHtml(stay.checkin)}</span>
+        <span>最終 ${escapeHtml(stay.final_checkin)}</span>
+        <span>CHECK-OUT ${escapeHtml(stay.checkout)}</span>
+        <span>${escapeHtml(stay.parking)}</span>
+        <span>キャンセル ${escapeHtml(stay.cancellation_policy)}</span>
+      </div>
+      <a href="${escapeHtml(stay.official_url)}" target="_blank" rel="noreferrer">公式サイト ↗</a>
+    </article>`).join('')
+
+  const ferryCard = `
+    <article class="heritage-card">
+      <span class="heritage-index">FERRY · ${escapeHtml(bookingBadge(data.ferry.booking_status))}</span>
+      <h3>${escapeHtml(data.ferry.operator)} · ${escapeHtml(data.ferry.room_candidate)}</h3>
+      <p>${escapeHtml(formatDate(data.ferry.departure.slice(0, 10)))} · 受付 ${escapeHtml(data.ferry.checkin_start)} / 手続締切 ${escapeHtml(data.ferry.walk_on_checkin_deadline)} / 出港 18:45</p>
+      <div class="heritage-ops">
+        <span>${escapeHtml(data.ferry.terminal_address)}</span>
+        <span>予約受付開始 ${escapeHtml(data.ferry.reservation_opened_at)}</span>
+        <span>候補客室 ${escapeHtml(data.ferry.room_candidate)} / 空席・運賃は未確定</span>
+      </div>
+      <a href="${escapeHtml(data.ferry.fare_url)}" target="_blank" rel="noreferrer">予約・運賃確認 ↗</a>
+    </article>`
+
   const checks = [
     ['フェリー時刻', data.verification.ferry_schedule],
     ['フェリー予約', data.verification.ferry_booking],
     ['大阪→熊本 航空便', data.verification.flight],
+    ['レンタカー営業所', data.verification.rental_car_offices],
     ['レンタカー車種・乗捨料金', data.verification.rental_car_exact_vehicle_and_one_way_fee],
     ['宿3泊', data.verification.stays],
     ['正確な実走行距離', data.verification.exact_driving_distance],
@@ -245,6 +304,11 @@ function render(data) {
     </section>
 
     <section class="section">
+      <div class="section-head"><h2>予約・宿・返却</h2><p>候補の実在情報と予約状態を分離。未予約は未予約のまま表示する。</p></div>
+      <div class="heritage-grid">${flightCard}${rentalCard}${stayCards}${ferryCard}</div>
+    </section>
+
+    <section class="section">
       <div class="section-head"><h2>一本線で見る全行程</h2><p>地図ではなく、旅の進行方向を優先した順路図。</p></div>
       <div class="route-board"><div class="route-track">${routeNodes}</div></div>
     </section>
@@ -260,7 +324,7 @@ function render(data) {
     </section>
 
     <section class="section">
-      <div class="section-head"><h2>予約前に残っている確認</h2><p>未確認値は未確認のまま表示する。</p></div>
+      <div class="section-head"><h2>予約前に残っている確認</h2><p>確認済み候補と、実際の予約完了を混同しない。</p></div>
       <div class="status-board">
         <div><h3>Verification</h3><ul class="status-list">${checkRows}</ul></div>
         <div><h3>Primary sources</h3><ul class="status-list">${sourceRows}</ul></div>

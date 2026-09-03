@@ -31,21 +31,17 @@ test('日別時系列は実行情報を持ち、最長運転日は2日目', () =
   const longest = drivingDays.toSorted((a, b) => b.distance_estimate_max - a.distance_estimate_max)[0]
   assert.equal(longest.day, 2)
   assert.equal(longest.overnight, '黒川温泉')
-
   for (const day of data.days) {
     assert.ok(day.execution?.next)
     assert.ok(day.execution?.plan_b)
   }
-  for (const day of data.days.slice(0, 4)) {
-    assert.ok(day.execution.hard_deadline)
-  }
+  for (const day of data.days.slice(0, 4)) assert.ok(day.execution.hard_deadline)
 })
 
 test('主要地点はナビと実行情報を正準データから取得できる', () => {
   const navStops = data.days.flatMap((day) => day.stops).filter((stop) => stop.navigation_url)
-  assert.ok(navStops.length >= 10)
+  assert.ok(navStops.length >= 12)
   assert.ok(navStops.every((stop) => stop.navigation_url.startsWith('https://www.google.com/maps/dir/')))
-
   const [manda, misumi, sakitsu] = data.world_heritage
   assert.equal(manda.last_entry, '16:30')
   assert.equal(manda.parking_status, 'VERIFIED')
@@ -66,15 +62,56 @@ test('阿蘇火山情報は有効期限を持ち、古いCURRENTへの復帰を�
   assert.match(shell, /古い値には戻しません/)
 })
 
-test('フェリーは出港時刻ではなく手続き締切まで保持する', () => {
+test('航空便は時刻表確認と予約状態を分離する', () => {
+  assert.equal(data.flight.flight_number, 'JAL2383')
+  assert.equal(data.flight.departure, '07:25')
+  assert.equal(data.flight.arrival, '08:40')
+  assert.equal(data.flight.booking_status, 'UNBOOKED')
+  assert.equal(data.flight.status, 'VERIFIED_SCHEDULE_UNBOOKED')
+  assert.match(data.flight.official_url, /jal\.co\.jp/)
+  assert.equal(data.days[0].execution.planned_start, '09:30')
+})
+
+test('宿3泊は具体名と実行情報を持つが未予約を維持する', () => {
+  assert.deepEqual(data.stays.map((stay) => stay.hotel), ['ホテルアレグリアガーデンズ天草', '黒川温泉 いこい旅館', 'ゆふいん山水館'])
+  for (const stay of data.stays) {
+    assert.equal(stay.booking_status, 'UNBOOKED')
+    assert.ok(stay.address)
+    assert.ok(stay.phone)
+    assert.ok(stay.parking)
+    assert.ok(stay.final_checkin)
+    assert.match(stay.official_url, /^https:\/\//)
+  }
+  assert.equal(data.stays[1].final_checkin, '17:00')
+  assert.match(data.stays[1].cancellation_policy, /7日前30%/)
+  assert.equal(data.stays[2].final_checkin, '19:00')
+  assert.match(data.stays[2].cancellation_policy, /8–14日前10%/)
+})
+
+test('レンタカーは受取・返却営業所を確定し、総額未確定を隠さない', () => {
+  assert.equal(data.rental_car.provider, 'ニッポンレンタカー')
+  assert.equal(data.rental_car.pickup.office, '熊本空港営業所')
+  assert.equal(data.rental_car.pickup.planned_time, '09:30')
+  assert.equal(data.rental_car.return.office, '別府観光港前営業所')
+  assert.equal(data.rental_car.return.planned_time, '15:00')
+  assert.match(data.rental_car.return.terminal_access, /徒歩約13分/)
+  assert.match(data.rental_car.one_way_fee_rule, /10kmごとに.*1,100円/)
+  assert.equal(data.rental_car.exact_one_way_fee, null)
+  assert.equal(data.rental_car.booking_status, 'UNBOOKED')
+})
+
+test('フェリーは出港時刻だけでなく予約開始・客室候補・手続き締切を保持する', () => {
   assert.equal(data.ferry.departure, '2026-11-23T18:45:00+09:00')
   assert.equal(data.ferry.checkin_start, '16:15')
   assert.equal(data.ferry.boarding_start, '17:45')
   assert.equal(data.ferry.walk_on_checkin_deadline, '17:45')
-  assert.equal(data.ferry.booking_status, 'UNVERIFIED')
+  assert.equal(data.ferry.reservation_opened_at, '2026-08-23T09:00:00+09:00')
+  assert.equal(data.ferry.room_candidate, 'プライベートシングル')
+  assert.equal(data.ferry.booking_status, 'UNBOOKED')
+  assert.equal(data.ferry.exact_fare, null)
 })
 
-test('実行画面は正準JSONのみを読み、失敗を隠さない', () => {
+test('実行画面は予約候補と予約済みを混同せず正準JSONのみを読む', () => {
   assert.match(html, /\.\/app\.js/)
   assert.match(html, /\.\/execution\.css/)
   assert.match(app, /\.\.\/data\/kyushu-crossing-2026-11\.json/)
@@ -82,6 +119,8 @@ test('実行画面は正準JSONのみを読み、失敗を隠さない', () => {
   assert.match(app, /NAVIGATE/)
   assert.match(app, /DEADLINE/)
   assert.match(app, /PLAN B/)
+  assert.match(app, /予約・宿・返却/)
+  assert.match(app, /候補や時刻が確認済みでも、予約完了とは扱いません/)
   assert.match(app, /旅程データを読み込めません/)
   assert.doesNotMatch(app, /fixture/i)
 })
