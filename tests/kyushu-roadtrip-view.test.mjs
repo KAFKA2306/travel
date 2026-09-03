@@ -6,11 +6,13 @@ const dataUrl = new URL('../public/data/kyushu-crossing-2026-11.json', import.me
 const htmlUrl = new URL('../public/kyushu-2026/index.html', import.meta.url)
 const appUrl = new URL('../public/kyushu-2026/app.js', import.meta.url)
 const shellUrl = new URL('../public/site-shell.js', import.meta.url)
+const verifierUrl = new URL('../scripts/verify-kyushu-page.mjs', import.meta.url)
 
 const data = JSON.parse(await readFile(dataUrl, 'utf8'))
 const html = await readFile(htmlUrl, 'utf8')
 const app = await readFile(appUrl, 'utf8')
 const shell = await readFile(shellUrl, 'utf8')
+const verifier = await readFile(verifierUrl, 'utf8')
 
 test('九州横断の正準データはレンタカー世界遺産ルートを表す', () => {
   assert.equal(data.trip_plan_issue, 45)
@@ -123,4 +125,14 @@ test('実行画面は予約候補と予約済みを混同せず正準JSONのみ�
   assert.match(app, /候補や時刻が確認済みでも、予約完了とは扱いません/)
   assert.match(app, /旅程データを読み込めません/)
   assert.doesNotMatch(app, /fixture/i)
+})
+
+test('本番監査はPhase2を検証し、既知の第三者compute-pressure警告だけを限定除外する', () => {
+  assert.match(verifier, /JAL2383 ITM → KMJ/)
+  assert.match(verifier, /ホテルアレグリアガーデンズ天草/)
+  assert.match(verifier, /17:00 いこい旅館 最終チェックイン/)
+  assert.match(verifier, /商船三井さんふらわあ · プライベートシングル/)
+  assert.match(verifier, /Permissions policy violation: compute-pressure is not allowed in this document\./)
+  assert.match(verifier, /text === ignoredThirdPartyConsoleError/)
+  assert.match(verifier, /if \(asoErrors\.length\) throw new Error/)
 })
