@@ -3,7 +3,7 @@
   "publisher": "観光庁",
   "official_source_url": "https://www.mlit.go.jp/kankocho/page13_00002.html",
   "source_last_updated": "2026-09-03",
-  "checked_at": "2026-09-04T18:07:00+09:00",
+  "checked_at": "2026-09-04T18:17:00+09:00",
   "eligible_stay_start": "2026-10-01",
   "booking_start": null,
   "eligible_stay_end": null,
@@ -176,7 +176,7 @@
       "booking_start": null,
       "eligible_stay_end": null,
       "participating_sellers": null,
-      "checked_at": "2026-09-04T18:07:00+09:00",
+      "checked_at": "2026-09-04T18:17:00+09:00",
       "source_last_updated": "2026-09-03",
       "source_url": "https://www.mlit.go.jp/kankocho/page13_00002.html",
       "message": "観光庁の最新表で熊本県の予約開始日・割引対象期間は未公表。県公式・対象事業者の発表待ち。"
