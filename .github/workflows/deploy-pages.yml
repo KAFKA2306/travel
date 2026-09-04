@@ -50,6 +50,8 @@ jobs:
           test -s dist/kyushu-2026/index.html
           test -s dist/kyushu-2026/app.js
           test -s dist/kyushu-2026/styles.css
+          test -s dist/kyushu-2026/discount-status.js
+          test -s dist/kyushu-2026/discount-status.css
           test -s dist/data/site-areas.json
           test -s dist/data/official-content.json
           test -s dist/data/official-content-expansion.json
@@ -64,6 +66,7 @@ jobs:
           grep -q 'official-content-growth.json' dist/official/index.html
           grep -q 'KYUSHU 2026' dist/kyushu-2026/index.html
           grep -q '../data/kyushu-crossing-2026-11.json' dist/kyushu-2026/app.js
+          grep -q '../data/kyushu-recovery-discount-2026.json' dist/kyushu-2026/discount-status.js
           node --input-type=module <<'NODE'
           import { readFile } from 'node:fs/promises';
           const content = JSON.parse(await readFile('dist/data/official-content.json', 'utf8'));
