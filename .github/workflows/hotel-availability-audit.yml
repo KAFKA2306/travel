@@ -35,7 +35,7 @@ jobs:
         with:
           node-version: 22
           cache: npm
-      - run: npm ci
+      - run: npm ci --no-audit --no-fund
       - name: Regenerate availability snapshot
         run: npm run build:hotel-availability
       - name: Reject generated-data drift
