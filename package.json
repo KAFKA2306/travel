@@ -14,7 +14,7 @@
     "test:destinations": "node --test tests/destinations.test.mjs tests/site-cross-links.test.mjs",
     "test:site-structure": "node scripts/validate-site-structure.mjs",
     "test:kyushu-recovery-discount": "node --test tests/kyushu-recovery-discount.test.mjs tests/kagoshima-air-route.test.mjs",
-    "test:kyushu-roadtrip": "node --check public/kyushu-2026/app.js && node --check scripts/verify-kyushu-page.mjs && node --test tests/kyushu-roadtrip-view.test.mjs",
+    "test:kyushu-roadtrip": "node --check public/kyushu-2026/app.js && node --check public/kyushu-2026/discount-status.js && node --check scripts/verify-kyushu-page.mjs && node --test tests/kyushu-roadtrip-view.test.mjs",
     "test:value-outcomes": "node --test tests/value-outcomes.test.mjs"
   },
   "dependencies": {

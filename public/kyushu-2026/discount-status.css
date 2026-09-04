@@ -1,0 +1,133 @@
+.discount-status {
+  margin-top: 34px;
+}
+
+.discount-blocker {
+  border: 1px solid #d7b47b;
+  background: #fff8ec;
+  padding: 20px;
+}
+
+.discount-blocker strong {
+  display: block;
+  color: #8b5615;
+  font-size: 0.78rem;
+  letter-spacing: 0.08em;
+  margin-bottom: 8px;
+}
+
+.discount-blocker p {
+  margin: 0;
+  line-height: 1.65;
+  color: #5d5144;
+  font-size: 0.86rem;
+}
+
+.discount-facts {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  border: 1px solid var(--line);
+  border-top: 0;
+  background: var(--paper);
+}
+
+.discount-facts > div {
+  padding: 16px;
+  border-right: 1px solid var(--line);
+}
+
+.discount-facts > div:last-child {
+  border-right: 0;
+}
+
+.discount-facts small,
+.discount-facts strong {
+  display: block;
+}
+
+.discount-facts small {
+  color: var(--muted);
+  font-size: 0.68rem;
+  margin-bottom: 7px;
+}
+
+.discount-facts strong {
+  font-size: 0.9rem;
+}
+
+.discount-target-grid {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 12px;
+  margin-top: 12px;
+}
+
+.discount-target-card {
+  border: 1px solid var(--line);
+  background: var(--paper);
+  padding: 18px;
+}
+
+.discount-target-card h3 {
+  margin: 0 0 8px;
+  font-size: 1rem;
+}
+
+.discount-target-card p {
+  margin: 7px 0;
+  line-height: 1.55;
+  color: var(--muted);
+  font-size: 0.78rem;
+}
+
+.discount-target-card .discount-target-status {
+  color: #9a5f1a;
+  font-weight: 800;
+}
+
+.discount-target-card .discount-price {
+  color: var(--ink);
+  font-weight: 800;
+}
+
+.discount-target-card a,
+.discount-links a {
+  font-size: 0.75rem;
+  font-weight: 800;
+  text-underline-offset: 3px;
+}
+
+.discount-links {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 14px;
+  align-items: center;
+  margin-top: 12px;
+  color: var(--muted);
+  font-size: 0.72rem;
+}
+
+.discount-status-error {
+  border: 1px solid #c98b8b;
+  background: #fff4f4;
+  color: #8f2929;
+  padding: 18px;
+}
+
+@media (max-width: 760px) {
+  .discount-facts {
+    grid-template-columns: repeat(2, 1fr);
+  }
+
+  .discount-facts > div:nth-child(2) {
+    border-right: 0;
+  }
+
+  .discount-facts > div:nth-child(-n+2) {
+    border-bottom: 1px solid var(--line);
+  }
+
+  .discount-target-grid {
+    grid-template-columns: 1fr;
+  }
+}

@@ -35,6 +35,11 @@ try {
   await page.getByText(/NAVIGATE · ナビ開始/).waitFor({ state: 'visible', timeout: 10_000 })
   await page.getByRole('heading', { name: /熊本から別府へ/ }).waitFor({ state: 'visible', timeout: 15_000 })
   await page.getByText('621–671', { exact: true }).waitFor({ state: 'visible', timeout: 10_000 })
+  await page.getByRole('heading', { name: '熊本60%割引' }).waitFor({ state: 'visible', timeout: 10_000 })
+  await page.getByText('予約開始未公表 · Issue #86', { exact: true }).waitFor({ state: 'visible', timeout: 10_000 })
+  await page.getByText(/BLOCKED · 熊本県の公式発表待ち/).waitFor({ state: 'visible', timeout: 10_000 })
+  await page.getByText(/11月参考最安 30,800円 → 単純60%参考 12,320円/).waitFor({ state: 'visible', timeout: 10_000 })
+  await page.getByText(/11月参考最安 33,660円 → 単純60%参考 13,464円/).waitFor({ state: 'visible', timeout: 10_000 })
   await page.getByText('万田坑', { exact: true }).first().waitFor({ state: 'visible', timeout: 10_000 })
   await page.getByText('三角西港', { exact: true }).first().waitFor({ state: 'visible', timeout: 10_000 })
   await page.getByText('天草の﨑津集落', { exact: true }).first().waitFor({ state: 'visible', timeout: 10_000 })
@@ -104,6 +109,7 @@ try {
     executionFlowVerified: ['NEXT', 'NAVIGATE', 'DEADLINE', 'PLAN B'],
     phase2BookingCandidatesVerified: ['JAL2383', '3 stays', 'Nippon Rent-A-Car', 'Sunflower private single'],
     phase2BookingStateVerified: 'UNBOOKED',
+    kumamotoDiscountBlockerVerified: true,
     asoLegacyCurrentRemoved: true,
     ignoredThirdPartyConsoleErrors: ignoredAsoErrors,
   }, null, 2))

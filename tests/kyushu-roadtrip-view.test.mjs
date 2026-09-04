@@ -6,12 +6,14 @@ const dataUrl = new URL('../public/data/kyushu-crossing-2026-11.json', import.me
 const htmlUrl = new URL('../public/kyushu-2026/index.html', import.meta.url)
 const appUrl = new URL('../public/kyushu-2026/app.js', import.meta.url)
 const shellUrl = new URL('../public/site-shell.js', import.meta.url)
+const discountUiUrl = new URL('../public/kyushu-2026/discount-status.js', import.meta.url)
 const verifierUrl = new URL('../scripts/verify-kyushu-page.mjs', import.meta.url)
 
 const data = JSON.parse(await readFile(dataUrl, 'utf8'))
 const html = await readFile(htmlUrl, 'utf8')
 const app = await readFile(appUrl, 'utf8')
 const shell = await readFile(shellUrl, 'utf8')
+const discountUi = await readFile(discountUiUrl, 'utf8')
 const verifier = await readFile(verifierUrl, 'utf8')
 
 test('九州横断の正準データはレンタカー世界遺産ルートを表す', () => {
@@ -116,6 +118,8 @@ test('フェリーは出港時刻だけでなく予約開始・客室候補・�
 test('実行画面は予約候補と予約済みを混同せず正準JSONのみを読む', () => {
   assert.match(html, /\.\/app\.js/)
   assert.match(html, /\.\/execution\.css/)
+  assert.match(html, /\.\/discount-status\.css/)
+  assert.match(html, /\.\/discount-status\.js/)
   assert.match(app, /\.\.\/data\/kyushu-crossing-2026-11\.json/)
   assert.match(app, /PREP \/ DAY PREVIEW/)
   assert.match(app, /NAVIGATE/)
@@ -125,6 +129,9 @@ test('実行画面は予約候補と予約済みを混同せず正準JSONのみ�
   assert.match(app, /候補や時刻が確認済みでも、予約完了とは扱いません/)
   assert.match(app, /旅程データを読み込めません/)
   assert.doesNotMatch(app, /fixture/i)
+  assert.match(discountUi, /熊本60%割引/)
+  assert.match(discountUi, /予約開始未公表/)
+  assert.match(discountUi, /Issue #86/)
 })
 
 test('本番監査はPhase2を検証し、既知の第三者compute-pressure警告だけを限定除外する', () => {
