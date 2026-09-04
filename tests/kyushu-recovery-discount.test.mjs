@@ -10,7 +10,7 @@ test('九州ふっこう応援割の観光庁公表条件を保持する', () =>
   assert.equal(data.program_name, '九州ふっこう応援割');
   assert.equal(data.publisher, '観光庁');
   assert.equal(data.official_source_url, 'https://www.mlit.go.jp/kankocho/page13_00002.html');
-  assert.equal(data.source_last_updated, '2026-09-01');
+  assert.equal(data.source_last_updated, '2026-09-03');
   assert.equal(data.eligible_stay_start, '2026-10-01');
 
   const rates = Object.fromEntries(
@@ -32,6 +32,39 @@ test('九州ふっこう応援割の観光庁公表条件を保持する', () =>
     transport_with_lodging_2_or_more_nights: 30000,
     multi_prefecture_2_or_more_prefectures: 35000,
   });
+});
+
+test('熊本県の予約開始未公表を外部ブロッカーとして保持する', () => {
+  const kumamoto = data.prefecture_announcements['熊本県'];
+  assert.equal(kumamoto.status, 'UNPUBLISHED_EXTERNAL_BLOCKER');
+  assert.equal(kumamoto.booking_start, null);
+  assert.equal(kumamoto.eligible_stay_end, null);
+  assert.equal(kumamoto.participating_sellers, null);
+  assert.equal(kumamoto.source_last_updated, '2026-09-03');
+
+  const target = data.target_trip_issue_86;
+  assert.equal(target.issue_number, 86);
+  assert.equal(target.status, 'BLOCKED_BY_KUMAMOTO_ANNOUNCEMENT');
+  assert.equal(target.decision, 'WAIT_FOR_OFFICIAL_BOOKING_START');
+  assert.equal(target.discount_rate, 0.6);
+  assert.equal(target.target_dates_after_national_start, true);
+  assert.equal(target.target_dates_within_kumamoto_period, null);
+  assert.equal(target.existing_reservation_retroactive_eligibility, null);
+});
+
+test('11月参考価格は対象日の確定価格と混同しない', () => {
+  const [amakusa, kurokawa] = data.target_trip_issue_86.target_stays;
+  assert.equal(amakusa.reference_price_yen_2_adults, 30800);
+  assert.equal(amakusa.reference_discount_yen_at_60pct, 18480);
+  assert.equal(amakusa.reference_net_yen_at_60pct, 12320);
+  assert.equal(amakusa.target_date_exact_price_yen, null);
+  assert.match(amakusa.reference_price_scope, /11\/20の確定価格ではない/);
+
+  assert.equal(kurokawa.reference_price_yen_2_adults, 33660);
+  assert.equal(kurokawa.reference_discount_yen_at_60pct, 20196);
+  assert.equal(kurokawa.reference_net_yen_at_60pct, 13464);
+  assert.equal(kurokawa.target_date_exact_price_yen, null);
+  assert.match(kurokawa.reference_price_scope, /11\/21の確定価格ではない/);
 });
 
 test('未発表項目を推測値で埋めない', () => {
