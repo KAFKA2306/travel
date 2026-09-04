@@ -131,7 +131,7 @@ jobs:
 
       - name: Install Playwright
         run: |
-          npm install --no-save --package-lock=false playwright@1.55.0
+          npm install --no-save --package-lock=false --no-audit --no-fund playwright@1.55.0
           npx playwright install --with-deps chromium
 
       - name: Wait for Pages edge propagation
