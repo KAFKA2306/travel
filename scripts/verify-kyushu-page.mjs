@@ -48,7 +48,7 @@ try {
   await page.getByRole('heading', { name: '予約・宿・返却' }).waitFor({ state: 'visible', timeout: 10_000 })
   await page.getByRole('heading', { name: 'JAL2383 ITM → KMJ' }).waitFor({ state: 'visible', timeout: 10_000 })
   for (const label of ['ホテルアレグリアガーデンズ天草', '黒川温泉 いこい旅館', 'ゆふいん山水館', 'ニッポンレンタカー', '商船三井さんふらわあ · プライベートシングル']) {
-    await page.getByRole('heading', { name: label }).waitFor({ state: 'visible', timeout: 10_000 })
+    await page.getByRole('heading', { name: label }).first().waitFor({ state: 'visible', timeout: 10_000 })
   }
   await page.getByText(/航空便予約 .* レンタカー予約・総額 .* 宿3泊予約 .* フェリー客室予約/).waitFor({ state: 'visible', timeout: 10_000 })
 
