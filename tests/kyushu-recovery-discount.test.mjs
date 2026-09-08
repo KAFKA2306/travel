@@ -10,7 +10,7 @@ test('九州ふっこう応援割の観光庁公表条件を保持する', () =>
   assert.equal(data.program_name, '九州ふっこう応援割');
   assert.equal(data.publisher, '観光庁');
   assert.equal(data.official_source_url, 'https://www.mlit.go.jp/kankocho/page13_00002.html');
-  assert.equal(data.source_last_updated, '2026-09-03');
+  assert.equal(data.source_last_updated, '2026-09-07');
   assert.equal(data.eligible_stay_start, '2026-10-01');
 
   const rates = Object.fromEntries(
@@ -40,7 +40,7 @@ test('熊本県の予約開始未公表を外部ブロッカーとして保持�
   assert.equal(kumamoto.booking_start, null);
   assert.equal(kumamoto.eligible_stay_end, null);
   assert.equal(kumamoto.participating_sellers, null);
-  assert.equal(kumamoto.source_last_updated, '2026-09-03');
+  assert.equal(kumamoto.source_last_updated, '2026-09-07');
 
   const target = data.target_trip_issue_86;
   assert.equal(target.issue_number, 86);
@@ -50,6 +50,15 @@ test('熊本県の予約開始未公表を外部ブロッカーとして保持�
   assert.equal(target.target_dates_after_national_start, true);
   assert.equal(target.target_dates_within_kumamoto_period, null);
   assert.equal(target.existing_reservation_retroactive_eligibility, null);
+});
+
+test('佐賀県は公式対象期間だけを確定し予約条件を未確認のまま保持する', () => {
+  const saga = data.prefecture_announcements['佐賀県'];
+  assert.equal(saga.status, 'PARTIALLY_VERIFIED');
+  assert.equal(saga.eligible_stay_start, '2026-10-01');
+  assert.equal(saga.eligible_stay_end, '2026-12-25');
+  assert.equal(saga.booking_start, null);
+  assert.equal(saga.participating_sellers, null);
 });
 
 test('11月参考価格は対象日の確定価格と混同しない', () => {
