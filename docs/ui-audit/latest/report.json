@@ -1,5 +1,5 @@
 {
-  "generatedAt": "2026-09-08T19:12:32.263Z",
+  "generatedAt": "2026-09-08T19:17:55.690Z",
   "baseUrl": "https://kafka2306.github.io/travel",
   "results": [
     {
@@ -97,7 +97,7 @@
       "title": "公式コンテンツ・ネットワーク｜Wayweave",
       "width": 1440,
       "scrollWidth": 1440,
-      "height": 12191,
+      "height": 12125,
       "horizontalOverflow": false,
       "links": 197,
       "buttons": 7,
@@ -139,9 +139,7 @@
       "status": 200,
       "finalUrl": "https://kafka2306.github.io/travel/kyushu-ferry-2026/",
       "consoleErrors": [],
-      "thirdPartyConsoleWarnings": [
-        "Permissions policy violation: compute-pressure is not allowed in this document."
-      ],
+      "thirdPartyConsoleWarnings": [],
       "pageErrors": [],
       "journeyChecks": {},
       "title": "夜の大阪から、朝の九州へ。｜Wayweave",
@@ -352,9 +350,7 @@
       "buttons": 56,
       "headings": 23,
       "brokenImages": [],
-      "pendingImages": [
-        "https://yamaguchi-tourism.jp/lsc/api/photo/?src=1700667"
-      ],
+      "pendingImages": [],
       "unlabeledButtons": 0,
       "unlabeledLinks": 0
     },
@@ -372,7 +368,7 @@
       "title": "公式コンテンツ・ネットワーク｜Wayweave",
       "width": 390,
       "scrollWidth": 390,
-      "height": 33891,
+      "height": 34023,
       "horizontalOverflow": false,
       "links": 197,
       "buttons": 7,
