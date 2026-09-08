@@ -3,7 +3,7 @@
   "publisher": "観光庁",
   "official_source_url": "https://www.mlit.go.jp/kankocho/page13_00002.html",
   "source_last_updated": "2026-09-03",
-  "checked_at": "2026-09-04T18:17:00+09:00",
+  "checked_at": "2026-09-09T03:02:33+09:00",
   "eligible_stay_start": "2026-10-01",
   "booking_start": null,
   "eligible_stay_end": null,
@@ -164,6 +164,7 @@
   "eligibility_notes": [
     "九州地方における1泊以上の旅行・宿泊商品が対象。",
     "具体的な予約開始日と割引対象期間は各県が設定する。",
+    "2026年9月3日時点で大分県は予約開始を9月下旬、割引対象期間を2026年10月1日から12月25日までと公表している。予約開始の正確な日付と対象販売事業者は未公表。",
     "フェリーや宿を個別に予約しただけで交通付宿泊旅行商品または周遊型旅行商品に該当するとは扱わない。",
     "商船三井さんふらわあは2026年8月31日に制度の取扱い案内を公開したが、対象商品と販売・受付開始時期は未発表である。",
     "商船三井さんふらわあは2026年10月以降の実在する交通付宿泊商品と公式価格帯を既に販売案内しているが、それらが九州ふっこう応援割の対象商品かは未発表である。",
@@ -176,10 +177,22 @@
       "booking_start": null,
       "eligible_stay_end": null,
       "participating_sellers": null,
-      "checked_at": "2026-09-04T18:17:00+09:00",
+      "checked_at": "2026-09-09T03:02:33+09:00",
       "source_last_updated": "2026-09-03",
       "source_url": "https://www.mlit.go.jp/kankocho/page13_00002.html",
       "message": "観光庁の最新表で熊本県の予約開始日・割引対象期間は未公表。県公式・対象事業者の発表待ち。"
+    },
+    "大分県": {
+      "status": "PARTIALLY_VERIFIED",
+      "booking_start": null,
+      "booking_start_period": "2026-09-late",
+      "eligible_stay_start": "2026-10-01",
+      "eligible_stay_end": "2026-12-25",
+      "participating_sellers": null,
+      "checked_at": "2026-09-09T03:02:33+09:00",
+      "source_last_updated": "2026-09-03",
+      "source_url": "https://www.mlit.go.jp/kankocho/page13_00002.html",
+      "message": "観光庁の最新表で大分県は予約開始を9月下旬、割引対象期間を2026年10月1日から12月25日までと公表。正確な予約開始日・対象販売事業者は未公表。"
     }
   },
   "target_trip_issue_86": {
