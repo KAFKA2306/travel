@@ -1,6 +1,6 @@
 {
   "trip_plan_issue": 45,
-  "execution_issue": 82,
+  "execution_issue": 24,
   "checked_at": "2026-09-04T06:05:00+09:00",
   "target_start_date": "2026-11-20",
   "target_end_date": "2026-11-24",
@@ -175,7 +175,7 @@
   "stays": [
     {"date": "2026-11-20", "area": "天草", "hotel": "ホテルアレグリアガーデンズ天草", "status": "VERIFIED_CANDIDATE_UNBOOKED", "booking_status": "UNBOOKED", "address": "〒863-0001 熊本県天草市本渡町広瀬996", "phone": "0969-22-3161", "parking": "100台・無料・予約不要", "checkin": "15:00", "final_checkin": "19:00", "checkout": "11:00", "cancellation_policy": "UNVERIFIED", "official_url": "https://hotel-alegria.jp/", "checked_at": "2026-09-04"},
     {"date": "2026-11-21", "area": "黒川温泉", "hotel": "黒川温泉 いこい旅館", "status": "VERIFIED_CANDIDATE_UNBOOKED", "booking_status": "UNBOOKED", "address": "〒869-2402 熊本県阿蘇郡南小国町黒川温泉川端通り", "phone": "0967-44-0552", "parking": "宿泊者用18台", "checkin": "15:00–17:00", "final_checkin": "17:00", "checkout": "10:00", "cancellation_policy": "7日前30% / 前日50% / 当日100%", "official_url": "https://www.ikoi-ryokan.com/", "checked_at": "2026-09-04"},
-    {"date": "2026-11-22", "area": "由布院", "hotel": "ゆふいん山水館", "status": "VERIFIED_CANDIDATE_UNBOOKED", "booking_status": "UNBOOKED", "address": "〒879-5196 大分県由布市湯布院町川南108-1", "phone": "0977-84-2101", "parking": "無料 約60台", "checkin": "15:00–19:00", "final_checkin": "19:00", "checkout": "10:00", "cancellation_policy": "8–14日前10% / 4–7日前20% / 2–3日前50% / 前日80% / 当日・不泊100%", "official_url": "https://www.sansuikan.co.jp/", "checked_at": "2026-09-04"}
+    {"date": "2026-11-22", "area": "由布院", "hotel": "ゆふいん山水館", "status": "VERIFIED_CANDIDATE_UNBOOKED", "booking_status": "UNBOOKED", "address": "〒879-5196 大分県由布市湯布院町川南108-1", "phone": "0977-84-2101", "parking": "無料 約60台", "checkin": "15:00–19:00", "final_checkin": "19:00", "checkout": "10:00", "cancellation_policy": "8–14日前10% / 4–7日前20% / 2–3日前50% / 前日80% / 当日・不泊100%", "official_url": "https://www.sansuikan.co.jp/faq/", "checked_at": "2026-09-04"}
   ],
   "primary_sources": [
     {"publisher": "JAL", "subject": "2026年11月 大阪（伊丹）→熊本 JAL2383 時刻", "url": "https://www.jal.co.jp/jp/ja/domtour/jaldp/okaidoku-flight/pdf_sites/2026-11-okaidoku-flight-list.pdf"},
