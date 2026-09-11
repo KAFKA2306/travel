@@ -18,7 +18,7 @@ const verifier = await readFile(verifierUrl, 'utf8')
 
 test('九州横断の正準データはレンタカー世界遺産ルートを表す', () => {
   assert.equal(data.trip_plan_issue, 45)
-  assert.equal(data.execution_issue, 82)
+  assert.equal(data.execution_issue, 24)
   assert.equal(data.travel_mode, 'rental_car_one_way')
   assert.equal(data.target_start_date, '2026-11-20')
   assert.equal(data.target_end_date, '2026-11-24')
