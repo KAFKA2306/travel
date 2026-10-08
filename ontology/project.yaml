@@ -1,0 +1,85 @@
+project:
+  id: "kafka:travel"
+  name: "Wayweave Travel Decisions"
+  repository: "https://github.com/KAFKA2306/travel"
+  version: "0.1.0"
+  updated: "2026-10-08"
+  core_ontology: "https://raw.githubusercontent.com/KAFKA2306/know/main/ontology/causal-evidence-core.yaml"
+  schema: "https://raw.githubusercontent.com/KAFKA2306/know/main/ontology/project.schema.json"
+
+purpose:
+  problem: "Separate trip discovery, saved itinerary editing and current official travel condition checking."
+  intended_decisions: ["compare_candidate","edit_trip","require_official_recheck","publish_trip_plan"]
+  success_conditions:
+    - "A trip plan is not a booking."
+    - "Sources and retrieval dates remain visible."
+    - "Stale fares or operating hours require recheck."
+  falsification_conditions:
+    - "An old timetable is presented as live."
+    - "A saved plan implies a confirmed reservation."
+
+scope:
+  included: ["destination","route","itinerary","constraints","official publication","last verified time"]
+  excluded: ["implicit reservations","assumed current schedules","personal location disclosure"]
+  temporal: "Source event time, effective time, snapshot retrieval and decision time remain distinguishable."
+  abstraction_level: "Domain-specific evidence, guarded decisions and source authority."
+
+competency_questions:
+  - "What decision does the traveler need now?"
+  - "Which source verifies a particular route and travel date?"
+  - "Which facts need reconfirmation before booking?"
+
+domain_mapping:
+  System: "EvidenceBackedTripDecisionWorkspace"
+  State: ["candidate state","itinerary state","official information freshness"]
+  Action: ["compare candidates","edit route","recheck official facts","publish plan"]
+  Process: ["destination discovery","route validation","plan editing","site publication"]
+  Observation: ["published timetable","operator status","entry condition","itinerary verification"]
+  Model: ["route feasibility constraints","trip comparison"]
+  Requirement: ["dated source","constraint applicability","no stale-as-current assumption"]
+  Claim: ["route feasible","published service exists","official condition current"]
+  Evidence: ["official transport operators","official destination authorities","travel plan evidence"]
+  Decision: ["compare_candidate","edit_trip","require_official_recheck","publish_trip_plan"]
+
+claims_and_evidence:
+  assertion_types: ["ObservedFact","ReportedFact","CalculatedValue","ModelEstimate","RequirementAssertion","DecisionAssertion"]
+  required_evidence:
+    MaterialClaim: ["source identity","event or effective date","entity identity","status"]
+    Decision: ["explicit rule","supporting evidence","decision time"]
+  unknown_policy: "Missing, stale or scope-mismatched evidence blocks promotion to verified state."
+
+decision_rules:
+  - id: "publish_checked_itinerary"
+    when: "Route constraints and date-sensitive facts are verified against explicit official sources"
+    result: "compare_candidate"
+  - id: "missing-evidence"
+    when: "Required supporting evidence cannot be verified."
+    result: "REVIEW_REQUIRED"
+
+provenance:
+  sources: ["official transport operators","official destination authorities","travel plan evidence"]
+  generated_artifacts: ["README.md","src/"]
+  agents: ["existing repository scripts","GitHub Actions","human reviewer"]
+  lineage: "Source observation -> versioned canonical entity -> validation -> decision -> published result."
+
+validation:
+  structural: "Canonical record identity, source metadata and artifact signatures must validate."
+  semantic: "Observed facts, derived views, forecasts, authorizations and assertions remain separate."
+  evidence: "Evidence dates, versions, scopes and sources must support each material decision."
+  publication: "Published status follows canonical artifact evidence and does not imply unavailable production behavior."
+
+operational_model:
+  implementation_status: "mapping to existing source workflows; execution requires independent evidence"
+  canonical_sources: ["README.md","src/"]
+  objects: ["Destination","Route","TripPlan","Stop","Constraint","EvidenceSource"]
+  links:
+    - ["TripPlan","VISITS","Destination"]
+    - ["TripPlan","USES","Route"]
+    - ["Route","HAS_CONSTRAINT","Constraint"]
+    - ["EvidenceSource","SUPPORTS","Route"]
+  actions:
+    - id: "publish_checked_itinerary"
+      preconditions: "Route constraints and date-sensitive facts are verified against explicit official sources"
+      recorded_effect: "Saved plan identifies its checked conditions and evidence timestamps"
+      rollback_or_recovery: "Stale transportation or entry conditions force official recheck"
+  outcome_metrics: ["official_source_coverage","stale_route_warning_count","confirmed_itinerary_count"]
