@@ -399,3 +399,7 @@ READMEは、人間がプロダクト全体、view、セットアップ、デー�
 repositoryのlicense、公式publisherの利用条件、Google Maps Platformの規約をそれぞれ確認してください。外部画像・映像は、repositoryのlicenseだけで再利用可能になるわけではありません。
 
 **README実体監査:** 2026年8月4日
+
+## Operational ontology
+
+[Project ontology](ontology/project.yaml) defines domain objects, evidence-bearing relations, guarded actions and outcome metrics under the [shared Causal–Evidence Core](https://github.com/KAFKA2306/know/blob/main/ontology/causal-evidence-core.yaml). This contract does not add real-world execution capability or replace this repository's canonical source.
