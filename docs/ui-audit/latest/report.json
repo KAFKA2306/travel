@@ -1,5 +1,5 @@
 {
-  "generatedAt": "2026-10-15T10:15:02.334Z",
+  "generatedAt": "2026-10-28T21:09:48.605Z",
   "baseUrl": "https://kafka2306.github.io/travel",
   "results": [
     {
@@ -78,8 +78,7 @@
       "headings": 23,
       "brokenImages": [],
       "pendingImages": [
-        "https://yamaguchi-tourism.jp/lsc/api/photo/?src=1700667",
-        "https://www.nasukogen.org/blog/%E3%82%B7%E3%83%AD%E3%83%A4%E3%82%B7%E3%82%AA.jpg"
+        "https://aomori-tourism.com/lsc/upfile/spot/0000/0339/339_12_l.jpg"
       ],
       "unlabeledButtons": 0,
       "unlabeledLinks": 0
@@ -98,15 +97,13 @@
       "title": "公式コンテンツ・ネットワーク｜Wayweave",
       "width": 1440,
       "scrollWidth": 1440,
-      "height": 12124,
+      "height": 12241,
       "horizontalOverflow": false,
       "links": 197,
       "buttons": 7,
       "headings": 26,
       "brokenImages": [],
-      "pendingImages": [
-        "https://www.nasukogen.org/blog/%E3%82%B7%E3%83%AD%E3%83%A4%E3%82%B7%E3%82%AA.jpg"
-      ],
+      "pendingImages": [],
       "unlabeledButtons": 0,
       "unlabeledLinks": 0
     },
@@ -142,9 +139,7 @@
       "status": 200,
       "finalUrl": "https://kafka2306.github.io/travel/kyushu-ferry-2026/",
       "consoleErrors": [],
-      "thirdPartyConsoleWarnings": [
-        "Permissions policy violation: compute-pressure is not allowed in this document."
-      ],
+      "thirdPartyConsoleWarnings": [],
       "pageErrors": [],
       "journeyChecks": {},
       "title": "夜の大阪から、朝の九州へ。｜Wayweave",
@@ -356,8 +351,7 @@
       "headings": 23,
       "brokenImages": [],
       "pendingImages": [
-        "https://yamaguchi-tourism.jp/lsc/api/photo/?src=1700667",
-        "https://www.nasukogen.org/blog/%E3%82%B7%E3%83%AD%E3%83%A4%E3%82%B7%E3%82%AA.jpg"
+        "https://yamaguchi-tourism.jp/lsc/api/photo/?src=1700667"
       ],
       "unlabeledButtons": 0,
       "unlabeledLinks": 0
@@ -376,15 +370,13 @@
       "title": "公式コンテンツ・ネットワーク｜Wayweave",
       "width": 390,
       "scrollWidth": 390,
-      "height": 33149,
+      "height": 33429,
       "horizontalOverflow": false,
       "links": 197,
       "buttons": 7,
       "headings": 26,
       "brokenImages": [],
-      "pendingImages": [
-        "https://www.nasukogen.org/blog/%E3%82%B7%E3%83%AD%E3%83%A4%E3%82%B7%E3%82%AA.jpg"
-      ],
+      "pendingImages": [],
       "unlabeledButtons": 0,
       "unlabeledLinks": 0
     },
@@ -468,7 +460,9 @@
       "status": 200,
       "finalUrl": "https://kafka2306.github.io/travel/aso-2026/",
       "consoleErrors": [],
-      "thirdPartyConsoleWarnings": [],
+      "thirdPartyConsoleWarnings": [
+        "Permissions policy violation: compute-pressure is not allowed in this document."
+      ],
       "pageErrors": [],
       "journeyChecks": {},
       "title": "熊本から、火山の真ん中へ。｜Wayweave",
