@@ -1,0 +1,83 @@
+@page {
+  size: A4 portrait;
+  margin: 12mm;
+}
+
+.site-header,
+.day-switcher,
+.execution-action,
+.live-links,
+.site-footer,
+.print-trip {
+  display: none !important;
+}
+
+html,
+body {
+  background: #fff !important;
+  color: #111 !important;
+}
+
+.page-shell,
+.execution-shell,
+.execution-card,
+.day-runbook,
+.heritage-card {
+  box-shadow: none !important;
+  background: #fff !important;
+}
+
+.page-shell {
+  width: auto !important;
+  max-width: none !important;
+  margin: 0 !important;
+  padding: 0 !important;
+}
+
+.execution-shell {
+  margin: 0 0 8mm !important;
+  padding: 0 !important;
+  border: 0 !important;
+}
+
+.execution-grid {
+  display: grid !important;
+  grid-template-columns: 1fr 1fr !important;
+}
+
+.execution-card,
+.day-runbook,
+.heritage-card,
+.runbook-list li {
+  break-inside: avoid;
+}
+
+.next-card {
+  color: #111 !important;
+  border-color: #777 !important;
+}
+
+.next-card .execution-label,
+.next-card dt,
+.next-card dd {
+  color: #111 !important;
+}
+
+.execution-topline h1 {
+  font-size: 24pt !important;
+}
+
+.execution-card > strong {
+  font-size: 14pt !important;
+}
+
+a {
+  color: #111 !important;
+  text-decoration: none !important;
+}
+
+a[href^="http"]::after {
+  content: "  " attr(href);
+  font-size: 7pt;
+  overflow-wrap: anywhere;
+}
