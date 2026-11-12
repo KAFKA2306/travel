@@ -1,5 +1,5 @@
 {
-  "generatedAt": "2026-10-28T21:09:48.605Z",
+  "generatedAt": "2026-11-12T12:57:06.923Z",
   "baseUrl": "https://kafka2306.github.io/travel",
   "results": [
     {
@@ -97,7 +97,7 @@
       "title": "公式コンテンツ・ネットワーク｜Wayweave",
       "width": 1440,
       "scrollWidth": 1440,
-      "height": 12241,
+      "height": 12208,
       "horizontalOverflow": false,
       "links": 197,
       "buttons": 7,
@@ -350,9 +350,7 @@
       "buttons": 56,
       "headings": 23,
       "brokenImages": [],
-      "pendingImages": [
-        "https://yamaguchi-tourism.jp/lsc/api/photo/?src=1700667"
-      ],
+      "pendingImages": [],
       "unlabeledButtons": 0,
       "unlabeledLinks": 0
     },
@@ -460,9 +458,7 @@
       "status": 200,
       "finalUrl": "https://kafka2306.github.io/travel/aso-2026/",
       "consoleErrors": [],
-      "thirdPartyConsoleWarnings": [
-        "Permissions policy violation: compute-pressure is not allowed in this document."
-      ],
+      "thirdPartyConsoleWarnings": [],
       "pageErrors": [],
       "journeyChecks": {},
       "title": "熊本から、火山の真ん中へ。｜Wayweave",
