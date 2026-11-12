@@ -76,8 +76,6 @@ test('rejects invalid candidate and missing canonical input without any partial 
   fs.rmSync(path.join(cwd, targets[3]))
   const missing = run(cwd)
   assert.notEqual(missing.status, 0)
-  assert.deepEqual(targets.slice(0, 3).map((file) => fs.readFileSync(path.join(cwd, file))),
-    targets.slice(0, 3).map((file) => fs.readFileSync(path.join(cwd, file))))
   assert.deepEqual(hashes(cwd).slice(0, 3), original.slice(0, 3))
 })
 
