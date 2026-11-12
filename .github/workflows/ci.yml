@@ -25,6 +25,7 @@ jobs:
       - run: npm run typecheck
       - run: npm run test:hotel-availability
       - run: npm run test:destinations
+      - run: npm run test:official-content
       - run: npm run test:kyushu-recovery-discount
       - run: npm run test:kyushu-roadtrip
       - run: npm run test:value-outcomes
