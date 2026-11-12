@@ -54,6 +54,25 @@ for (const region of addedRegions) {
     throw new Error(`incomplete official region: ${region.id}`)
   }
 }
+// Mixed generations must never be packaged or published as a successful build.
+const generationInputs = [official, growth, release, ontology]
+if (generationInputs.some((data) => data.officialContentGeneration !== undefined)) {
+  const identities = generationInputs.map((data) => [
+    data.officialContentCandidateId,
+    data.officialContentGeneration,
+    data.officialContentRevision,
+  ])
+  if (identities.some((identity) => identity.some((part) => typeof part !== 'string' || !part))) {
+    throw new Error('official content generation metadata is incomplete')
+  }
+  if (identities.some((identity) => JSON.stringify(identity) !== JSON.stringify(identities[0]))) {
+    throw new Error('official content artifacts belong to different generations')
+  }
+  if (release.latestAddedRegion !== identities[0][0] || release.release !== identities[0][2]) {
+    throw new Error('official content generation identity differs from release metadata')
+  }
+}
+
 if (release.officialRegionCount !== officialRegions.length) throw new Error('release region count is stale')
 if (release.officialContentCoverage !== officialItems.length) throw new Error('release content count is stale')
 if (release.expansionRegionCount !== addedRegions.length) throw new Error('release expansion count is stale')
