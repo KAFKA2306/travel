@@ -1,5 +1,6 @@
 import fs from 'node:fs'
 import path from 'node:path'
+import crypto from 'node:crypto'
 
 const root = process.cwd()
 const candidatePath = process.argv[2]
@@ -7,8 +8,6 @@ if (!candidatePath) throw new Error('candidate path is required')
 
 const readJson = (p) => JSON.parse(fs.readFileSync(path.join(root, p), 'utf8'))
 
-
-import crypto from 'node:crypto'
 
 const canonicalFiles = [
   'public/data/official-content.json',
@@ -18,15 +17,15 @@ const canonicalFiles = [
 ]
 const transactionDir = path.join(root, '.official-content-transaction')
 const digest = (bytes) => crypto.createHash('sha256').update(bytes).digest('hex')
-const serialized = (obj) => Buffer.from(${JSON.stringify(obj, null, 2)}\n)
+const serialized = (obj) => Buffer.from(JSON.stringify(obj, null, 2) + '\n')
 const readBytes = (name) => fs.readFileSync(path.join(root, name))
-const directoryEntry = (name, index, kind) => path.join(transactionDir, ${index}.${kind})
+const directoryEntry = (name, index, kind) => path.join(transactionDir, `${index}.${kind}`)
 const readManifest = () => JSON.parse(fs.readFileSync(path.join(transactionDir, 'manifest.json'), 'utf8'))
 const verifyBytes = (file, expected) => digest(readBytes(file)) === expected
 
 function atomicRestore(file, backupBytes) {
   const target = path.join(root, file)
-  const temporary = ${target}.restore-${process.pid}
+  const temporary = `${target}.restore-${process.pid}`
   fs.writeFileSync(temporary, backupBytes, { flag: 'wx' })
   fs.renameSync(temporary, target)
 }
@@ -86,14 +85,14 @@ function publishCanonicalGeneration(entries) {
     canonicalFiles.forEach((file, i) => {
       fs.writeFileSync(directoryEntry(file, i, 'before'), before[i], { flag: 'wx' })
       fs.writeFileSync(directoryEntry(file, i, 'next'), after[i], { flag: 'wx' })
-      if (process.env.OFFICIAL_CONTENT_TEST_FAIL_AT === ${'prepare:' + (i + 1)}) throw new Error('injected prepare failure')
+      if (process.env.OFFICIAL_CONTENT_TEST_FAIL_AT === 'prepare:' + (i + 1)) throw new Error('injected prepare failure')
     })
     fs.writeFileSync(path.join(transactionDir, 'manifest.json'), JSON.stringify(manifest), { flag: 'wx' })
     prepared = true
     canonicalFiles.forEach((file, i) => {
       fs.renameSync(directoryEntry(file, i, 'next'), path.join(root, file))
-      if (process.env.OFFICIAL_CONTENT_TEST_FAIL_AT === ${'commit:' + (i + 1)}) throw new Error('injected commit failure')
-      if (process.env.OFFICIAL_CONTENT_TEST_PAUSE_AT === ${'commit:' + (i + 1)}) {
+      if (process.env.OFFICIAL_CONTENT_TEST_FAIL_AT === 'commit:' + (i + 1)) throw new Error('injected commit failure')
+      if (process.env.OFFICIAL_CONTENT_TEST_PAUSE_AT === 'commit:' + (i + 1)) {
         Atomics.wait(new Int32Array(new SharedArrayBuffer(4)), 0, 0, 20000)
       }
     })
@@ -117,7 +116,7 @@ function publishCanonicalGeneration(entries) {
           throw new Error('canonical rollback read-back failed')
         }
       } catch (rollbackError) {
-        throw new Error(${'UNVERIFIED: rollback failed (' + rollbackError.message + '), original error: ' + error.message})
+        throw new Error('UNVERIFIED: rollback failed (' + rollbackError.message + '), original error: ' + error.message)
       }
     }
     fs.rmSync(transactionDir, { recursive: true, force: true })
@@ -245,11 +244,11 @@ if (!candidate.name?.trim() || !candidate.publisher?.trim() || !candidate.summar
 }
 for (const destination of merged) {
   if (!destination.id || !destination.publisher?.trim() || !destination.officialUrl?.startsWith('https://')) {
-    throw new Error(${destination.id}: invalid official source)
+    throw new Error(`${destination.id}: invalid official source`)
   }
   for (const item of destination.items) {
     if (!item.title?.trim() || !item.description?.trim() || !item.publisher?.trim()) {
-      throw new Error(${destination.id}: missing official content fields)
+      throw new Error(`${destination.id}: missing official content fields`)
     }
   }
 }
