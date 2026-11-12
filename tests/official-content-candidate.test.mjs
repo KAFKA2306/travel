@@ -76,7 +76,9 @@ test('rejects invalid candidate and missing canonical input without any partial 
   fs.rmSync(path.join(cwd, targets[3]))
   const missing = run(cwd)
   assert.notEqual(missing.status, 0)
-  assert.deepEqual(hashes(cwd).slice(0, 3), original.slice(0, 3))
+  assert.deepEqual(targets.slice(0, 3).map((target) =>
+    crypto.createHash('sha256').update(fs.readFileSync(path.join(cwd, target))).digest('hex')),
+  original.slice(0, 3))
 })
 
 test('rolls back byte-identically on staged and late partial-commit failures', (t) => {
