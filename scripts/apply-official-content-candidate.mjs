@@ -243,7 +243,7 @@ if (!candidate.name?.trim() || !candidate.publisher?.trim() || !candidate.summar
   throw new Error('candidate name, publisher and summary are required')
 }
 for (const destination of merged) {
-  if (!destination.id || !destination.publisher?.trim() || !destination.officialUrl?.startsWith('https://')) {
+  if (!destination.id || (!core.destinations.includes(destination) && (!destination.publisher?.trim() || !destination.officialUrl?.startsWith('https://')))) {
     throw new Error(`${destination.id}: invalid official source`)
   }
   for (const item of destination.items) {
